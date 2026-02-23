@@ -4,7 +4,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 export default [
   ...baseConfig,
   {
+    ...reactHooks.configs.flat.recommended,
     files: ["**/*.{ts,tsx}"],
-    extends: [reactHooks.configs.flat.recommended],
   },
 ];
