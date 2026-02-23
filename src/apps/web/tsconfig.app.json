@@ -1,5 +1,12 @@
 {
   "extends": "@repo/typescript-config/app.json",
-  "compilerOptions": {},
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@web/*": ["src/*"],
+      "@repo/tailwind-config*": ["../../packages/tailwind-config/*"],
+      "@repo/vite-config*": ["../../packages/vite-config/*"]
+    }
+  },
   "include": ["src"]
 }

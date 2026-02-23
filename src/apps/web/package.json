@@ -6,16 +6,24 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "catalog:",
+    "@tailwindcss/vite": "^4.2.1",
+    "@tanstack/react-router": "catalog:",
+    "http-status-codes": "^2.3.0",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "react-redux": "catalog:",
+    "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@tanstack/router-plugin": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
