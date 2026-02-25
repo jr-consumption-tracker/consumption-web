@@ -1,0 +1,11 @@
+:root {
+  --primary: #1e40af;
+}
+
+.dark {
+  --primary: #3b82f6;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+}

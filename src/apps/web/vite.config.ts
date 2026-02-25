@@ -13,6 +13,9 @@ export default defineConfig((configEnv) => {
   >;
 
   return {
+    define: {
+      __APP_VERSION__: JSON.stringify(env.npm_package_version),
+    },
     server: {
       port: 3000,
       https: {
@@ -34,5 +37,10 @@ export default defineConfig((configEnv) => {
         },
       }),
     ],
+    resolve: {
+      alias: {
+        "@web": path.resolve(__dirname, "./src"),
+      },
+    },
   };
 });

@@ -3,9 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@web/*": ["src/*"],
+      "@web/*": ["./src/*"],
       "@repo/tailwind-config*": ["../../packages/tailwind-config/*"],
-      "@repo/vite-config*": ["../../packages/vite-config/*"]
+      "@repo/vite-config*": ["../../packages/vite-config/*"],
+      "@repo/styles*": ["../../packages/styles/*"]
     }
   },
   "include": ["src"]
