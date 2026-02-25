@@ -1,0 +1,32 @@
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--surface);
+    color: var(--text-main);
+  }
+}
+
+@layer utilities {
+  /* Shimmer gradient utilities for CTA button */
+  .bg-size-200 {
+    background-size: 200% auto;
+  }
+  .bg-pos-0 {
+    background-position: 0% center;
+  }
+  .bg-pos-100 {
+    background-position: 100% center;
+  }
+
+  /* Subtle opacity hover for nav pills */
+  .hover\:bg-primary\/8:hover {
+    background-color: color-mix(in srgb, var(--primary) 8%, transparent);
+  }
+}

@@ -11,10 +11,7 @@
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "eslint": "catalog:",
-    "typescript": "catalog:"
+    "@repo/typescript-config": "workspace:*"
   },
   "dependencies": {
     "tailwindcss": "catalog:"

@@ -1,0 +1,109 @@
+:root {
+  /* Brand Colors */
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
+  --color-brand-950: #172554;
+
+  /* Electricity Accent (Amber) */
+  --color-electricity-500: #f59e0b;
+  --color-electricity-600: #d97706;
+
+  /* Gas Accent (Teal) */
+  --color-gas-500: #14b8a6;
+  --color-gas-600: #0d9488;
+
+  /* Premium Gradients */
+  --grad-primary: linear-gradient(
+    135deg,
+    var(--color-brand-500) 0%,
+    var(--color-brand-700) 100%
+  );
+  --grad-shimmer: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+
+  /* Semantic Colors */
+  --primary: var(--color-brand-600);
+  --primary-rgb: 37, 99, 235;
+  --secondary: var(--color-brand-200);
+  --accent: var(--color-electricity-500);
+  --surface: #f8fafc;
+  --surface-alt: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Radius & Spacing */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+.dark {
+  --primary: var(--color-brand-400);
+  --primary-rgb: 96, 165, 250;
+  --secondary: var(--color-brand-800);
+  --surface: #020617;
+  --surface-alt: #0f172a;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border: #1e293b;
+}
+
+@theme inline {
+  --color-brand-50: var(--color-brand-50);
+  --color-brand-100: var(--color-brand-100);
+  --color-brand-200: var(--color-brand-200);
+  --color-brand-300: var(--color-brand-300);
+  --color-brand-400: var(--color-brand-400);
+  --color-brand-500: var(--color-brand-500);
+  --color-brand-600: var(--color-brand-600);
+  --color-brand-700: var(--color-brand-700);
+  --color-brand-800: var(--color-brand-800);
+  --color-brand-900: var(--color-brand-900);
+  --color-brand-950: var(--color-brand-950);
+
+  --color-electricity-500: var(--color-electricity-500);
+  --color-electricity-600: var(--color-electricity-600);
+  --color-gas-500: var(--color-gas-500);
+  --color-gas-600: var(--color-gas-600);
+
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border);
+
+  --font-sans: var(--font-sans);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-glow: glow-pulse 2s ease-in-out infinite;
+  --animate-slide-down: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-spin-slow: spin 4s linear infinite;
+}
