@@ -93,6 +93,10 @@
   --color-text-muted: var(--text-muted);
   --color-border: var(--border);
 
+  --glass-fill: rgba(var(--primary-rgb), 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-blur: 48px;
+
   --font-sans: var(--font-sans);
 
   --radius-sm: var(--radius-sm);
@@ -106,4 +110,7 @@
   --animate-glow: glow-pulse 2s ease-in-out infinite;
   --animate-slide-down: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-spin-slow: spin 4s linear infinite;
+  --animate-border-beam: border-beam 4s linear infinite;
+  --animate-liquid-morph: liquid-morph 4s ease-in-out infinite;
+  --animate-fade-in-up: fade-in-up 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }

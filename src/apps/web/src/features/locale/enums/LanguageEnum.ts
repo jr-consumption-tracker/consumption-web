@@ -3,4 +3,5 @@ export const LanguageEnum = {
   CS: "cs",
 } as const;
 
-type LanguageEnum = (typeof LanguageEnum)[keyof typeof LanguageEnum];
+export type LanguageEnumValue =
+  (typeof LanguageEnum)[keyof typeof LanguageEnum];

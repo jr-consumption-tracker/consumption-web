@@ -6,15 +6,28 @@ const HomePage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl font-extrabold tracking-tight text-text-main sm:text-7xl md:text-8xl">
-              Sledujte svou spotřebu <br />
+              Mějte své energie <br />
               <span className="bg-gradient-to-r from-primary via-brand-500 to-accent bg-clip-text text-transparent drop-shadow-sm">
-                jako profesionál
+                pod kontrolou
               </span>
             </h1>
-            <p className="mx-auto mt-8 max-w-2xl text-xl text-text-muted sm:text-2xl leading-relaxed">
-              Mějte pod kontrolou výdaje za elektřinu a plyn. Moderní nástroj
-              pro každodenní monitoring, analýzu a úsporu vašich energií.
+            <p className="mx-auto mt-8 max-w-2xl text-xl font-medium text-text-muted sm:text-2xl leading-relaxed">
+              Sledujte spotřebu, odhalujte úspory a předejděte nečekaným
+              nedoplatkům. Moderní nástroj pro monitoring vaší domácnosti.
             </p>
+
+            {/* Mission / Description Paragraph */}
+            <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-primary/10 bg-primary/5 p-8 backdrop-blur-sm animate-fade-in-up">
+              <p className="text-lg text-text-main leading-relaxed">
+                <span className="font-bold text-primary">Consumptions</span> vám
+                pomůže porozumět tomu, za co skutečně platíte. Ať už jde o
+                elektřinu, plyn nebo vodu, naše platforma sjednocuje veškeré
+                odečty na jedno místo. Analyzujte své návyky, identifikujte
+                největší odběry a začněte šetřit tam, kde to dává největší
+                smysl.
+              </p>
+            </div>
+
             <div className="mt-12 flex items-center justify-center gap-x-8">
               <button className="rounded-full bg-primary px-10 py-5 text-xl font-bold text-white shadow-2xl shadow-primary/40 transition-all hover:scale-110 hover:-translate-y-1 hover:shadow-primary/60 active:scale-95">
                 Začít zdarma
@@ -34,8 +47,8 @@ const HomePage = () => {
 
         {/* Blurred decorative backgrounds */}
         <div className="absolute top-0 -z-10 h-full w-full pointer-events-none overflow-hidden">
-          <div className="absolute -top-24 -left-20 h-96 w-96 rounded-full bg-primary/10 blur-3xl animate-float" />
-          <div className="absolute top-1/2 -right-20 h-96 w-96 rounded-full bg-accent/10 blur-3xl animate-pulse" />
+          <div className="absolute -top-24 -left-20 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute top-1/2 -right-20 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
         </div>
       </section>
 
@@ -43,64 +56,56 @@ const HomePage = () => {
       <section id="features" className="bg-surface py-24 sm:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center">
-            <h2 className="text-base font-semibold leading-7 text-primary">
-              Vlastnosti
+            <h2 className="text-base font-bold uppercase tracking-widest text-primary">
+              Chytrý monitoring
             </h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-text-main sm:text-4xl">
-              Vše, co potřebujete k úspoře
+            <p className="mt-2 text-4xl font-extrabold tracking-tight text-text-main sm:text-5xl">
+              Cesta ke skutečné úspoře
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-              <div className="flex flex-col rounded-2xl border border-border bg-surface p-8 transition-all hover:border-accent/50 hover:shadow-xl hover:shadow-accent/5">
-                <dt className="flex items-center gap-x-3 text-lg font-semibold leading-7 text-text-main">
-                  <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-accent/10 text-accent">
+            <dl className="grid max-w-xl grid-cols-1 gap-x-12 gap-y-16 lg:max-w-none lg:grid-cols-3">
+              <div className="group flex flex-col rounded-3xl border border-border bg-surface p-10 transition-all hover:border-primary/50 hover:shadow-2xl hover:-translate-y-2">
+                <dt className="flex items-center gap-x-4 text-xl font-bold leading-7 text-text-main">
+                  <div className="h-12 w-12 flex items-center justify-center rounded-2xl bg-primary/10 text-primary transition-transform group-hover:rotate-12">
                     ⚡
                   </div>
-                  Elektřina
+                  Přehledné odečty
                 </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-text-muted">
-                  <p className="flex-auto italic font-medium text-accent">
-                    Sledujte každý watt
-                  </p>
+                <dd className="mt-4 flex flex-auto flex-col text-lg leading-7 text-text-muted">
                   <p className="mt-2">
-                    Detailní přehled o spotřebě v průběhu dne. Identifikujte
-                    největší žrouty energie.
+                    Neztrácejte čas tabulkami. Sledujte všechny typy energií v
+                    jednoduchém a přehledném rozhraní.
                   </p>
                 </dd>
               </div>
 
-              <div className="flex flex-col rounded-2xl border border-border bg-surface p-8 transition-all hover:border-gas-500/50 hover:shadow-xl hover:shadow-gas-500/5">
-                <dt className="flex items-center gap-x-3 text-lg font-semibold leading-7 text-text-main">
-                  <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-gas-500/10 text-gas-500">
-                    🔥
+              <div className="group flex flex-col rounded-3xl border border-border bg-surface p-10 transition-all hover:border-accent/50 hover:shadow-2xl hover:-translate-y-2">
+                <dt className="flex items-center gap-x-4 text-xl font-bold leading-7 text-text-main">
+                  <div className="h-12 w-12 flex items-center justify-center rounded-2xl bg-accent/10 text-accent transition-transform group-hover:scale-110">
+                    📈
                   </div>
-                  Plyn
+                  Předpověď výdajů
                 </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-text-muted">
-                  <p className="flex-auto italic font-medium text-gas-500">
-                    Teplo pod kontrolou
-                  </p>
+                <dd className="mt-4 flex flex-auto flex-col text-lg leading-7 text-text-muted">
                   <p className="mt-2">
-                    Optimalizujte vytápění na základě historických dat a počasí.
+                    Náš systém analyzuje vaši historii a včas vás upozorní na
+                    hrozící nedoplatky za energie.
                   </p>
                 </dd>
               </div>
 
-              <div className="flex flex-col rounded-2xl border border-border bg-surface p-8 transition-all hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5">
-                <dt className="flex items-center gap-x-3 text-lg font-semibold leading-7 text-text-main">
-                  <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    📊
+              <div className="group flex flex-col rounded-3xl border border-border bg-surface p-10 transition-all hover:border-brand-500/50 hover:shadow-2xl hover:-translate-y-2">
+                <dt className="flex items-center gap-x-4 text-xl font-bold leading-7 text-text-main">
+                  <div className="h-12 w-12 flex items-center justify-center rounded-2xl bg-brand-500/10 text-brand-500 transition-transform group-hover:-rotate-12">
+                    💡
                   </div>
-                  Analýzy
+                  Tipy na úsporu
                 </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-text-muted">
-                  <p className="flex-auto italic font-medium text-primary">
-                    Data mluví jasně
-                  </p>
+                <dd className="mt-4 flex flex-auto flex-col text-lg leading-7 text-text-muted">
                   <p className="mt-2">
-                    Krásné grafy a reporty, které vám pomohou pochopit vaše
-                    návyky.
+                    Díky datům vám poradíme, kdy a kde můžete reálně ušetřit,
+                    aniž byste museli slevit ze svého pohodlí.
                   </p>
                 </dd>
               </div>
@@ -144,67 +149,74 @@ const HomePage = () => {
       <section id="pricing" className="bg-surface py-24 sm:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-text-main sm:text-4xl">
-              Plány a prémiové funkce
+            <h2 className="text-3xl font-extrabold tracking-tight text-text-main sm:text-4xl">
+              Plány pro každou domácnost
             </h2>
             <p className="mt-6 text-lg leading-8 text-text-muted">
-              Vyberte si tarif, který vám nejlépe vyhovuje.
+              Vyberte si úroveň kontroly, kterou potřebujete pro své energie.
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-y-6 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:gap-x-8">
-            <div className="rounded-3xl p-8 ring-1 ring-border bg-surface lg:p-10">
-              <h3 className="text-lg font-semibold leading-8 text-text-main">
+            <div className="flex flex-col rounded-3xl p-8 ring-1 ring-border bg-surface lg:p-10 transition-shadow hover:shadow-lg">
+              <h3 className="text-lg font-bold leading-8 text-text-main uppercase tracking-widest">
                 Základ zdarma
               </h3>
               <p className="mt-4 text-sm leading-6 text-text-muted">
-                Vše pro začátek vaší úsporné cesty.
+                Vše potřebné pro start vaší cesty k úsporám.
               </p>
               <p className="mt-6 flex items-baseline gap-x-1">
-                <span className="text-4xl font-bold tracking-tight text-text-main">
+                <span className="text-5xl font-black tracking-tight text-text-main">
                   0 Kč
                 </span>
                 <span className="text-sm font-semibold leading-6 text-text-muted">
-                  /měsíc
+                  /navždy
                 </span>
               </p>
-              <ul className="mt-8 space-y-3 text-sm leading-6 text-text-muted">
-                <li className="flex gap-x-3 text-primary">
-                  ✓ Ruční zápis odečtů
+              <ul className="mt-8 space-y-4 text-sm leading-6 text-text-muted flex-grow">
+                <li className="flex gap-x-3 text-primary font-medium">
+                  ✓ Sledování jakékoliv energie
                 </li>
-                <li className="flex gap-x-3 text-primary">✓ Základní grafy</li>
-                <li className="flex gap-x-3 text-primary">✓ Historie 1 rok</li>
+                <li className="flex gap-x-3 text-primary font-medium">
+                  ✓ Ruční zápis i fotoodpočty
+                </li>
+                <li className="flex gap-x-3 text-primary font-medium">
+                  ✓ Historie 12 měsíců
+                </li>
               </ul>
             </div>
-            <div className="rounded-3xl p-8 ring-2 ring-primary bg-primary/5 lg:p-10">
-              <h3 className="text-lg font-semibold leading-8 text-primary">
+            <div className="flex flex-col rounded-3xl p-8 ring-2 ring-primary bg-primary/5 lg:p-10 shadow-2xl shadow-primary/10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-primary px-4 py-1 text-[10px] font-black uppercase text-white tracking-widest rounded-bl-xl">
+                Doporučeno
+              </div>
+              <h3 className="text-lg font-bold leading-8 text-primary uppercase tracking-widest">
                 Premium
               </h3>
               <p className="mt-4 text-sm leading-6 text-text-muted">
-                Pro maximální úsporu a automatizaci.
+                Energetická inteligence pro maximální úsporu.
               </p>
               <p className="mt-6 flex items-baseline gap-x-1">
-                <span className="text-4xl font-bold tracking-tight text-text-main">
+                <span className="text-5xl font-black tracking-tight text-text-main">
                   99 Kč
                 </span>
                 <span className="text-sm font-semibold leading-6 text-text-muted">
                   /měsíc
                 </span>
               </p>
-              <ul className="mt-8 space-y-3 text-sm leading-6 text-text-muted">
+              <ul className="mt-8 space-y-4 text-sm leading-6 text-text-main flex-grow">
                 <li className="flex gap-x-3 text-primary font-bold">
-                  ✓ Predikce a AI analýza
+                  ✓ AI Predikce faktur a anomálií
                 </li>
                 <li className="flex gap-x-3 text-primary font-bold">
-                  ✓ Exporty pro dodavatele
+                  ✓ Neomezená historie srovnání
                 </li>
                 <li className="flex gap-x-3 text-primary font-bold">
-                  ✓ Neomezená historie
+                  ✓ Chytré notifikace při růstu ceny
                 </li>
                 <li className="flex gap-x-3 text-primary font-bold">
-                  ✓ Notifikace na mobil
+                  ✓ Pokročilé exporty do Excelu
                 </li>
               </ul>
-              <button className="mt-8 block w-full rounded-xl bg-primary px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary transition-all">
+              <button className="mt-10 block w-full rounded-2xl bg-primary px-6 py-4 text-center text-sm font-black uppercase tracking-widest text-white shadow-xl hover:bg-primary/90 hover:scale-[1.02] transition-all">
                 Chci Premium
               </button>
             </div>
