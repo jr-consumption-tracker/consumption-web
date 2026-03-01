@@ -1,6 +1,8 @@
+import { PageLayout } from "@web/app/layouts/PageLayout";
+
 const Home = () => {
   return (
-    <div className="flex flex-col">
+    <PageLayout>
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-surface py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -223,7 +225,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </div>
+    </PageLayout>
   );
 };
 

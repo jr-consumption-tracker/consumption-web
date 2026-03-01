@@ -1,0 +1,38 @@
+{
+  "name": "@repo/utils",
+  "version": "0.0.0",
+  "private": false,
+  "author": "Jan Ribka",
+  "description": "Utility functions for consumption tracker",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "keywords": [
+    "react",
+    "janribka",
+    "utils",
+    "consumption",
+    "tracker",
+    "consumption-tracker"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jr-consumption-tracker/consumption-web.git",
+    "directory": "packages/utils"
+  },
+  "bugs": {
+    "url": "https://github.com/jr-consumption-tracker/consumption-web/issues"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "@repo/typescript-config": "workspace:*",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.5.0"
+  },
+  "peerDependencies": {
+    "react": "catalog:"
+  }
+}
