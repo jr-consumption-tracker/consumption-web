@@ -1,4 +1,4 @@
-const HomePage = () => {
+const Home = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -227,4 +227,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;
