@@ -1,5 +1,26 @@
 import { Section } from "@web/shared/components/Section";
 
+import { HeroActions } from "./components/HeroActions";
+import { HeroHeader } from "./components/HeroHeader";
+import { HeroMission } from "./components/HeroMission";
+
+/**
+ * Hero - Hlavní orchestrátor pro Hero sekci
+ * Koordinuje data a subkomponenty (zde čistě UI).
+ *
+ * @example
+ * <Hero />
+ */
 export const Hero = () => {
-  return <Section>f</Section>;
+  return (
+    <Section className="relative overflow-hidden bg-surface">
+      <div className="text-center">
+        <HeroHeader />
+        <HeroMission />
+        <HeroActions />
+      </div>
+    </Section>
+  );
 };
+
+Hero.displayName = "Hero";

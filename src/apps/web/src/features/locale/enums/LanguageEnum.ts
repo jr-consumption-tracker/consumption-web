@@ -5,3 +5,9 @@ export const LanguageEnum = {
 
 export type LanguageEnumValue =
   (typeof LanguageEnum)[keyof typeof LanguageEnum];
+
+export type LanguageEnumKey = keyof typeof LanguageEnum;
+
+export const LanguageEnumKeys = Object.values(
+  LanguageEnum,
+) as LanguageEnumValue[];

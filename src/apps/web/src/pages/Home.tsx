@@ -1,10 +1,12 @@
 import { PageLayout } from "@web/app/layouts/PageLayout";
+import { Hero } from "@web/widgets/home/Hero/Hero";
 
 const Home = () => {
   return (
     <PageLayout>
+      <Hero />
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-surface py-20 lg:py-32">
+      {/* <section className="relative overflow-hidden bg-surface py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl font-extrabold tracking-tight text-text-main sm:text-7xl md:text-8xl">
@@ -16,10 +18,10 @@ const Home = () => {
             <p className="mx-auto mt-8 max-w-2xl text-xl font-medium text-text-muted sm:text-2xl leading-relaxed">
               Sledujte spotřebu, odhalujte úspory a předejděte nečekaným
               nedoplatkům. Moderní nástroj pro monitoring vaší domácnosti.
-            </p>
+            </p> */}
 
-            {/* Mission / Description Paragraph */}
-            <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-primary/10 bg-primary/5 p-8 backdrop-blur-sm animate-fade-in-up">
+      {/* Mission / Description Paragraph */}
+      {/* <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-primary/10 bg-primary/5 p-8 backdrop-blur-sm animate-fade-in-up">
               <p className="text-lg text-text-main leading-relaxed">
                 <span className="font-bold text-primary">Consumptions</span> vám
                 pomůže porozumět tomu, za co skutečně platíte. Ať už jde o
@@ -45,14 +47,14 @@ const Home = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        {/* Blurred decorative backgrounds */}
-        <div className="absolute top-0 -z-10 h-full w-full pointer-events-none overflow-hidden">
+      {/* Blurred decorative backgrounds */}
+      {/* <div className="absolute top-0 -z-10 h-full w-full pointer-events-none overflow-hidden">
           <div className="absolute -top-24 -left-20 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
           <div className="absolute top-1/2 -right-20 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
         </div>
-      </section>
+      </section> */}
 
       {/* Features Section */}
       <section id="features" className="bg-surface py-24 sm:py-32">
@@ -228,5 +230,7 @@ const Home = () => {
     </PageLayout>
   );
 };
+
+Home.displayName = "Home";
 
 export default Home;
