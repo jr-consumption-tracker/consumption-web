@@ -3,6 +3,7 @@ import { Section } from "@web/shared/components/Section";
 import { HeroActions } from "./components/HeroActions";
 import { HeroHeader } from "./components/HeroHeader";
 import { HeroMission } from "./components/HeroMission";
+import HeroBg from "./components/HeroBg";
 
 /**
  * Hero - Hlavní orchestrátor pro Hero sekci
@@ -13,7 +14,10 @@ import { HeroMission } from "./components/HeroMission";
  */
 export const Hero = () => {
   return (
-    <Section className="relative overflow-hidden bg-surface">
+    <Section
+      className="relative overflow-hidden bg-surface"
+      background={<HeroBg />}
+    >
       <div className="text-center">
         <HeroHeader />
         <HeroMission />

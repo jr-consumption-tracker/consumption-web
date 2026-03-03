@@ -17,3 +17,5 @@ catalog:
   "@reduxjs/toolkit": "^2.11.2"
   "@tanstack/react-router": "^1.162.6"
   "@tanstack/router-plugin": "^1.162.6"
+  "@heroui/react": "3.0.0-beta.8"
+  "@heroui/styles": "3.0.0-beta.8"

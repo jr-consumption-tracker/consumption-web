@@ -5,56 +5,6 @@ const Home = () => {
   return (
     <PageLayout>
       <Hero />
-      {/* Hero Section */}
-      {/* <section className="relative overflow-hidden bg-surface py-20 lg:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl font-extrabold tracking-tight text-text-main sm:text-7xl md:text-8xl">
-              Mějte své energie <br />
-              <span className="bg-gradient-to-r from-primary via-brand-500 to-accent bg-clip-text text-transparent drop-shadow-sm">
-                pod kontrolou
-              </span>
-            </h1>
-            <p className="mx-auto mt-8 max-w-2xl text-xl font-medium text-text-muted sm:text-2xl leading-relaxed">
-              Sledujte spotřebu, odhalujte úspory a předejděte nečekaným
-              nedoplatkům. Moderní nástroj pro monitoring vaší domácnosti.
-            </p> */}
-
-      {/* Mission / Description Paragraph */}
-      {/* <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-primary/10 bg-primary/5 p-8 backdrop-blur-sm animate-fade-in-up">
-              <p className="text-lg text-text-main leading-relaxed">
-                <span className="font-bold text-primary">Consumptions</span> vám
-                pomůže porozumět tomu, za co skutečně platíte. Ať už jde o
-                elektřinu, plyn nebo vodu, naše platforma sjednocuje veškeré
-                odečty na jedno místo. Analyzujte své návyky, identifikujte
-                největší odběry a začněte šetřit tam, kde to dává největší
-                smysl.
-              </p>
-            </div>
-
-            <div className="mt-12 flex items-center justify-center gap-x-8">
-              <button className="rounded-full bg-primary px-10 py-5 text-xl font-bold text-white shadow-2xl shadow-primary/40 transition-all hover:scale-110 hover:-translate-y-1 hover:shadow-primary/60 active:scale-95">
-                Začít zdarma
-              </button>
-              <button className="text-xl font-bold leading-6 text-text-main transition-all hover:text-primary group">
-                Více informací{" "}
-                <span
-                  className="inline-block transition-transform group-hover:translate-x-2"
-                  aria-hidden="true"
-                >
-                  →
-                </span>
-              </button>
-            </div>
-          </div>
-        </div> */}
-
-      {/* Blurred decorative backgrounds */}
-      {/* <div className="absolute top-0 -z-10 h-full w-full pointer-events-none overflow-hidden">
-          <div className="absolute -top-24 -left-20 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
-          <div className="absolute top-1/2 -right-20 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
-        </div>
-      </section> */}
 
       {/* Features Section */}
       <section id="features" className="bg-surface py-24 sm:py-32">

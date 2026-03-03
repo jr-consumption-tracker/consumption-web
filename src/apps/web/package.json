@@ -11,9 +11,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@heroicons/react": "^2.2.0",
-    "@heroui/react": "3.0.0-beta.7",
-    "@heroui/styles": "3.0.0-beta.7",
+    "@heroui/react": "catalog:",
+    "@heroui/styles": "catalog:",
     "@reduxjs/toolkit": "catalog:",
     "@tailwindcss/vite": "^4.2.1",
     "@tanstack/react-router": "catalog:",
@@ -21,6 +20,7 @@
     "i18next": "^25.8.13",
     "i18next-browser-languagedetector": "^8.2.1",
     "i18next-http-backend": "^3.0.2",
+    "lucide-react": "^0.576.0",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-i18next": "^16.5.4",
@@ -28,6 +28,7 @@
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
+    "@repo/components": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/styles": "workspace:*",
     "@repo/typescript-config": "workspace:*",
@@ -36,7 +37,7 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@vitejs/plugin-react": "^5.1.1",
+    "@vitejs/plugin-react": "^5.1.4",
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "catalog:",
     "tailwind-variants": "^3.2.2",

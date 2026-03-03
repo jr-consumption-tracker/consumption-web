@@ -8,3 +8,9 @@ export const router = createRouter({
   //  routeMasks: [stepsMask],
   defaultPreload: "intent",
 });
+
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router;
+  }
+}

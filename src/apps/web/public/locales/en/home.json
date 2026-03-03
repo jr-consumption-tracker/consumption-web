@@ -7,6 +7,11 @@
     },
     "mission": {
       "text": "Get a clear overview of your energy consumption and start managing your costs smarter. The application allows you to track electricity, gas, water, and other utilities, displays them in clear charts, and lets you compare individual months or years. You will instantly see trends, seasonal fluctuations, and unusual changes. Thanks to this, you can better plan expenses, prevent unpleasant surprises in your billing, and gradually optimize your consumption."
+    },
+    "actions": {
+      "startFree": "Start for free",
+      "moreInfo": "More information",
+      "goToApp": "Go to App"
     }
   }
 }

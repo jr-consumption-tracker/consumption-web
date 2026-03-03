@@ -7,6 +7,11 @@
     },
     "mission": {
       "text": "Získejte jasný přehled o své spotřebě energií a začněte řídit své náklady chytřeji. Aplikace vám umožní evidovat spotřebu elektřiny, plynu, vody a dalších médií, zobrazí ji v přehledných grafech a umožní porovnávat jednotlivé měsíce či roky. Okamžitě uvidíte trendy, sezónní výkyvy i neobvyklé změny. Díky tomu dokážete lépe plánovat výdaje, předcházet nepříjemným překvapením ve vyúčtování a postupně optimalizovat svou spotřebu."
+    },
+    "actions": {
+      "startFree": "Začít zdarma",
+      "moreInfo": "Více informací",
+      "goToApp": "Přejít do aplikace"
     }
   }
 }
