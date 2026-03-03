@@ -1,72 +1,12 @@
 import { PageLayout } from "@web/app/layouts/PageLayout";
 import { Hero } from "@web/widgets/home/Hero/Hero";
+import { HowItWorks } from "@web/widgets/home/HowItWorks/HowItWorks";
 
 const Home = () => {
   return (
     <PageLayout>
       <Hero />
-
-      {/* Features Section */}
-      <section id="features" className="bg-surface py-24 sm:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:text-center">
-            <h2 className="text-base font-bold uppercase tracking-widest text-primary">
-              Chytrý monitoring
-            </h2>
-            <p className="mt-2 text-4xl font-extrabold tracking-tight text-text-main sm:text-5xl">
-              Cesta ke skutečné úspoře
-            </p>
-          </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-12 gap-y-16 lg:max-w-none lg:grid-cols-3">
-              <div className="group flex flex-col rounded-3xl border border-border bg-surface p-10 transition-all hover:border-primary/50 hover:shadow-2xl hover:-translate-y-2">
-                <dt className="flex items-center gap-x-4 text-xl font-bold leading-7 text-text-main">
-                  <div className="h-12 w-12 flex items-center justify-center rounded-2xl bg-primary/10 text-primary transition-transform group-hover:rotate-12">
-                    ⚡
-                  </div>
-                  Přehledné odečty
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-lg leading-7 text-text-muted">
-                  <p className="mt-2">
-                    Neztrácejte čas tabulkami. Sledujte všechny typy energií v
-                    jednoduchém a přehledném rozhraní.
-                  </p>
-                </dd>
-              </div>
-
-              <div className="group flex flex-col rounded-3xl border border-border bg-surface p-10 transition-all hover:border-accent/50 hover:shadow-2xl hover:-translate-y-2">
-                <dt className="flex items-center gap-x-4 text-xl font-bold leading-7 text-text-main">
-                  <div className="h-12 w-12 flex items-center justify-center rounded-2xl bg-accent/10 text-accent transition-transform group-hover:scale-110">
-                    📈
-                  </div>
-                  Předpověď výdajů
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-lg leading-7 text-text-muted">
-                  <p className="mt-2">
-                    Náš systém analyzuje vaši historii a včas vás upozorní na
-                    hrozící nedoplatky za energie.
-                  </p>
-                </dd>
-              </div>
-
-              <div className="group flex flex-col rounded-3xl border border-border bg-surface p-10 transition-all hover:border-brand-500/50 hover:shadow-2xl hover:-translate-y-2">
-                <dt className="flex items-center gap-x-4 text-xl font-bold leading-7 text-text-main">
-                  <div className="h-12 w-12 flex items-center justify-center rounded-2xl bg-brand-500/10 text-brand-500 transition-transform group-hover:-rotate-12">
-                    💡
-                  </div>
-                  Tipy na úsporu
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-lg leading-7 text-text-muted">
-                  <p className="mt-2">
-                    Díky datům vám poradíme, kdy a kde můžete reálně ušetřit,
-                    aniž byste museli slevit ze svého pohodlí.
-                  </p>
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-      </section>
+      <HowItWorks />
 
       {/* Motivation Section */}
       <section

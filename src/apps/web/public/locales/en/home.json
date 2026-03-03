@@ -3,7 +3,7 @@
     "header": {
       "title_main": "Keep your energy",
       "title_highlight": "under control",
-      "description": "Track your consumption, discover savings, and prevent unexpected bills. A modern tool for monitoring your household."
+      "description": "Track consumption, discover savings, and prevent unexpected overpayments. A modern tool for monitoring your household."
     },
     "mission": {
       "text": "Get a clear overview of your energy consumption and start managing your costs smarter. The application allows you to track electricity, gas, water, and other utilities, displays them in clear charts, and lets you compare individual months or years. You will instantly see trends, seasonal fluctuations, and unusual changes. Thanks to this, you can better plan expenses, prevent unpleasant surprises in your billing, and gradually optimize your consumption."
@@ -12,6 +12,25 @@
       "startFree": "Start for free",
       "moreInfo": "More information",
       "goToApp": "Go to App"
+    },
+    "howItWorks": {
+      "subtitle": "Easy start",
+      "title": "How it works",
+      "description": "Get an overview of your consumption in three simple steps. From registration to your first savings analysis.",
+      "steps": {
+        "step1": {
+          "title": "Register",
+          "description": "Create an account and get access to the application."
+        },
+        "step2": {
+          "title": "Add supply points",
+          "description": "Enter your homes or spaces where you want to track consumption."
+        },
+        "step3": {
+          "title": "Track consumption",
+          "description": "View charts and statistics for better cost control."
+        }
+      }
     }
   }
 }

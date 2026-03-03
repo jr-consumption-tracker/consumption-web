@@ -12,6 +12,25 @@
       "startFree": "Začít zdarma",
       "moreInfo": "Více informací",
       "goToApp": "Přejít do aplikace"
+    },
+    "howItWorks": {
+      "subtitle": "Jednoduchý start",
+      "title": "Jak to funguje",
+      "description": "Získejte přehled o vaší spotřebě ve třech jednoduchých krocích. Od registrace po první analýzu úspor.",
+      "steps": {
+        "step1": {
+          "title": "Zaregistrujte se",
+          "description": "Vytvořte si účet a získejte přístup do aplikace."
+        },
+        "step2": {
+          "title": "Přidejte odběrná místa",
+          "description": "Zadejte svoje domy nebo prostory, kde chcete sledovat spotřebu."
+        },
+        "step3": {
+          "title": "Sledujte spotřebu",
+          "description": "Prohlížejte grafy a statistiky pro lepší kontrolu nákladů."
+        }
+      }
     }
   }
 }
