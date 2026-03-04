@@ -35,6 +35,8 @@
 
   /* Semantic Colors */
   --primary: var(--color-brand-600);
+  --primary-dark: var(--color-brand-900);
+  --primary-light: var(--color-brand-200);
   --primary-rgb: 37, 99, 235;
   --electricity-rgb: 245, 158, 11;
   --secondary: var(--color-brand-200);
@@ -57,8 +59,10 @@
 }
 
 .dark {
-  --primary: var(--color-brand-400);
-  --primary-rgb: 96, 165, 250;
+  --primary: var(--color-brand-500);
+  --primary-dark: var(--color-brand-600);
+  --primary-light: var(--color-brand-400);
+  --primary-rgb: 59, 130, 246;
   --secondary: var(--color-brand-800);
   --surface: #020617;
   --surface-alt: #0f172a;
@@ -86,6 +90,8 @@
   --color-gas-600: var(--color-gas-600);
 
   --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   --color-surface: var(--surface);

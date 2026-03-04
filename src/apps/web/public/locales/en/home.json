@@ -30,6 +30,37 @@
           "description": "View charts and statistics for better cost control."
         }
       }
+    },
+    "features": {
+      "subtitle": "Key Features",
+      "title": "All in one app",
+      "items": {
+        "charts": {
+          "title": "Charts and Statistics",
+          "description": "Visualize your monthly, and yearly consumption in clear interactive charts that help you identify inefficiencies."
+        },
+        "costs": {
+          "title": "Cost Tracking",
+          "description": "Keep a constant overview of your expenses for electricity, gas, and water. The app automatically calculates estimated costs."
+        },
+        "properties": {
+          "title": "Multiple Properties",
+          "description": "Track consumption in your apartment, cottage, and office under one account with easy switching between them."
+        },
+        "reports": {
+          "title": "Detailed Reports",
+          "description": "Generate automatic monthly and yearly overviews. Export data to Excel or PDF for further analysis or authorities."
+        },
+        "notifications": {
+          "title": "Smart Notifications",
+          "description": "Stay in the loop with alerts about unusual consumption spikes or approaching meter reading deadlines."
+        },
+        "history": {
+          "title": "Unified History",
+          "description": "Keep all your meter readings securely stored and available at any time. Easily return to past periods and compare consumption trends."
+        }
+      },
+      "premium": "Premium"
     }
   }
 }

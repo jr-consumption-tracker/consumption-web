@@ -30,6 +30,37 @@
           "description": "Prohlížejte grafy a statistiky pro lepší kontrolu nákladů."
         }
       }
+    },
+    "features": {
+      "subtitle": "Hlavní funkce",
+      "title": "Vše v jedné aplikaci",
+      "premium": "Premium",
+      "items": {
+        "charts": {
+          "title": "Grafy a statistiky",
+          "description": "Vizualizujte své měsíční i roční odběry v přehledných interaktivních grafech, které vám pomohou odhalit neefektivitu."
+        },
+        "costs": {
+          "title": "Sledování nákladů",
+          "description": "Mějte neustálý přehled o svých výdajích za elektřinu, plyn i vodu. Aplikace automaticky propočítá odhadované náklady."
+        },
+        "properties": {
+          "title": "Více nemovitostí",
+          "description": "Sledujte spotřebu ve svém bytě, na chalupě i v kanceláři pod jedním účtem s možností snadného přepínání mezi nimi."
+        },
+        "reports": {
+          "title": "Detailní reporty",
+          "description": "Generujte automatické měsíční a roční přehledy. Exportujte data do Excelu nebo PDF pro další analýzu či úřady."
+        },
+        "notifications": {
+          "title": "Chytré notifikace",
+          "description": "Buďte v obraze díky upozorněním na neobvyklé výkyvy ve spotřebě nebo blížící se termíny pravidelných odečtů metrů."
+        },
+        "history": {
+          "title": "Historie na jednom místě",
+          "description": "Mějte všechny své odečty bezpečně uložené a kdykoliv dostupné. Snadno se vrátíte k minulým obdobím a porovnáte vývoj spotřeby."
+        }
+      }
     }
   }
 }
