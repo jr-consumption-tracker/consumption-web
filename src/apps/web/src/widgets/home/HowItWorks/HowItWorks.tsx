@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+
 import {
   ChartBarIcon,
   HomeIcon,
@@ -10,27 +11,6 @@ import { StepCard } from "./components/StepCard";
 
 export const HowItWorks = () => {
   const { t } = useTranslation("home");
-
-  const steps = [
-    {
-      number: 1,
-      icon: UserPlusIcon,
-      title: t("hero.howItWorks.steps.step1.title"),
-      description: t("hero.howItWorks.steps.step1.description"),
-    },
-    {
-      number: 2,
-      icon: HomeIcon,
-      title: t("hero.howItWorks.steps.step2.title"),
-      description: t("hero.howItWorks.steps.step2.description"),
-    },
-    {
-      number: 3,
-      icon: ChartBarIcon,
-      title: t("hero.howItWorks.steps.step3.title"),
-      description: t("hero.howItWorks.steps.step3.description"),
-    },
-  ];
 
   return (
     <Section id="how-it-works" className="bg-surface">
@@ -48,15 +28,27 @@ export const HowItWorks = () => {
 
       <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
         <dl className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {steps.map((step) => (
-            <StepCard
-              key={step.number}
-              number={step.number}
-              icon={step.icon}
-              title={step.title}
-              description={step.description}
-            />
-          ))}
+          <StepCard
+            number={1}
+            variant="primary"
+            icon={UserPlusIcon}
+            title={t("hero.howItWorks.steps.step1.title")}
+            description={t("hero.howItWorks.steps.step1.description")}
+          />
+          <StepCard
+            number={2}
+            variant="mixed"
+            icon={HomeIcon}
+            title={t("hero.howItWorks.steps.step2.title")}
+            description={t("hero.howItWorks.steps.step2.description")}
+          />
+          <StepCard
+            number={3}
+            variant="electricity"
+            icon={ChartBarIcon}
+            title={t("hero.howItWorks.steps.step3.title")}
+            description={t("hero.howItWorks.steps.step3.description")}
+          />
         </dl>
       </div>
     </Section>

@@ -14,9 +14,6 @@ export const HeroHeader = () => {
           {t("hero.header.title_highlight")}
         </span>
       </h1>
-      <p className="mx-auto mt-8 max-w-2xl text-xl font-medium text-text-muted sm:text-2xl leading-relaxed">
-        {t("hero.header.description")}
-      </p>
     </>
   );
 };

@@ -36,6 +36,7 @@
   /* Semantic Colors */
   --primary: var(--color-brand-600);
   --primary-rgb: 37, 99, 235;
+  --electricity-rgb: 245, 158, 11;
   --secondary: var(--color-brand-200);
   --accent: var(--color-electricity-500);
   --surface: #f8fafc;

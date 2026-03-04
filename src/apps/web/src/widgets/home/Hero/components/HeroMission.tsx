@@ -14,9 +14,9 @@ export const HeroMission = () => {
           &ldquo;
         </div>
 
-        <p className="relative z-10 text-xl md:text-2xl lg:text-3xl text-text-muted leading-relaxed font-light italic">
+        <blockquote className="relative z-10 text-xl md:text-2xl lg:text-3xl text-text-muted leading-relaxed font-light italic">
           {t("hero.mission.text")}
-        </p>
+        </blockquote>
 
         <div className="absolute bottom-0 right-0 -mb-10 -mr-2 md:-mr-6 text-8xl md:text-9xl text-primary/10 select-none font-serif hover:text-primary/20 transition-colors pointer-events-none">
           &rdquo;
