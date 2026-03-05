@@ -1,1 +1,15 @@
-{}
+{
+  "logo": {
+    "line1": "Spotřeba",
+    "line2": "Energií"
+  },
+  "header": {
+    "cta": {
+      "startFree": "Začít zdarma"
+    },
+    "aria": {
+      "theme": "Téma",
+      "menu": "Menu"
+    }
+  }
+}

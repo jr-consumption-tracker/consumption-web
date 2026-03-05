@@ -1,1 +1,15 @@
-{}
+{
+  "logo": {
+    "line1": "Energy",
+    "line2": "Consumption"
+  },
+  "header": {
+    "cta": {
+      "startFree": "Start for free"
+    },
+    "aria": {
+      "theme": "Theme",
+      "menu": "Menu"
+    }
+  }
+}
