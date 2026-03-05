@@ -1,3 +1,4 @@
+import { MoveRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import { ButtonLink } from "@repo/components";
@@ -31,10 +32,14 @@ export const Pricing = () => {
         <ButtonLink
           //@ts-expect-error  Link zatím neexistuje
           to="/pricing"
-          variant="outline"
-          className="inline-flex items-center gap-x-2 text-sm font-semibold uppercase tracking-widest text-primary hover:text-primary/80 transition-colors"
+          variant="ghost"
+          size="lg"
+          className="text-xl font-bold leading-6 transition-all hover:text-primary hover:bg-transparent group"
         >
-          {t("pricing.comparePlans")} &rarr;
+          {t("pricing.comparePlans")}
+          <span className="inline-block transition-transform group-hover:translate-x-2">
+            <MoveRight />
+          </span>
         </ButtonLink>
       </div>
     </Section>

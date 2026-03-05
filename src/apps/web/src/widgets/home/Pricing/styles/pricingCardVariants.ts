@@ -21,7 +21,7 @@ export const pricingCardVariants = tv({
     highlighted: {
       true: {
         container:
-          "bg-primary/5 ring-2 ring-primary shadow-2xl shadow-primary/20 overflow-hidden scale-[1.02] hover:scale-[1.04] hover:-translate-y-2 hover:shadow-primary/40 hover:bg-primary/10",
+          "bg-primary/5 ring-2 ring-primary shadow-2xl shadow-primary/20 overflow-hidden scale-[1.02] hover:scale-[1.04] hover:-translate-y-2 hover:shadow-primary/70 hover:bg-primary/10",
         title: "text-primary",
         featuresList: "text-text-main",
         featureItem: "text-primary font-bold",
