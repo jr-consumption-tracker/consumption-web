@@ -13,10 +13,7 @@ export const useMainMenuSpotlight = (
     opacity: 0,
   });
 
-  const handleMouseEnter = (
-    idx: number,
-    e: MouseEvent<HTMLAnchorElement>,
-  ) => {
+  const handleMouseEnter = (idx: number, e: MouseEvent<HTMLAnchorElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const containerRect = containerRef.current?.getBoundingClientRect();
 
