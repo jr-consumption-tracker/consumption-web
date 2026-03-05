@@ -51,7 +51,7 @@ export const FeatureCard = ({
       {/* Premium Badge - Only visible if feature is premium */}
       {isPremium && (
         <div className={premiumBadge()}>
-          <span className={premiumSpan()}>{t("hero.features.premium")}</span>
+          <span className={premiumSpan()}>{t("features.premium")}</span>
         </div>
       )}
 

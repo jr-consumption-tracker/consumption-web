@@ -11,56 +11,94 @@
       "startFree": "Start for free",
       "moreInfo": "More information",
       "goToApp": "Go to App"
-    },
-    "howItWorks": {
-      "subtitle": "Easy start",
-      "title": "How it works",
-      "description": "Get an overview of your consumption in three simple steps. From registration to your first savings analysis.",
-      "steps": {
-        "step1": {
-          "title": "Register",
-          "description": "Create an account and get access to the application."
-        },
-        "step2": {
-          "title": "Add supply points",
-          "description": "Enter your homes or spaces where you want to track consumption."
-        },
-        "step3": {
-          "title": "Track consumption",
-          "description": "View charts and statistics for better cost control."
-        }
-      }
-    },
-    "features": {
-      "subtitle": "Key Features",
-      "title": "All in one app",
-      "items": {
-        "charts": {
-          "title": "Charts and Statistics",
-          "description": "Visualize your monthly, and yearly consumption in clear interactive charts that help you identify inefficiencies."
-        },
-        "costs": {
-          "title": "Cost Tracking",
-          "description": "Keep a constant overview of your expenses for electricity, gas, and water. The app automatically calculates estimated costs."
-        },
-        "properties": {
-          "title": "Multiple Properties",
-          "description": "Track consumption in your apartment, cottage, and office under one account with easy switching between them."
-        },
-        "reports": {
-          "title": "Detailed Reports",
-          "description": "Generate automatic monthly and yearly overviews. Export data to Excel or PDF for further analysis or authorities."
-        },
-        "notifications": {
-          "title": "Smart Notifications",
-          "description": "Stay in the loop with alerts about unusual consumption spikes or approaching meter reading deadlines."
-        },
-        "history": {
-          "title": "Unified History",
-          "description": "Keep all your meter readings securely stored and available at any time. Easily return to past periods and compare consumption trends."
-        }
+    }
+  },
+  "howItWorks": {
+    "subtitle": "Easy start",
+    "title": "How it works",
+    "description": "Get an overview of your consumption in three simple steps. From registration to your first savings analysis.",
+    "steps": {
+      "step1": {
+        "title": "Register",
+        "description": "Create an account and get access to the application."
       },
-      "premium": "Premium"
+      "step2": {
+        "title": "Add supply points",
+        "description": "Enter your homes or spaces where you want to track consumption."
+      },
+      "step3": {
+        "title": "Track consumption",
+        "description": "View charts and statistics for better cost control."
+      }
+    }
+  },
+  "features": {
+    "subtitle": "Key Features",
+    "title": "All in one app",
+    "premium": "Premium",
+    "items": {
+      "charts": {
+        "title": "Charts and Statistics",
+        "description": "Visualize your monthly, and yearly consumption in clear interactive charts that help you identify inefficiencies."
+      },
+      "costs": {
+        "title": "Cost Tracking",
+        "description": "Keep a constant overview of your expenses for electricity, gas, and water. The app automatically calculates estimated costs."
+      },
+      "properties": {
+        "title": "Multiple Properties",
+        "description": "Track consumption in your apartment, cottage, and office under one account with easy switching between them."
+      },
+      "reports": {
+        "title": "Detailed Reports",
+        "description": "Generate automatic monthly and yearly overviews. Export data to Excel or PDF for further analysis or authorities."
+      },
+      "notifications": {
+        "title": "Smart Notifications",
+        "description": "Stay in the loop with alerts about unusual consumption spikes or approaching meter reading deadlines."
+      },
+      "history": {
+        "title": "Unified History",
+        "description": "Keep all your meter readings securely stored and available at any time. Easily return to past periods and compare consumption trends."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Plans for every household",
+    "description": "Choose the level of control you need for your energy.",
+    "comparePlans": "Compare all plans",
+    "card": {
+      "highlightedDescription": "Energy intelligence for maximum savings.",
+      "defaultDescription": "Everything you need to start your journey to savings.",
+      "forever": "forever",
+      "currencyFree": "0 Kč",
+      "currency": "{{price}} Kč"
+    },
+    "plans": {
+      "free": {
+        "name": "Basic Free",
+        "features": [
+          "Track any type of energy",
+          "Max 1 supply point",
+          "Manual entry and reading history",
+          "12 months history"
+        ],
+        "cta": "Start for free"
+      },
+      "premium": {
+        "name": "Premium",
+        "interval": "month",
+        "features": [
+          "Everything in Free plan",
+          "Unlimited supply points",
+          "AI Invoice prediction & anomaly detection",
+          "Unlimited comparison history",
+          "Smart alerts on price rises",
+          "Advanced Excel exports"
+        ],
+        "cta": "Try for free",
+        "badge": "14 days free"
+      }
     }
   }
 }
