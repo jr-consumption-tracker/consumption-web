@@ -31,3 +31,5 @@ export const Logo = (props: LogoProps) => {
 };
 
 Logo.displayName = "Logo";
+
+export default Logo;
