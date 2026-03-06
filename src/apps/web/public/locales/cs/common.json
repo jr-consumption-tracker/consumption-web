@@ -9,7 +9,8 @@
     },
     "aria": {
       "theme": "Téma",
-      "menu": "Menu"
+      "menu": "Menu",
+      "language": "Jazyk"
     }
   }
 }

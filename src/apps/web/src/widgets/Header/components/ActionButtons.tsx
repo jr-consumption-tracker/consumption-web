@@ -1,12 +1,15 @@
 import { useTranslation } from "react-i18next";
-import { ControlModule } from "./ControlModule";
+
+import { LanguageSelect } from "@web/features/locale/components/LanguageSelect";
+import { ThemeSelect } from "@web/features/theme/components/ThemeSelect";
 
 export const ActionButtons = () => {
   const { t } = useTranslation("common");
 
   return (
     <div className="hidden lg:flex items-center gap-3">
-      <ControlModule />
+      <ThemeSelect />
+      <LanguageSelect />
 
       <button className="group relative h-10 px-6 rounded-full bg-primary text-white text-[10px] font-bold uppercase tracking-[0.15em] transition-all hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.6)] active:scale-95 overflow-hidden">
         <span className="relative z-10">{t("header.cta.startFree")}</span>

@@ -1,7 +1,5 @@
 import { useTranslation } from "react-i18next";
 
-import { ControlModule } from "./ControlModule";
-
 interface MobileToggleProps {
   mobileOpen: boolean;
   toggleMobileMenu: () => void;
@@ -17,7 +15,6 @@ export const MobileToggle = ({
 
   return (
     <div className="lg:hidden flex items-center gap-3">
-      <ControlModule />
       <button
         onClick={toggleMobileMenu}
         className={styles}
