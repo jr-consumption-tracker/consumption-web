@@ -3,9 +3,10 @@ import { useTranslation } from "react-i18next";
 
 import { ButtonLink } from "@repo/components";
 
+import type { PricingPlan } from "@web/entities/pricing";
+
 import { pricingCardVariants } from "../styles/pricingCardVariants";
 
-import type { PricingPlan } from "../types/PricingPlan";
 interface PricingCardProps {
   plan: PricingPlan;
 }

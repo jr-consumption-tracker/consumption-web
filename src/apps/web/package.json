@@ -28,6 +28,11 @@
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
+    "@fontsource/fira-code": "^5.2.7",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/merriweather": "^5.2.11",
+    "@fontsource/playfair-display": "^5.2.8",
+    "@fontsource/poppins": "^5.2.7",
     "@repo/components": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/styles": "workspace:*",

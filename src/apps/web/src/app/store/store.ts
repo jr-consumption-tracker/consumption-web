@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit/react";
-import authReducer from "@web/features/auth/store/authSlice";
+import { authReducer } from "@web/features/auth";
 import { mainBaseApi } from "@web/shared/api/mainBaseApi";
 import { errorMiddleware } from "@web/shared/api/middleware/errorMiddleware";
 

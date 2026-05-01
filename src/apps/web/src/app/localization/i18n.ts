@@ -6,7 +6,7 @@ import { initReactI18next } from "react-i18next";
 import {
   LanguageEnum,
   LanguageEnumKeys,
-} from "@web/features/locale/enums/LanguageEnum";
+} from "@web/features/locale";
 
 const selectedLanguage = localStorage.getItem("i18nextLng") || LanguageEnum.CS;
 

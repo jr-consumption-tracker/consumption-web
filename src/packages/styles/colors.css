@@ -116,7 +116,7 @@
   --animate-shimmer: shimmer 2s linear infinite;
   --animate-glow: glow-pulse 2s ease-in-out infinite;
   --animate-slide-down: slide-down 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  --animate-spin-slow: spin 4s linear infinite;
+  --animate-spin-slow: spin-slow 8s linear infinite;
   --animate-border-beam: border-beam 4s linear infinite;
   --animate-liquid-morph: liquid-morph 4s ease-in-out infinite;
   --animate-fade-in-up: fade-in-up 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;

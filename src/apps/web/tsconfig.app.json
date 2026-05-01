@@ -1,7 +1,6 @@
 {
   "extends": "@repo/typescript-config/app.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@web/*": ["./src/*"],
       "@repo/styles*": ["../../packages/styles/*"]

@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { createRootRoute, Outlet } from "@tanstack/react-router";
 
-import MainLayout from "../layouts/MainLayout";
+import { PublicLayout } from "../layouts/PublicLayout";
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -11,9 +11,9 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <React.Fragment>
-      <MainLayout>
+      <PublicLayout>
         <Outlet />
-      </MainLayout>
+      </PublicLayout>
     </React.Fragment>
   );
 }

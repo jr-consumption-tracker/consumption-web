@@ -12,7 +12,7 @@ export const Pricing = () => {
   const plans = getPricingPlans(t);
 
   return (
-    <Section>
+    <Section id="pricing">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-extrabold tracking-tight text-text-main sm:text-4xl">
           {t("pricing.title")}

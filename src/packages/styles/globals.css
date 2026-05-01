@@ -3,3 +3,5 @@
 @import "./layer.css";
 @import "./colors.css";
 @import "./keyframes.css";
+@import "./fonts.css";
+@source "../components/src/**/*.tsx";

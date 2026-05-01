@@ -27,15 +27,19 @@
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
-    "@types/react": "catalog:",
     "@repo/typescript-config": "workspace:*",
-    "clsx": "^2.1.1",
-    "tailwind-merge": "^3.5.0"
+    "@repo/utils": "workspace:*",
+    "@types/react": "catalog:"
   },
   "peerDependencies": {
-    "react": "catalog:",
     "@heroui/react": "catalog:",
     "@heroui/styles": "catalog:",
-    "@tanstack/react-router": "catalog:"
+    "@tanstack/react-router": "catalog:",
+    "react": "catalog:"
+  },
+  "dependencies": {
+    "lucide-react": "^0.576.0",
+    "tailwind-variants": "^3.2.2",
+    "tailwindcss": "catalog:"
   }
 }

@@ -1,1 +1,17 @@
-{}
+{
+  "logo": {
+    "line1": "Spotřeba",
+    "line2": "Energie",
+    "ariaLabel": "Spotřeba Energie - Domů"
+  },
+  "header": {
+    "cta": {
+      "startFree": "Začít zdarma"
+    },
+    "aria": {
+      "theme": "Téma",
+      "menu": "Menu",
+      "language": "Jazyk"
+    }
+  }
+}

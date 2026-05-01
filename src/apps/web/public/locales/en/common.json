@@ -1,1 +1,17 @@
-{}
+{
+  "logo": {
+    "line1": "Energy",
+    "line2": "Consumption",
+    "ariaLabel": "Energy Consumption - Home"
+  },
+  "header": {
+    "cta": {
+      "startFree": "Start for free"
+    },
+    "aria": {
+      "theme": "Theme",
+      "menu": "Menu",
+      "language": "Language"
+    }
+  }
+}

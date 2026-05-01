@@ -1,5 +1,5 @@
 import type { TFunction } from "i18next";
-import type { PricingPlan } from "../types/PricingPlan";
+import type { PricingPlan } from "@web/entities/pricing";
 
 export const getPricingPlans = (t: TFunction<"home">): PricingPlan[] => [
   {

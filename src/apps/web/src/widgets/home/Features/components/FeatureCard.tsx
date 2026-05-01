@@ -1,11 +1,11 @@
-import type { ComponentType, SVGProps } from "react";
+import type { LucideIcon } from "lucide-react";
 import type { FeatureColor } from "../types/FeatureColor";
 import { useTranslation } from "react-i18next";
 
 import { featureCardVariants } from "../styles/featureCardVariants";
 
 interface FeatureCardProps {
-  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  icon: LucideIcon;
   title: string;
   description: string;
   isPremium: boolean;

@@ -1,0 +1,7 @@
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "Fira Code", monospace;
+  --font-orn: "Merriweather", serif;
+  --font-serif: "Playfair Display", serif;
+  --font-display: "Poppins", sans-serif;
+}

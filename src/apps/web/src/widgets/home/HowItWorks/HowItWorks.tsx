@@ -1,10 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import {
-  ChartBarIcon,
-  HomeIcon,
-  UserPlusIcon,
-} from "@heroicons/react/24/outline";
+import { BarChart3, Home, UserPlus } from "lucide-react";
 import { Section } from "@web/shared/components/Section";
 
 import { StepCard } from "./components/StepCard";
@@ -31,21 +27,21 @@ export const HowItWorks = () => {
           <StepCard
             number={1}
             variant="primary"
-            icon={UserPlusIcon}
+            icon={UserPlus}
             title={t("howItWorks.steps.step1.title")}
             description={t("howItWorks.steps.step1.description")}
           />
           <StepCard
             number={2}
             variant="mixed"
-            icon={HomeIcon}
+            icon={Home}
             title={t("howItWorks.steps.step2.title")}
             description={t("howItWorks.steps.step2.description")}
           />
           <StepCard
             number={3}
             variant="electricity"
-            icon={ChartBarIcon}
+            icon={BarChart3}
             title={t("howItWorks.steps.step3.title")}
             description={t("howItWorks.steps.step3.description")}
           />

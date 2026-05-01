@@ -1,9 +1,10 @@
-import type { ReactNode, ComponentType, SVGProps } from "react";
+import type { ReactNode } from "react";
+import type { LucideIcon } from "lucide-react";
 import { stepCardVariants } from "../styles/stepCardVariants";
 
 interface StepCardProps {
   number: number;
-  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  icon: LucideIcon;
   title: string;
   description: ReactNode;
   variant?: "primary" | "electricity" | "mixed";
