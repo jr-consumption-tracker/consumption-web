@@ -17,6 +17,7 @@ import type { LoginButtonProps } from "./types/LoginButtonProps";
  * even when a popover is open above the button.
  */
 export const LoginButton = ({
+  scrolled = false,
   loginFlyoutOpen,
   setLoginFlyoutOpen,
   loginFlyoutOpenedByHover,
@@ -62,6 +63,7 @@ export const LoginButton = ({
       onBlur={handleFocusOut}
     >
       <LoginPopoverWrapper
+        scrolled={scrolled}
         loginFlyoutOpen={loginFlyoutOpen}
         setLoginFlyoutOpen={setLoginFlyoutOpen}
         setLoginFlyoutOpenedByHover={setLoginFlyoutOpenedByHover}

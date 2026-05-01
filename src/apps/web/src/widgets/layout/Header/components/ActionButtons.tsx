@@ -4,7 +4,10 @@ import { ThemeSelect } from "@web/features/theme";
 
 import { useHeaderLogin } from "../hooks/useHeaderLogin";
 
-export const ActionButtons = () => {
+interface ActionButtonsProps {
+  scrolled: boolean;
+}
+export const ActionButtons = ({ scrolled }: ActionButtonsProps) => {
   const loginState = useHeaderLogin();
 
   return (
@@ -13,6 +16,7 @@ export const ActionButtons = () => {
       <LanguageSelect />
 
       <LoginButton
+        scrolled={scrolled}
         loginFlyoutOpen={loginState.loginFlyoutOpen}
         setLoginFlyoutOpen={loginState.setLoginFlyoutOpen}
         loginFlyoutOpenedByHover={loginState.loginFlyoutOpenedByHover}

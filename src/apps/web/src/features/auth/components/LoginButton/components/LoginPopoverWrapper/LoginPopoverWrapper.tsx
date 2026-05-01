@@ -16,6 +16,7 @@ import type { LoginPopoverWrapperProps } from "./types/LoginPopoverWrapperProps"
  */
 export const LoginPopoverWrapper = memo(
   ({
+    scrolled = false,
     loginFlyoutOpen,
     setLoginFlyoutOpen,
     setLoginFlyoutOpenedByHover,
@@ -38,6 +39,7 @@ export const LoginPopoverWrapper = memo(
     return (
       <Popover isOpen={loginFlyoutOpen} onOpenChange={handleOpenChange}>
         <LoginButtonTrigger
+          scrolled={scrolled}
           loginTriggerRef={loginTriggerRef}
           loginFlyoutOpen={loginFlyoutOpen}
           setLoginFlyoutOpen={setLoginFlyoutOpen}

@@ -8,18 +8,20 @@ import { tv } from "tailwind-variants";
  * to ensure hover effects persist even when a popover overlaps the button.
  * group-hover handles normal hover; isHovered keeps effects alive
  * when popover is open and mouse is still over the button.
+ *
+ * Uses scrolled variant to shrink the button in sync with the logo on scroll.
  */
 export const loginButtonTriggerStyles = tv({
   slots: {
     // Main button
     button:
-      "flex items-center justify-center font-black p-0 w-10 h-10 min-w-0 xl:w-auto xl:h-auto xl:min-w-fit xl:py-2 xl:px-6 rounded-full border-2 xl:border-4 transition-all duration-300 overflow-hidden relative group cursor-pointer focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
+      "flex items-center justify-center font-black p-0 w-10 h-10 min-w-0 xl:w-auto xl:h-auto xl:min-w-fit rounded-full border-2 xl:border-4 transition-all duration-500 overflow-hidden relative group cursor-pointer focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
 
     // Neon glow layers
     glowLayer1:
-      "absolute inset-0 rounded-3xl blur-lg transition-all duration-300",
+      "absolute inset-0 rounded-3xl blur-lg transition-all duration-500",
     glowLayer2:
-      "absolute inset-0 rounded-3xl blur-xl transition-all duration-300",
+      "absolute inset-0 rounded-3xl blur-xl transition-all duration-500",
   },
   variants: {
     resolvedTheme: {
@@ -52,9 +54,18 @@ export const loginButtonTriggerStyles = tv({
         glowLayer2: "opacity-40 group-hover:opacity-60 group-hover:scale-125",
       },
     },
+    scrolled: {
+      true: {
+        button: "xl:py-1 xl:px-4 xl:border-2",
+      },
+      false: {
+        button: "xl:py-2 xl:px-6 xl:border-4",
+      },
+    },
   },
   defaultVariants: {
     resolvedTheme: "light",
     isHovered: false,
+    scrolled: false,
   },
 });

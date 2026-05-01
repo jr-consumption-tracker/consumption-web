@@ -19,6 +19,7 @@ import type { LoginButtonTriggerProps } from "./types/LoginButtonTriggerProps";
  */
 export const LoginButtonTrigger = memo(
   ({
+    scrolled = false,
     loginTriggerRef,
     loginFlyoutOpen,
     setLoginFlyoutOpen,
@@ -30,6 +31,7 @@ export const LoginButtonTrigger = memo(
     const styles = loginButtonTriggerStyles({
       resolvedTheme: theme,
       isHovered,
+      scrolled,
     });
 
     // PERFORMANCE: Extract button trigger logic to custom hook
@@ -65,7 +67,7 @@ export const LoginButtonTrigger = memo(
           <div className={styles.glowLayer1()} />
           <div className={styles.glowLayer2()} />
 
-          <LoginButtonContent />
+          <LoginButtonContent scrolled={scrolled} />
         </Button>
       </PopoverTrigger>
     );

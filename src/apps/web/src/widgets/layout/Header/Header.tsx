@@ -22,7 +22,7 @@ export const Header = () => {
             <Logo scrolled={scrolled} />
           </div>
           <DesktopNav />
-          <ActionButtons />
+          <ActionButtons scrolled={scrolled} />
           <MobileToggle
             mobileOpen={mobileOpen}
             toggleMobileMenu={toggleMobileMenu}
