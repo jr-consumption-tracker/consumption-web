@@ -1,6 +1,7 @@
 "use client";
 
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Button, PopoverTrigger } from "@heroui/react";
 import { useTheme } from "@web/shared/theme";
@@ -26,6 +27,7 @@ export const LoginButtonTrigger = memo(
     isHovered,
   }: LoginButtonTriggerProps) => {
     const { theme } = useTheme();
+    const { t } = useTranslation("auth");
 
     // Get styles from tailwind-variants with theme variant and hover state
     const styles = loginButtonTriggerStyles({
@@ -50,8 +52,8 @@ export const LoginButtonTrigger = memo(
           aria-expanded={loginFlyoutOpen}
           aria-label={
             loginFlyoutOpen
-              ? "Zavřít přihlašovací formulář"
-              : "Otevřít přihlašovací formulář"
+              ? t("loginButton.aria.closeLabel")
+              : t("loginButton.aria.openLabel")
           }
           aria-describedby="login-button-description"
           data-testid="login-button-trigger"
@@ -60,8 +62,7 @@ export const LoginButtonTrigger = memo(
         >
           {/* Hidden description for screen readers */}
           <span id="login-button-description" className="sr-only">
-            Kliknutím otevřete nebo zavřete přihlašovací formulář. Použijte
-            klávesu Enter nebo mezerník pro aktivaci.
+            {t("loginButton.aria.description")}
           </span>
           {/* Neon glow layers */}
           <div className={styles.glowLayer1()} />
