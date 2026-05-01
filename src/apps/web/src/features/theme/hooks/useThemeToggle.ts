@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useTheme } from "../providers/ThemeProvider";
+import { useTheme } from "@web/shared/theme";
 
 export const useThemeToggle = () => {
   const { theme, setTheme } = useTheme();

@@ -1,9 +1,10 @@
 import { useState } from "react";
 
 import type { MainMenuSpotlight } from "../types/MainMenuSpotlight";
+import type { MouseEvent, RefObject } from "react";
 
 export const useMainMenuSpotlight = (
-  containerRef: React.RefObject<HTMLDivElement | null>,
+  containerRef: RefObject<HTMLDivElement | null>,
 ) => {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const [spotlightPos, setSpotlightPos] = useState<MainMenuSpotlight>({
@@ -14,7 +15,7 @@ export const useMainMenuSpotlight = (
 
   const handleMouseEnter = (
     idx: number,
-    e: React.MouseEvent<HTMLAnchorElement>,
+    e: MouseEvent<HTMLAnchorElement>,
   ) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const containerRect = containerRef.current?.getBoundingClientRect();

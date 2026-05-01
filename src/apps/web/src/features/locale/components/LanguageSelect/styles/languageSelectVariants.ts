@@ -11,7 +11,7 @@ export const languageSelectStyles = tv({
 
     // Button base styles
     button:
-      "relative z-10 overflow-hidden rounded-2xl transition-all duration-300 bg-transparent hover:bg-primary/20 hover:backdrop-blur-md group-hover:scale-110 group-hover:shadow-lg",
+      "relative overflow-hidden rounded-2xl transition-all duration-300 bg-transparent hover:bg-primary/20 group-hover:scale-110 group-hover:shadow-lg",
 
     // Inner gradient overlay
     innerGradient:

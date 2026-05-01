@@ -1,6 +1,13 @@
-import type { RootState } from "@web/app/store/types";
+import type { AuthState } from "./AuthState";
 
-export const selectEmail = (state: RootState) => state.auth.email;
-export const selectAccessToken = (state: RootState) => state.auth.accessToken;
-export const selectIsAuthenticated = (state: RootState) =>
-  !!state.auth.accessToken;
+interface AuthRootState {
+  auth: AuthState;
+}
+
+export const selectUser = (state: AuthRootState) => state.auth.user;
+export const selectSession = (state: AuthRootState) => state.auth.session;
+export const selectEmail = (state: AuthRootState) => state.auth.user?.email ?? "";
+export const selectAccessToken = (state: AuthRootState) =>
+  state.auth.session?.accessToken ?? "";
+export const selectIsAuthenticated = (state: AuthRootState) =>
+  !!state.auth.session?.accessToken;

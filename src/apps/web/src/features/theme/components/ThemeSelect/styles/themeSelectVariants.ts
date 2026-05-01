@@ -11,7 +11,7 @@ export const themeSelectStyles = tv({
 
     // Button base styles
     button:
-      "relative z-10 overflow-hidden rounded-2xl transition-all duration-300 bg-transparent hover:bg-primary/20 hover:backdrop-blur-md group-hover:scale-110 group-hover:shadow-lg",
+      "relative overflow-hidden rounded-2xl transition-all duration-300 hover:bg-primary/20 group-hover:scale-110 group-hover:shadow-lg",
 
     // Inner gradient overlay
     innerGradient:
@@ -35,6 +35,5 @@ export const themeSelectStyles = tv({
     // Outer glow effect - "Color smudge" around the button
     glowEffect:
       "absolute inset-0 rounded-2xl bg-linear-to-r from-primary/30 to-primary/50 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-xl scale-150 pointer-events-none",
-    // "absolute inset-0 rounded-2xl bg-primary/30 opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl scale-150 pointer-events-none",
   },
 });

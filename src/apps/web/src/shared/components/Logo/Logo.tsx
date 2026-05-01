@@ -1,15 +1,17 @@
-import { Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
+
+import { Link } from "@tanstack/react-router";
 
 import { LogoContent } from "./components/LogoContent";
 import { logoLinkVariants } from "./styles/logoLinkVariants";
+
 import type { LogoProps } from "./types/LogoProps";
 
 /**
  * Logo - Pure Orchestrator for the brand identity
  * Handles routing logic and delegates rendering to LogoContent
  */
-const Logo = (props: LogoProps) => {
+export const Logo = (props: LogoProps) => {
   const { to = "/", disableHover = false } = props;
   const { t } = useTranslation("common");
 
@@ -29,5 +31,3 @@ const Logo = (props: LogoProps) => {
 };
 
 Logo.displayName = "Logo";
-
-export default Logo;

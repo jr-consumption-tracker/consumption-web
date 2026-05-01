@@ -1,12 +1,11 @@
 import { useTranslation } from "react-i18next";
 
 import scrollToView from "@repo/utils/src/scrollToView";
-import { useAppSelector } from "@web/app/store/hooks";
-import { selectIsAuthenticated } from "@web/features/auth/store/authSelectors";
+import { useIsAuthenticated } from "@web/features/auth/hooks/useIsAuthenticated";
 
 export const useHeroActions = () => {
   const { t } = useTranslation("home");
-  const isAuthenticated = useAppSelector(selectIsAuthenticated);
+  const isAuthenticated = useIsAuthenticated();
 
   const onMoreInfo = () => {
     scrollToView("pricing");

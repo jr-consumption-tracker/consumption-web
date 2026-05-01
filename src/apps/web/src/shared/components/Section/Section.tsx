@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@repo/utils";
 
-interface SectionProps {
+export interface SectionProps {
   children: ReactNode;
   className?: string;
   id?: string;

@@ -1,5 +1,5 @@
-import { Footer } from "@web/widgets/Footer";
-import { Header } from "@web/widgets/Header";
+import { Footer } from "@web/widgets/layout/Footer";
+import { Header } from "@web/widgets/layout/Header";
 
 import { BaseLayout } from "./BaseLayout";
 

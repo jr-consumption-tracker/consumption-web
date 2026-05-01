@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
 
-import { LanguageEnum } from "../../../enums/LanguageEnum";
+import { LanguageEnum } from "../../../constants/LanguageEnum";
 
-import type { LanguageEnumValue } from "../../../enums/LanguageEnum";
+import type { LanguageEnumValue } from "../../../constants/LanguageEnum";
 
 export const useLanguageSelect = () => {
   const { i18n } = useTranslation();
