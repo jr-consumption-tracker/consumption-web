@@ -1,4 +1,4 @@
-import Logo from "@web/shared/components/Logo";
+import { Logo } from "@web/shared/components/Logo";
 
 import { ActionButtons } from "./components/ActionButtons";
 import { DesktopNav } from "./components/DesktopNav";
