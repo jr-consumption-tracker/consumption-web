@@ -27,31 +27,25 @@ export const MobileToggle = ({
         aria-controls="mobile-menu"
         type="button"
       >
-        <span
-          className={[
-            "block h-0.5 bg-current transition-all duration-300 ease-out rounded-full",
-            mobileOpen
-              ? "w-5 translate-y-1.25 rotate-45"
-              : "w-5 -translate-y-0.75",
-          ].join(" ")}
-          aria-hidden="true"
-        />
-        <span
-          className={[
-            "block h-0.5 bg-current transition-all duration-300 ease-out rounded-full w-5",
-            mobileOpen ? "opacity-0 scale-0" : "opacity-100 scale-100",
-          ].join(" ")}
-          aria-hidden="true"
-        />
-        <span
-          className={[
-            "block h-0.5 bg-current transition-all duration-300 ease-out rounded-full",
-            mobileOpen
-              ? "w-5 -translate-y-1.25 -rotate-45"
-              : "w-5 translate-y-0.75",
-          ].join(" ")}
-          aria-hidden="true"
-        />
+        <span className="relative flex items-center justify-center w-5 h-5">
+          {/* Top */}
+          <span
+            className={`absolute h-0.5 w-5 bg-current rounded transition-all duration-300 ease-out
+    ${mobileOpen ? "rotate-45" : "-translate-y-1.5"}`}
+          />
+
+          {/* Middle */}
+          <span
+            className={`absolute h-0.5 w-5 bg-current rounded transition-all duration-300 ease-out
+    ${mobileOpen ? "opacity-0" : "opacity-100"}`}
+          />
+
+          {/* Bottom */}
+          <span
+            className={`absolute h-0.5 w-5 bg-current rounded transition-all duration-300 ease-out
+    ${mobileOpen ? "-rotate-45" : "translate-y-1.5"}`}
+          />
+        </span>
       </button>
     </div>
   );

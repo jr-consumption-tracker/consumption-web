@@ -21,13 +21,15 @@ export const Header = () => {
           <div className={styles.logoContainer()}>
             <Logo scrolled={scrolled} />
           </div>
-          <DesktopNav />
-          <ActionButtons scrolled={scrolled} />
-          <MobileToggle
-            mobileOpen={mobileOpen}
-            toggleMobileMenu={toggleMobileMenu}
-            styles={styles.mobileToggle()}
-          />
+          <div className={styles.rightIconsContainer()}>
+            <DesktopNav />
+            <ActionButtons scrolled={scrolled} />
+            <MobileToggle
+              mobileOpen={mobileOpen}
+              toggleMobileMenu={toggleMobileMenu}
+              styles={styles.mobileToggle()}
+            />
+          </div>
         </div>
         <MobileMenu styles={styles.mobileMenu()} />
       </div>

@@ -11,6 +11,7 @@ export const headerVariants = tv({
       "lg:hidden flex items-center justify-center h-11 w-11 min-w-[44px] min-h-[44px] hover:bg-white/10 rounded-full transition-all duration-300",
     mobileMenu:
       "fixed top-24 inset-x-4 p-6 rounded-[2.5rem] border border-white/20 bg-background/90 backdrop-blur-3xl shadow-[0_0_30px_rgba(0,0,0,0.2)] pointer-events-auto transition-all duration-500 origin-top lg:hidden",
+    rightIconsContainer: "flex items-center gap-3",
   },
   variants: {
     scrolled: {
@@ -36,4 +37,3 @@ export const headerVariants = tv({
     mobileOpen: false,
   },
 });
-

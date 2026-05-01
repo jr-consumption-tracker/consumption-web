@@ -12,8 +12,10 @@ export const ActionButtons = ({ scrolled }: ActionButtonsProps) => {
 
   return (
     <div className="flex items-center gap-2">
-      <ThemeSelect />
-      <LanguageSelect />
+      <div className="hidden lg:flex items-center gap-2">
+        <ThemeSelect />
+        <LanguageSelect />
+      </div>
 
       <LoginButton
         scrolled={scrolled}
