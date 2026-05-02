@@ -1,4 +1,4 @@
-# AGENTS.md — D3S CRM Leo
+# AGENTS.md — Consumptions Web
 
 This file is the entry point for AI agents working in this repository.
 
@@ -10,6 +10,8 @@ It explains how to use project rules and how to approach code generation.
 
 This project uses a layered rule system:
 
+### UI Coding
+
 - **Core rules**  
   → `docs/ui-coding-rules-core.md`  
   → used for decision making
@@ -18,9 +20,17 @@ This project uses a layered rule system:
   → `docs/ui-coding-rules.md`  
   → used for explanations and details
 
-- **Other guides**
-  - Forms → `docs/forms-guide.md`
-  - Styling → `docs/mui-styling.md`
+---
+
+### Styling
+
+- **Core rules**  
+  → `docs/tailwind-styling-rules-core.md`  
+  → used for styling decision making
+
+- **Full rules (reference)**  
+  → `docs/tailwind-styling-rules.md`  
+  → used for styling constraints and rules
 
 ---
 
@@ -29,6 +39,22 @@ This project uses a layered rule system:
 - Always follow **core rules** first
 - Use reference rules only when needed
 - If rules conflict → follow rule priority defined in core rules
+
+---
+
+## Decision responsibility
+
+- Use **UI Coding rules** for:
+  - component structure
+  - logic
+  - data flow
+  - abstraction decisions
+
+- Use **Styling rules** for:
+  - layout
+  - visual appearance
+  - Tailwind usage
+  - CSS vs className decisions
 
 ---
 

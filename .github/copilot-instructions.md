@@ -1,11 +1,20 @@
-# GitHub Copilot Instructions — D3S CRM Leo
+# GitHub Copilot Instructions — Consumptions Web
 
 Follow project conventions:
 
-- Core rules (decision making): docs/ui-coding-rules-core.md
-- Full reference: docs/ui-coding-rules.md
-- Styling: docs/mui-styling.md
-- Forms: docs/forms-guide.md
+### UI Coding
+
+- Core rules (decision making): `docs/ui-coding-rules-core.md`
+- Full reference: `docs/ui-coding-rules.md`
+
+### Styling
+
+- Core rules (decision making): `docs/tailwind-styling-rules-core.md`
+- Full reference: `docs/tailwind-styling.md`
+
+<!-- ### Other guides
+
+- Forms: `docs/forms-guide.md` -->
 
 ---
 
@@ -14,6 +23,22 @@ Follow project conventions:
 - Always follow **ui-coding-rules-core.md** for decision making
 - Use **ui-coding-rules.md** only as reference
 - If rules conflict → follow rule priority (Simplicity → Developer ergonomics → Architecture)
+
+---
+
+## Decision responsibility
+
+- Use **UI Coding rules** for:
+  - component structure
+  - logic
+  - data flow
+  - abstraction decisions
+
+- Use **Styling rules** for:
+  - layout
+  - visual appearance
+  - Tailwind usage
+  - CSS vs `className` decisions
 
 ---
 
@@ -38,14 +63,14 @@ If unsure:
 
 ---
 
-## Forms and dialogs
+<!-- ## Forms and dialogs
 
 See: docs/forms-guide.md
 
 - Do not introduce custom form patterns
 - Follow existing form architecture (TanStack Form + Zod)
 
----
+--- -->
 
 ## Important
 
