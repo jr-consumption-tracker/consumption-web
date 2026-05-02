@@ -1,46 +1,43 @@
-name: Kontrola kódu
-
+name: CI
 on:
-  push:
   pull_request:
+    branches: [main]
 
 jobs:
-  test:
-    name: Test + Lint + Build
+  ci:
+    name: Lint + Typy + Testy + Build
     runs-on: ubuntu-latest
-
-    env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+    defaults:
+      run:
+        working-directory: src
 
     steps:
       - name: Checkout kódu
         uses: actions/checkout@v4
-
       - name: Nastavení pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 10.33.0
 
       - name: Nastavení Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22.9.0"
+          node-version: 24
           cache: "pnpm"
+          cache-dependency-path: src/pnpm-lock.yaml
 
       - name: Instalace závislostí
-        run: pnpm install
-
-      - name: Vygenerování Prisma klienta
-        run: pnpm prisma:generate
+        run: |
+          pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
 
       - name: Spuštění linteru
         run: pnpm lint
 
       - name: Kontrola typů
-        run: pnpm type-check
+        run: pnpm check-types
 
-      # - name: Spuštění testů
-      # run: pnpm test --passWithNoTests
+      - name: Spuštění testů
+        run: pnpm test
 
       - name: Build projektu
-        run: pnpm build:ci
+        run: pnpm build
