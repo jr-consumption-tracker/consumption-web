@@ -1,64 +1,63 @@
+import { useTranslation } from "react-i18next";
+
+import { Separator } from "@heroui/react";
+import { siteConfig } from "@web/app/config/site";
+
+import { BrandSection } from "./components/BrandSection";
+import { Company } from "./components/Company";
+import { Product } from "./components/Product";
+import { Support } from "./components/Support";
+
 export const Footer = () => {
+  const { t } = useTranslation("common");
+  const currentYear = new Date().getFullYear();
+  const copyrightText = currentYear === 2025 ? "2025" : `2025 - ${currentYear}`;
+
   return (
-    <footer className="border-t border-border bg-surface py-12">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-          <div className="col-span-1 md:col-span-2">
-            <h3 className="text-lg font-bold text-primary">Consumptions</h3>
-            <p className="mt-4 max-w-xs text-sm text-text-muted">
-              Moderní nástroj pro sledování spotřeby elektřiny a plynu. Šetřete
-              peníze i planetu díky chytrému monitoringu.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-text-main">
-              Produkt
-            </h4>
-            <ul className="mt-4 space-y-2 text-sm text-text-muted">
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Vlastnosti
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Ceník
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Premium
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-text-main">
-              Podpora
-            </h4>
-            <ul className="mt-4 space-y-2 text-sm text-text-muted">
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Kontakt
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Ochrana soukromí
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  Podmínky užití
-                </a>
-              </li>
-            </ul>
+    <footer className="relative overflow-hidden">
+      {/* Background with gradient */}
+      <div className="absolute inset-0 bg-linear-to-br from-background via-secondary/30 to-primary/5" />
+
+      {/* Floating shapes */}
+      <div className="absolute -top-16 -right-16 w-32 h-32 bg-linear-to-br from-primary/20 to-secondary/20 rounded-full blur-2xl" />
+      <div className="absolute -bottom-16 -left-16 w-40 h-40 bg-linear-to-tr from-secondary/20 to-primary/10 rounded-full blur-2xl" />
+
+      <div className="relative z-10">
+        {/* Main Footer Content */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+            <div className="lg:col-span-5">
+              <BrandSection />
+            </div>
+            <div className="lg:col-span-2">
+              <Product />
+            </div>
+            <div className="lg:col-span-2">
+              <Company />
+            </div>
+            <div className="lg:col-span-2">
+              <Support />
+            </div>
           </div>
         </div>
-        <div className="mt-12 border-t border-border pt-8 text-center text-sm text-text-muted">
-          <p>
-            © {new Date().getFullYear()} Consumptions. Všechna práva vyhrazena.
-          </p>
+
+        <Separator className="bg-linear-to-r from-transparent via-primary/20 to-transparent" />
+
+        {/* Bottom Section */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+              <span>
+                © {copyrightText} {siteConfig.name}
+              </span>
+              <span>•</span>
+              <span>{t("footer.operator")}</span>
+            </div>
+
+            <div className="text-sm text-slate-500 dark:text-slate-400">
+              <span>{t("footer.rights")}</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

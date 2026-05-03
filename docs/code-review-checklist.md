@@ -1,4 +1,4 @@
-# Code Review Checklist — UI (D3S CRM Leo)
+# Code Review Checklist — UI (JR Consumptions - Web)
 
 Používej tento checklist při review UI kódu.
 Primárně vychází z `ui-coding-rules-core.md`.

@@ -1,4 +1,4 @@
-# Tailwind Styling Rules — Consumptions
+# Tailwind Styling Rules — JR Consumptions - Web
 
 ## Scope
 

@@ -18,7 +18,7 @@ export default defineConfig((configEnv) => {
       __APP_VERSION__: JSON.stringify(env.npm_package_version),
     },
     server: {
-      port: 3000,
+      port: 3002,
       https: {
         key: "./certs/devcert.key",
         cert: "./certs/devcert.crt",

@@ -13,5 +13,26 @@
       "menu": "Menu",
       "language": "Language"
     }
+  },
+  "footer": {
+    "description": "A modern tool for tracking electricity and gas consumption. Save money and the planet with smart monitoring.",
+    "operator": "Operated by Jan Ribka",
+    "rights": "All rights reserved",
+    "product": {
+      "title": "Product",
+      "features": "Features",
+      "pricing": "Pricing"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "contact": "Contact"
+    },
+    "support": {
+      "title": "Legal",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookies"
+    }
   }
 }

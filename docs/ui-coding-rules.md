@@ -1,4 +1,4 @@
-# UI Coding Rules — D3S CRM Leo
+# UI Coding Rules — JR Consumptions - Web
 
 Tento dokument je referenční.
 Pro rozhodování používej: ui-coding-rules-core.md
