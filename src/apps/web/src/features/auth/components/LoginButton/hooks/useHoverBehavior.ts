@@ -1,8 +1,11 @@
 import { useCallback, useState } from "react";
 
-import { HOVER_TIMING } from "../constants/hoverTiming";
-
 import type { RefObject } from "react";
+
+const HOVER_TIMING = {
+  OPEN_DELAY: 150,
+  CLOSE_DELAY: 1000,
+} as const;
 
 /**
  * useHoverBehavior - Hook for managing hover open/close behavior with focus management

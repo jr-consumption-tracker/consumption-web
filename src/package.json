@@ -5,6 +5,9 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "test": "echo \"No tests configured\"",
+    "test:ci": "echo \"No CI tests configured\"",
+    "test:coverage": "echo \"No coverage tests configured\"",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
   },

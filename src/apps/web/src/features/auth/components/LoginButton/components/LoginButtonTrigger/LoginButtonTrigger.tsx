@@ -1,16 +1,23 @@
 "use client";
 
-import { memo } from "react";
+import { User } from "lucide-react";
+import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Button, PopoverTrigger } from "@heroui/react";
 import { useTheme } from "@web/shared/theme";
 
-import { LoginButtonContent } from "../LoginButtonContent";
-import { useButtonTriggerState } from "./hooks/useButtonTriggerState";
 import { loginButtonTriggerStyles } from "./styles/loginButtonTriggerStyles";
 
-import type { LoginButtonTriggerProps } from "./types/LoginButtonTriggerProps";
+import type { RefObject } from "react";
+
+interface LoginButtonTriggerProps {
+  scrolled?: boolean;
+  loginTriggerRef: RefObject<HTMLButtonElement | null>;
+  loginFlyoutOpen: boolean;
+  setLoginFlyoutOpen: (open: boolean) => void;
+  isHovered: boolean;
+}
 
 /**
  * LoginButtonTrigger - Popover trigger button
@@ -29,18 +36,15 @@ export const LoginButtonTrigger = memo(
     const { theme } = useTheme();
     const { t } = useTranslation("auth");
 
-    // Get styles from tailwind-variants with theme variant and hover state
     const styles = loginButtonTriggerStyles({
       resolvedTheme: theme,
       isHovered,
       scrolled,
     });
 
-    // PERFORMANCE: Extract button trigger logic to custom hook
-    const { handlePress } = useButtonTriggerState(
-      loginFlyoutOpen,
-      setLoginFlyoutOpen,
-    );
+    const handlePress = useCallback(() => {
+      setLoginFlyoutOpen(!loginFlyoutOpen);
+    }, [setLoginFlyoutOpen, loginFlyoutOpen]);
 
     return (
       <PopoverTrigger>
@@ -60,15 +64,42 @@ export const LoginButtonTrigger = memo(
           onPress={handlePress}
           className={styles.button()}
         >
-          {/* Hidden description for screen readers */}
           <span id="login-button-description" className="sr-only">
             {t("loginButton.aria.description")}
           </span>
-          {/* Neon glow layers */}
+
           <div className={styles.glowLayer1()} />
           <div className={styles.glowLayer2()} />
 
-          <LoginButtonContent scrolled={scrolled} />
+          {/* Visual content */}
+          <span className="relative flex items-center gap-4 z-10">
+            <div className="relative" aria-hidden="true">
+              <User
+                className={`${
+                  scrolled ? "w-5 h-5 xl:w-6 xl:h-6" : "w-7 h-7"
+                } group-hover:rotate-180 group-hover:scale-125 transition-all duration-500 drop-shadow-lg text-white`}
+                aria-hidden="true"
+              />
+              <div
+                className="absolute inset-0 border-2 border-white/50 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-spin transition-all duration-300"
+                style={{ animationDuration: "2s" }}
+                aria-hidden="true"
+              />
+            </div>
+            <span
+              className={`hidden xl:block tracking-wider font-black drop-shadow-2xl text-white transition-all duration-500 ${
+                scrolled ? "text-base" : "text-lg"
+              }`}
+              style={{
+                textShadow:
+                  theme === "dark"
+                    ? "0 0 3px rgba(0,0,0,0.7), 1px 1px 2px rgba(0,0,0,0.9)"
+                    : "0 0 4px rgba(0,0,0,0.6), 1px 1px 2px rgba(0,0,0,0.8)",
+              }}
+            >
+              PŘIHLÁSIT SE
+            </span>
+          </span>
         </Button>
       </PopoverTrigger>
     );

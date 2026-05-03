@@ -2,12 +2,10 @@ import { useTranslation } from "react-i18next";
 
 import { cn } from "@repo/utils";
 
-import { logoTextBottomVariants } from "../styles/logoTextBottomVariants";
-import LogoTextDecoration from "../styles/LogoTextDecoration";
-import { logoTextTopVariants } from "../styles/logoTextTopVariants";
+import { logoTextVariants } from "../styles/logoTextTopVariants";
+import { LogoTextDecoration } from "./LogoTextDecoration";
 
 import type { LogoProps } from "../types/LogoProps";
-
 type LogoTextProps = Pick<LogoProps, "scrolled" | "size" | "variant">;
 
 export const LogoText = ({
@@ -21,7 +19,9 @@ export const LogoText = ({
     <div className="hidden xl:flex flex-col leading-none">
       {/* Top text */}
       <span
-        className={cn(logoTextTopVariants({ variant, size, scrolled }))}
+        className={cn(
+          logoTextVariants({ position: "top", variant, size, scrolled }),
+        )}
         style={{ fontFamily: `var(--font-orn)` }}
       >
         {t("logo.line1")}
@@ -29,7 +29,9 @@ export const LogoText = ({
 
       {/* Bottom text */}
       <span
-        className={cn(logoTextBottomVariants({ variant, size, scrolled }))}
+        className={cn(
+          logoTextVariants({ position: "bottom", variant, size, scrolled }),
+        )}
         style={{ fontFamily: `var(--font-orn)` }}
       >
         {t("logo.line2")}

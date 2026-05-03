@@ -13,5 +13,26 @@
       "menu": "Menu",
       "language": "Jazyk"
     }
+  },
+  "footer": {
+    "description": "Moderní nástroj pro sledování spotřeby elektřiny a plynu. Šetřete peníze i planetu díky chytrému monitoringu.",
+    "operator": "Provozuje Jan Ribka",
+    "rights": "Všechna práva vyhrazena",
+    "product": {
+      "title": "Produkt",
+      "features": "Funkce",
+      "pricing": "Ceník"
+    },
+    "company": {
+      "title": "Společnost",
+      "about": "O nás",
+      "contact": "Kontakt"
+    },
+    "legal": {
+      "title": "Právní informace",
+      "privacy": "Ochrana soukromí",
+      "terms": "Podmínky použití",
+      "cookies": "Cookies"
+    }
   }
 }

@@ -17,7 +17,7 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 
 - Preferuj co nejjednodušší styling řešení.
 - Preferuj Tailwind utility classes před jakoukoliv abstrakcí.
-- Nevytvářej CSS třídu bez jasného a okamžitého přínosu.
+- Nevytvářej CSS třídu bez jasného reuse nebo zlepšení čitelnosti.
 - Preferuj čitelnost před znovupoužitelností.
 - Jednoduchá duplicita utility classes je v pořádku, pokud zlepšuje čitelnost.
 
@@ -68,7 +68,10 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 
 ### Fallback:
 
-Pokud si nejsi jistý → ber jako SIMPLE
+Pokud si nejsi jistý:
+
+- preferuj SIMPLE
+- ale pokud `className` ztrácí čitelnost → ber jako COMPLEX
 
 ---
 
@@ -104,6 +107,7 @@ Použij Tailwind variants pokud:
 
 - jde o vizuální UI stav (hover, focus, active, disabled)
 - jde o stav komponenty (`data-*`, `aria-*`)
+- variants mají přednost před CSS, pokud zůstávají čitelné
 
 Nepoužívej variants pokud:
 
@@ -111,13 +115,39 @@ Nepoužívej variants pokud:
 - nahrazují React state
 - simulují komplexní stavové chování
 - nesmí ovlivňovat chování komponenty
+- snižují čitelnost → použij `@layer components`
+
+---
+
+## `tv()` (tailwind-variants)
+
+### Kdy `tv()` nepoužívat
+
+Nepoužívej `tv()` pokud:
+
+- komponenta je použitá pouze na jednom místě
+- neexistuje reálné reuse variant
+- styling je jednoduchý nebo specifický pro jednu komponentu
+- jde o refactoring bez reálného reuse
+
+V těchto případech použij inline `className` s `cn()`.
+
+### `tv()` je pouze pro design system
+
+Použij `tv()` pouze pokud:
+
+- komponenta je reusable napříč aplikací
+- má stabilní variant API
+- reprezentuje sdílený UI primitive (např. Button, Input)
+
+Nepoužívej `tv()` pro feature-specific komponenty.
 
 ---
 
 ## Komplexita variant
 
 - maximálně 2–3 varianty na jeden styl
-- více než 3 varianty v jednom `className` je zakázané
+- více než 3 varianty je silný signál ke zjednodušení
 - pokud varianty snižují čitelnost, přesuň styling do `@layer components` nebo slot className API
 
 ---
@@ -154,7 +184,6 @@ Nepoužívej slot API:
 
 ## Abstrakce
 
-- Nevytvářej CSS třídu bez jasného reuse.
 - Nevytvářej styling abstrakci při prvním použití.
 - Duplicitní Tailwind kód je v pořádku.
 
@@ -179,3 +208,4 @@ Abstrahuj pouze pokud:
 Pokud si nejsi jistý:
 
 → použij jednoduchý Tailwind styling v `className`
+→ preferuj čitelnost před abstrakcí

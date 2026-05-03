@@ -8,7 +8,7 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 ## Priorita pravidel
 
 1. Simplicity first
-2. Developer ergonomics (čitelnost, nízký cognitive load)
+2. Developer ergonomics (čitelnost, nízká kognitivní zátěž)
 3. Správná architektura (FSD, vrstvy)
 
 ---
@@ -20,16 +20,26 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 - Preferuj čitelnost před znovupoužitelností.
 - Vyhýbej se předčasné abstrakci.
 - Jednoduchá duplicita je v pořádku, pokud zlepšuje čitelnost.
+- Jednoduchost znamená snižovat počet konceptů, ne jen počet souborů.
+- Nevytvářej sdílenou abstrakci bez reálného reuse.
+- Pokud se něco používá jen v jedné komponentě, nech to lokální.
+- Pokud si nejsi jistý → zvol jednodušší řešení.
 
 ---
 
 ## Developer ergonomics (DX)
 
 - Drž související logiku pohromadě.
-- Minimalizuj „file hopping“ (počet souborů pro pochopení).
+- Minimalizuj přepínání mezi soubory (počet souborů pro pochopení).
 - Preferuj čitelnost před strukturou.
 - Vyhýbej se zbytečným mezivrstvám.
 - Pokud musíš otevřít více než 2–3 soubory → struktura je pravděpodobně špatně.
+- Neslučuj logicky oddělené části do jednoho souboru jen kvůli snížení počtu souborů.
+- Pokud je soubor příliš dlouhý nebo míchá více odpovědností → rozděl ho.
+- Čitelnost má přednost před minimalizací počtu souborů.
+- Nevytvářej centrální `variant` nebo `style` soubory pro jednorázové komponenty.
+- Pokud pochopení vyžaduje skákání mezi více abstrakčními vrstvami → zjednoduš strukturu.
+- Preferuj lokální jasnost před globální abstrakcí.
 
 ---
 
@@ -43,10 +53,24 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 - neobsahuje orchestrace logiku
 - má jednu hlavní UI odpovědnost
 
+### Simple neznamená jeden soubor
+
+- Simple komponenty se mají vyhýbat zbytečné abstrakci, ale nemusí být implementované v jednom souboru
+- Rozdělení je povolené, když:
+  - část má vlastní jasnou odpovědnost
+  - zlepšuje čitelnost
+  - snižuje kognitivní zátěž
+- Typické příklady:
+  - ikonová část vs textová část
+  - malý vizuální fragment (např. SVG dekorace)
+  - jasně oddělená UI odpovědnost
+- Neslučuj vše do jednoho souboru, pokud to zhorší čitelnost kódu
+
 → Postup:
 
-- nech vše v jednom souboru
-- drž logiku inline
+- drž jednoduchou související logiku pohromadě
+- drž jednoduchou logiku inline,
+  pokud tím netrpí čitelnost nebo oddělení odpovědností
 - nevytvářej hooky ani abstrakce
 
 ---
@@ -68,7 +92,10 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 
 ### Fallback:
 
-Pokud si nejsi jistý → ber jako SIMPLE
+Pokud si nejsi jistý:
+
+- preferuj simple řešení
+- ale pokud kód ztrácí čitelnost nebo míchá odpovědnosti → přejdi na complex
 
 ---
 
@@ -123,6 +150,27 @@ Pokud si nejsi jistý → ber jako SIMPLE
 
 ## Vyhýbej se zbytečné abstrakci
 
+### Refactoring musí snižovat komplexitu
+
+Při refactoringu existujícího kódu:
+
+- Nereorganizuj abstrakci (např. přesun logiky do `*Variants.ts`, `styles/` nebo podobných souborů).
+- Pokud je abstrakce zbytečná → odstraň ji místo přesouvání.
+- Preferuj mazání vrstev před zaváděním nových sdílených souborů.
+
+Špatný refactoring:
+
+- přesun inline stylingu do centrálního `variants` souboru bez reálného reuse
+- zachování staré abstrakce přes re-exporty místo jejího odstranění
+- nahrazení více malých abstrakcí jedním velkým abstrakčním souborem
+
+Správné chování:
+
+- zjednoduš strukturu
+- odstraň nepoužité vrstvy
+- drž styling blízko použití
+- snižuj počet konceptů, ne jen počet souborů
+
 ### NE:
 
 - nevytvářej hook pro jednoduchý `useState`
@@ -134,7 +182,6 @@ Pokud si nejsi jistý → ber jako SIMPLE
 
 ### Heuristika:
 
-- pokud si nejsi jistý → zvol jednodušší řešení
 - drž logiku blízko použití
 
 ---
@@ -190,8 +237,16 @@ Nepoužívej když:
 
 ## Soubory
 
-- 1 hlavní odpovědnost na soubor (guideline)
+- 1 hlavní odpovědnost na soubor (vodítko)
 - Pokud konflikt → preferuj čitelnost před rozdělením
+
+### Struktura komponent
+
+- Výchozí pravidlo: jedna komponenta = jeden soubor
+- Výjimka:
+  - malé, triviální nebo úzce související komponenty mohou zůstat inline,
+    pokud to zlepšuje čitelnost a snižuje počet souborů
+- Nenechávej více komponent v jednom souboru, pokud nejde o triviální vložený UI fragment
 
 ---
 
@@ -214,3 +269,8 @@ Nepoužívej:
 - Nepoužívej obecné barrel soubory
 
 ---
+
+## Styling
+
+Styling decisions follow Tailwind Styling Rules:
+docs/tailwind-styling-rules.md

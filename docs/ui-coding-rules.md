@@ -1,79 +1,79 @@
-# UI Coding Rules — D3S CRM Leo
+# UI Coding Rules — JR Consumptions - Web
 
-This document is a reference.
-For decision making, see: ui-coding-rules-core.md
+Tento dokument je referenční.
+Pro rozhodování používej: ui-coding-rules-core.md
 
 Pravidla platí pro `implementer` i `dispatcher`.
 Slouží jako závazný standard pro vývojáře i GitHub Copilot.
 
-## How to use these rules
+## Jak používat tato pravidla
 
-This project uses two layers of rules:
+Projekt používá dvě vrstvy pravidel:
 
 - **Core rules (ui-coding-rules-core.md)**  
-  → used for decision making (what to do)
+  → používají se pro rozhodování (co udělat)
 
-- **Reference rules (this document)**  
-  → used for explanations, examples and details
+- **Reference rules (tento dokument)**  
+  → používají se pro vysvětlení, příklady a detaily
 
-### Usage
+### Použití
 
-- For implementation and code generation → follow **core rules**
-- For deeper understanding → use this document as reference
-- During code review → validate decisions against core rules
+- Pro implementaci a generování kódu → řiď se **core rules**
+- Pro hlubší pochopení → používej tento dokument jako referenci
+- Při code review → ověřuj rozhodnutí proti core rules
 
 ### Fallback
 
-If unsure:
+Pokud si nejsi jistý:
 
-- follow core rules
-- prefer simpler solution
-- avoid unnecessary abstraction
+- řiď se core rules
+- zvol jednodušší řešení
+- vyhýbej se zbytečné abstrakci
 
 ---
 
 ## Obsah
 
-- [How to use these rules](#how-to-use-these-rules)
-- [Rule priority](#rule-priority)
+- [Jak používat tato pravidla](#jak-používat-tato-pravidla)
+- [Priorita pravidel](#priorita-pravidel)
 - [Technologie](#technologie)
 - [Struktura monorepa](#struktura-monorepa)
 - [Vrstvy aplikace](#vrstvy-aplikace)
 - [Struktura slicu](#struktura-slicu)
 - [Struktura komponenty](#struktura-komponenty)
 - [Feature hooks](#feature-hooks)
-- [Granularity guidelines](#granularity-guidelines)
+- [Granularita](#granularita)
 - [Pravidla pro komponenty](#pravidla-pro-komponenty)
 - [Simplicity first](#simplicity-first)
 - [Developer ergonomics](#developer-ergonomics)
 - [Simple vs Complex components](#simple-vs-complex-components)
-- [Avoid unnecessary abstraction](#avoid-unnecessary-abstraction)
+- [Vyhýbej se zbytečné abstrakci](#vyhýbej-se-zbytečné-abstrakci)
 - [Lazy loading pages](#lazy-loading-pages)
 - [DRY — Don't Repeat Yourself](#dry--dont-repeat-yourself)
-- [Reuse and placement](#reuse-and-placement)
+- [Reuse a umístění](#reuse-a-umístění)
 - [Pravidla pro TypeScript](#pravidla-pro-typescript)
 - [Správa stavu](#správa-stavu)
 - [API a data fetching](#api-a-data-fetching)
-- [Forms and dialogs](#forms-and-dialogs)
+- [Formuláře a dialogy](#formuláře-a-dialogy)
 - [Pojmenování](#pojmenování)
 - [Importy](#importy)
 
 ---
 
-## Rule priority
+## Priorita pravidel
 
 1. Simplicity first
-2. Developer ergonomics (`readability`, nízký `cognitive load`)
-3. Correct architecture (`FSD`, layering)
+2. Developer ergonomics (`čitelnost`, nízká `kognitivní zátěž`)
+3. Správná architektura (`FSD`, vrstvy)
 
-If rules conflict, follow them in this order.
+Pokud jsou pravidla v konfliktu, řiď se tímto pořadím.
 
-Default behavior:
+Výchozí chování:
 
-- If unsure, prefer:
-  - simpler solution
-  - fewer layers
-  - less abstraction
+- Pokud si nejsi jistý, preferuj:
+  - jednodušší řešení
+  - méně vrstev
+  - méně abstrakce
 
 ---
 
@@ -250,10 +250,10 @@ export default BasicInformation;
 - Reprezentace business objektu patří spíš do `entities/`.
 - Nepoužívej kompletní strukturu jako šablonu pro každou feature.
 
-### Structure grows with complexity
+### Struktura roste s komplexitou
 
-Structure grows with complexity.
-See [Simple vs Complex components](#simple-vs-complex-components).
+Struktura roste s komplexitou.
+Viz [Simple vs Complex components](#simple-vs-complex-components).
 
 ### Feature hooks
 
@@ -331,7 +331,7 @@ export { ContactList } from "./ContactList";
 - Každá komponenta má vlastní adresář v `camelCase`.
 - Soubor komponenty je v `PascalCase`.
 - Preferuj jeden soubor = jedna hlavní věc.
-- Složky `components/`, `hooks/`, `utils/`, `constants/`, `types/`, `schemas/` jsou optional.
+- Složky `components/`, `hooks/`, `utils/`, `constants/`, `types/`, `schemas/` jsou volitelné.
 - Nevytvářej prázdné nebo triviální složky.
 
 ```text
@@ -344,11 +344,42 @@ contactCard/
 └── index.ts
 ```
 
+### Jedna komponenta na soubor
+
+Výchozí pravidlo:
+
+- Každá komponenta má být definovaná ve vlastním souboru.
+- Výjimky se řídí core rules (ui-coding-rules-core.md).
+
+Zlepšuje to:
+
+- čitelnost
+- konzistenci
+- udržovatelnost
+- předvídatelnost pro AI nástroje
+
+### Povolené výjimky (vzácné)
+
+Komponenta může zůstat ve stejném souboru POUZE pokud:
+
+- jde o velmi malý vložený UI fragment (cca ≤ 10 řádků)
+- nemá významné props nebo má pouze triviální props
+- nemá reuse potenciál
+- nereprezentuje významný UI blok (např. Card, Row, Item)
+
+### Nenechávej komponentu ve stejném souboru, pokud:
+
+- má vlastní props interface
+- reprezentuje významný UI element
+- obsahuje netriviální JSX
+- mohla by být rozumně znovupoužitá
+- extrakce zlepšuje srozumitelnost
+
 ### Pravidla pro soubory
 
 - Preferuj, aby každý soubor obsahoval jednu hlavní věc.
-- Ber to jako guideline, ne absolutní pravidlo.
-- If these rules conflict, prefer readability and minimizing file hopping over strict file separation.
+- Ber to jako vodítko, ne absolutní pravidlo.
+- Pokud jsou tato pravidla v konfliktu, preferuj čitelnost a minimalizaci přepínání mezi soubory před striktním oddělením souborů.
 - Soubor pojmenuj stejně jako to, co exportuje.
 - Složku pojmenuj v `camelCase` podle komponenty nebo use-casu.
 - Konstanty používají `SCREAMING_SNAKE_CASE`.
@@ -358,9 +389,9 @@ contactCard/
 - Malé, lokální a úzce související věci mohou zůstat v jednom souboru.
 - Nerozděluj kód mechanicky jen kvůli struktuře.
 
-## Granularity guidelines
+## Granularita
 
-See [Simple vs Complex components](#simple-vs-complex-components) for decision rules.
+Rozhodovací pravidla viz [Simple vs Complex components](#simple-vs-complex-components).
 
 - Nerozděluj kód preventivně jen kvůli struktuře.
 - Drž malé, lokální a úzce související části pohromadě, pokud je to čitelnější.
@@ -368,7 +399,12 @@ See [Simple vs Complex components](#simple-vs-complex-components) for decision r
 - Rozděl ho, pokud je logika větší nebo nepřehledná.
 - Rozděl ho, pokud má část samostatnou odpovědnost.
 - Rozděl ho, pokud se část znovu používá nebo dává smysl ji testovat samostatně.
-- Konkrétní zákazy zbytečné abstrakce viz [Avoid unnecessary abstraction](#avoid-unnecessary-abstraction).
+- Neslučuj vše do jednoho souboru jen kvůli simplicity pravidlům.
+- Vyvažuj jednoduchost s čitelností a oddělením odpovědností.
+- Snížení počtu souborů není cíl.
+- Snížení komplexity je cíl.
+- Nenahrazuj více malých problémů jednou velkou abstrakcí.
+- Konkrétní zákazy zbytečné abstrakce viz [Vyhýbej se zbytečné abstrakci](#vyhýbej-se-zbytečné-abstrakci).
 
 ---
 
@@ -434,24 +470,24 @@ const groupedRows = useMemo(() => groupLargeDataset(rows), [rows]);
 
 - Preferuj nejjednodušší implementaci, která správně řeší use-case.
 - Preferuj jednoduchost před chytrou abstrakcí.
-- Do not introduce abstraction unless it provides clear and immediate benefit.
-- Simplicity first has higher priority than structural conventions.
+- Nezaváděj abstrakci, pokud nepřináší jasný a okamžitý přínos.
+- Simplicity first má vyšší prioritu než strukturální konvence.
 
 ### Developer ergonomics
 
-Developer ergonomics is a practical application of Simplicity first.
+Developer ergonomics je praktická aplikace pravidla Simplicity first.
 
-- Keep context together.
-- Minimize file hopping.
-- Prefer readability over structure.
-- Avoid unnecessary indirection.
-- Do not repeat the same logic across multiple layers if it does not add clear value.
+- Drž kontext pohromadě.
+- Minimalizuj přepínání mezi soubory.
+- Preferuj čitelnost před strukturou.
+- Vyhýbej se zbytečné nepřímosti.
+- Neopakuj stejnou logiku ve více vrstvách, pokud to nepřidává jasnou hodnotu.
 - Pokud pro pochopení komponenty potřebuješ více než `2–3` soubory, zvaž zjednodušení struktury.
 
 ### Single Responsibility
 
 - Každá komponenta, hook, util a soubor má mít jednu hlavní odpovědnost.
-- Ber to jako guideline pro přehlednost, ne důvod k mechanickému rozsekávání kódu.
+- Ber to jako vodítko pro přehlednost, ne důvod k mechanickému rozsekávání kódu.
 
 #### Hlavní komponenta je orchestrátor
 
@@ -463,23 +499,31 @@ Developer ergonomics is a practical application of Simplicity first.
 
 ### Simple vs Complex components
 
-Tato sekce je source of truth pro decision rules.
+Tato sekce je zdroj pravdy pro rozhodovací pravidla.
 
-#### Simple component
+#### Simple komponenta
 
 - Může mít lokální state.
 - Může mít jednoduché handlery.
 - Může mít krátké mapování nebo odvození dat pro render.
 
-#### Complex component
+#### Simple neznamená jeden soubor
+
+- Simple komponenty mají zůstat jednoduché, ale nemusí být nutně v jednom souboru.
+- Rozděl je, když to zlepší čitelnost nebo oddělí odpovědnost.
+- Vyhýbej se oběma extrémům:
+  - přílišné rozdělování
+  - přílišné slučování
+
+#### Complex komponenta
 
 - Řeší více odpovědností nebo větší UI celek.
 - Obsahuje komplexní React logiku, side effects nebo znovupoužitelný use-case.
 - Kombinuje více částí UI nebo více zdrojů dat.
 
-#### How to decide (decision rules)
+#### Jak rozhodnout
 
-Treat component as `SIMPLE` if:
+Ber komponentu jako `SIMPLE`, pokud:
 
 - používá maximálně jeden query nebo API call, případně žádný
 - obsahuje pouze lokální UI state jako `useState`
@@ -491,9 +535,9 @@ Pro simple komponentu:
 
 - nepoužívej orchestrator pattern
 - nerozděluj ji do více souborů bez důvodu
-- pro feature hook decision rules viz [Feature hooks](#feature-hooks)
+- pro rozhodovací pravidla feature hooků viz [Feature hooks](#feature-hooks)
 
-Treat component as `COMPLEX` if:
+Ber komponentu jako `COMPLEX`, pokud:
 
 - skládá více query nebo mutation dohromady
 - obsahuje orchestrace logiku jako kombinace dat nebo derived state
@@ -504,11 +548,11 @@ Pro complex komponentu:
 
 - můžeš použít orchestrator pattern
 - můžeš ji rozdělit do více souborů
-- pro feature hook decision rules viz [Feature hooks](#feature-hooks)
+- pro rozhodovací pravidla feature hooků viz [Feature hooks](#feature-hooks)
 
-If unsure, treat the component as simple.
+Pokud si nejsi jistý, ber komponentu jako simple.
 
-#### Keep logic close to usage
+#### Drž logiku blízko použití
 
 - Logiku drž co nejblíže místu použití.
 - Jednoduchá, jednorázová logika může zůstat v komponentě.
@@ -521,23 +565,29 @@ If unsure, treat the component as simple.
 - Čisté výpočty a transformace bez React závislostí patří do `utils/`, pokud jsou samostatné nebo znovupoužitelné.
 - Krátké a lokální výpočty mohou zůstat v komponentě.
 - Do `hooks/` nepatří typy ani konstanty.
-- Viz [Avoid unnecessary abstraction](#avoid-unnecessary-abstraction) a [Feature hooks](#feature-hooks).
+- Viz [Vyhýbej se zbytečné abstrakci](#vyhýbej-se-zbytečné-abstrakci) a [Feature hooks](#feature-hooks).
 
-## Avoid unnecessary abstraction
+## Vyhýbej se zbytečné abstrakci
 
 Tato sekce je source of truth pro pravidla kdy neabstrahovat.
 
 - Abstrakce musí mít jasný důvod: `reuse`, komplexita nebo oddělení odpovědnosti.
 - Pokud tento důvod neexistuje, zvol jednodušší implementaci.
 
-### Avoid premature abstraction
+### Nereorganizuj abstrakci při refactoringu
+
+- Refactoring má kód zjednodušit, ne přesunout komplexitu jinam.
+- Nevytvářej `variants`, `styles` nebo podobné soubory bez reálného reuse.
+- Preferuj odstranění abstrakce před její restrukturalizací.
+
+### Vyhýbej se předčasné abstrakci
 
 - Neabstrahuj při prvním výskytu.
 - Neabstrahuj při druhém výskytu bez jistoty stabilního patternu.
 - Neabstrahuj pro budoucí použití.
 - Neabstrahuj jen proto, že se kód podobá.
 
-### Do NOT
+### Nedělej
 
 - Nevytvářej custom hook pro jednoduchý lokální state.
 - Nevytahuj krátkou logiku do hooku, pokud je použitá na jednom místě.
@@ -547,14 +597,14 @@ Tato sekce je source of truth pro pravidla kdy neabstrahovat.
 - Nevytvářej generické řešení bez reálného reuse.
 - Nevytvářej mezivrstvy jako feature hook, pokud jen přeposílají data.
 
-### When NOT to abstract
+### Kdy neabstrahovat
 
 - Neabstrahuj krátkou inline logiku.
 - Neabstrahuj jednorázový use-case.
 - Neabstrahuj, když je podobnost pouze povrchová.
 - Neabstrahuj, když by abstrakce zhoršila čitelnost.
 
-### Reuse existing patterns carefully
+### Existující patterny používej opatrně
 
 - Použij existující pattern jen pokud odpovídá stejnému use-casu, stejné úrovni komplexity a stejnému účelu i chování.
 - Nepoužívej existující pattern pro jiný use-case.
@@ -602,13 +652,13 @@ return <input onChange={(e) => setValue(e.target.value)} />;
 
 ---
 
-## DRY — Don't Repeat Yourself
+## DRY — neopakuj se
 
 Tato sekce je source of truth pro pravidla kdy abstrahovat.
 
 - Nejdřív navrhni správné lokální řešení.
 - DRY neznamená automatickou abstrakci.
-- See [Avoid unnecessary abstraction](#avoid-unnecessary-abstraction).
+- Viz [Vyhýbej se zbytečné abstrakci](#vyhýbej-se-zbytečné-abstrakci).
 
 ### Rule of 3
 
@@ -617,7 +667,7 @@ Tato sekce je source of truth pro pravidla kdy abstrahovat.
 - Až při třetím výskytu zvaž sdílení, pokud jde o stejný pattern se stejnou odpovědností.
 - Preferuj malou duplicitu před příliš obecnou abstrakcí.
 
-### When to abstract
+### Kdy abstrahovat
 
 - Abstrahuj když se logika opakuje alespoň 3×.
 - Abstrahuj když má stejný význam a odpovědnost.
@@ -626,7 +676,7 @@ Tato sekce je source of truth pro pravidla kdy abstrahovat.
 
 ---
 
-## Reuse and placement
+## Reuse a umístění
 
 - Když se rozhodneš abstrahovat nebo něco sdílet, nejdřív určuj co je skutečně znovupoužitelné a kam to patří.
 
@@ -732,7 +782,7 @@ Používej tento pattern:
 1. `shared/api/axiosMainApi`
 2. `features/<Feature>/api/*Api.ts`
 3. `features/<Feature>/api/use*Api.ts`
-4. `features/<Feature>/hooks/use*.ts` _(optional)_
+4. `features/<Feature>/hooks/use*.ts` _(volitelné)_
 
 ### Pravidla
 
@@ -742,8 +792,8 @@ Používej tento pattern:
 - Hooky ve `features/<Feature>/hooks` nevolají Axios napřímo.
 - V `hooks/` neduplikuj endpointy ani query definice.
 - V `api/` nedefinuj typy ani konstanty.
-- `hooks/` is optional and should not be created by default. Use hooks only when they add real value. See [Feature hooks](#feature-hooks) section.
-- Naming: See [Pojmenování](#pojmenování).
+- `hooks/` je volitelné a nemá se vytvářet automaticky. Hooky používej pouze tehdy, když přidávají reálnou hodnotu. Viz sekce [Feature hooks](#feature-hooks).
+- Pojmenování: viz [Pojmenování](#pojmenování).
 
 ### Příklad struktury
 
@@ -757,11 +807,11 @@ features/requestManagement/contactList/
 
 ---
 
-## Forms and dialogs
+## Formuláře a dialogy
 
-- Forms use TanStack Form + Zod.
-- Follow `docs/forms-guide.md`.
-- Do not implement custom form patterns.
+- Formuláře používají TanStack Form + Zod.
+- Řiď se `docs/forms-guide.md`.
+- Nevytvářej vlastní formulářové patterny.
 
 ---
 
@@ -821,7 +871,7 @@ export const ContactForm = () => null;
 
 ### Pojmenování pro `api`, `useApi` a `hooks`
 
-See [Feature hooks](#feature-hooks).
+Viz [Feature hooks](#feature-hooks).
 
 - `api/*Api.ts` obsahuje pouze nízkoúrovňové funkce pro volání endpointů.
 - `api/use*Api.ts` obsahuje pouze TanStack Query hooky nad konkrétními API funkcemi.
@@ -859,3 +909,10 @@ import { DataGrid } from "@leo/components";
 ---
 
 _Pravidla pro stylování pomocí MUI jsou v samostatném dokumentu: [`docs/mui-styling.md`](./mui-styling.md)_
+
+---
+
+## Styling
+
+Styling decisions follow Tailwind Styling Rules:
+docs/tailwind-styling-rules.md
