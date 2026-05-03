@@ -2,18 +2,11 @@ import { useTranslation } from "react-i18next";
 
 import { Link } from "@tanstack/react-router";
 
-import type { TFunction } from "i18next";
-
-import type { ComponentProps } from "react";
-
-interface FooterLink {
-  to: ComponentProps<typeof Link>["to"];
-  labelKey: string;
-}
+import type { FooterLink, FooterTranslationKey } from "../types/FooterLink";
 
 interface FooterLinkSectionProps {
-  titleKey: Parameters<TFunction<"common">>[0];
-  links: FooterLink[];
+  titleKey: FooterTranslationKey;
+  links: readonly FooterLink[];
   /** Enable hover translate animation on links */
   animated?: boolean;
 }

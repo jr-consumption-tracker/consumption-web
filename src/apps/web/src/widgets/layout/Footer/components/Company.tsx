@@ -1,9 +1,10 @@
 import { FooterLinkSection } from "./FooterLinkSection";
+import type { FooterLink } from "../types/FooterLink";
 
 const links = [
   { to: "/" as const, labelKey: "footer.company.about" },
   { to: "/" as const, labelKey: "footer.company.contact" },
-];
+] satisfies readonly FooterLink[];
 /**
  * Company — company links section in footer
  */
