@@ -7,8 +7,7 @@
     "./globals": "./globals.css"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "lint": "eslint . --max-warnings 0"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
