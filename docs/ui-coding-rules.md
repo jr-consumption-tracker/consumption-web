@@ -349,6 +349,7 @@ contactCard/
 Výchozí pravidlo:
 
 - Každá komponenta má být definovaná ve vlastním souboru.
+- Výjimky se řídí core rules (ui-coding-rules-core.md).
 
 Zlepšuje to:
 
@@ -908,3 +909,10 @@ import { DataGrid } from "@leo/components";
 ---
 
 _Pravidla pro stylování pomocí MUI jsou v samostatném dokumentu: [`docs/mui-styling.md`](./mui-styling.md)_
+
+---
+
+## Styling
+
+Styling decisions follow Tailwind Styling Rules:
+docs/tailwind-styling-rules.md

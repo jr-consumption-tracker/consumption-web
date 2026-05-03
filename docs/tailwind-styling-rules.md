@@ -10,9 +10,9 @@ Pravidla platí pro:
 - GitHub Copilot
 - všechny AI agenty
 
-Porušení těchto pravidel je implementační chyba.
+Porušení těchto pravidel je silný signál chyby a musí být při code review zdůvodněno nebo opraveno.
 
-Každé porušení těchto pravidel musí být při code review opraveno, ne tolerováno.
+Každé nezdůvodněné porušení těchto pravidel musí být při code review opraveno, ne tolerováno.
 
 ---
 
@@ -63,8 +63,12 @@ Styluješ Hero UI components se sloty?
 Žádná cesta výše neplatí?
 → Zastav implementaci a ověř návrh. Nevytvářej nový styling pattern.
 
+If no rule clearly applies:
+→ choose the simplest valid Tailwind-based solution.
+
 Nejsi si jistý?
-→ Použij jednoduché Tailwind utility classes.
+→ Preferuj jednoduché Tailwind utility classes.
+→ Pokud se zhorší čitelnost, přejdi ke strukturovanějšímu přístupu.
 ```
 
 ### Rychlá pravidla
@@ -341,10 +345,12 @@ export const ContactCard = ({ name, email }: ContactCardProps) => {
 - Povolené state varianty jsou `hover:`, `focus:`, `active:` a `disabled:`.
 - Povolené component state varianty jsou `aria-*` a `data-*`, pokud reprezentují stav komponenty nebo Hero UI components.
 - Povolené responsive varianty jsou `sm:`, `md:`, `lg:`, `xl:` a `2xl:`.
+- Variants mají přednost před CSS, pokud zůstávají čitelné.
 - Tailwind variants nesmí reprezentovat business logiku.
 - Tailwind variants nesmí simulovat komplexní state logiku, která patří do Reactu.
 - React state nesmí být nahrazený CSS-based stavem přes `data-*` nebo `aria-*` atributy pro business podmínky.
-- Více než 3 varianty v jednom `className` je zakázané.
+- Více než 3 varianty je silný signál ke zjednodušení.
+- Pokud variants zhoršují čitelnost → použij `@layer components`.
 - Pokud kombinace variant, podmínek nebo dlouhých řetězců znečitelní `className`, styl musí být přesunutý do `@layer components` nebo do slot className API.
 - Podmíněné třídy musí používat existující helper v projektu.
 - Pokud helper neexistuje, musí být použité jednoduché spojení řetězců bez nové abstrakce.
@@ -357,6 +363,7 @@ export const ContactCard = ({ name, email }: ContactCardProps) => {
 - Nevytvářej variant abstrakci pro komponenty použité pouze na jednom místě.
 - Preferuj inline Tailwind utility classes.
 - Drž styling blízko místa použití.
+- Nepřidávej `tv()` při refactoringu, pokud neexistuje reálný reuse.
 
 ### Rozhodování o složitosti
 

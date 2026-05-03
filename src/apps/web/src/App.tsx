@@ -1,13 +1,22 @@
+import { I18nextProvider } from "react-i18next";
+import { Provider } from "react-redux";
+
 import { RouterProvider } from "@tanstack/react-router";
 
-import { AppProviders } from "./app/providers/AppProviders";
+import i18n from "./app/localization/i18n";
 import { router } from "./app/router/router";
+import { store } from "./app/store/store";
+import { ThemeProvider } from "./shared/theme";
 
 function App() {
   return (
-    <AppProviders>
-      <RouterProvider router={router} />
-    </AppProviders>
+    <Provider store={store}>
+      <ThemeProvider>
+        <I18nextProvider i18n={i18n}>
+          <RouterProvider router={router} />
+        </I18nextProvider>
+      </ThemeProvider>
+    </Provider>
   );
 }
 

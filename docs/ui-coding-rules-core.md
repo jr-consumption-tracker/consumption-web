@@ -23,6 +23,7 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 - Jednoduchost znamená snižovat počet konceptů, ne jen počet souborů.
 - Nevytvářej sdílenou abstrakci bez reálného reuse.
 - Pokud se něco používá jen v jedné komponentě, nech to lokální.
+- Pokud si nejsi jistý → zvol jednodušší řešení.
 
 ---
 
@@ -68,7 +69,8 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 → Postup:
 
 - drž jednoduchou související logiku pohromadě
-- drž logiku inline
+- drž jednoduchou logiku inline,
+  pokud tím netrpí čitelnost nebo oddělení odpovědností
 - nevytvářej hooky ani abstrakce
 
 ---
@@ -90,7 +92,10 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 
 ### Fallback:
 
-Pokud si nejsi jistý → ber jako SIMPLE
+Pokud si nejsi jistý:
+
+- preferuj simple řešení
+- ale pokud kód ztrácí čitelnost nebo míchá odpovědnosti → přejdi na complex
 
 ---
 
@@ -177,7 +182,6 @@ Správné chování:
 
 ### Heuristika:
 
-- pokud si nejsi jistý → zvol jednodušší řešení
 - drž logiku blízko použití
 
 ---
@@ -239,7 +243,9 @@ Nepoužívej když:
 ### Struktura komponent
 
 - Výchozí pravidlo: jedna komponenta = jeden soubor
-- Pokud si nejsi jistý, přesuň komponentu do vlastního souboru
+- Výjimka:
+  - malé, triviální nebo úzce související komponenty mohou zůstat inline,
+    pokud to zlepšuje čitelnost a snižuje počet souborů
 - Nenechávej více komponent v jednom souboru, pokud nejde o triviální vložený UI fragment
 
 ---
@@ -263,3 +269,8 @@ Nepoužívej:
 - Nepoužívej obecné barrel soubory
 
 ---
+
+## Styling
+
+Styling decisions follow Tailwind Styling Rules:
+docs/tailwind-styling-rules.md
