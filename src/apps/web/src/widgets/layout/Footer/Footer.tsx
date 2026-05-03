@@ -5,8 +5,8 @@ import { siteConfig } from "@web/app/config/site";
 
 import { BrandSection } from "./components/BrandSection";
 import { Company } from "./components/Company";
+import { Legal } from "./components/Legal";
 import { Product } from "./components/Product";
-import { Support } from "./components/Support";
 
 export const Footer = () => {
   const { t } = useTranslation("common");
@@ -36,7 +36,7 @@ export const Footer = () => {
               <Company />
             </div>
             <div className="lg:col-span-2">
-              <Support />
+              <Legal />
             </div>
           </div>
         </div>
