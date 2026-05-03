@@ -1,4 +1,8 @@
-import { NAV_LINKS } from "../constants/NavLinks";
+const NAV_LINKS = [
+  { href: "#features", label: "Vlastnosti" },
+  { href: "#motivation", label: "Proč my?" },
+  { href: "#pricing", label: "Ceník" },
+];
 
 export const MainMenuMobile = () => {
   return (

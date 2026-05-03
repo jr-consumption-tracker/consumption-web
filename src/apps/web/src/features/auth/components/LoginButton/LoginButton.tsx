@@ -1,19 +1,30 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useTheme } from "@web/shared/theme";
 
 import { LoginPopoverWrapper } from "./components/LoginPopoverWrapper/LoginPopoverWrapper";
 import { useHoverBehavior } from "./hooks/useHoverBehavior";
-import { useIsMouseOver } from "./hooks/useIsMouseOver";
 import { loginButtonStyles } from "./styles/loginButtonStyles";
 
-import type { LoginButtonProps } from "./types/LoginButtonProps";
+import type { RefObject } from "react";
+
+export interface LoginButtonProps {
+  scrolled?: boolean;
+  loginFlyoutOpen: boolean;
+  setLoginFlyoutOpen: (open: boolean) => void;
+  loginFlyoutOpenedByHover: boolean;
+  setLoginFlyoutOpenedByHover: (opened: boolean) => void;
+  loginTriggerRef: RefObject<HTMLButtonElement | null>;
+  hoverOpenTimerRef: RefObject<number | null>;
+  hoverCloseTimerRef: RefObject<number | null>;
+}
+
 /**
  * LoginButton - Login button with hover/click popover orchestrator
  *
  * Coordinates hover behavior and popover wrapper component.
- * Uses useIsMouseOver hook to track physical mouse presence over the button,
- * independent of CSS z-index layering, ensuring hover effects persist
+ * Uses DOM mouseenter/mouseleave events to track physical mouse presence,
+ * independent of CSS z-index layering, so hover effects persist
  * even when a popover is open above the button.
  */
 export const LoginButton = ({
@@ -26,17 +37,27 @@ export const LoginButton = ({
   hoverOpenTimerRef,
   hoverCloseTimerRef,
 }: LoginButtonProps) => {
-  // SSR-safe theme from context
   const { theme } = useTheme();
 
-  // Ref for the outer container to track mouse position independently of popover
   const containerRef = useRef<HTMLDivElement>(null!);
+  const [isMouseOver, setIsMouseOver] = useState(false);
 
-  // Track whether mouse is physically over the container element
-  // Uses direct DOM events, not CSS :hover, so it works across z-index layers
-  const { isMouseOver } = useIsMouseOver(containerRef);
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
 
-  // PERFORMANCE: Extract hover behavior to custom hook
+    const handleMouseEnter = () => setIsMouseOver(true);
+    const handleMouseLeave = () => setIsMouseOver(false);
+
+    el.addEventListener("mouseenter", handleMouseEnter);
+    el.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      el.removeEventListener("mouseenter", handleMouseEnter);
+      el.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
+
   const { handleMouseEnter, handleMouseLeave, handleFocusIn, handleFocusOut } =
     useHoverBehavior(
       hoverOpenTimerRef,
@@ -46,7 +67,6 @@ export const LoginButton = ({
       loginFlyoutOpenedByHover,
     );
 
-  // Get styles from tailwind-variants with theme variant
   const styles = loginButtonStyles({
     resolvedTheme: theme,
     isOpen: loginFlyoutOpen,
@@ -75,7 +95,6 @@ export const LoginButton = ({
         handleFocusOut={handleFocusOut}
       />
 
-      {/* Subtle glow */}
       <div className={styles.glowEffect()} />
     </div>
   );
