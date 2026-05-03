@@ -4,10 +4,9 @@ import { cn } from "@repo/utils";
 
 import { logoColorVariants } from "../styles/logoColorVariants";
 import { logoEnergyIconVariants } from "../styles/logoEnergyIconVariants";
-import { logoGlowSizeVariants } from "../styles/logoGlowSizeVariants";
+import { logoGlowSizeVariants } from "../styles/logoIconVariants";
 
 import type { LogoProps } from "../types/LogoProps";
-
 type LogoIconProps = Pick<
   LogoProps,
   "scrolled" | "size" | "variant" | "disableHover"

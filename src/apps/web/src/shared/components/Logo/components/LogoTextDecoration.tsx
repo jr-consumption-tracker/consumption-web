@@ -1,10 +1,8 @@
-import { memo } from "react";
-
 /**
- * LogoTextDecoration - Decorative SVG curve for the logo text
- * Used under "Deník" text as a visual accent
+ * LogoTextDecoration — decorative SVG curve under the logo text.
+ * Used as a visual accent under "Deník".
  */
-const LogoTextDecoration = memo(() => (
+export const LogoTextDecoration = () => (
   <svg
     width="28"
     height="8"
@@ -21,8 +19,6 @@ const LogoTextDecoration = memo(() => (
       strokeLinejoin="round"
     />
   </svg>
-));
+);
 
 LogoTextDecoration.displayName = "LogoTextDecoration";
-
-export default LogoTextDecoration;

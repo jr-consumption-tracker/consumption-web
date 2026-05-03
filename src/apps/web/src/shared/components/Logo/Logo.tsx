@@ -1,33 +1,61 @@
 import { useTranslation } from "react-i18next";
 
+import { cn } from "@repo/utils";
 import { Link } from "@tanstack/react-router";
 
-import { LogoContent } from "./components/LogoContent";
-import { logoLinkVariants } from "./styles/logoLinkVariants";
+import { LogoIcon } from "./components/LogoIcon";
+import { LogoText } from "./components/LogoText";
 
 import type { LogoProps } from "./types/LogoProps";
 
 /**
- * Logo - Pure Orchestrator for the brand identity
- * Handles routing logic and delegates rendering to LogoContent
+ * Logo — brand identity component.
+ *
+ * Orchestrates routing logic and delegates rendering to LogoIcon and LogoText.
+ * When `to` is set, wraps everything in a TanStack Router Link.
  */
-export const Logo = (props: LogoProps) => {
-  const { to = "/", disableHover = false } = props;
+export const Logo = ({
+  to = "/",
+  className,
+  scrolled = false,
+  showText = true,
+  size = "md",
+  disableHover = false,
+  variant = "default",
+}: LogoProps) => {
   const { t } = useTranslation("common");
+
+  const content = (
+    <div
+      className={cn(
+        "flex items-center gap-3",
+        !disableHover && "group",
+        className,
+      )}
+    >
+      <LogoIcon
+        scrolled={scrolled}
+        size={size}
+        variant={variant}
+        disableHover={disableHover}
+      />
+      {showText && (
+        <LogoText scrolled={scrolled} size={size} variant={variant} />
+      )}
+    </div>
+  );
 
   if (to) {
     return (
       <Link
         to={to}
-        className={logoLinkVariants({ disableHover })}
+        className={cn(!disableHover && "group")}
         aria-label={t("logo.ariaLabel")}
       >
-        <LogoContent {...props} />
+        {content}
       </Link>
     );
   }
 
-  return <LogoContent {...props} />;
+  return content;
 };
-
-Logo.displayName = "Logo";

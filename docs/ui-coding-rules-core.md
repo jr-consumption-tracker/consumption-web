@@ -8,7 +8,7 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 ## Priorita pravidel
 
 1. Simplicity first
-2. Developer ergonomics (čitelnost, nízký cognitive load)
+2. Developer ergonomics (čitelnost, nízká kognitivní zátěž)
 3. Správná architektura (FSD, vrstvy)
 
 ---
@@ -26,10 +26,13 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 ## Developer ergonomics (DX)
 
 - Drž související logiku pohromadě.
-- Minimalizuj „file hopping“ (počet souborů pro pochopení).
+- Minimalizuj přepínání mezi soubory (počet souborů pro pochopení).
 - Preferuj čitelnost před strukturou.
 - Vyhýbej se zbytečným mezivrstvám.
 - Pokud musíš otevřít více než 2–3 soubory → struktura je pravděpodobně špatně.
+- Neslučuj logicky oddělené části do jednoho souboru jen kvůli snížení počtu souborů.
+- Pokud je soubor příliš dlouhý nebo míchá více odpovědností → rozděl ho.
+- Čitelnost má přednost před minimalizací počtu souborů.
 
 ---
 
@@ -43,9 +46,22 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 - neobsahuje orchestrace logiku
 - má jednu hlavní UI odpovědnost
 
+### Simple neznamená jeden soubor
+
+- Simple komponenty se mají vyhýbat zbytečné abstrakci, ale nemusí být implementované v jednom souboru
+- Rozdělení je povolené, když:
+  - část má vlastní jasnou odpovědnost
+  - zlepšuje čitelnost
+  - snižuje kognitivní zátěž
+- Typické příklady:
+  - ikonová část vs textová část
+  - malý vizuální fragment (např. SVG dekorace)
+  - jasně oddělená UI odpovědnost
+- Neslučuj vše do jednoho souboru, pokud to zhorší čitelnost kódu
+
 → Postup:
 
-- nech vše v jednom souboru
+- drž jednoduchou související logiku pohromadě
 - drž logiku inline
 - nevytvářej hooky ani abstrakce
 
@@ -190,14 +206,14 @@ Nepoužívej když:
 
 ## Soubory
 
-- 1 hlavní odpovědnost na soubor (guideline)
+- 1 hlavní odpovědnost na soubor (vodítko)
 - Pokud konflikt → preferuj čitelnost před rozdělením
 
-### Component structure
+### Struktura komponent
 
-- Default: one component = one file
-- If unsure, extract the component into its own file
-- Do not keep multiple components in one file unless it is a trivial inline UI fragment
+- Výchozí pravidlo: jedna komponenta = jeden soubor
+- Pokud si nejsi jistý, přesuň komponentu do vlastního souboru
+- Nenechávej více komponent v jednom souboru, pokud nejde o triviální vložený UI fragment
 
 ---
 
