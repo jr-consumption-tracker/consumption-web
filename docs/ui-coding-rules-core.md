@@ -193,6 +193,12 @@ Nepoužívej když:
 - 1 hlavní odpovědnost na soubor (guideline)
 - Pokud konflikt → preferuj čitelnost před rozdělením
 
+### Component structure
+
+- Default: one component = one file
+- If unsure, extract the component into its own file
+- Do not keep multiple components in one file unless it is a trivial inline UI fragment
+
 ---
 
 ## Pojmenování

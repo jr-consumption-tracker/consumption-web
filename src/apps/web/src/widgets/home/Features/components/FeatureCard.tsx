@@ -1,8 +1,9 @@
-import type { LucideIcon } from "lucide-react";
-import type { FeatureColor } from "../types/FeatureColor";
 import { useTranslation } from "react-i18next";
+import type { LucideIcon } from "lucide-react";
 
 import { featureCardVariants } from "../styles/featureCardVariants";
+
+type FeatureColor = "blue" | "yellow";
 
 interface FeatureCardProps {
   icon: LucideIcon;
@@ -13,8 +14,7 @@ interface FeatureCardProps {
 }
 
 /**
- * FeatureCard - Individual card displaying a feature with icon and description.
- * It uses a glassmorphism effect and has hover animations to enhance the user experience.
+ * FeatureCard - Karta zobrazující jednu feature s ikonou a popisem.
  */
 export const FeatureCard = ({
   icon,
@@ -42,20 +42,15 @@ export const FeatureCard = ({
 
   return (
     <div className={container()}>
-      {/* Internal Glow Effect on border */}
       <div className={glow()} />
-
-      {/* Decorative Blur Blob - Animates scale and opacity on hover */}
       <div className={blurBlob()} />
 
-      {/* Premium Badge - Only visible if feature is premium */}
       {isPremium && (
         <div className={premiumBadge()}>
           <span className={premiumSpan()}>{t("features.premium")}</span>
         </div>
       )}
 
-      {/* Icon Wrapper - Intensifies accent color on hover */}
       <div className={iconWrapper()}>
         <Icon className={iconStyles()} aria-hidden="true" />
       </div>
@@ -65,7 +60,6 @@ export const FeatureCard = ({
         <p className={descriptionStyles()}>{description}</p>
       </div>
 
-      {/* Bottom accent bar - Emerges on hover */}
       <div className={accentBar()} />
     </div>
   );

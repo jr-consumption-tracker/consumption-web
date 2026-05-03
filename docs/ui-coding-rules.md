@@ -344,6 +344,36 @@ contactCard/
 └── index.ts
 ```
 
+### One component per file
+
+Default:
+
+- Each component should be defined in its own file.
+
+This improves:
+
+- readability
+- consistency
+- maintainability
+- predictability for AI tools
+
+### Allowed exceptions (rare)
+
+A component may stay in the same file ONLY if:
+
+- it is a very small inline UI fragment (approx. ≤ 10 lines)
+- it has no meaningful props or only trivial ones
+- it has no reuse potential
+- it does not represent a meaningful UI block (e.g. Card, Row, Item)
+
+### Do NOT keep component in same file if:
+
+- it has its own props interface
+- it represents a meaningful UI element
+- it contains non-trivial JSX
+- it could reasonably be reused
+- it improves clarity when extracted
+
 ### Pravidla pro soubory
 
 - Preferuj, aby každý soubor obsahoval jednu hlavní věc.
