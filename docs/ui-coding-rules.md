@@ -400,6 +400,9 @@ Rozhodovací pravidla viz [Simple vs Complex components](#simple-vs-complex-comp
 - Rozděl ho, pokud se část znovu používá nebo dává smysl ji testovat samostatně.
 - Neslučuj vše do jednoho souboru jen kvůli simplicity pravidlům.
 - Vyvažuj jednoduchost s čitelností a oddělením odpovědností.
+- Snížení počtu souborů není cíl.
+- Snížení komplexity je cíl.
+- Nenahrazuj více malých problémů jednou velkou abstrakcí.
 - Konkrétní zákazy zbytečné abstrakce viz [Vyhýbej se zbytečné abstrakci](#vyhýbej-se-zbytečné-abstrakci).
 
 ---
@@ -569,6 +572,12 @@ Tato sekce je source of truth pro pravidla kdy neabstrahovat.
 
 - Abstrakce musí mít jasný důvod: `reuse`, komplexita nebo oddělení odpovědnosti.
 - Pokud tento důvod neexistuje, zvol jednodušší implementaci.
+
+### Nereorganizuj abstrakci při refactoringu
+
+- Refactoring má kód zjednodušit, ne přesunout komplexitu jinam.
+- Nevytvářej `variants`, `styles` nebo podobné soubory bez reálného reuse.
+- Preferuj odstranění abstrakce před její restrukturalizací.
 
 ### Vyhýbej se předčasné abstrakci
 

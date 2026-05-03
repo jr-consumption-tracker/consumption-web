@@ -352,6 +352,12 @@ export const ContactCard = ({ name, email }: ContactCardProps) => {
 - Přepínání mezi JSX a CSS musí být minimalizované.
 - Pokud pochopení stylingu vyžaduje otevření více souborů, návrh je chybný.
 
+### Vyhýbej se `tv()` v jednoduchých komponentách
+
+- Nevytvářej variant abstrakci pro komponenty použité pouze na jednom místě.
+- Preferuj inline Tailwind utility classes.
+- Drž styling blízko místa použití.
+
 ### Rozhodování o složitosti
 
 Styling je jednoduchý, pokud:

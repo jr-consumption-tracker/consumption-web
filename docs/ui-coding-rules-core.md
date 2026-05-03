@@ -20,6 +20,9 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 - Preferuj čitelnost před znovupoužitelností.
 - Vyhýbej se předčasné abstrakci.
 - Jednoduchá duplicita je v pořádku, pokud zlepšuje čitelnost.
+- Jednoduchost znamená snižovat počet konceptů, ne jen počet souborů.
+- Nevytvářej sdílenou abstrakci bez reálného reuse.
+- Pokud se něco používá jen v jedné komponentě, nech to lokální.
 
 ---
 
@@ -33,6 +36,9 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 - Neslučuj logicky oddělené části do jednoho souboru jen kvůli snížení počtu souborů.
 - Pokud je soubor příliš dlouhý nebo míchá více odpovědností → rozděl ho.
 - Čitelnost má přednost před minimalizací počtu souborů.
+- Nevytvářej centrální `variant` nebo `style` soubory pro jednorázové komponenty.
+- Pokud pochopení vyžaduje skákání mezi více abstrakčními vrstvami → zjednoduš strukturu.
+- Preferuj lokální jasnost před globální abstrakcí.
 
 ---
 
@@ -138,6 +144,27 @@ Pokud si nejsi jistý → ber jako SIMPLE
 ---
 
 ## Vyhýbej se zbytečné abstrakci
+
+### Refactoring musí snižovat komplexitu
+
+Při refactoringu existujícího kódu:
+
+- Nereorganizuj abstrakci (např. přesun logiky do `*Variants.ts`, `styles/` nebo podobných souborů).
+- Pokud je abstrakce zbytečná → odstraň ji místo přesouvání.
+- Preferuj mazání vrstev před zaváděním nových sdílených souborů.
+
+Špatný refactoring:
+
+- přesun inline stylingu do centrálního `variants` souboru bez reálného reuse
+- zachování staré abstrakce přes re-exporty místo jejího odstranění
+- nahrazení více malých abstrakcí jedním velkým abstrakčním souborem
+
+Správné chování:
+
+- zjednoduš strukturu
+- odstraň nepoužité vrstvy
+- drž styling blízko použití
+- snižuj počet konceptů, ne jen počet souborů
 
 ### NE:
 

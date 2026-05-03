@@ -114,6 +114,30 @@ Nepoužívej variants pokud:
 
 ---
 
+## `tv()` (tailwind-variants)
+
+### Kdy `tv()` nepoužívat
+
+Nepoužívej `tv()` pokud:
+
+- komponenta je použitá pouze na jednom místě
+- neexistuje reálné reuse variant
+- styling je jednoduchý nebo specifický pro jednu komponentu
+
+V těchto případech použij inline `className` s `cn()`.
+
+### `tv()` je pouze pro design system
+
+Použij `tv()` pouze pokud:
+
+- komponenta je reusable napříč aplikací
+- má stabilní variant API
+- reprezentuje sdílený UI primitive (např. Button, Input)
+
+Nepoužívej `tv()` pro feature-specific komponenty.
+
+---
+
 ## Komplexita variant
 
 - maximálně 2–3 varianty na jeden styl
