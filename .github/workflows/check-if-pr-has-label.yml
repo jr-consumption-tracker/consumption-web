@@ -1,15 +1,14 @@
 name: Kontrola labelu u pull requestu
-
 on:
   pull_request:
     types: [opened, reopened, labeled, unlabeled]
-
+    branches: [main]
 jobs:
   kontrola-labelu:
     runs-on: ubuntu-latest
     steps:
       - name: Zkontroluj, zda má PR nějaký label
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const labels = context.payload.pull_request.labels;

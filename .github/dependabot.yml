@@ -3,11 +3,19 @@ updates:
   # Enable version updates for npm
   - package-ecosystem: npm
     # Look for `package.json` and `lock` files in the `root` directory
-    directory: /
+    directory: /src
     schedule:
-      interval: monthly
+      interval: quarterly
     # https://stackoverflow.com/questions/64047526/how-to-get-dependabot-to-trigger-for-security-updates-only
-    open-pull-requests-limit: 0
+    open-pull-requests-limit: 3
     labels:
       - dependencies
       - security
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: quarterly
+    labels:
+      - dependencies
+      - github-actions

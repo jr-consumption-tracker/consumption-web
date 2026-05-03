@@ -1,9 +1,10 @@
 import path from "path";
 import { defineConfig, loadEnv } from "vite";
 
+import babel from "@rolldown/plugin-babel";
 import tailwindcss from "@tailwindcss/vite";
 import tanstackRouter from "@tanstack/router-plugin/vite";
-import react from "@vitejs/plugin-react";
+import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig((configEnv) => {
@@ -31,10 +32,9 @@ export default defineConfig((configEnv) => {
         autoCodeSplitting: true,
         routesDirectory: path.resolve(__dirname, "./src/app/routes"),
       }),
-      react({
-        babel: {
-          plugins: [["babel-plugin-react-compiler"]],
-        },
+      react(),
+      babel({
+        presets: [reactCompilerPreset()],
       }),
     ],
     resolve: {
