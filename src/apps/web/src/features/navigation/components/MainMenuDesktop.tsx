@@ -1,21 +1,20 @@
 import { useRef, useState } from "react";
-import type { MouseEvent } from "react";
+import { useTranslation } from "react-i18next";
 
 import { cn } from "@repo/utils";
+import { Link } from "@tanstack/react-router";
 
+import { NAV_LINKS } from "../constants/NAV_LINKS";
+
+import type { MouseEvent } from "react";
 interface SpotlightState {
   left: number;
   width: number;
   opacity: number;
 }
 
-const NAV_LINKS = [
-  { href: "#features", label: "Vlastnosti" },
-  { href: "#motivation", label: "Proč my?" },
-  { href: "#pricing", label: "Ceník" },
-];
-
 export const MainMenuDesktop = () => {
+  const { t } = useTranslation("common");
   const containerRef = useRef<HTMLDivElement>(null);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const [spotlightPos, setSpotlightPos] = useState<SpotlightState>({
@@ -62,10 +61,12 @@ export const MainMenuDesktop = () => {
       </div>
 
       {NAV_LINKS.map((link, idx) => (
-        <a
+        <Link
           key={link.href}
-          href={link.href}
-          onMouseEnter={(e) => handleMouseEnter(idx, e)}
+          to={link.href}
+          onMouseEnter={(e) =>
+            handleMouseEnter(idx, e as unknown as MouseEvent<HTMLAnchorElement>)
+          }
           className={cn(
             "relative z-10 px-5 py-2 text-sm font-bold tracking-tight transition-all duration-500",
             hoveredIdx === idx
@@ -73,7 +74,7 @@ export const MainMenuDesktop = () => {
               : "text-text-muted hover:text-text-main",
           )}
         >
-          {link.label}
+          {t(link.labelKey)}
 
           <div
             className={cn(
@@ -83,7 +84,7 @@ export const MainMenuDesktop = () => {
                 : "opacity-0 translate-y-2 scale-0",
             )}
           />
-        </a>
+        </Link>
       ))}
     </div>
   );

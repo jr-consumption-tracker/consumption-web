@@ -4,6 +4,12 @@
     "line2": "Energie",
     "ariaLabel": "Spotřeba Energie - Domů"
   },
+  "navigation": {
+    "home": "Domů",
+    "features": "Vlastnosti",
+    "howItWorks": "Jak to funguje",
+    "pricing": "Ceník"
+  },
   "header": {
     "cta": {
       "startFree": "Začít zdarma"

@@ -4,6 +4,12 @@
     "line2": "Consumption",
     "ariaLabel": "Energy Consumption - Home"
   },
+  "navigation": {
+    "home": "Home",
+    "features": "Features",
+    "howItWorks": "How it works",
+    "pricing": "Pricing"
+  },
   "header": {
     "cta": {
       "startFree": "Start for free"
