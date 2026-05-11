@@ -22,6 +22,17 @@ This project uses a layered rule system:
 
 ---
 
+### Visual Pattern (UI layout)
+
+- **Rules**  
+  → `docs/ui-visual-pattern.md`  
+  → defines layout, structure, and visual consistency
+
+- Visual Pattern is **authoritative for UI layout**
+- It must be followed when generating UI structure
+
+---
+
 ### Styling
 
 - **Core rules**  
@@ -36,9 +47,14 @@ This project uses a layered rule system:
 
 ## How to work with the code
 
-- Always follow **core rules** first
+- Always follow **core rules** first for decision making
+- Apply **visual pattern rules** for UI layout and structure
 - Use reference rules only when needed
-- If rules conflict → follow rule priority defined in core rules
+
+If rules conflict:
+
+- UI Coding rules decide **logic and structure**
+- Visual Pattern decides **layout and composition**
 
 ---
 
@@ -50,11 +66,16 @@ This project uses a layered rule system:
   - data flow
   - abstraction decisions
 
+- Use **Visual Pattern rules** for:
+  - page layout
+  - section structure
+  - grid and spacing consistency
+  - component composition (cards, sections, CTA)
+
 - Use **Styling rules** for:
-  - layout
-  - visual appearance
+  - visual details
   - Tailwind usage
-  - CSS vs className decisions
+  - CSS vs `className` decisions
 
 ---
 
@@ -62,9 +83,11 @@ This project uses a layered rule system:
 
 If unsure:
 
-- choose simpler solution
+- follow UI Coding rules for logic
+- reuse the closest layout from the reference page (`Home.tsx`)
+- do not invent new layout patterns
+- choose simpler solution for logic only
 - avoid unnecessary abstraction
-- avoid extra layers
 - keep logic close to usage
 
 ---
@@ -80,9 +103,9 @@ If unsure:
 
 ## Reuse and patterns
 
-- Reuse existing solutions only if they match the use-case and complexity
-- Do not force reuse
-- Do not introduce new patterns without a clear reason
+- Reuse existing solutions if they match the use-case
+- For UI layout, always prefer patterns from the reference page
+- Do not introduce new layout patterns without a clear reason
 
 ---
 
@@ -100,3 +123,4 @@ If unsure:
 - analyze existing code
 - follow established patterns
 - prioritize maintainability and clarity
+- prefer reference page layout over inventing new UI structure

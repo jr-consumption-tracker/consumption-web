@@ -26,6 +26,7 @@
     "react-dom": "catalog:",
     "react-i18next": "^17.0.6",
     "react-redux": "catalog:",
+    "recharts": "^3.8.1",
     "tailwindcss": "^4.2.4"
   },
   "devDependencies": {

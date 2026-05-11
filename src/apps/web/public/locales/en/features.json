@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "title": "Application Features",
+    "subtitle": "Detailed overview of your energy consumption and costs in one place",
+    "description": "Track electricity, gas, and water usage and identify opportunities for savings. Our tools help you effectively monitor expenses across all your properties."
+  },
+  "list": {
+    "tracking": {
+      "title": "Consumption overview",
+      "description": "Monitor electricity, gas, and water usage clearly in one place. Keep track of consumption trends across all your properties."
+    },
+    "analytics": {
+      "title": "Advanced Charts and Reports",
+      "description": "Track trends and compare consumption between different periods. Easily identify high usage and get data for effective savings."
+    },
+    "costs": {
+      "title": "Tariffs and Cost Calculations",
+      "description": "Get an instant overview of costs across all categories. Easily identify your largest expenses and discover opportunities for savings."
+    },
+    "premium": {
+      "title": "Premium Features and Predictions",
+      "description": "With a subscription, you get access to intelligent predictions of future consumption and automatic alerts for unusual fluctuations. Optimize your costs to the maximum."
+    }
+  }
+}
