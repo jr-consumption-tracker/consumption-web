@@ -4,6 +4,7 @@ import { FeatureSection } from "@web/shared/components/FeatureSection";
 
 import { ConsumptionDashboard } from "./components/ConsumptionDashboard";
 import { FeatureChart } from "./components/FeatureChart";
+import { PremiumInsights } from "./components/PremiumInsights";
 
 import type { ChartData } from "./components/FeatureChart";
 
@@ -41,12 +42,6 @@ const COSTS_DATA: ChartData[] = [
   { name: "Plyn", value: 920 },
   { name: "Voda", value: 380 },
   { name: "Odpad", value: 150 },
-];
-
-const PREMIUM_DATA: ChartData[] = [
-  { name: "Standard", value: 100 },
-  { name: "Optimalizace", value: 160 },
-  { name: "Úspora", value: 210 },
 ];
 
 /**
@@ -95,11 +90,9 @@ export const FeaturesOverview = () => {
       <FeatureSection
         title={t("list.premium.title")}
         description={t("list.premium.description")}
-        visual={
-          <FeatureChart data={PREMIUM_DATA} color="var(--color-accent)" />
-        }
+        visual={<PremiumInsights />}
         reverse
-        className="bg-surface"
+        className="bg-surface py-14 lg:py-20"
       />
     </div>
   );

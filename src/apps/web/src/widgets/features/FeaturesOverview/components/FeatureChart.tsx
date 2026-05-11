@@ -76,7 +76,6 @@ export const FeatureChart = ({
             <YAxis
               axisLine={false}
               tickLine={false}
-              style={{ whiteSpace: "nowrap" }}
               tick={{ fill: "var(--color-text-muted)", fontSize: 12 }}
               tickFormatter={(val) => `${val}${unit ? ` ${unit}` : ""}`}
             />
@@ -137,11 +136,11 @@ export const FeatureChart = ({
             <YAxis
               axisLine={false}
               tickLine={false}
-              style={{ whiteSpace: "nowrap" }}
               tick={{ fill: "var(--color-text-muted)", fontSize: 12 }}
               tickFormatter={(val) => `${val}${unit ? ` ${unit}` : ""}`}
             />
             <Tooltip
+              cursor={false}
               contentStyle={{
                 backgroundColor: "var(--color-surface)",
                 borderColor: "var(--color-border)",
@@ -227,12 +226,12 @@ export const FeatureChart = ({
             <YAxis
               axisLine={false}
               tickLine={false}
-              style={{ whiteSpace: "nowrap" }}
+              width={80}
               tick={{ fill: "var(--color-text-muted)", fontSize: 12 }}
               tickFormatter={(val) => `${val}${unit ? ` ${unit}` : ""}`}
             />
             <Tooltip
-              cursor={{ fill: "var(--color-surface-soft)", opacity: 0.4 }}
+              cursor={{ fill: "var(--color-surface-soft)", opacity: 0.1 }}
               contentStyle={{
                 backgroundColor: "var(--color-surface)",
                 borderColor: "var(--color-border)",

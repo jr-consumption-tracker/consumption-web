@@ -15,7 +15,7 @@ export const Section = ({
   background,
 }: SectionProps) => {
   return (
-    <section id={id} className={cn("relative py-20 lg:py-32", className)}>
+    <section id={id} className={cn("relative py-12 lg:py-16", className)}>
       {background}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         {children}

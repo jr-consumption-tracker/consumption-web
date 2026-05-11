@@ -18,8 +18,25 @@
       "description": "Get an instant overview of costs across all categories. Easily identify your largest expenses and discover opportunities for savings."
     },
     "premium": {
-      "title": "Premium Features and Predictions",
-      "description": "With a subscription, you get access to intelligent predictions of future consumption and automatic alerts for unusual fluctuations. Optimize your costs to the maximum."
+      "title": "Advanced tools and alerts",
+      "description": "Get instant alerts for unusual fluctuations and tips for optimizing your costs. Make informed decisions with advanced insights and control.",
+      "insights": {
+        "usage": {
+          "title": "Unusual consumption increase",
+          "description": "15% increase in electricity consumption compared to average.",
+          "value": "+124 kWh"
+        },
+        "optimization": {
+          "title": "Optimization recommendation",
+          "description": "The current gas tariff does not match your usage.",
+          "value": "Tip"
+        },
+        "savings": {
+          "title": "Annual savings potential",
+          "description": "With optimization, you can save up to 15% annually.",
+          "value": "-15 %"
+        }
+      }
     }
   }
 }

@@ -18,8 +18,25 @@
       "description": "Získejte okamžitý přehled o nákladech napříč všemi kategoriemi. Snadno identifikujte největší výdaje a odhalte prostor pro efektivní úspory."
     },
     "premium": {
-      "title": "Premium funkce a predikce",
-      "description": "S předplatným získáte přístup k inteligentním predikcím budoucí spotřeby a automatickému upozornění na neobvyklé výkyvy. Optimalizujte své náklady na maximum."
+      "title": "Pokročilé nástroje a upozornění",
+      "description": "Získejte okamžitá upozornění na neobvyklé výkyvy a tipy pro optimalizaci vašich nákladů. Dělejte informovaná rozhodnutí díky pokročilým přehledům a kontrole.",
+      "insights": {
+        "usage": {
+          "title": "Neobvyklý nárůst spotřeby",
+          "description": "15% nárůst spotřeby elektřiny oproti průměru.",
+          "value": "+124 kWh"
+        },
+        "optimization": {
+          "title": "Doporučení k optimalizaci",
+          "description": "Aktuální tarif plynu neodpovídá spotřebě.",
+          "value": "Tip"
+        },
+        "savings": {
+          "title": "Potenciál roční úspory",
+          "description": "Při optimalizaci můžete ušetřit až 15 % ročně.",
+          "value": "-15 %"
+        }
+      }
     }
   }
 }
