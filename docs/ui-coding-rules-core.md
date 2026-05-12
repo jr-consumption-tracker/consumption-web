@@ -246,7 +246,9 @@ Nepoužívej když:
 - Výjimka:
   - malé, triviální nebo úzce související komponenty mohou zůstat inline,
     pokud to zlepšuje čitelnost a snižuje počet souborů
-- Nenechávej více komponent v jednom souboru, pokud nejde o triviální vložený UI fragment
+- Nenechávej více komponent v jednom souboru, pokud:
+  - má vlastní props interface (nejde o triviální fragment)
+  - představuje významný UI celek (např. Card, Row, Item)
 
 ---
 

@@ -3,10 +3,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import HttpApi from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 
-import {
-  LanguageEnum,
-  LanguageEnumKeys,
-} from "@web/features/locale";
+import { LanguageEnum, LanguageEnumKeys } from "@web/features/locale";
 
 const selectedLanguage = localStorage.getItem("i18nextLng") || LanguageEnum.CS;
 
@@ -32,7 +29,7 @@ i18n
     react: {
       useSuspense: false,
     },
-    ns: ["common", "home", "auth"],
+    ns: ["common", "home", "auth", "features"],
     defaultNS: "common", // (Default Namespace) určuje výchozí jmenný prostor, který se použije, když při překladu explicitně nespecifikuješ, ze kterého namespace chceš text načíst.
     backend: {
       loadPath: `/locales/{{lng}}/{{ns}}.json?${import.meta.env.PACKAGE_VERSION}`,

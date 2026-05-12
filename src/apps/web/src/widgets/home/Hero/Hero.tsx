@@ -1,9 +1,7 @@
 import { MoveRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import { Button } from "@heroui/react";
 import { ButtonLink } from "@repo/components";
-import scrollToView from "@repo/utils/src/scrollToView";
 import { useIsAuthenticated } from "@web/features/auth/hooks/useIsAuthenticated";
 import { Section } from "@web/shared/components/Section";
 
@@ -16,10 +14,6 @@ import { Section } from "@web/shared/components/Section";
 export const Hero = () => {
   const { t } = useTranslation("home");
   const isAuthenticated = useIsAuthenticated();
-
-  const onMoreInfo = () => {
-    scrollToView("pricing");
-  };
 
   return (
     <Section
@@ -67,9 +61,9 @@ export const Hero = () => {
               : t("hero.actions.startFree")}
           </ButtonLink>
 
-          <Button
+          <ButtonLink
+            to={"/features"}
             variant="ghost"
-            onClick={onMoreInfo}
             size="lg"
             className="text-xl font-bold leading-6 transition-all hover:text-primary hover:bg-transparent group"
           >
@@ -77,7 +71,7 @@ export const Hero = () => {
             <span className="inline-block transition-transform group-hover:translate-x-2">
               <MoveRight />
             </span>
-          </Button>
+          </ButtonLink>
         </div>
       </div>
     </Section>

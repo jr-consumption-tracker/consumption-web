@@ -1,0 +1,42 @@
+{
+  "hero": {
+    "title": "Funkce aplikace",
+    "subtitle": "Detailní přehled o vaší spotřebě energií a nákladech na jednom místě",
+    "description": "Sledujte odběry elektřiny, plynu i vody a identifikujte prostor pro úspory. Naše nástroje vám pomohou efektivně monitorovat výdaje napříč všemi vašimi nemovitostmi."
+  },
+  "list": {
+    "tracking": {
+      "title": "Přehled spotřeb",
+      "description": "Sledujte aktuální stavy elektřiny, plynu a vody přehledně na jednom místě. Mějte pod kontrolou vývoj spotřeby ve všech svých nemovitostmi."
+    },
+    "analytics": {
+      "title": "Pokročilé grafy a reporty",
+      "description": "Sledujte trendy a porovnávejte spotřebu mezi různými obdobími. Snadno identifikujte nadměrný odběr a získejte podklady pro efektivní úspory."
+    },
+    "costs": {
+      "title": "Tarify a kalkulace nákladů",
+      "description": "Získejte okamžitý přehled o nákladech napříč všemi kategoriemi. Snadno identifikujte největší výdaje a odhalte prostor pro efektivní úspory."
+    },
+    "premium": {
+      "title": "Pokročilé nástroje a upozornění",
+      "description": "Získejte okamžitá upozornění na neobvyklé výkyvy a tipy pro optimalizaci vašich nákladů. Dělejte informovaná rozhodnutí díky pokročilým přehledům a kontrole.",
+      "insights": {
+        "usage": {
+          "title": "Neobvyklý nárůst spotřeby",
+          "description": "15% nárůst spotřeby elektřiny oproti průměru.",
+          "value": "+124 kWh"
+        },
+        "optimization": {
+          "title": "Doporučení k optimalizaci",
+          "description": "Aktuální tarif plynu neodpovídá spotřebě.",
+          "value": "Tip"
+        },
+        "savings": {
+          "title": "Potenciál roční úspory",
+          "description": "Při optimalizaci můžete ušetřit až 15 % ročně.",
+          "value": "-15 %"
+        }
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@
 Tento dokument je referenční.
 Pro rozhodování používej: ui-coding-rules-core.md
 
-Pravidla platí pro `implementer` i `dispatcher`.
+Pravidla platí pro `web` i `admin`.
 Slouží jako závazný standard pro vývojáře i GitHub Copilot.
 
 ## Jak používat tato pravidla
