@@ -7,6 +7,7 @@ import { Link } from "@tanstack/react-router";
 import { NAV_LINKS } from "../model/constants/NAV_LINKS";
 
 import type { MouseEvent } from "react";
+
 interface SpotlightState {
   left: number;
   width: number;
