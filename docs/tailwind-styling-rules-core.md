@@ -3,6 +3,8 @@
 Tento dokument definuje, jak dělat rozhodnutí při stylování UI.  
 Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 
+Styling patří výhradně do UI vrstvy (`ui/`) a musí zůstat co nejblíže komponentě. Tato pravidla se vztahují primárně na `ui/` segment definovaný v UI Coding Rules. **Styling musí být definován přímo v souboru UI komponenty, kde se používá.**
+
 ---
 
 ## Priorita pravidel
@@ -13,6 +15,10 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 
 ---
 
+Tailwind utility třídy musí být psány **přímo v `className`** (inline). Styling musí zůstat uvnitř souboru komponenty. **Styling nesmí být nikdy extrahován do JavaScript/TypeScript souborů.**
+
+---
+
 ## Simplicity first
 
 - Preferuj co nejjednodušší styling řešení.
@@ -20,6 +26,17 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 - Nevytvářej CSS třídu bez jasného reuse nebo zlepšení čitelnosti.
 - Preferuj čitelnost před znovupoužitelností.
 - Jednoduchá duplicita utility classes je v pořádku, pokud zlepšuje čitelnost.
+
+---
+
+## Zakázané vzory (Forbidden patterns)
+
+- **Soubory `.styles.ts` jsou zakázány. Neexistují žádné výjimky.**
+- **Sdílené JavaScript/TypeScript styling soubory (např. `styles.ts`, `sharedStyles.ts`) jsou zakázány.**
+- Styling nesmí být nikdy extrahován do JavaScript/TypeScript souborů.
+- Styling nesmí být sdílen prostřednictvím JavaScript utilit.
+- Jakýkoliv styling mimo Tailwind utility classes nebo CSS `@layer components` je zakázán.
+- Nikdy nevytvářej nové styling vzory, které nejsou explicitně povoleny těmito pravidly.
 
 ---
 
@@ -61,17 +78,18 @@ Pokud se pravidla dostanou do konfliktu, řiď se prioritou níže.
 
 → Postup:
 
-- použij `@layer components`
-- nebo slot className API
+- přesuň styling do **CSS `@layer components`**
+- nebo použij slot className API
+- **NIKDY** nepřesouvej styling do JavaScript souborů (např. `.styles.ts`).
 
 ---
 
 ### Fallback:
 
-Pokud si nejsi jistý:
-
-- preferuj SIMPLE
+- preferuj SIMPLE (inline Tailwind)
 - ale pokud `className` ztrácí čitelnost → ber jako COMPLEX
+- pokud pro situaci neexistuje pravidlo, použij **inline Tailwind**
+- **Jakýkoliv styling přístup mimo Tailwind utility classes nebo CSS `@layer components` je zakázán.**
 
 ---
 
@@ -140,7 +158,7 @@ Použij `tv()` pouze pokud:
 - má stabilní variant API
 - reprezentuje sdílený UI primitive (např. Button, Input)
 
-Nepoužívej `tv()` pro feature-specific komponenty.
+Nepoužívej `tv()` pro feature-specific komponenty. `tv()` nesmí být nahrazováno jinými abstrakcemi jako `.styles.ts`. **Styling nesmí být sdílen přes JavaScript soubory.**
 
 ---
 
@@ -148,7 +166,7 @@ Nepoužívej `tv()` pro feature-specific komponenty.
 
 - maximálně 2–3 varianty na jeden styl
 - více než 3 varianty je silný signál ke zjednodušení
-- pokud varianty snižují čitelnost, přesuň styling do `@layer components` nebo slot className API
+- pokud varianty snižují čitelnost, přesuň styling do **CSS `@layer components`** (nikdy ne do JS souborů) nebo použij slot className API
 
 ---
 

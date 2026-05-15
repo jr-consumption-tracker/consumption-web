@@ -1,13 +1,9 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export interface RefreshedSessionPayload {
-  accessToken: string;
-  refreshToken?: string;
-}
+import type { AuthSession } from "@web/entities";
 
-export const authSessionRefreshed = createAction<RefreshedSessionPayload>(
+export const authSessionRefreshed = createAction<AuthSession>(
   "shared/authSessionRefreshed",
 );
 
 export const authSessionExpired = createAction("shared/authSessionExpired");
-

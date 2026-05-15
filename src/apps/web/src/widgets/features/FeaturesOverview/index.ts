@@ -1,1 +1,1 @@
-export * from "./FeaturesOverview";
+export * from "./ui/FeaturesOverview";

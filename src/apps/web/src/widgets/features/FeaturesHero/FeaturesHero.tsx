@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { Section } from "@web/shared/components/Section";
+import { Section } from "@web/shared/ui/Section";
 
 /**
  * FeaturesHero - Hero sekce stránky /features

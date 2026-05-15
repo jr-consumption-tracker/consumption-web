@@ -30,13 +30,13 @@ CSS `@theme` je jediný zdroj pravdy pro design tokens.
 
 Hero UI components nejsou styling systém. Hero UI components neurčují styling architekturu projektu.
 
-Projekt nepoužívá žádný CSS-in-JS ani runtime styling systém.
+Projekt nepoužívá žádný CSS-in-JS ani runtime styling systém. Soubory `.styles.ts` jsou výslovně zakázány. Neexistují žádné výjimky.
 
-Styling je deklarativní vrstva a nesmí obsahovat aplikační logiku.
+Styling je deklarativní vrstva a nesmí obsahovat aplikační logiku. Styling musí být definován přímo v souboru UI komponenty, kde se používá, pokud není explicitně extrahován do CSS `@layer components` podle těchto pravidel.
 
 Rozhodování o layoutu nesmí být řízeno pomocí CSS nebo Tailwind variants.
 
-Jakýkoliv styling přístup mimo tuto hierarchii je implementační chyba.
+Jakýkoliv styling přístup mimo tuto hierarchii je implementační chyba. Nikdy nevytvářej nové styling vzory (např. `.styles.ts`), které nejsou v tomto dokumentu povoleny.
 
 ---
 
@@ -52,7 +52,7 @@ Styling je jednoduchý a čitelný?
 → Ponech ho jako Tailwind utility classes v className.
 
 Styling je složitý nebo nečitelný?
-→ Přesuň ho do @layer components nebo do slot className API.
+→ Přesuň ho výhradně do @layer components nebo do slot className API. Nikdy ne do JavaScript souborů.
 
 Stejný vizuální pattern se opakuje na dvou nebo více místech a má reusable nebo doménovou odpovědnost?
 → Vytvoř pojmenovanou třídu v @layer components.
@@ -64,11 +64,12 @@ Styluješ Hero UI components se sloty?
 → Zastav implementaci a ověř návrh. Nevytvářej nový styling pattern.
 
 If no rule clearly applies:
-→ choose the simplest valid Tailwind-based solution.
+→ choose the simplest valid Tailwind-based solution (inline Tailwind).
 
 Nejsi si jistý?
 → Preferuj jednoduché Tailwind utility classes.
-→ Pokud se zhorší čitelnost, přejdi ke strukturovanějšímu přístupu.
+→ Pokud se zhorší čitelnost, přejdi ke strukturovanějšímu přístupu (pouze @layer components).
+→ Jakýkoliv styling přístup mimo Tailwind utility classes nebo CSS @layer components je zakázán.
 ```
 
 ### Rychlá pravidla
@@ -337,7 +338,8 @@ export const ContactCard = ({ name, email }: ContactCardProps) => {
 - Čitelnost `className` má přednost před redukcí duplicity.
 - Styly nesmí být přesunuté do CSS pouze kvůli zkrácení `className`.
 - Jednoduchý styling musí zůstat v `className`.
-- Složitý styling musí být přesunutý do `@layer components` nebo do slot className API.
+- Složitý styling musí být přesunutý výhradně do `@layer components` nebo do slot className API. **Soubory `.styles.ts`, sdílené JavaScript styling soubory a abstrakce do JS konstant (např. v `lib/`) jsou zakázány.**
+- Nevytvářej lokální konstanty pro `className`, pokud nepřinášejí skutečný reuse nebo nezlepšují čitelnost.
 - Styling nesmí měnit chování komponenty.
 - Hover, focus, active a disabled stavy musí být implementované přes Tailwind utility classes.
 - JavaScript a inline styles jsou zakázané pro hover, focus, active a disabled vizuální stavy.
@@ -381,7 +383,7 @@ Styling je složitý, pokud:
 - kombinuje více variant, například hover, data nebo responsive varianty;
 - opakuje se na více místech.
 
-Složitý styling musí být přesunutý do `@layer components` nebo do slot className API.
+Složitý styling musí být přesunutý do `@layer components` nebo do slot className API. **Nikdy ho nepřesouvej do JavaScript souborů (např. `.styles.ts`).**
 
 ---
 
@@ -503,7 +505,7 @@ Hero UI components nejsou styling systém.
 
 Hero UI components smí být použité pouze tehdy, když komponenta zajišťuje chování, přístupnost nebo interakci, které HTML + Tailwind utility classes neposkytují.
 
-Pokud jednoduchý HTML element + Tailwind utility classes pokrývá požadavek, musí být použité HTML + Tailwind utility classes řešení.
+**HTML + Tailwind utility classes mají vždy přednost před Hero UI komponentami, pokud pokrývají daný požadavek.**
 
 ### Pravidla
 
@@ -661,6 +663,8 @@ Tailwind utility classes v JSX prefix `app-` nepoužívají.
 | Lokální media queries v komponentě                              | Tailwind breakpoint varianty                                                                    |
 | Podmíněné barvy pro dark/light mode v JSX                       | Design tokens přepsané podle mode                                                               |
 | Komponentová CSS třída pro jednorázový styl                     | Tailwind utility classes přímo v JSX                                                            |
+| Soubory `.styles.ts`                                            | Tailwind utility classes inline nebo `@layer components`                                         |
+| Sdílené JavaScript styling soubory / konstanty                  | Tailwind utility classes inline nebo `@layer components`                                         |
 | Nový styling pattern bez dokumentace                            | Existující Decision Tree                                                                        |
 
 ### Zakázané příklady

@@ -6,7 +6,7 @@ import { RouterProvider } from "@tanstack/react-router";
 import i18n from "./app/localization/i18n";
 import { router } from "./app/router/router";
 import { store } from "./app/store/store";
-import { ThemeProvider } from "./shared/theme";
+import { ThemeProvider } from "./shared/lib/theme";
 
 function App() {
   return (
