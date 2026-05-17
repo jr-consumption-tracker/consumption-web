@@ -1,6 +1,6 @@
 import { mainBaseApi } from "@web/shared/api/mainBaseApi";
 
-import type { User } from "../types/User";
+import type { User } from "../model/user";
 
 const basePath = "web/users/";
 

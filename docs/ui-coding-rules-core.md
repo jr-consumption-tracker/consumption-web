@@ -101,8 +101,9 @@ Pokud si nejsi jistý:
 
 ## Feature hooks
 
-- Feature hook patří pouze do `features/`
-- Reprezentuje chování (use-case), ne data
+- Feature hooky (business logika) patří do feature layer
+- Reprezentují chování (use-case), ne data
+- Jsou volitelné
 
 ### Vytvářej pouze když:
 
@@ -144,7 +145,34 @@ Pokud si nejsi jistý:
 - Rozděluj pouze pokud:
   - je kód nepřehledný
   - část má vlastní odpovědnost
-  - existuje reuse
+  - rozděl ho, pokud se část znovu používá nebo dává smysl ji testovat samostatně.
+
+---
+
+## Memoization (React Compiler)
+
+Projekt používá React Compiler.
+
+### Pravidla
+
+- React Compiler je primární mechanismus optimalizace.
+- Memoizace NENÍ výchozí přístup.
+- Nepoužívej `useMemo`, `useCallback` ani `React.memo` bez jasného důvodu.
+
+### Povolené použití
+
+- `useMemo` pouze pro drahé výpočty (např. práce s velkým datasetem)
+- `React.memo` pouze při prokazatelném problému s rendery
+
+### Zakázané použití
+
+- `useMemo` pro jednoduché hodnoty
+- `useCallback` pro běžné handlery
+- `React.memo` „pro jistotu“
+
+### Heuristika
+
+Pokud nedokážeš jasně zdůvodnit potřebu → memoizaci nepoužívej.
 
 ---
 
@@ -175,8 +203,8 @@ Správné chování:
 
 - nevytvářej hook pro jednoduchý `useState`
 - nevytahuj logiku použitou jednou
-- nevytvářej utils pro triviální funkce
-- nevytvářej constants pro jednorázové hodnoty
+- nevytvářej abstrakci pro triviální funkce
+- nevytvářej `constants/` pro jednorázové hodnoty
 - nevytvářej generická řešení bez reuse
 - nevytvářej mezivrstvy bez hodnoty
 
@@ -222,16 +250,22 @@ Nepoužívej když:
 2. Query hook (`api/use*Api.ts`)
 3. Feature hook (volitelný)
 
-- Feature hook není povinný
-- Komponenta může používat query hook přímo
+- Feature hook není povinný.
+- Používá se pouze pro orchestraci (skládání více zdrojů, derived state).
+- Komponenta může používat query hook přímo.
 
 ---
 
 ## Struktura
 
-- Složky jsou volitelné, ne povinné
-- Nevytvářej prázdné nebo triviální složky
-- Struktura roste s komplexitou
+- Folder struktura je definována v referenčních pravidlech.
+- Nevytvářej prázdné nebo triviální složky.
+- Struktura roste s komplexitou. **Nezaváděj abstrakci předčasně.**
+- Lokální hooky, utility a typy jsou povoleny pro izolovanou logiku.
+- **Standalone typové složky nevytvářej bez jasného důvodu.**
+- Typy definuj:
+  - lokálně (uvnitř komponenty) — UI-only typy, props, malé typy
+  - v odpovídající vrstvě — doménové nebo sdílené typy
 
 ---
 

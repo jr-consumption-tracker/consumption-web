@@ -1,3 +1,3 @@
-export { ThemeSelect } from "./components/ThemeSelect/ThemeSelect";
+export { ThemeSelect } from "./ui/ThemeSelect/ThemeSelect";
 
-export { useThemeToggle } from "./hooks/useThemeToggle";
+export { useThemeToggle } from "./model/hooks/useThemeToggle";
