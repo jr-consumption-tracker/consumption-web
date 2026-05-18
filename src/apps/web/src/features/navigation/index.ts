@@ -1,3 +1,5 @@
-export { MainMenuDesktop } from "./components/MainMenuDesktop";
-export { MainMenuMobile } from "./components/MainMenuMobile";
-export * from "./constants/NAV_LINKS";
+export { MainMenuDesktop } from "./ui/MainMenuDesktop";
+export { MainMenuMobile } from "./ui/MainMenuMobile";
+export { NAV_LINKS } from "./model/constants/NAV_LINKS";
+export type { NavLink } from "./model/constants/NAV_LINKS";
+export { useMobileMenu } from "./model/hooks/useMobileMenu";

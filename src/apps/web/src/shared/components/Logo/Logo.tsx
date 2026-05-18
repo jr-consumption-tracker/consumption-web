@@ -3,17 +3,13 @@ import { useTranslation } from "react-i18next";
 import { cn } from "@repo/utils";
 import { Link } from "@tanstack/react-router";
 
-import { LogoIcon } from "./components/LogoIcon";
-import { LogoText } from "./components/LogoText";
+import { LogoIcon } from "./ui/LogoIcon";
+import { LogoText } from "./ui/LogoText";
 
-import type { LogoProps } from "./types/LogoProps";
+import type { LogoProps } from "./model/Logo";
 
-/**
- * Logo — brand identity component.
- *
- * Orchestrates routing logic and delegates rendering to LogoIcon and LogoText.
- * When `to` is set, wraps everything in a TanStack Router Link.
- */
+// ─── Component ───────────────────────────────────────────────────────────────
+
 export const Logo = ({
   to = "/",
   className,
@@ -45,17 +41,15 @@ export const Logo = ({
     </div>
   );
 
-  if (to) {
-    return (
-      <Link
-        to={to}
-        className={cn(!disableHover && "group")}
-        aria-label={t("logo.ariaLabel")}
-      >
-        {content}
-      </Link>
-    );
-  }
+  if (!to) return content;
 
-  return content;
+  return (
+    <Link
+      to={to}
+      className={cn(!disableHover && "group")}
+      aria-label={t("logo.ariaLabel")}
+    >
+      {content}
+    </Link>
+  );
 };

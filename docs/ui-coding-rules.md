@@ -36,12 +36,14 @@ Pokud si nejsi jistý:
 
 - [Jak používat tato pravidla](#jak-používat-tato-pravidla)
 - [Priorita pravidel](#priorita-pravidel)
+- [Naming conventions (FSD)](#naming-conventions-fsd)
 - [Technologie](#technologie)
 - [Struktura monorepa](#struktura-monorepa)
 - [Vrstvy aplikace](#vrstvy-aplikace)
 - [Struktura slicu](#struktura-slicu)
 - [Struktura komponenty](#struktura-komponenty)
 - [Feature hooks](#feature-hooks)
+- [Struktura segmentů (ui, model, api, lib)](#struktura-segmentů-ui-model-api-lib)
 - [Granularita](#granularita)
 - [Pravidla pro komponenty](#pravidla-pro-komponenty)
 - [Simplicity first](#simplicity-first)
@@ -77,10 +79,25 @@ Výchozí chování:
 
 ---
 
+## Naming conventions (FSD)
+
+- `ui / model / api / lib` je standardní struktura pro komplexní části aplikace.
+- Tato struktura se aplikuje pouze u COMPLEX komponent (viz Simple vs Complex).
+- `ui/` obsahuje prezentační komponenty.
+- `model/` obsahuje state (store) a derived state.
+  - Feature hooky existují pouze v rámci `features/` vrstvy.
+  - **Nesmí obsahovat:** UI komponenty, čisté utility (bez Reactu), typy bez vztahu ke stavu nebo use-casu.
+- `api/` obsahuje API logiku.
+- `lib/` obsahuje čisté utility funkce bez React závislostí.
+  - **Nesmí obsahovat:** React hooky, state, orchestraci.
+- AI nástroje (Copilot) musí striktně dodržovat tuto strukturu.
+
+---
+
 ## Technologie
 
 - React + TypeScript: UI framework, strict mode
-- MUI: komponenty a styling, see `docs/mui-styling.md`
+- Tailwind CSS: styling, see `docs/tailwind-styling-rules.md`
 - TanStack Router: routing
 - TanStack Query: server state
 - TanStack Form: formuláře
@@ -115,8 +132,8 @@ Projekt je monorepo. Každá aplikace má vlastní `package.json`.
 - Importuj přes veřejné API package.
 
 ```ts
-import { DataGrid } from "@leo/components";
-import { formatDate } from "@leo/utils";
+import { DataGrid } from "@repo/components";
+import { formatDate } from "@repo/utils";
 ```
 
 ---
@@ -138,6 +155,13 @@ src/
 ├── entities/
 └── shared/
 ```
+
+### Role segmentů v FSD
+
+- `ui/` → prezentační komponenty
+- `model/` → state (store) a derived state (Feature hooky existují pouze ve `features/`)
+- `api/` → API volání (query, mutation)
+- `lib/` → čisté utility a pomocné funkce (**bez React závislostí**)
 
 ### Doménové členění uvnitř vrstev
 
@@ -257,20 +281,21 @@ Viz [Simple vs Complex components](#simple-vs-complex-components).
 
 ### Feature hooks
 
-Feature hook patří výhradně do `features/`.
+Feature hooky patří výhradně do `features/` vrstvy.
 
-- Není to povinná vrstva.
-- Reprezentuje use-case nebo UI orchestraci.
-- Může skládat `api/*Api.ts`, `use*Api.ts`, formulářovou logiku, derived state a side effects.
+- Není to povinná vrstva (jsou volitelné).
+- Reprezentují use-case logiku nebo UI orchestraci.
+- **Obsahují logiku závislou na Reactu (hooky, state, orchestrace).**
+- Mohou skládat `api/*Api.ts`, `use*Api.ts`, formulářovou logiku, derived state a side effects.
 
-#### Kdy vytvořit feature hook ve feature slicu
+#### Kdy vytvořit feature hook
 
 - Když skládáš více API callů, query nebo mutation do jednoho use-casu.
 - Když vytváříš odvozený UI stav pro workflow.
 - Když řešíš side effects nebo lifecycle logiku feature.
 - Když jde o znovupoužitelný use-case.
 
-#### Kdy NEvytvářet feature hook ve feature slicu
+#### Kdy NEvytvářet feature hook
 
 - Když pouze voláš jeden query hook.
 - Když pouze přeposíláš data bez transformace.
@@ -285,6 +310,39 @@ Feature hook patří výhradně do `features/`.
 - `loading` sjednocuj jako `query.isLoading || query.isFetching` nebo `mutation.isPending`.
 - `useDeferredValue` používej jen když řeší stabilitu nebo výkon UI.
 
+---
+
+### Struktura segmentů (ui, model, api, lib)
+
+Všechny segmenty mohou být ploché (default) nebo strukturované v závislosti na komplexitě.
+
+- **Plochá struktura** (všechny soubory přímo v segmentu):
+  - Používej u jednoduché logiky nebo malého počtu souborů.
+- **Strukturované segmenty**:
+  - Používej pouze tehdy, pokud počet souborů roste nebo existuje více nezávislých oblastí.
+
+#### Doporučená struktura segmentů:
+
+- **`ui/`**:
+  - Většinou plochá struktura.
+  - U komplexních sliců lze strukturovat podle komponent: `ui/<ComponentName>/`.
+- **`model/`**:
+  - `model/store/` → state, slice, selectors.
+  - `model/hooks/` → feature hooks.
+- **`api/`**:
+  - Většinou plochá struktura.
+  - Strukturuj pouze tehdy, pokud existuje více nezávislých API domén.
+- **`lib/`**:
+  - Většinou plochá struktura.
+  - Strukturuj pouze u velkého množství utilit (např. `lib/formatters/`, `lib/validators/`).
+
+#### Omezení a pravidla:
+
+- **Nezaváděj hluboké vnořování.**
+- **Nevytvářej složky mechanicky** (např. prázdné složky jen pro dodržení patternu).
+- Struktura musí prokazatelně zvyšovat čitelnost a snižovat kognitivní zátěž.
+- **Vyhýbej se overengineeringu.** Pokud segment obsahuje 2-3 soubory, nechej ho plochý.
+
 ### Entities vs Features (hooks)
 
 - `entities/`: reprezentace dat a business objektu, jednoduché read hooky
@@ -294,7 +352,7 @@ Feature hook patří výhradně do `features/`.
 
 - `shared/` obsahuje kód bez business logiky.
 - Patří sem reusable UI, utility, helpery, base hooky, generic form/table infrastructure a base API.
-- Komponenty v `shared/components/` nevolají API ani nepoužívají business store.
+- Komponenty v `shared/ui/` nevolají API ani nepoužívají business store.
 - Doménově specifická logika sem nepatří jen proto, že se opakuje.
 
 ---
@@ -310,7 +368,10 @@ Každý slice dodržuje stejné konvence.
 
 ```text
 contactList/
-├── components/
+├── ui/
+├── model/
+├── api/
+├── lib/
 ├── ContactList.tsx
 └── index.ts
 ```
@@ -331,15 +392,16 @@ export { ContactList } from "./ContactList";
 - Každá komponenta má vlastní adresář v `camelCase`.
 - Soubor komponenty je v `PascalCase`.
 - Preferuj jeden soubor = jedna hlavní věc.
-- Složky `components/`, `hooks/`, `utils/`, `constants/`, `types/`, `schemas/` jsou volitelné.
+- Složky `ui/`, `model/`, `lib/`, `api/` jsou volitelné. **Nezaváděj je předčasně u jednoduchých věcí.**
+- Lokální `hooks/`, `utils/`, `types/` jsou stále povoleny pro izolovanou logiku a jednoduché případy.
 - Nevytvářej prázdné nebo triviální složky.
 
 ```text
 contactCard/
-├── hooks/
-├── types/
-├── constants/
-├── utils/
+├── ui/
+├── model/
+├── api/
+├── lib/
 ├── ContactCard.tsx
 └── index.ts
 ```
@@ -384,8 +446,9 @@ Komponenta může zůstat ve stejném souboru POUZE pokud:
 - Složku pojmenuj v `camelCase` podle komponenty nebo use-casu.
 - Konstanty používají `SCREAMING_SNAKE_CASE`.
 - Pokud vznikne `constants/`, preferuj samostatný soubor pro každou významnou konstantu.
-- `utils/`, `hooks/` a `api/` nejsou místo pro definici typů ani konstant.
-- Typy patří do `types/`, konstanty do `constants/`.
+- `lib/`, `model/` a `api/` nejsou místo pro definici lokálních typů ani konstant.
+- Typy definuj primárně lokálně nebo v `model/` (pokud jsou sdílené). Nevytvářej samostatné `types/` složky bez jasného důvodu.
+- Konstanty patří do `lib/` nebo blízko místa použití.
 - Malé, lokální a úzce související věci mohou zůstat v jednom souboru.
 - Nerozděluj kód mechanicky jen kvůli struktuře.
 
@@ -454,15 +517,46 @@ export const Route = createLazyRoute("/contacts")({ component: Contacts });
 - Přidávej `displayName` pouze u HOC.
 - U běžných komponent a komponent s `ref` propou není potřeba.
 
-### Memoizace
+### Memoizace (React Compiler)
 
-- Projekt používá React Compiler.
-- Memoizaci nepoužívej plošně.
-- `useMemo` používej pro drahé výpočty nebo stabilní provider value.
-- `React.memo` jen při prokazatelném problému s rendery.
-- `useCallback` nepoužívej bez reálného důvodu.
+V projektu je aktivní **React Compiler**, který automaticky optimalizuje rendery a stabilitu referencí.
+
+#### Základní pravidla:
+
+- React Compiler je primární mechanismus pro optimalizaci výkonu.
+- **Memoizace NENÍ výchozí přístup.**
+- Nepoužívej `useMemo`, `useCallback` ani `React.memo` preventivně.
+
+#### Striktní omezení:
+
+- **`useMemo`** je povoleno POUZE když:
+  - výpočet je prokazatelně drahý (např. komplexní transformace velkých dat)
+  - zpracováváš velké datasety
+- **`React.memo`** je povoleno POUZE když:
+  - existuje prokazatelný a změřený problém s rendery dané komponenty
+- **`useCallback`** je DISCOURAGED a nesmí se používat, pokud:
+  - identita funkce nezpůsobuje reálný problém (což je u React Compileru vzácné)
+
+#### Zakázané patterny:
+
+- `useMemo` pro jednoduché hodnoty, stringy, boolean nebo malé objekty.
+- `useCallback` pro běžné handlery (onClick, onChange) bez komplexní závislosti.
+- `React.memo` použité "pro jistotu" nebo preventivně.
+
+#### Heuristika:
+
+- Pokud nedokážeš jasně zdůvodnit drahý výpočet nebo změřit problém s výkonem → **NEPOUŽÍVEJ MEMOIZACI.**
 
 ```tsx
+// ŠPATNĚ (zbytečná memoizace)
+const handleClick = useCallback(() => console.log("clicked"), []);
+const label = useMemo(() => (isDark ? "Dark" : "Light"), [isDark]);
+
+// SPRÁVNĚ (React Compiler vyřeší automaticky)
+const handleClick = () => console.log("clicked");
+const label = isDark ? "Dark" : "Light";
+
+// POVOLENÉ (drahý výpočet)
 const groupedRows = useMemo(() => groupLargeDataset(rows), [rows]);
 ```
 
@@ -556,15 +650,15 @@ Pokud si nejsi jistý, ber komponentu jako simple.
 
 - Logiku drž co nejblíže místu použití.
 - Jednoduchá, jednorázová logika může zůstat v komponentě.
-- Přesun do `hooks/`, `utils/` nebo sub-komponenty má smysl až když tím roste srozumitelnost, reuse nebo testovatelnost.
+- Přesun do `model/`, `lib/` nebo sub-komponenty má smysl až když tím roste srozumitelnost, reuse nebo testovatelnost.
 
 #### Logika a hooky
 
 - Hook není defaultní místo pro logiku.
 - Použij ho při složitosti, side effects nebo reuse.
-- Čisté výpočty a transformace bez React závislostí patří do `utils/`, pokud jsou samostatné nebo znovupoužitelné.
+- Čisté výpočty a transformace bez React závislostí patří do `lib/`, pokud jsou samostatné nebo znovupoužitelné.
 - Krátké a lokální výpočty mohou zůstat v komponentě.
-- Do `hooks/` nepatří typy ani konstanty.
+- Do `model/` nepatří konstanty (ty patří do `lib/` nebo k použití).
 - Viz [Vyhýbej se zbytečné abstrakci](#vyhýbej-se-zbytečné-abstrakci) a [Feature hooks](#feature-hooks).
 
 ## Vyhýbej se zbytečné abstrakci
@@ -591,9 +685,9 @@ Tato sekce je source of truth pro pravidla kdy neabstrahovat.
 
 - Nevytvářej custom hook pro jednoduchý lokální state.
 - Nevytahuj krátkou logiku do hooku, pokud je použitá na jednom místě.
-- Nevytvářej `utils/` pro jednu krátkou funkci.
+- Nevytvářej `lib/` pro jednu krátkou funkci.
 - Nevytvářej `constants/` pro jednorázovou hodnotu bez doménového významu.
-- Nevytvářej `types/` pro triviální lokální typ.
+- Nevytvářej `types/` (v rámci `model/`) pro triviální lokální typ.
 - Nevytvářej generické řešení bez reálného reuse.
 - Nevytvářej mezivrstvy jako feature hook, pokud jen přeposílají data.
 
@@ -621,10 +715,10 @@ Tato sekce je source of truth pro pravidla kdy neabstrahovat.
 #### Kam co patří
 
 - Jednoduchý lokální state a UI handlery: přímo v komponentě
-- Komplexní React orchestrace a side effects: `hooks/use<NázevKomponenty>.ts`
-- Čisté výpočty a transformace dat: `utils/` nebo přímo v komponentě
-- Konstanty: `constants/`
-- TypeScript typy: `types/`
+- Komplexní React orchestrace a side effects: `model/use<NázevKomponenty>.ts`
+- Čisté výpočty a transformace dat: `lib/` nebo přímo v komponentě
+- Konstanty: `lib/` nebo `constants/`
+- TypeScript typy: `model/`
 
 #### Zákaz inline funkcí v JSX
 
@@ -642,7 +736,7 @@ return <input onChange={(e) => setValue(e.target.value)} />;
 - U jednoduchého lokálního případu mohou krátké helpery a malé konstanty zůstat přímo v komponentě.
 - Hodnota použitá jednou zůstává inline.
 - Konstantu vytvářej až když se hodnota opakuje nebo má doménový význam.
-- `utils/` neobsahuje typy ani konstanty.
+- `lib/` neobsahuje typy.
 - Při vytváření nebo úpravě utility vytvoř nebo aktualizuj JSDoc.
 
 ### Props interface
@@ -699,25 +793,25 @@ Tato sekce je source of truth pro pravidla kdy abstrahovat.
 ### Kde sdílet komponentu
 
 ```text
-Pouze v jedné feature?                 → features/<Feature>/components/
-Ve více features nebo widgetech?      → shared/components/
+Pouze v jedné feature?                 → features/<Feature>/ui/
+Ve více features nebo widgetech?      → shared/ui/
 Ve více aplikacích?                   → packages/components/
 ```
 
 ### Kde sdílet hook
 
 ```text
-Pouze v jedné feature?            → features/<Feature>/hooks/
-Ve více features v jedné appce?   → shared/hooks/
+Pouze v jedné feature?            → features/<Feature>/model/
+Ve více features v jedné appce?   → shared/model/
 Ve více aplikacích?               → packages/hooks/
 ```
 
 ### Kde sdílet util, konstantu, typ
 
 ```text
-Specifické pro jednu komponentu?  → komponenta
-Sdílené v rámci feature?          → features/<Feature>/utils|constants|types/
-Sdílené v rámci aplikace?         → shared/utils|constants|types/
+Specifické pro jednu komponentu?  → komponenta (nebo lokální utils/)
+Sdílené v rámci feature?          → features/<Feature>/lib|model/
+Sdílené v rámci aplikace?         → shared/lib|model/
 Sdílené napříč aplikacemi?        → packages/utils|types|validators/
 ```
 
@@ -735,20 +829,21 @@ const data: Contact[] = fetchData();
 ### Typy a modely
 
 - Platí pro `type`, `interface` i utility typy.
-- Sdílené, větší nebo samostatně významné typy přesouvej do `types/`.
-- Jednoduchý lokální typ může zůstat v souboru komponenty nebo hooku.
-- Typy se nedefinují v `utils/`, `api/` ani `hooks/`.
-- Pokud je typ v `types/`, preferuj vlastní soubor pro samostatně významnou definici.
+- Typy definuj primárně lokálně (v souboru komponenty nebo hooku) — UI-only typy, props, malé typy.
+- Sdílené, větší nebo business typy přesouvej do `model/`.
+- Nevytvářej samostatné `types/` složky bez jasného důvodu.
+- Typy se nedefinují v `lib/` ani `api/`.
+- Pokud je typ v `model/`, preferuj vlastní soubor pro samostatně významnou definici.
 - Nesekej mechanicky jednoduché a úzce související typy.
-- Typy pro komponentu nebo hook patří do jejich `types/`.
-- Typy sdílené v rámci feature patří do `types/` feature slicu.
-- Globální typy patří do `shared/types/`.
+- Typy pro komponentu nebo hook patří do jejich `model/` nebo zůstávají lokální.
+- Typy sdílené v rámci feature patří do `model/` feature slicu.
+- Globální typy patří do `shared/model/` (pokud jsou nedoménové).
 - `Props interface` komponenty může být přímo v souboru komponenty, pokud není sdílená.
 
 **Enums nepatří do `types/`.**
 
 - Enum je runtime hodnota.
-- Patří do `enums/` na příslušné úrovni nebo do `@leo/enums`.
+- Patří do `enums/` na příslušné úrovni nebo do `@repo/enums`.
 
 ### Zod schémata
 
@@ -769,7 +864,7 @@ export type Contact = z.infer<typeof contactSchema>;
 
 ### Zustand store
 
-- Každá feature má vlastní store v `store/`.
+- Každá feature má vlastní store v `model/`.
 - Store řeší pouze client state.
 - Nikdy neukládá data ze serveru.
 
@@ -782,17 +877,17 @@ Používej tento pattern:
 1. `shared/api/axiosMainApi`
 2. `features/<Feature>/api/*Api.ts`
 3. `features/<Feature>/api/use*Api.ts`
-4. `features/<Feature>/hooks/use*.ts` _(volitelné)_
+4. `features/<Feature>/model/use*.ts` _(volitelné)_
 
 ### Pravidla
 
 - `axiosMainApi` patří pouze do `shared/api/`.
 - Endpoint funkce patří do `api/*Api.ts`.
 - TanStack Query patří do `api/use*Api.ts`.
-- Hooky ve `features/<Feature>/hooks` nevolají Axios napřímo.
-- V `hooks/` neduplikuj endpointy ani query definice.
+- Hooky ve `features/<Feature>/model` nevolají Axios napřímo.
+- V `model/` neduplikuj endpointy ani query definice.
 - V `api/` nedefinuj typy ani konstanty.
-- `hooks/` je volitelné a nemá se vytvářet automaticky. Hooky používej pouze tehdy, když přidávají reálnou hodnotu. Viz sekce [Feature hooks](#feature-hooks).
+- Feature hooks (v rámci model segmentu) jsou volitelné. Hooky používej pouze tehdy, když přidávají reálnou hodnotu. Viz sekce [Feature hooks](#feature-hooks).
 - Pojmenování: viz [Pojmenování](#pojmenování).
 
 ### Příklad struktury
@@ -800,9 +895,9 @@ Používej tento pattern:
 ```text
 features/requestManagement/contactList/
 ├── api/
-│   ├── contactsApi.ts
-│   └── useContactsApi.ts
-└── hooks/
+├── model/
+├── ui/
+└── lib/
 ```
 
 ---
@@ -824,7 +919,7 @@ features/requestManagement/contactList/
 - `pages/`: entita nebo oblast
 - `widgets/`: entita + co zobrazuje
 - `features/`: entita + akce nebo funkce
-- `shared/components/`: název UI elementu
+- `shared/ui/`: název UI elementu
 
 ### Pojmenování složek podle domény
 
@@ -869,13 +964,13 @@ export const ContactForm = () => null;
 - Složka vrstvy: `lowercase`
 - Složky uvnitř slicu: lowercase pro technické adresáře
 
-### Pojmenování pro `api`, `useApi` a `hooks`
+### Pojmenování pro `api`, `useApi` a `model`
 
 Viz [Feature hooks](#feature-hooks).
 
 - `api/*Api.ts` obsahuje pouze nízkoúrovňové funkce pro volání endpointů.
 - `api/use*Api.ts` obsahuje pouze TanStack Query hooky nad konkrétními API funkcemi.
-- `hooks/` je volitelná vrstva.
+- Feature hooks (v rámci model segmentu) jsou volitelné.
 - Vyšší UI/business hooky pojmenovávej podle use-casu, ne nutně podle názvu endpointu.
 - Pokud helper neodpovídá jednomu endpointu, nesmí určovat hlavní naming pattern pro API vrstvu.
 
@@ -892,7 +987,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { apiClient } from "@shared/api";
 
-import { ContactCard } from "./components/ContactCard";
+import { ContactCard } from "./ui/ContactCard";
 ```
 
 ### Barrel vs. path import
@@ -903,16 +998,16 @@ import { ContactCard } from "./components/ContactCard";
 - Importy z externích packages a interních monorepo packages používej přes jejich veřejné API.
 
 ```ts
-import { DataGrid } from "@leo/components";
+import { DataGrid } from "@repo/components";
 ```
 
 ---
 
-_Pravidla pro stylování pomocí MUI jsou v samostatném dokumentu: [`docs/mui-styling.md`](./mui-styling.md)_
+_Pravidla pro stylování pomocí Tailwind CSS jsou v samostatném dokumentu: [`docs/tailwind-styling.md`](./tailwind-styling.md)_
 
 ---
 
 ## Styling
 
-Styling decisions follow Tailwind Styling Rules:
-docs/tailwind-styling-rules.md
+- Tailwind CSS je jediným řešením pro styling v tomto projektu.
+- Rozhodnutí o stylingu se řídí pravidly v: `docs/tailwind-styling-rules.md`

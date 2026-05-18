@@ -1,6 +1,6 @@
-export { LanguageSelect } from "./components/LanguageSelect";
-export { LanguageEnum, LanguageEnumKeys } from "./constants/LanguageEnum";
+export { LanguageSelect } from "./ui/LanguageSelect";
+export { LanguageEnum, LanguageEnumKeys } from "./model/constants/LanguageEnum";
 export type {
   LanguageEnumKey,
   LanguageEnumValue,
-} from "./constants/LanguageEnum";
+} from "./model/constants/LanguageEnum";

@@ -4,6 +4,7 @@ import {
   authSessionExpired,
   authSessionRefreshed,
 } from "@web/shared/api/authSessionEvents";
+
 import baseQuery from "./baseQuery";
 
 import type {
@@ -32,7 +33,7 @@ const baseQueryWithAuth: BaseQueryFn<
       api.dispatch(
         authSessionRefreshed({
           accessToken: newSession.accessToken,
-          refreshToken: newSession.refreshToken,
+          refreshToken: newSession.refreshToken ?? "",
         }),
       );
 
@@ -46,4 +47,3 @@ const baseQueryWithAuth: BaseQueryFn<
 };
 
 export default baseQueryWithAuth;
-
