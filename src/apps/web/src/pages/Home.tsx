@@ -1,15 +1,15 @@
-import { Features } from "@web/widgets/home/Features";
-import { Hero } from "@web/widgets/home/Hero";
-import { HowItWorks } from "@web/widgets/home/HowItWorks";
-import { Pricing } from "@web/widgets/home/Pricing";
+import { HomeFeatures } from "@web/widgets/home/HomeFeatures";
+import { HomeHero } from "@web/widgets/home/HomeHero";
+import { HomeHowItWorks } from "@web/widgets/home/HomeHowItWorks";
+import { HomePricing } from "@web/widgets/home/HomePricing";
 
 const Home = () => {
   return (
     <>
-      <Hero />
-      <HowItWorks />
-      <Features />
-      <Pricing />
+      <HomeHero />
+      <HomeHowItWorks />
+      <HomeFeatures />
+      <HomePricing />
     </>
   );
 };

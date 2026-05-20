@@ -58,7 +58,7 @@ export const MainMenuDesktop = () => {
           transform: `scale(${spotlightPos.opacity ? 1 : 0.8})`,
         }}
       >
-        <div className="absolute inset-0 bg-primary/20 blur-md rounded-full animate-pulse" />
+        <div className="absolute inset-0 bg-primary/20 blur-md rounded-full" />
       </div>
 
       {NAV_LINKS.map((link, idx) => (
