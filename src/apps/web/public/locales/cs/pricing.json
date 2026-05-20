@@ -9,20 +9,7 @@
       "name": "Základ zdarma",
       "description": "Vše potřebné pro start vaší cesty k úsporám.",
       "price": 0,
-      "features": [
-        "Sledování jakékoliv energie",
-        "Max 1 odběrné místo",
-        "Ruční zápis a historie odečtů",
-        "Historie 12 měsíců"
-      ],
-      "unavailableFeatures": [
-        "Neomezená odběrná místa",
-        "AI Predikce faktur a anomálií",
-        "Neomezená historie srovnání",
-        "Chytré notifikace při růstu ceny",
-        "Pokročilé exporty do Excelu",
-        "Prioritní zákaznická podpora"
-      ],
+      "summary": "Pro domácnosti, které chtějí mít přehled o spotřebě energie. Sledujte jedno odběrné místo, zapisujte odečty ručně a prohlížejte historii za posledních 12 měsíců — zdarma a bez závazků.",
       "cta": "Začít zdarma",
       "ctaLink": "/auth/register"
     },
@@ -31,15 +18,7 @@
       "description": "Energetická inteligence pro maximální úsporu.",
       "price": 49,
       "interval": "měsíc",
-      "features": [
-        "Vše z Free plánu",
-        "Neomezená odběrná místa",
-        "AI Predikce faktur a anomálií",
-        "Neomezená historie srovnání",
-        "Chytré notifikace při růstu ceny",
-        "Pokročilé exporty do Excelu",
-        "Prioritní zákaznická podpora"
-      ],
+      "summary": "Pro domácnosti s více nemovitostmi nebo ty, kteří chtějí skutečně ušetřit. Získáte neomezená odběrná místa, AI predikce, chytré notifikace a prioritní podporu — vše za pevnou měsíční cenu.",
       "cta": "Vyzkoušet zdarma",
       "ctaLink": "/auth/register",
       "badge": "14 dní zdarma"

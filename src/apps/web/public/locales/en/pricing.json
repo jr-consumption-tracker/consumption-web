@@ -9,20 +9,7 @@
       "name": "Basic Free",
       "description": "Everything you need to start your journey to savings.",
       "price": 0,
-      "features": [
-        "Track any type of energy",
-        "Max 1 supply point",
-        "Manual entry and reading history",
-        "12 months history"
-      ],
-      "unavailableFeatures": [
-        "Unlimited supply points",
-        "AI invoice prediction & anomaly detection",
-        "Unlimited comparison history",
-        "Smart alerts on price rises",
-        "Advanced Excel exports",
-        "Priority customer support"
-      ],
+      "summary": "For households that want to stay on top of their energy consumption. Track one meter, log readings manually, and browse up to 12 months of history — free and with no strings attached.",
       "cta": "Start for free",
       "ctaLink": "/auth/register"
     },
@@ -31,15 +18,8 @@
       "description": "Energy intelligence for maximum savings.",
       "price": 49,
       "interval": "month",
-      "features": [
-        "Everything in Free plan",
-        "Unlimited supply points",
-        "AI invoice prediction & anomaly detection",
-        "Unlimited comparison history",
-        "Smart alerts on price rises",
-        "Advanced Excel exports",
-        "Priority customer support"
-      ],
+      "summary": "For households with multiple properties or anyone serious about saving money. Get unlimited meters, AI-powered predictions, smart notifications, and priority support — all for one fixed monthly price.",
+
       "cta": "Try for free",
       "ctaLink": "/auth/register",
       "badge": "14 days free"
