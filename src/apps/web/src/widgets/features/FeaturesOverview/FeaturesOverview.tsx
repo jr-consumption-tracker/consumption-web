@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { FeatureSection } from "@web/shared/components/FeatureSection";
+import { FeatureSection } from "@web/shared/ui/FeatureSection";
 
 import { ConsumptionDashboard } from "./components/ConsumptionDashboard";
 import { FeatureChart } from "./components/FeatureChart";
@@ -9,7 +9,6 @@ import { PremiumInsights } from "./components/PremiumInsights";
 import type { ChartData } from "./components/FeatureChart";
 
 import type { PropertyConsumption } from "./components/ConsumptionDashboard";
-
 const DASHBOARD_DATA: PropertyConsumption[] = [
   {
     name: "Rodinný dům",

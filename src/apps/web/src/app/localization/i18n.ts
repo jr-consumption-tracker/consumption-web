@@ -29,7 +29,7 @@ i18n
     react: {
       useSuspense: false,
     },
-    ns: ["common", "home", "auth", "features"],
+    ns: ["common", "home", "auth", "features", "pricing"],
     defaultNS: "common", // (Default Namespace) určuje výchozí jmenný prostor, který se použije, když při překladu explicitně nespecifikuješ, ze kterého namespace chceš text načíst.
     backend: {
       loadPath: `/locales/{{lng}}/{{ns}}.json?${import.meta.env.PACKAGE_VERSION}`,

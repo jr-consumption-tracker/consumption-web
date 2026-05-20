@@ -4,15 +4,25 @@ import { useTranslation } from "react-i18next";
 import { ButtonLink } from "@repo/components";
 import { cn } from "@repo/utils";
 
-import type { PricingPlan } from "@web/entities/pricing";
+import type { PricingPlan } from "@web/shared/model/types";
+
 interface PricingCardProps {
   plan: PricingPlan;
 }
 
 export const PricingCard = ({ plan }: PricingCardProps) => {
   const { t } = useTranslation("home");
-  const { name, price, interval, features, cta, ctaLink, badge, highlighted } =
-    plan;
+  const {
+    name,
+    price,
+    interval,
+    features,
+    cta,
+    ctaLink,
+    badge,
+    highlighted,
+    summary,
+  } = plan;
 
   return (
     <div
@@ -61,7 +71,7 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
           highlighted ? "text-text-main" : "text-text-muted",
         )}
       >
-        {features.map((feature, idx) => (
+        {features?.map((feature, idx) => (
           <li
             key={idx}
             className={cn(
@@ -73,6 +83,8 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
             {feature}
           </li>
         ))}
+
+        <span>{summary}</span>
       </ul>
 
       <ButtonLink
@@ -90,5 +102,3 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
     </div>
   );
 };
-
-PricingCard.displayName = "PricingCard";

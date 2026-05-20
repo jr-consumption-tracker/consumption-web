@@ -25,7 +25,7 @@ This project uses a layered rule system:
 ### Visual Pattern (UI layout)
 
 - **Rules**  
-  → `docs/ui-visual-pattern.md`  
+  → `docs/visual-pattern.md`  
   → defines layout, structure, and visual consistency
 
 - Visual Pattern is **authoritative for UI layout**

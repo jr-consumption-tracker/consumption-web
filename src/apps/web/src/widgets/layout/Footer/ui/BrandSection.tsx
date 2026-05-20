@@ -2,7 +2,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import { siteConfig } from "@web/app/config/site";
-import { Logo } from "@web/shared/components/Logo";
+import { Logo } from "@web/shared/ui/Logo";
 
 import type { LucideIcon } from "lucide-react";
 const contactClass =

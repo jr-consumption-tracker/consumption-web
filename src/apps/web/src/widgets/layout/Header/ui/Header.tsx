@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { cn } from "@repo/utils";
 import { MainMenuDesktop, useMobileMenu } from "@web/features/navigation";
-import { Logo } from "@web/shared/components/Logo";
+import { Logo } from "@web/shared/ui/Logo";
 
 import { ActionButtons } from "./ActionButtons";
 import { MobileMenu } from "./MobileMenu";
