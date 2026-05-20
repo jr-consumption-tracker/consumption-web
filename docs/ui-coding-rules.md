@@ -98,6 +98,7 @@ Výchozí chování:
 
 - React + TypeScript: UI framework, strict mode
 - Tailwind CSS: styling, see `docs/tailwind-styling-rules.md`
+- Hero UI: Knihovna komponent
 - TanStack Router: routing
 - TanStack Query: server state
 - TanStack Form: formuláře

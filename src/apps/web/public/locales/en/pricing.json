@@ -1,0 +1,152 @@
+{
+  "hero": {
+    "title": "Transparent pricing, no surprises",
+    "subtitle": "Start free, upgrade anytime",
+    "description": "Choose the plan that fits your needs. No hidden fees, no commitments — cancel anytime."
+  },
+  "plans": {
+    "free": {
+      "name": "Basic Free",
+      "description": "Everything you need to start your journey to savings.",
+      "price": 0,
+      "features": [
+        "Track any type of energy",
+        "Max 1 supply point",
+        "Manual entry and reading history",
+        "12 months history"
+      ],
+      "unavailableFeatures": [
+        "Unlimited supply points",
+        "AI invoice prediction & anomaly detection",
+        "Unlimited comparison history",
+        "Smart alerts on price rises",
+        "Advanced Excel exports",
+        "Priority customer support"
+      ],
+      "cta": "Start for free",
+      "ctaLink": "/auth/register"
+    },
+    "premium": {
+      "name": "Premium",
+      "description": "Energy intelligence for maximum savings.",
+      "price": 49,
+      "interval": "month",
+      "features": [
+        "Everything in Free plan",
+        "Unlimited supply points",
+        "AI invoice prediction & anomaly detection",
+        "Unlimited comparison history",
+        "Smart alerts on price rises",
+        "Advanced Excel exports",
+        "Priority customer support"
+      ],
+      "cta": "Try for free",
+      "ctaLink": "/auth/register",
+      "badge": "14 days free"
+    }
+  },
+  "table": {
+    "planColumn": "Feature",
+    "categories": {
+      "core": "Core features",
+      "analytics": "Analytics & insights",
+      "support": "Support"
+    },
+    "rows": {
+      "energyTypes": {
+        "label": "Energy types",
+        "free": "Electricity, gas, water",
+        "premium": "Electricity, gas, water"
+      },
+      "supplyPoints": {
+        "label": "Supply points",
+        "free": "Max 1",
+        "premium": "Unlimited"
+      },
+      "readingHistory": {
+        "label": "Reading history",
+        "free": "12 months",
+        "premium": "Unlimited"
+      },
+      "manualEntry": {
+        "label": "Manual reading entry",
+        "free": true,
+        "premium": true
+      },
+      "advancedCharts": {
+        "label": "Advanced charts",
+        "free": false,
+        "premium": true
+      },
+      "aiPredictions": {
+        "label": "AI invoice prediction & anomaly detection",
+        "free": false,
+        "premium": true
+      },
+      "smartAlerts": {
+        "label": "Smart alerts on price rises",
+        "free": false,
+        "premium": true
+      },
+      "excelExports": {
+        "label": "Advanced Excel exports",
+        "free": false,
+        "premium": true
+      },
+      "prioritySupport": {
+        "label": "Priority customer support",
+        "free": false,
+        "premium": true
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "question": "Can I cancel my subscription at any time?",
+        "answer": "Yes, you can cancel your subscription at any time with no commitments. After cancellation, you will have access to Premium features until the end of the paid period."
+      },
+      {
+        "question": "What happens to my data after ending Premium?",
+        "answer": "Your data is safe. After switching to the Free plan, you will still have access to the last 12 months of data. Older records remain stored but will not be visible."
+      },
+      {
+        "question": "How does the 14-day trial work?",
+        "answer": "After registering for the Premium plan, you have 14 days free. Payment is charged only after the trial period ends. You can cancel at any time during this period at no charge."
+      },
+      {
+        "question": "Are my payment details safe?",
+        "answer": "Payments are processed through Stripe — one of the world's most trusted payment providers. We never store your payment details on our servers."
+      },
+      {
+        "question": "Can I add multiple properties in the Free plan?",
+        "answer": "The Free plan allows you to track 1 supply point. For more properties or supply points, you need to upgrade to Premium."
+      },
+      {
+        "question": "Do you offer discounts for households with multiple properties?",
+        "answer": "We currently offer the Premium plan at a flat price that covers unlimited supply points — so the more properties you have, the more value you get."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to start saving?",
+    "description": "Join thousands of households that have their energy under control.",
+    "actions": {
+      "startFree": "Start for free",
+      "moreInfo": "Learn more about features",
+      "goToApp": "Go to app"
+    }
+  },
+  "trust": {
+    "noCredit": "No credit card required",
+    "cancel": "Cancel anytime",
+    "secure": "Secure payments"
+  },
+  "card": {
+    "forever": "forever",
+    "currencyFree": "0 Kč",
+    "currency": "{{price}} Kč",
+    "unavailable": "Not available in this plan"
+  }
+}

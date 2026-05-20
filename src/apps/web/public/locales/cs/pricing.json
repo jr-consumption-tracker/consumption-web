@@ -1,0 +1,152 @@
+{
+  "hero": {
+    "title": "Transparentní ceny bez překvapení",
+    "subtitle": "Začněte zdarma, upgradujte kdykoli",
+    "description": "Vyberte si plán, který odpovídá vašim potřebám. Žádné skryté poplatky, žádné závazky — kdykoli zrušíte."
+  },
+  "plans": {
+    "free": {
+      "name": "Základ zdarma",
+      "description": "Vše potřebné pro start vaší cesty k úsporám.",
+      "price": 0,
+      "features": [
+        "Sledování jakékoliv energie",
+        "Max 1 odběrné místo",
+        "Ruční zápis a historie odečtů",
+        "Historie 12 měsíců"
+      ],
+      "unavailableFeatures": [
+        "Neomezená odběrná místa",
+        "AI Predikce faktur a anomálií",
+        "Neomezená historie srovnání",
+        "Chytré notifikace při růstu ceny",
+        "Pokročilé exporty do Excelu",
+        "Prioritní zákaznická podpora"
+      ],
+      "cta": "Začít zdarma",
+      "ctaLink": "/auth/register"
+    },
+    "premium": {
+      "name": "Premium",
+      "description": "Energetická inteligence pro maximální úsporu.",
+      "price": 49,
+      "interval": "měsíc",
+      "features": [
+        "Vše z Free plánu",
+        "Neomezená odběrná místa",
+        "AI Predikce faktur a anomálií",
+        "Neomezená historie srovnání",
+        "Chytré notifikace při růstu ceny",
+        "Pokročilé exporty do Excelu",
+        "Prioritní zákaznická podpora"
+      ],
+      "cta": "Vyzkoušet zdarma",
+      "ctaLink": "/auth/register",
+      "badge": "14 dní zdarma"
+    }
+  },
+  "table": {
+    "planColumn": "Funkce",
+    "categories": {
+      "core": "Základní funkce",
+      "analytics": "Analytika a přehledy",
+      "support": "Podpora"
+    },
+    "rows": {
+      "energyTypes": {
+        "label": "Typy energií",
+        "free": "Elektřina, plyn, voda",
+        "premium": "Elektřina, plyn, voda"
+      },
+      "supplyPoints": {
+        "label": "Odběrná místa",
+        "free": "Max 1",
+        "premium": "Neomezená"
+      },
+      "readingHistory": {
+        "label": "Historie odečtů",
+        "free": "12 měsíců",
+        "premium": "Neomezená"
+      },
+      "manualEntry": {
+        "label": "Ruční zápis odečtů",
+        "free": true,
+        "premium": true
+      },
+      "advancedCharts": {
+        "label": "Pokročilé grafy",
+        "free": false,
+        "premium": true
+      },
+      "aiPredictions": {
+        "label": "AI predikce faktur a anomálií",
+        "free": false,
+        "premium": true
+      },
+      "smartAlerts": {
+        "label": "Chytré notifikace při růstu ceny",
+        "free": false,
+        "premium": true
+      },
+      "excelExports": {
+        "label": "Pokročilé exporty do Excelu",
+        "free": false,
+        "premium": true
+      },
+      "prioritySupport": {
+        "label": "Prioritní zákaznická podpora",
+        "free": false,
+        "premium": true
+      }
+    }
+  },
+  "faq": {
+    "title": "Časté dotazy",
+    "items": [
+      {
+        "question": "Mohu kdykoli zrušit předplatné?",
+        "answer": "Ano, předplatné můžete zrušit kdykoli bez závazků. Po zrušení budete mít přístup k Premium funkcím do konce zaplaceného období."
+      },
+      {
+        "question": "Co se stane s mými daty po ukončení Premium?",
+        "answer": "Vaše data jsou v bezpečí. Po přechodu na Free plán budete mít nadále přístup k posledním 12 měsícům dat. Starší záznamy zůstanou uložené, ale nebudou viditelné."
+      },
+      {
+        "question": "Jak funguje 14denní zkušební období?",
+        "answer": "Po registraci Premium plánu máte 14 dní zdarma. Platba se strhne až po uplynutí zkušební doby. Kdykoli během tohoto období můžete zrušit bez poplatku."
+      },
+      {
+        "question": "Jsou moje platební údaje v bezpečí?",
+        "answer": "Platby zpracováváme přes Stripe — jednoho z nejdůvěryhodnějších světových platebních poskytovatelů. Vaše platební údaje nikdy neukládáme na našich serverech."
+      },
+      {
+        "question": "Mohu přidat více nemovitostí do Free plánu?",
+        "answer": "Free plán umožňuje sledovat 1 odběrné místo. Pro více nemovitostí nebo odběrných míst je potřeba přejít na Premium."
+      },
+      {
+        "question": "Nabízíte slevy pro domácnosti s více nemovitostmi?",
+        "answer": "Aktuálně nabízíme Premium plán za pevnou cenu, která pokrývá neomezený počet odběrných míst — takže čím více nemovitostí máte, tím větší hodnotu získáte."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Připraveni začít šetřit?",
+    "description": "Přidejte se k tisícům domácností, které mají energii pod kontrolou.",
+    "actions": {
+      "startFree": "Začít zdarma",
+      "moreInfo": "Zjistit více o funkcích",
+      "goToApp": "Přejít do aplikace"
+    }
+  },
+  "trust": {
+    "noCredit": "Bez platební karty",
+    "cancel": "Zrušte kdykoli",
+    "secure": "Bezpečné platby"
+  },
+  "card": {
+    "forever": "navždy",
+    "currencyFree": "0 Kč",
+    "currency": "{{price}} Kč",
+    "unavailable": "Nedostupné v tomto plánu"
+  }
+}

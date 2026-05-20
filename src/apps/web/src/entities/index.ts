@@ -7,4 +7,3 @@
  */
 export type { User, UserStatus } from "./user";
 export type { AuthSession, LoginCredentials, RegisterData } from "./auth";
-export type { PricingPlan } from "./pricing";

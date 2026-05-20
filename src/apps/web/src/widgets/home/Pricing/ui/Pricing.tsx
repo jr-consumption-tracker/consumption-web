@@ -2,13 +2,11 @@ import { MoveRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import { ButtonLink } from "@repo/components";
+import { PricingCard } from "@web/shared/ui/PricingCard";
 import { Section } from "@web/shared/ui/Section";
 
-import { PricingCard } from "./PricingCard";
-
 import type { TFunction } from "i18next";
-import type { PricingPlan } from "@web/entities/pricing";
-
+import type { PricingPlan } from "@web/shared/model/types";
 const getPricingPlans = (t: TFunction<"home">): PricingPlan[] => [
   {
     name: t("pricing.plans.free.name"),
@@ -52,7 +50,6 @@ export const Pricing = () => {
 
       <div className="mt-16 text-center">
         <ButtonLink
-          //@ts-expect-error  Link zatím neexistuje
           to="/pricing"
           variant="ghost"
           size="lg"
