@@ -13,10 +13,10 @@ import { Section } from "@web/shared/ui/Section";
 import { FeatureCard } from "./FeatureCard";
 
 /**
- * Features - Home page section displaying a grid overview of features.
+ * HomeFeatures - Home page section displaying a grid overview of features.
  * Pure UI composition block.
  */
-export const Features = () => {
+export const HomeFeatures = () => {
   const { t } = useTranslation("home");
 
   return (
@@ -109,4 +109,4 @@ export const Features = () => {
   );
 };
 
-Features.displayName = "Features";
+HomeFeatures.displayName = "HmeFeatures";
