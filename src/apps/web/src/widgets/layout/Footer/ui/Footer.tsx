@@ -48,7 +48,7 @@ export const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
               <span>
-                © {copyrightText} {siteConfig.name}
+                © {copyrightText} {t("site.name")}
               </span>
               <span>•</span>
               <span>{t("footer.operator")}</span>

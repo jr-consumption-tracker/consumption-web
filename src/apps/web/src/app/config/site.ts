@@ -1,5 +1,6 @@
+//TODO: Bude v databázi
+
 export const siteConfig = {
-  name: "Spotřeba energie",
   contact: {
     email: "ribkaj@seznam.cz",
     phone: "+420 777 811 790",
