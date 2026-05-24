@@ -27,14 +27,14 @@ export const FeatureSection = ({
     <Section className={cn("overflow-hidden", className)}>
       <div
         className={cn(
-          "grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center",
-          reverse && "lg:direction-rtl", // This is a trick to reverse row, but flex-row-reverse is better for flex
+          "grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-24 items-center",
+          reverse && "xl:direction-rtl", // This is a trick to reverse row, but flex-row-reverse is better for flex
         )}
       >
         <div
           className={cn(
             "flex flex-col justify-center",
-            reverse ? "lg:order-2" : "lg:order-1",
+            reverse ? "xl:order-2" : "xl:order-1",
           )}
         >
           <h3 className="text-3xl font-extrabold tracking-tight text-text-main sm:text-4xl mb-6">
@@ -47,8 +47,8 @@ export const FeatureSection = ({
 
         <div
           className={cn(
-            "relative w-full aspect-square lg:aspect-video flex items-center justify-center bg-surface-soft rounded-3xl p-4 lg:p-8",
-            reverse ? "lg:order-1" : "lg:order-2",
+            "relative w-full aspect-video flex items-center justify-center bg-surface-soft rounded-3xl p-4 xl:p-8",
+            reverse ? "xl:order-1" : "xl:order-2",
           )}
         >
           {visual}

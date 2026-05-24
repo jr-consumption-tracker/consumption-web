@@ -6,12 +6,12 @@ import { useIsAuthenticated } from "@web/features/auth";
 import { Section } from "@web/shared/ui/Section";
 
 /**
- * Hero - Hero sekce homepage
+ * HomeHero - Hero sekce homepage
  * Skládá nadpis, mission text a CTA tlačítka.
  *
- * @example <Hero />
+ * @example <HomeHero />
  */
-export const Hero = () => {
+export const HomeHero = () => {
   const { t } = useTranslation("home");
   const isAuthenticated = useIsAuthenticated();
 
@@ -78,4 +78,4 @@ export const Hero = () => {
   );
 };
 
-Hero.displayName = "Hero";
+HomeHero.displayName = "HomeHero";
