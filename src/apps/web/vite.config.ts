@@ -12,6 +12,7 @@ export default defineConfig((configEnv) => {
     string,
     string
   >;
+  const isProduction = configEnv.mode === "production";
 
   return {
     define: {
@@ -41,6 +42,12 @@ export default defineConfig((configEnv) => {
       alias: {
         "@web": path.resolve(__dirname, "./src"),
       },
+    },
+    build: {
+      target: "es2022",
+      minify: "esbuild",
+      cssCodeSplit: true,
+      sourcemap: !isProduction,
     },
   };
 });

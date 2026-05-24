@@ -1,0 +1,18 @@
+# Dependencies
+node_modules
+
+# Local env files
+.env
+.env.development
+.env.production
+.env.test
+
+# Testing
+coverage
+jest-coverage
+
+# Turbo
+.turbo
+
+# Certs
+certs

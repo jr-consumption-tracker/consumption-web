@@ -4,6 +4,9 @@
     "line2": "Energie",
     "ariaLabel": "Spotřeba Energie - Domů"
   },
+  "site": {
+    "name": "Spotřeba energie"
+  },
   "navigation": {
     "home": "Domů",
     "features": "Vlastnosti",
