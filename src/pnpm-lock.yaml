@@ -236,8 +236,8 @@ importers:
         specifier: ^0.4.24
         version: 0.4.26(eslint@9.39.1(jiti@2.6.1))
       globals:
-        specifier: ^16.5.0
-        version: 16.5.0
+        specifier: ^17.6.0
+        version: 17.6.0
       typescript-eslint:
         specifier: 'catalog:'
         version: 8.59.1(eslint@9.39.1(jiti@2.6.1))(typescript@6.0.3)
@@ -1007,6 +1007,9 @@ packages:
   '@swc/helpers@0.5.19':
     resolution: {integrity: sha512-QamiFeIK3txNjgUTNppE6MiG3p7TdninpZu0E0PbqVh1a9FNLT2FRhisaa4NcaX52XVhA5l7Pk58Ft7Sqi/2sA==}
 
+  '@swc/helpers@0.5.21':
+    resolution: {integrity: sha512-jI/VAmtdjB/RnI8GTnokyX7Ug8c+g+ffD6QRLa6XQewtnGyukKkKSk3wLTM3b5cjt1jNh9x0jfVlagdN2gDKQg==}
+
   '@tailwindcss/node@4.2.4':
     resolution: {integrity: sha512-Ai7+yQPxz3ddrDQzFfBKdHEVBg0w3Zl83jnjuwxnZOsnH9pGn93QHQtpU0p/8rYWxvbFZHneni6p1BSLK4DkGA==}
 
@@ -1665,8 +1668,8 @@ packages:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
 
-  get-tsconfig@4.13.6:
-    resolution: {integrity: sha512-shZT/QMiSHc/YBLxxOkMtgSid5HFoauqCE3/exfsEcwg1WkeqjG+V40yBbBrsD+jW2HDXcs28xOfcbm2jI8Ddw==}
+  get-tsconfig@4.14.0:
+    resolution: {integrity: sha512-yTb+8DXzDREzgvYmh6s9vHsSVCHeC0G3PI5bEXNBHtmshPnO+S5O7qgLEOn0I5QvMy6kpZN8K1NKGyilLb93wA==}
 
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -1680,8 +1683,8 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
-  globals@16.5.0:
-    resolution: {integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ==}
+  globals@17.6.0:
+    resolution: {integrity: sha512-sepffkT8stwnIYbsMBpoCHJuJM5l98FUF2AnE07hfvE0m/qp3R586hw4jF4uadbhvg1ooIdzuu7CsfD2jzCaNA==}
     engines: {node: '>=18'}
 
   graceful-fs@4.2.11:
@@ -2880,7 +2883,7 @@ snapshots:
   '@react-spectrum/provider@3.11.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
     dependencies:
       '@adobe/react-spectrum': 3.47.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
-      '@swc/helpers': 0.5.19
+      '@swc/helpers': 0.5.21
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
 
@@ -3007,6 +3010,10 @@ snapshots:
   '@standard-schema/utils@0.3.0': {}
 
   '@swc/helpers@0.5.19':
+    dependencies:
+      tslib: 2.8.1
+
+  '@swc/helpers@0.5.21':
     dependencies:
       tslib: 2.8.1
 
@@ -3738,7 +3745,7 @@ snapshots:
 
   gensync@1.0.0-beta.2: {}
 
-  get-tsconfig@4.13.6:
+  get-tsconfig@4.14.0:
     dependencies:
       resolve-pkg-maps: 1.0.0
     optional: true
@@ -3753,7 +3760,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@16.5.0: {}
+  globals@17.6.0: {}
 
   graceful-fs@4.2.11: {}
 
@@ -4209,7 +4216,7 @@ snapshots:
   tsx@4.21.0:
     dependencies:
       esbuild: 0.27.3
-      get-tsconfig: 4.13.6
+      get-tsconfig: 4.14.0
     optionalDependencies:
       fsevents: 2.3.3
     optional: true
