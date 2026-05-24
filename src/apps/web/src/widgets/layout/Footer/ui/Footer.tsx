@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 
 import { Separator } from "@heroui/react";
-import { siteConfig } from "@web/app/config/site";
 
 import { BrandSection } from "./BrandSection";
 import { Company } from "./Company";
