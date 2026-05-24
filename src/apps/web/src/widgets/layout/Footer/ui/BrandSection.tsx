@@ -38,19 +38,21 @@ export const BrandSection = () => {
   const { t } = useTranslation("common");
 
   return (
-    <div className="flex flex-col items-center gap-6 md:items-start">
+    <div className="flex flex-col items-start gap-6 ">
       <Logo
         size="lg"
+        showText={true}        
         disableHover={true}
+        disableHideText
         className="justify-center md:justify-start"
       />
 
-      <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-md text-center md:text-left">
+      <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-md text-left">
         {t("footer.description")}
       </p>
 
       {/* Contact Info */}
-      <div className="flex flex-col items-center gap-3 md:items-start">
+      <div className="flex flex-col gap-3 items-start">
         <ContactLink href="mailto:kucharuv.denik@gmail.com" icon={Mail}>
           {siteConfig.contact.email}
         </ContactLink>

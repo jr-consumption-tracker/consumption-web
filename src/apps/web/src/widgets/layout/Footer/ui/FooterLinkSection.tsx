@@ -30,7 +30,7 @@ export const FooterLinkSection = ({
     : linkBase;
 
   return (
-    <div className="text-center md:text-left">
+    <div className="text-left">
       <h3 className="font-bold text-slate-900 dark:text-slate-100 text-lg mb-6 whitespace-nowrap">
         {t(titleKey)}
       </h3>
