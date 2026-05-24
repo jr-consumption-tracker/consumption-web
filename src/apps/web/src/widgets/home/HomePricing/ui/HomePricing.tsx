@@ -7,6 +7,7 @@ import { Section } from "@web/shared/ui/Section";
 
 import type { TFunction } from "i18next";
 import type { PricingPlan } from "@web/shared/model/types";
+
 const getPricingPlans = (t: TFunction<"home">): PricingPlan[] => [
   {
     name: t("pricing.plans.free.name"),
@@ -27,7 +28,7 @@ const getPricingPlans = (t: TFunction<"home">): PricingPlan[] => [
   },
 ];
 
-export const Pricing = () => {
+export const HomePricing = () => {
   const { t } = useTranslation("home");
   const plans = getPricingPlans(t);
 
@@ -65,4 +66,4 @@ export const Pricing = () => {
   );
 };
 
-Pricing.displayName = "Pricing";
+HomePricing.displayName = "HomePricing";

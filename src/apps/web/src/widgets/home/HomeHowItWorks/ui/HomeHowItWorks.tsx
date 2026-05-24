@@ -1,11 +1,11 @@
+import { BarChart3, Home, UserPlus } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import { BarChart3, Home, UserPlus } from "lucide-react";
 import { Section } from "@web/shared/ui/Section";
 
 import { StepCard } from "./StepCard";
 
-export const HowItWorks = () => {
+export const HomeHowItWorks = () => {
   const { t } = useTranslation("home");
 
   return (
@@ -51,4 +51,4 @@ export const HowItWorks = () => {
   );
 };
 
-HowItWorks.displayName = "HowItWorks";
+HomeHowItWorks.displayName = "HomeHowItWorks";

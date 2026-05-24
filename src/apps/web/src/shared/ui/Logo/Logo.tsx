@@ -18,6 +18,7 @@ export const Logo = ({
   size = "md",
   disableHover = false,
   variant = "default",
+  disableHideText,
 }: LogoProps) => {
   const { t } = useTranslation("common");
 
@@ -36,7 +37,7 @@ export const Logo = ({
         disableHover={disableHover}
       />
       {showText && (
-        <LogoText scrolled={scrolled} size={size} variant={variant} />
+        <LogoText scrolled={scrolled} size={size} variant={variant} disableHideText={disableHideText}/>
       )}
     </div>
   );

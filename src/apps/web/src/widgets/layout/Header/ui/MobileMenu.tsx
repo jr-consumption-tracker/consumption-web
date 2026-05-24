@@ -7,21 +7,24 @@ import { ThemeSelect } from "@web/features/theme";
 
 interface MobileMenuProps {
   isOpen: boolean;
+  scrolled: boolean;
+  onClose: () => void;
 }
 
 /**
  * MobileMenu - Full-screen overlay menu for mobile devices.
  * Styles are inlined to comply with project rules.
  */
-export const MobileMenu = ({ isOpen }: MobileMenuProps) => {
+export const MobileMenu = ({ isOpen, scrolled, onClose }: MobileMenuProps) => {
   const { t } = useTranslation("common");
 
   return (
     <div
       id="mobile-menu"
       className={cn(
-        "fixed inset-x-0 top-18 bottom-0 z-40 bg-background/95 backdrop-blur-xl transition-all duration-500 ease-in-out lg:hidden",
-        "border-t border-white/10 px-6 py-8 overflow-y-auto",
+        "fixed inset-x-0 bottom-0 z-40 bg-background/95 backdrop-blur-xl transition-all duration-500 ease-in-out lg:hidden",
+        scrolled ? "top-14" : "top-18",
+        "px-6 py-8 overflow-y-auto",
         isOpen
           ? "opacity-100 translate-y-0"
           : "opacity-0 -translate-y-4 pointer-events-none",
@@ -31,7 +34,7 @@ export const MobileMenu = ({ isOpen }: MobileMenuProps) => {
         {/* 1. Navigation */}
         <nav className="flex-1">
           <div className="flex flex-col gap-1">
-            <MainMenuMobile />
+            <MainMenuMobile onLinkClick={onClose} />
           </div>
         </nav>
 

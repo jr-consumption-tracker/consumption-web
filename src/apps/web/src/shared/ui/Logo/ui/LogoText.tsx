@@ -6,7 +6,7 @@ import { LogoTextDecoration } from "./LogoTextDecoration";
 
 import type { LogoProps } from "../model/Logo";
 
-type LogoTextProps = Pick<LogoProps, "scrolled" | "size" | "variant">;
+type LogoTextProps = Pick<LogoProps, "scrolled" | "size" | "variant" | "disableHideText">;
 
 // ─── Font size maps ─────────────────────────────────────────────────────────
 
@@ -34,13 +34,13 @@ const scrollKey = (v: boolean) => (v ? "scrolled" : "default");
 
 // ─── Component ──────────────────────────────────────────────────────────────
 
-export const LogoText = ({ scrolled = false, size = "md" }: LogoTextProps) => {
+export const LogoText = ({ scrolled = false, size = "md", disableHideText = false }: LogoTextProps) => {
   const { t } = useTranslation("common");
 
   const key = scrollKey(scrolled);
 
   return (
-    <div className="hidden xl:flex flex-col leading-none">
+    <div className={cn(disableHideText ? "" : "hidden", "xl:flex flex-col leading-none")}>
       {/* Top line — "Energy" */}
       <span
         className={cn(
