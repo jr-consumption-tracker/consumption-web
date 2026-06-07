@@ -4,7 +4,7 @@
       "mode": "auto"
     }
   ],
-  "cSpell.words": ["Energií", "languagedetector", "Spotřeba"],
+  "cSpell.words": ["Energií", "esbuild", "languagedetector", "Spotřeba"],
   "jest.outputConfig": {
     "revealOn": "run",
     "revealWithFocus": "test-results",

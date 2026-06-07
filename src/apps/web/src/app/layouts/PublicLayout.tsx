@@ -1,7 +1,7 @@
 import { Footer } from "@web/widgets/layout/Footer";
 import { Header } from "@web/widgets/layout/Header";
 
-import { BaseLayout } from "./BaseLayout";
+import BaseLayout from "./BaseLayout";
 
 import type { ReactNode } from "react";
 
@@ -9,7 +9,7 @@ interface PublicLayoutProps {
   children: ReactNode;
 }
 
-export const PublicLayout = ({ children }: PublicLayoutProps) => {
+const PublicLayout = ({ children }: PublicLayoutProps) => {
   return (
     <BaseLayout>
       <Header />
@@ -19,4 +19,4 @@ export const PublicLayout = ({ children }: PublicLayoutProps) => {
   );
 };
 
-PublicLayout.displayName = "PublicLayout";
+export default PublicLayout;

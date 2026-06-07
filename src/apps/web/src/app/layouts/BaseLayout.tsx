@@ -4,7 +4,7 @@ interface BaseLayoutProps {
   children: ReactNode;
 }
 
-export const BaseLayout = ({ children }: BaseLayoutProps) => {
+const BaseLayout = ({ children }: BaseLayoutProps) => {
   return (
     <div className="relative min-h-screen bg-surface text-text-main font-sans selection:bg-primary/20 selection:text-primary overflow-x-hidden">
       {/* Mesh Gradient Background */}
@@ -19,4 +19,4 @@ export const BaseLayout = ({ children }: BaseLayoutProps) => {
   );
 };
 
-BaseLayout.displayName = "BaseLayout";
+export default BaseLayout;

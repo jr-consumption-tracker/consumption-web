@@ -23,6 +23,17 @@
       "language": "Jazyk"
     }
   },
+  "errors": {
+    "general": "Něco se pokazilo, zkuste to prosím znovu později.",
+    "registration": {
+      "registrationFailed": "Nelze vytvořit účet. Zkuste se přihlásit nebo si obnovit heslo",
+      "general": "Registrace skončila chybou, zkuste to prosím znovu."
+    }
+  },
+  "passwordInput": {
+    "show": "Zobrazit heslo",
+    "hide": "Skrýt heslo"
+  },
   "footer": {
     "description": "Moderní nástroj pro sledování spotřeby elektřiny a plynu. Šetřete peníze i planetu díky chytrému monitoringu.",
     "operator": "Provozuje Jan Ribka",

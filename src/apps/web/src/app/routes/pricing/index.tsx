@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageLayout } from "@web/app/layouts/PageLayout";
+import PageLayout from "@web/app/layouts/PageLayout";
 import Pricing from "@web/pages/Pricing";
 
 function PricingPage() {

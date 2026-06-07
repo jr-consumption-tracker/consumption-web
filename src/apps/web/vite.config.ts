@@ -24,6 +24,13 @@ export default defineConfig((configEnv) => {
         key: "./certs/devcert.key",
         cert: "./certs/devcert.crt",
       },
+      proxy: {
+        "/api": {
+          target: env.VITE_API_BASE_URL,
+          changeOrigin: true,
+          secure: false,
+        },
+      },
     },
     base: env.VITE_PUBLIC_URL || "/",
     plugins: [

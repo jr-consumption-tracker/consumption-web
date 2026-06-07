@@ -1,2 +1,2 @@
-export { default } from "./ButtonLink";
+export { ButtonLink } from "./ButtonLink";
 export * from "./ButtonLink";

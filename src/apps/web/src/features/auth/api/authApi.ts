@@ -1,46 +1,28 @@
-import { mainBaseApi } from "@web/shared/api/mainBaseApi";
+import { axiosMainApi } from "@web/shared/api/axiosMainApi";
 
-import type { AuthSession } from "@web/entities/auth";
-import type { LoginCredentials } from "@web/entities/auth";
-import type { RegisterData } from "@web/entities/auth";
+import type {
+  AuthSession,
+  LoginCredentials,
+  RegisterData,
+} from "../model/types/credentials";
 
-const basePath = "web/auth/";
+const AUTH_API_BASE_PATH = "web/auth";
 
-export const authApi = mainBaseApi.injectEndpoints({
-  endpoints: (build) => ({
-    login: build.mutation<AuthSession, LoginCredentials>({
-      query: (body) => ({
-        url: `${basePath}login`,
-        method: "POST",
-        body,
-      }),
-    }),
-    register: build.mutation<AuthSession, RegisterData>({
-      query: (body) => ({
-        url: `${basePath}register`,
-        method: "POST",
-        body,
-      }),
-    }),
-    logout: build.mutation<void, void>({
-      query: () => ({
-        url: `${basePath}logout`,
-        method: "POST",
-      }),
-    }),
-    refreshToken: build.mutation<AuthSession, { refreshToken: string }>({
-      query: ({ refreshToken }) => ({
-        url: `${basePath}refreshToken`,
-        method: "POST",
-        body: { refreshToken },
-      }),
-    }),
-  }),
-});
+export const register = async (payload: RegisterData): Promise<void> => {
+  await axiosMainApi.post<void>(`${AUTH_API_BASE_PATH}/register`, payload);
+};
 
-export const {
-  useLoginMutation,
-  useRegisterMutation,
-  useLogoutMutation,
-  useRefreshTokenMutation,
-} = authApi;
+export const login = async (
+  payload: LoginCredentials,
+): Promise<AuthSession> => {
+  const response = await axiosMainApi.post<AuthSession>(
+    `${AUTH_API_BASE_PATH}/login`,
+    payload,
+  );
+
+  return response.data;
+};
+
+export const logout = async (): Promise<void> => {
+  await axiosMainApi.post<void>(`${AUTH_API_BASE_PATH}/logout`);
+};

@@ -56,6 +56,9 @@
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
+
+  /* Layout dimensions */
+  --height-auth: 680px;
 }
 
 .dark {
@@ -120,4 +123,7 @@
   --animate-border-beam: border-beam 4s linear infinite;
   --animate-liquid-morph: liquid-morph 4s ease-in-out infinite;
   --animate-fade-in-up: fade-in-up 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+
+  --height-auth: var(--height-auth);
+  --min-height-auth: var(--height-auth);
 }

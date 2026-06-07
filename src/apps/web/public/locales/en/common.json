@@ -23,6 +23,17 @@
       "language": "Language"
     }
   },
+  "errors": {
+    "general": "Something went wrong, please try again later.",
+    "registration": {
+      "registrationFailed": "Unable to create account. Try logging in or resetting your password",
+      "general": "Registration failed with an error, please try again."
+    }
+  },
+  "passwordInput": {
+    "show": "Show password",
+    "hide": "Hide password"
+  },
   "footer": {
     "description": "A modern tool for tracking electricity and gas consumption. Save money and the planet with smart monitoring.",
     "operator": "Operated by Jan Ribka",
