@@ -2,7 +2,7 @@ import { MoveRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import { ButtonLink } from "@repo/components";
-import { useIsAuthenticated } from "@web/features/auth";
+import { useIsAuthenticated } from "@web/features/auth/model/store/authStore";
 import { Section } from "@web/shared/ui/Section";
 
 export const PricingCta = () => {

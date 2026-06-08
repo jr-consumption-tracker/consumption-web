@@ -1,0 +1,36 @@
+{
+  "name": "@repo/schemas",
+  "version": "0.0.0",
+  "private": false,
+  "author": "Jan Ribka",
+  "description": "Shared Zod validation schemas for consumption tracker",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "keywords": [
+    "zod",
+    "schemas",
+    "validation",
+    "consumption",
+    "tracker"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jr-consumption-tracker/consumption-web.git",
+    "directory": "packages/schemas"
+  },
+  "bugs": {
+    "url": "https://github.com/jr-consumption-tracker/consumption-web/issues"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "eslint": "catalog:"
+  }
+}

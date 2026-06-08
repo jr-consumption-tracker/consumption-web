@@ -16,11 +16,15 @@
   "dependencies": {
     "@heroui/react": "catalog:",
     "@heroui/styles": "catalog:",
-    "@reduxjs/toolkit": "catalog:",
+    "@repo/components": "workspace:*",
+    "@repo/schemas": "workspace:*",
     "@rolldown/plugin-babel": "^0.2.3",
     "@tailwindcss/vite": "^4.2.4",
+    "@tanstack/react-form": "catalog:",
+    "@tanstack/react-query": "catalog:",
     "@tanstack/react-router": "catalog:",
-    "http-status-codes": "^2.3.0",
+    "axios": "^1.16.1",
+    "http-status": "^2.1.0",
     "i18next": "^26.0.8",
     "i18next-browser-languagedetector": "^8.2.1",
     "i18next-http-backend": "^3.0.6",
@@ -28,9 +32,10 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-i18next": "^17.0.6",
-    "react-redux": "catalog:",
     "recharts": "^3.8.1",
-    "tailwindcss": "^4.2.4"
+    "tailwindcss": "^4.2.4",
+    "zod": "catalog:",
+    "zustand": "catalog:"
   },
   "devDependencies": {
     "@fontsource/fira-code": "^5.2.7",
@@ -38,7 +43,6 @@
     "@fontsource/merriweather": "^5.2.11",
     "@fontsource/playfair-display": "^5.2.8",
     "@fontsource/poppins": "^5.2.7",
-    "@repo/components": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/styles": "workspace:*",
     "@repo/typescript-config": "workspace:*",

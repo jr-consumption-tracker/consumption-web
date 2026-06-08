@@ -5,8 +5,8 @@ import type { LinkComponent } from "@tanstack/react-router";
 
 const TanstackButtonComponent = createLink(Button);
 
-const ButtonLink: LinkComponent<typeof TanstackButtonComponent> = (props) => {
+export const ButtonLink: LinkComponent<typeof TanstackButtonComponent> = (
+  props,
+) => {
   return <TanstackButtonComponent preload={"intent"} {...props} />;
 };
-
-export default ButtonLink;

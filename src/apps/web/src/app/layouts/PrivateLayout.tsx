@@ -1,13 +1,13 @@
 import { Footer } from "@web/widgets/layout/Footer";
 import { Header } from "@web/widgets/layout/Header";
 
-import { BaseLayout } from "./BaseLayout";
+import BaseLayout from "./BaseLayout";
 
 interface PrivateLayoutProps {
   children: React.ReactNode;
 }
 
-export const PrivateLayout = ({ children }: PrivateLayoutProps) => {
+const PrivateLayout = ({ children }: PrivateLayoutProps) => {
   return (
     <BaseLayout>
       <Header />
@@ -18,4 +18,4 @@ export const PrivateLayout = ({ children }: PrivateLayoutProps) => {
   );
 };
 
-PrivateLayout.displayName = "PrivateLayout";
+export default PrivateLayout;

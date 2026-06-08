@@ -1,0 +1,18 @@
+{
+  "required": "This field is required",
+  "email": {
+    "invalid": "Invalid email address",
+    "tooLong": "Email must be at most 50 characters"
+  },
+  "password": {
+    "tooShort": "Password must be at least 8 characters",
+    "tooLong": "Password must be at most 24 characters",
+    "lowercase": "Password must contain at least one lowercase letter",
+    "uppercase": "Password must contain at least one uppercase letter",
+    "number": "Password must contain at least one number",
+    "mismatch": "Passwords do not match"
+  },
+  "termsAgreement": {
+    "required": "You must agree to the terms of use"
+  }
+}

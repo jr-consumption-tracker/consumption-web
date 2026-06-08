@@ -30,18 +30,22 @@
     "@repo/typescript-config": "workspace:*",
     "@repo/utils": "workspace:*",
     "@types/react": "catalog:",
-    "eslint": "catalog:"
+    "eslint": "catalog:",
+    "i18next": "^26.0.8"
+  },
+  "dependencies": {
+    "@repo/schemas": "workspace:*",
+    "lucide-react": "^0.576.0",
+    "tailwind-variants": "^3.2.2",
+    "tailwindcss": "catalog:"
   },
   "peerDependencies": {
     "@heroui/react": "catalog:",
     "@heroui/styles": "catalog:",
     "@repo/eslint-config": "workspace:*",
+    "@tanstack/react-form": "catalog:",
     "@tanstack/react-router": "catalog:",
+    "i18next": "^26.0.8",
     "react": "catalog:"
-  },
-  "dependencies": {
-    "lucide-react": "^0.576.0",
-    "tailwind-variants": "^3.2.2",
-    "tailwindcss": "catalog:"
   }
 }

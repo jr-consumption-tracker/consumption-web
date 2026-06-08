@@ -4,6 +4,8 @@ interface PageLayoutProps {
   children: ReactNode;
 }
 
-export const PageLayout = ({ children }: PageLayoutProps) => {
+const PageLayout = ({ children }: PageLayoutProps) => {
   return <div className="flex flex-col">{children}</div>;
 };
+
+export default PageLayout;

@@ -1,28 +1,26 @@
 import { useNavigate } from "@tanstack/react-router";
-import { useLogoutMutation } from "../../api/authApi";
+
+import { useLogoutMutation } from "../../api/useAuthApi";
+import { useAuthStore } from "../store/authStore";
 
 /**
  * useLogout - Business hook pro odhlaseni.
  */
-export const useLogout = () => {
+export function useLogout() {
   const navigate = useNavigate();
-  const [rawLogout, { isLoading }] = useLogoutMutation();
+  const { mutateAsync, isPending } = useLogoutMutation();
+  const rawLogout = useAuthStore((state) => state.logout);
 
   const logout = async () => {
-    try {
-      await rawLogout().unwrap();
-      console.info("[Auth] User logged out");
-    } catch (err) {
-      console.warn("[Auth] Logout API failed, forcing local logout:", err);
-    } finally {
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-      await navigate({ to: "/" });
-    }
+    await mutateAsync();
+
+    rawLogout();
+
+    await navigate({ to: "/" });
   };
 
   return {
     logout,
-    isLoading,
+    isPending,
   };
-};
+}
