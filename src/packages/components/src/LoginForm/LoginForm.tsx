@@ -4,6 +4,7 @@ import { useForm } from "@tanstack/react-form";
 
 import { FormAlert } from "../FormAlert";
 import { FormHeading } from "../FormHeading";
+import { PasswordInput } from "../PasswordInput";
 import { SubmitButton } from "../SubmitButton";
 
 import type { TFunction } from "i18next";
@@ -22,6 +23,7 @@ type LoginFormProps = {
   isLoading?: boolean;
   registerLink?: React.ReactNode;
   t: TFunction<"validation">;
+  tCommon: TFunction<"common">;
   heading: string;
   emailLabel: string;
   passwordLabel: string;
@@ -34,6 +36,7 @@ const LoginForm = ({
   isLoading,
   registerLink,
   t,
+  tCommon,
   heading,
   emailLabel,
   passwordLabel,
@@ -88,6 +91,7 @@ const LoginForm = ({
               <Input
                 type="email"
                 autoComplete="email"
+                autoFocus
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
               />
@@ -116,8 +120,8 @@ const LoginForm = ({
               onBlur={field.handleBlur}
             >
               <Label>{passwordLabel}</Label>
-              <Input
-                type="password"
+              <PasswordInput
+                t={tCommon}
                 autoComplete="current-password"
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}

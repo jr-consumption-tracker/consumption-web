@@ -1,19 +1,22 @@
 export { LoginButton } from "./ui/LoginButton/LoginButton";
+export { RegisterForm } from "./ui/RegisterForm";
 export { useLogin } from "./model/hooks/useLogin";
 export { useLogout } from "./model/hooks/useLogout";
 export { useRegister } from "./model/hooks/useRegister";
-export { useIsAuthenticated } from "./model/hooks/useIsAuthenticated";
-export { default as authReducer, actions as authActions } from "./model/store/authSlice";
-export * from "./model/store/authSelectors";
-export * from "./model/hooks/useAuthSlice";
+export { registerSchema } from "./model/schemas/registerSchema";
+export type { RegisterSchemaValues } from "./model/schemas/registerSchema";
+
 export { useLoginFlyout } from "./model/hooks/useLoginFlyout";
-export type { AuthState } from "./model/store/AuthState";
+export type { AuthState } from "./model/store/authStore";
+export type {
+  AuthSession,
+  LoginCredentials,
+  RegisterData,
+} from "./model/types/credentials";
 
 // API
 export {
-  authApi,
-  useLoginMutation,
   useRegisterMutation,
+  useLoginMutation,
   useLogoutMutation,
-  useRefreshTokenMutation,
-} from "./api/authApi";
+} from "./api/useAuthApi";
