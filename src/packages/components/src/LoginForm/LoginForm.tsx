@@ -12,6 +12,7 @@ import { SubmitButton } from "../SubmitButton";
 import type { TFunction } from "i18next";
 import type { ParseKeys } from "i18next";
 import type { LoginSchemaValues } from "@repo/schemas";
+
 type ValidationKey = ParseKeys<"validation">;
 
 const errorKey = (error: unknown): ValidationKey =>
@@ -29,6 +30,8 @@ type LoginFormProps = {
   fieldErrors?: Partial<Record<"email" | "password", string>>;
   clearFieldError?: (field: "email" | "password") => void;
   errorMessage?: string;
+  defaultPersistLogin?: boolean;
+  onPersistLoginChange?: (value: boolean) => void;
 };
 
 const LoginForm = ({
@@ -41,12 +44,14 @@ const LoginForm = ({
   fieldErrors,
   clearFieldError,
   errorMessage,
+  defaultPersistLogin = false,
+  onPersistLoginChange,
 }: LoginFormProps) => {
   const form = useForm({
     defaultValues: {
       email: "",
       password: "",
-      persistLogin: false,
+      persistLogin: defaultPersistLogin,
     },
     validators: { onSubmit: loginSchema },
     onSubmit: ({ value }) => onSubmit(value),
@@ -157,13 +162,18 @@ const LoginForm = ({
         >
           {(field) => (
             <div className="flex items-center justify-between w-full mb-4">
-              <Tooltip delay={0}>
-                <Checkbox
-                  isSelected={field.state.value}
-                  onChange={field.handleChange}
-                  className="whitespace-nowrap"
-                  label="Zůstat přihlášený"
-                />
+              <Tooltip delay={100}>
+                <Tooltip.Trigger>
+                  <Checkbox
+                    isSelected={field.state.value}
+                    onChange={(value) => {
+                      field.handleChange(value);
+                      onPersistLoginChange?.(value);
+                    }}
+                    className="whitespace-nowrap"
+                    label="Zůstat přihlášený"
+                  />
+                </Tooltip.Trigger>
                 <p className="ml-4 whitespace-nowrap">
                   <Link to="/" className="text-primary">
                     {tAuth("login.forgotPassword")}

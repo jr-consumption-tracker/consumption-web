@@ -33,6 +33,8 @@ const Login = () => {
     error,
     fieldErrors,
     clearFieldError,
+    persistLogin,
+    setPersistLogin,
   } = useLoginForm();
   const { t: tValidation } = useTranslation("validation");
   const { t: tAuth } = useTranslation("auth");
@@ -57,6 +59,8 @@ const Login = () => {
           {tAuth("login.registerLink")}
         </Link>
       }
+      defaultPersistLogin={persistLogin}
+      onPersistLoginChange={setPersistLogin}
     />
   );
 };

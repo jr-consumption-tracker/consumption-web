@@ -1,6 +1,7 @@
 import { isAxiosError } from "axios";
 import { useState } from "react";
 
+import { useToggle } from "@repo/hooks";
 import { useNavigate } from "@tanstack/react-router";
 
 import { useLogin } from "./useLogin";
@@ -13,6 +14,7 @@ export type LoginFieldErrors = Partial<Record<"email" | "password", string>>;
 export function useLoginForm() {
   const { login, reset, isPending, isError, error } = useLogin();
   const [fieldErrors, setFieldErrors] = useState<LoginFieldErrors>({});
+  const [persistLogin, setPersistLogin] = useToggle("persistLoginWeb", false);
   const navigate = useNavigate();
 
   const clearFieldError = (field: keyof LoginFieldErrors): void => {
@@ -56,5 +58,7 @@ export function useLoginForm() {
     error,
     fieldErrors,
     clearFieldError,
+    persistLogin,
+    setPersistLogin,
   };
 }
