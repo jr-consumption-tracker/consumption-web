@@ -26,8 +26,16 @@
   "errors": {
     "general": "Something went wrong, please try again later.",
     "registration": {
+      "general": "Registration failed with an error, please try again.",
       "registrationFailed": "Unable to create account. Try logging in or resetting your password",
-      "general": "Registration failed with an error, please try again."
+      "tooManyRequests": "Too many registration attempts have been detected. Registration is temporarily blocked for security reasons. Please try again in a few minutes."
+    },
+    "login": {
+      "general": "Login failed with an error, please try again.",
+      "invalidCredentials": "Invalid username or password.",
+      "loginRestricted": "Too many login attempts have been detected. Login is temporarily blocked for security reasons. Please try again in a few minutes.",
+      "accessDenied": "Access has been denied to you.",
+      "tooManyRequests": "Too many login attempts have been detected. Login is temporarily blocked for security reasons. Please try again in a few minutes."
     }
   },
   "passwordInput": {
