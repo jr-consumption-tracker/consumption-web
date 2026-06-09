@@ -17,6 +17,7 @@
     "@heroui/react": "catalog:",
     "@heroui/styles": "catalog:",
     "@repo/components": "workspace:*",
+    "@repo/hooks": "workspace:*",
     "@repo/schemas": "workspace:*",
     "@rolldown/plugin-babel": "^0.2.3",
     "@tailwindcss/vite": "^4.2.4",

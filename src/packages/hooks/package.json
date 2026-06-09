@@ -1,0 +1,37 @@
+{
+  "name": "@repo/hooks",
+  "version": "0.0.0",
+  "private": false,
+  "author": "Jan Ribka",
+  "description": "Shared hooks for consumption tracker",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "keywords": [
+    "react",
+    "hooks",
+    "consumption",
+    "tracker",
+    "consumption-tracker"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jr-consumption-tracker/consumption-web.git",
+    "directory": "packages/hooks"
+  },
+  "bugs": {
+    "url": "https://github.com/jr-consumption-tracker/consumption-web/issues"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/react": "catalog:",
+    "eslint": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "catalog:"
+  }
+}

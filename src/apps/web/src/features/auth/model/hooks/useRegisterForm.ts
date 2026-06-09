@@ -1,14 +1,12 @@
 import { isAxiosError } from "axios";
+import { useEffect, useRef, useState } from "react";
 
 import { registerSchema } from "@repo/schemas";
 import { useForm } from "@tanstack/react-form";
-import { useEffect, useRef, useState } from "react";
 
 import { useRegister } from "./useRegister";
 
-type ValidationErrorResponse = {
-  validationError?: Array<Record<string, string[]>>;
-};
+import type { ValidationErrorResponse } from "@web/shared/api/model/types/ValidationErrorResponse";
 
 export type RegisterFieldErrors = Partial<
   Record<"email" | "password" | "confirmPassword" | "termsAgreement", string>
@@ -43,12 +41,7 @@ export const useRegisterForm = () => {
     validators: { onSubmit: registerSchema },
     onSubmit: async ({ value }) => {
       try {
-        await register({
-          email: value.email,
-          password: value.password,
-          confirmPassword: value.confirmPassword,
-          termsAgreement: value.termsAgreement,
-        });
+        await register(value);
       } catch (err) {
         if (isAxiosError<ValidationErrorResponse>(err)) {
           const errors = err.response?.data.validationError?.[0];

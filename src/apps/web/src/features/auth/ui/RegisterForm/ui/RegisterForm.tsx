@@ -15,13 +15,10 @@ import { Link } from "@tanstack/react-router";
 import { useRegisterForm } from "../../../model/hooks/useRegisterForm";
 
 import type { ParseKeys } from "i18next";
+import type { ValidationErrorResponse } from "@web/shared/api/model/types/ValidationErrorResponse";
 
 type ValidationKey = ParseKeys<"validation">;
 type CommonKey = ParseKeys<"common">;
-type ValidationErrorResponse = {
-  general?: string[];
-  validationError?: object;
-};
 
 const errorKey = (error: unknown): ValidationKey =>
   (typeof error === "string"
@@ -59,6 +56,7 @@ export const RegisterForm = () => {
       />
 
       <form
+        noValidate
         className="flex flex-col gap-4 w-full"
         method="post"
         autoComplete="on"

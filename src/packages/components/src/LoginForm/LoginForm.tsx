@@ -1,7 +1,9 @@
-import { FieldError, Input, Label, TextField } from "@heroui/react";
+import { FieldError, Input, Label, TextField, Tooltip } from "@heroui/react";
 import { loginSchema } from "@repo/schemas";
 import { useForm } from "@tanstack/react-form";
+import { Link } from "@tanstack/react-router";
 
+import { Checkbox } from "../Checkbox";
 import { FormAlert } from "../FormAlert";
 import { FormHeading } from "../FormHeading";
 import { PasswordInput } from "../PasswordInput";
@@ -22,31 +24,34 @@ type LoginFormProps = {
   onSubmit: (values: LoginSchemaValues) => void;
   isLoading?: boolean;
   registerLink?: React.ReactNode;
-  t: TFunction<"validation">;
+  tAuth: TFunction<"auth">;
+  tValidation: TFunction<"validation">;
   tCommon: TFunction<"common">;
-  heading: string;
-  emailLabel: string;
-  passwordLabel: string;
-  submitLabel: string;
-  noAccountText: string;
+  fieldErrors?: Partial<Record<"email" | "password", string>>;
+  clearFieldError?: (field: "email" | "password") => void;
+  errorMessage?: string;
+  defaultPersistLogin?: boolean;
+  onPersistLoginChange?: (value: boolean) => void;
 };
 
 const LoginForm = ({
   onSubmit,
   isLoading,
   registerLink,
-  t,
+  tAuth,
+  tValidation,
   tCommon,
-  heading,
-  emailLabel,
-  passwordLabel,
-  submitLabel,
-  noAccountText,
+  fieldErrors,
+  clearFieldError,
+  errorMessage,
+  defaultPersistLogin = false,
+  onPersistLoginChange,
 }: LoginFormProps) => {
   const form = useForm({
     defaultValues: {
       email: "",
       password: "",
+      persistLogin: defaultPersistLogin,
     },
     validators: { onSubmit: loginSchema },
     onSubmit: ({ value }) => onSubmit(value),
@@ -54,20 +59,12 @@ const LoginForm = ({
 
   return (
     <div className="flex flex-col items-center w-full">
-      <FormHeading>{heading}</FormHeading>
+      <FormHeading>{tAuth("login.heading")}</FormHeading>
 
-      <form.Subscribe selector={(state) => state.errors}>
-        {(errors) => (
-          <FormAlert
-            className="mb-4"
-            title={
-              errors[0] ? t(String(errors[0]) as ValidationKey) : undefined
-            }
-          />
-        )}
-      </form.Subscribe>
+      <FormAlert className="mb-4" title={errorMessage} />
 
       <form
+        noValidate
         className="flex flex-col gap-4 w-full"
         onSubmit={(e) => {
           e.preventDefault();
@@ -81,68 +78,122 @@ const LoginForm = ({
         >
           {(field) => (
             <TextField
+              isRequired
               isInvalid={
-                field.state.meta.isTouched && field.state.meta.errors.length > 0
+                (field.state.meta.isTouched &&
+                  field.state.meta.errors.length > 0) ||
+                !!fieldErrors?.email
               }
               validationBehavior="aria"
               onBlur={field.handleBlur}
             >
-              <Label>{emailLabel}</Label>
+              <Label>{tAuth("login.email")}</Label>
               <Input
+                id="email"
+                name="email"
                 type="email"
-                autoComplete="email"
+                autoComplete="username"
+                inputMode="email"
                 autoFocus
                 value={field.state.value}
-                onChange={(e) => field.handleChange(e.target.value)}
+                onChange={(e) => {
+                  clearFieldError?.("email");
+                  field.handleChange(e.target.value);
+                }}
               />
               {field.state.meta.isTouched &&
-                field.state.meta.errors.length > 0 && (
-                  <FieldError>
-                    {t(errorKey(field.state.meta.errors[0]))}
-                  </FieldError>
-                )}
+              field.state.meta.errors.length > 0 ? (
+                <FieldError>
+                  {tValidation(errorKey(field.state.meta.errors[0]))}
+                </FieldError>
+              ) : fieldErrors?.email ? (
+                <FieldError>
+                  {tValidation(fieldErrors.email as ValidationKey)}
+                </FieldError>
+              ) : null}
             </TextField>
           )}
         </form.Field>
 
         <form.Field
           name="password"
-          validators={{
-            onChange: loginSchema.shape.password,
-          }}
+          validators={{ onChange: loginSchema.shape.password }}
         >
           {(field) => (
             <TextField
+              isRequired
               isInvalid={
-                field.state.meta.isTouched && field.state.meta.errors.length > 0
+                (field.state.meta.isTouched &&
+                  field.state.meta.errors.length > 0) ||
+                !!fieldErrors?.password
               }
               validationBehavior="aria"
               onBlur={field.handleBlur}
             >
-              <Label>{passwordLabel}</Label>
+              <Label>{tAuth("login.password")}</Label>
               <PasswordInput
                 t={tCommon}
+                id="password"
+                name="password"
                 autoComplete="current-password"
                 value={field.state.value}
-                onChange={(e) => field.handleChange(e.target.value)}
+                onChange={(e) => {
+                  clearFieldError?.("password");
+                  field.handleChange(e.target.value);
+                }}
               />
               {field.state.meta.isTouched &&
-                field.state.meta.errors.length > 0 && (
-                  <FieldError>
-                    {t(errorKey(field.state.meta.errors[0]))}
-                  </FieldError>
-                )}
+              field.state.meta.errors.length > 0 ? (
+                <FieldError>
+                  {tValidation(errorKey(field.state.meta.errors[0]))}
+                </FieldError>
+              ) : fieldErrors?.password ? (
+                <FieldError>
+                  {tValidation(fieldErrors.password as ValidationKey)}
+                </FieldError>
+              ) : null}
             </TextField>
           )}
         </form.Field>
 
+        <form.Field
+          name="persistLogin"
+          validators={{ onChange: loginSchema.shape.persistLogin }}
+        >
+          {(field) => (
+            <div className="flex items-center justify-between w-full mb-4">
+              <Tooltip delay={100}>
+                <Tooltip.Trigger>
+                  <Checkbox
+                    isSelected={field.state.value}
+                    onChange={(value) => {
+                      field.handleChange(value);
+                      onPersistLoginChange?.(value);
+                    }}
+                    className="whitespace-nowrap"
+                    label="Zůstat přihlášený"
+                  />
+                </Tooltip.Trigger>
+                <p className="ml-4 whitespace-nowrap">
+                  <Link to="/" className="text-primary">
+                    {tAuth("login.forgotPassword")}
+                  </Link>
+                </p>
+                <Tooltip.Content>
+                  {tAuth("login.publicComputerWarning")}
+                </Tooltip.Content>
+              </Tooltip>
+            </div>
+          )}
+        </form.Field>
+
         <SubmitButton isLoading={isLoading} className="mt-2">
-          {submitLabel}
+          {tAuth("login.submit")}
         </SubmitButton>
 
         {registerLink && (
           <p className="text-center text-sm text-default-500">
-            {noAccountText} {registerLink}
+            {tAuth("login.coAccount")} {registerLink}
           </p>
         )}
       </form>

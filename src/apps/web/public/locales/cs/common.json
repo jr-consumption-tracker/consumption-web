@@ -26,8 +26,16 @@
   "errors": {
     "general": "Něco se pokazilo, zkuste to prosím znovu později.",
     "registration": {
+      "general": "Registrace skončila chybou, zkuste to prosím znovu.",
       "registrationFailed": "Nelze vytvořit účet. Zkuste se přihlásit nebo si obnovit heslo",
-      "general": "Registrace skončila chybou, zkuste to prosím znovu."
+      "tooManyRequests": "Bylo zaznamenáno příliš mnoho pokusů o registraci. Registrace je dočasně zablokována z bezpečnostních důvodů. Zkuste to prosím za pár minut."
+    },
+    "login": {
+      "general": "Přihlášení skončilo chybou, zkuste to prosím znovu.",
+      "invalidCredentials": "Neplatné uživatelské jméno, nebo heslo.",
+      "loginRestricted": "Bylo zaznamenáno příliš mnoho pokusů o přihlášení. Přihlášení je dočasně zablokováno z bezpečnostních důvodů. Zkuste to prosím za pár minut.",
+      "accessDenied": "Byl vám odepřen přístup.",
+      "tooManyRequests": "Bylo zaznamenáno příliš mnoho pokusů o přihlášení. Přihlášení je dočasně zablokováno z bezpečnostních důvodů. Zkuste to prosím za pár minut."
     }
   },
   "passwordInput": {
