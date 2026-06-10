@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { devtools } from "zustand/middleware";
+import { devtools, persist } from "zustand/middleware";
 
 import type { AuthSession } from "../types/credentials";
 
@@ -11,20 +11,29 @@ export interface AuthState {
 }
 
 export const useAuthStore = create<AuthState>()(
-  devtools((set) => ({
-    session: null,
-    setSession: (session: AuthSession) =>
-      set({ session }, false, "auth/setSession"),
-    setAccessToken: (accessToken: string) =>
-      set(
-        (state) => ({
-          session: state.session && { ...state.session, accessToken },
-        }),
-        false,
-        "auth/setAccessToken",
-      ),
-    logout: () => set({ session: null }, false, "auth/logout"),
-  })),
+  devtools(
+    persist(
+      (set) => ({
+        session: null,
+        setSession: (session: AuthSession) =>
+          set({ session }, false, "auth/setSession"),
+        setAccessToken: (accessToken: string) =>
+          set(
+            (state) => ({
+              session: state.session && { ...state.session, accessToken },
+            }),
+            false,
+            "auth/setAccessToken",
+          ),
+        logout: () => set({ session: null }, false, "auth/logout"),
+      }),
+      {
+        name: "auth-storage",
+        partialize: (state) => ({ session: state.session }),
+      },
+    ),
+    { enabled: import.meta.env.VITE_ENABLE_DEVTOOLS === "true" },
+  ),
 );
 
 export const useSelectSession = () => useAuthStore((state) => state.session);

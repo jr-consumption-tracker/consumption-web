@@ -9,13 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './app/routes/__root'
+import { Route as PrivateRouteImport } from './app/routes/_private'
 import { Route as IndexRouteImport } from './app/routes/index'
 import { Route as PricingIndexRouteImport } from './app/routes/pricing/index'
 import { Route as FeaturesIndexRouteImport } from './app/routes/features/index'
+import { Route as PrivateTestIndexRouteImport } from './app/routes/_private/test/index'
 import { Route as AuthVerifyEmailIndexRouteImport } from './app/routes/_auth/verify-email/index'
 import { Route as AuthRegisterIndexRouteImport } from './app/routes/_auth/register/index'
 import { Route as AuthLoginIndexRouteImport } from './app/routes/_auth/login/index'
 
+const PrivateRoute = PrivateRouteImport.update({
+  id: '/_private',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -30,6 +36,11 @@ const FeaturesIndexRoute = FeaturesIndexRouteImport.update({
   id: '/features/',
   path: '/features/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PrivateTestIndexRoute = PrivateTestIndexRouteImport.update({
+  id: '/test/',
+  path: '/test/',
+  getParentRoute: () => PrivateRoute,
 } as any)
 const AuthVerifyEmailIndexRoute = AuthVerifyEmailIndexRouteImport.update({
   id: '/_auth/verify-email/',
@@ -54,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/login/': typeof AuthLoginIndexRoute
   '/register/': typeof AuthRegisterIndexRoute
   '/verify-email/': typeof AuthVerifyEmailIndexRoute
+  '/test/': typeof PrivateTestIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,15 +74,18 @@ export interface FileRoutesByTo {
   '/login': typeof AuthLoginIndexRoute
   '/register': typeof AuthRegisterIndexRoute
   '/verify-email': typeof AuthVerifyEmailIndexRoute
+  '/test': typeof PrivateTestIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_private': typeof PrivateRouteWithChildren
   '/features/': typeof FeaturesIndexRoute
   '/pricing/': typeof PricingIndexRoute
   '/_auth/login/': typeof AuthLoginIndexRoute
   '/_auth/register/': typeof AuthRegisterIndexRoute
   '/_auth/verify-email/': typeof AuthVerifyEmailIndexRoute
+  '/_private/test/': typeof PrivateTestIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,20 +96,31 @@ export interface FileRouteTypes {
     | '/login/'
     | '/register/'
     | '/verify-email/'
+    | '/test/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/features' | '/pricing' | '/login' | '/register' | '/verify-email'
+  to:
+    | '/'
+    | '/features'
+    | '/pricing'
+    | '/login'
+    | '/register'
+    | '/verify-email'
+    | '/test'
   id:
     | '__root__'
     | '/'
+    | '/_private'
     | '/features/'
     | '/pricing/'
     | '/_auth/login/'
     | '/_auth/register/'
     | '/_auth/verify-email/'
+    | '/_private/test/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PrivateRoute: typeof PrivateRouteWithChildren
   FeaturesIndexRoute: typeof FeaturesIndexRoute
   PricingIndexRoute: typeof PricingIndexRoute
   AuthLoginIndexRoute: typeof AuthLoginIndexRoute
@@ -104,6 +130,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_private': {
+      id: '/_private'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof PrivateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -124,6 +157,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/features/'
       preLoaderRoute: typeof FeaturesIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_private/test/': {
+      id: '/_private/test/'
+      path: '/test'
+      fullPath: '/test/'
+      preLoaderRoute: typeof PrivateTestIndexRouteImport
+      parentRoute: typeof PrivateRoute
     }
     '/_auth/verify-email/': {
       id: '/_auth/verify-email/'
@@ -149,8 +189,20 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface PrivateRouteChildren {
+  PrivateTestIndexRoute: typeof PrivateTestIndexRoute
+}
+
+const PrivateRouteChildren: PrivateRouteChildren = {
+  PrivateTestIndexRoute: PrivateTestIndexRoute,
+}
+
+const PrivateRouteWithChildren =
+  PrivateRoute._addFileChildren(PrivateRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PrivateRoute: PrivateRouteWithChildren,
   FeaturesIndexRoute: FeaturesIndexRoute,
   PricingIndexRoute: PricingIndexRoute,
   AuthLoginIndexRoute: AuthLoginIndexRoute,

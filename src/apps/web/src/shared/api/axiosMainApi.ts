@@ -63,6 +63,10 @@ axiosMainApi.interceptors.response.use(
       }
     }
 
+    if (error.response?.status === HttpStatusCodes.UNAUTHORIZED) {
+      useAuthStore.getState().logout();
+    }
+
     console.error("API error:", error);
 
     return Promise.reject(error);
