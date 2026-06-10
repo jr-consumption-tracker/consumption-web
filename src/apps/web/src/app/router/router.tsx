@@ -5,7 +5,6 @@ export const router = createRouter({
   routeTree,
   context: { authentication: undefined! },
   defaultNotFoundComponent: () => <div>Global Not Found :(</div>,
-  //  routeMasks: [stepsMask],
   defaultPreload: "intent",
 });
 
