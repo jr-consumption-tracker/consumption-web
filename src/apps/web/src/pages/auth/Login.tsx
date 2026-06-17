@@ -51,11 +51,17 @@ const Login = () => {
       tAuth={tAuth}
       tValidation={tValidation}
       tCommon={tCommon}
-      registerLink={
+      forgottenPasswordLink={
         <Link
-          to="/register"
-          className="text-primary font-medium hover:underline"
+          to="/forgotten-password"
+          replace
+          className="text-primary text-sm hover:underline"
         >
+          {tAuth("login.forgotPassword")}
+        </Link>
+      }
+      registerLink={
+        <Link to="/register" replace className="text-primary hover:underline">
           {tAuth("login.registerLink")}
         </Link>
       }

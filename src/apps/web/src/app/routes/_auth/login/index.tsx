@@ -1,7 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
+
+import { createFileRoute } from "@tanstack/react-router";
 import AuthLayout from "@web/app/layouts/authLayout";
-import Login from "@web/pages/Login";
+import Login from "@web/pages/auth/Login";
 
 function LoginRoute() {
   const { t } = useTranslation("auth");

@@ -1,9 +1,9 @@
 import { isAxiosError } from "axios";
 import { useEffect, useRef, useState } from "react";
 
-import { registerSchema } from "@repo/schemas";
 import { useForm } from "@tanstack/react-form";
 
+import { registerSchema } from "../schemas/registerSchema";
 import { useRegister } from "./useRegister";
 
 import type { ValidationErrorResponse } from "@web/shared/api/model/types/ValidationErrorResponse";

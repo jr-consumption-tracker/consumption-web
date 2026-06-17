@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@repo/utils";
 
-import { LoginPopoverWrapper } from "./ui/LoginPopoverWrapper";
+import { LoginPopoverWrapper } from "./LoginPopoverWrapper";
 
 import type { RefObject } from "react";
 

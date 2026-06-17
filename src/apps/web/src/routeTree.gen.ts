@@ -17,6 +17,8 @@ import { Route as PrivateTestIndexRouteImport } from './app/routes/_private/test
 import { Route as AuthVerifyEmailIndexRouteImport } from './app/routes/_auth/verify-email/index'
 import { Route as AuthRegisterIndexRouteImport } from './app/routes/_auth/register/index'
 import { Route as AuthLoginIndexRouteImport } from './app/routes/_auth/login/index'
+import { Route as AuthForgottenPasswordIndexRouteImport } from './app/routes/_auth/forgotten-password/index'
+import { Route as AuthForgottenPasswordSuccessIndexRouteImport } from './app/routes/_auth/forgotten-password-success/index'
 
 const PrivateRoute = PrivateRouteImport.update({
   id: '/_private',
@@ -57,11 +59,25 @@ const AuthLoginIndexRoute = AuthLoginIndexRouteImport.update({
   path: '/login/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthForgottenPasswordIndexRoute =
+  AuthForgottenPasswordIndexRouteImport.update({
+    id: '/_auth/forgotten-password/',
+    path: '/forgotten-password/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AuthForgottenPasswordSuccessIndexRoute =
+  AuthForgottenPasswordSuccessIndexRouteImport.update({
+    id: '/_auth/forgotten-password-success/',
+    path: '/forgotten-password-success/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/features/': typeof FeaturesIndexRoute
   '/pricing/': typeof PricingIndexRoute
+  '/forgotten-password-success/': typeof AuthForgottenPasswordSuccessIndexRoute
+  '/forgotten-password/': typeof AuthForgottenPasswordIndexRoute
   '/login/': typeof AuthLoginIndexRoute
   '/register/': typeof AuthRegisterIndexRoute
   '/verify-email/': typeof AuthVerifyEmailIndexRoute
@@ -71,6 +87,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/features': typeof FeaturesIndexRoute
   '/pricing': typeof PricingIndexRoute
+  '/forgotten-password-success': typeof AuthForgottenPasswordSuccessIndexRoute
+  '/forgotten-password': typeof AuthForgottenPasswordIndexRoute
   '/login': typeof AuthLoginIndexRoute
   '/register': typeof AuthRegisterIndexRoute
   '/verify-email': typeof AuthVerifyEmailIndexRoute
@@ -82,6 +100,8 @@ export interface FileRoutesById {
   '/_private': typeof PrivateRouteWithChildren
   '/features/': typeof FeaturesIndexRoute
   '/pricing/': typeof PricingIndexRoute
+  '/_auth/forgotten-password-success/': typeof AuthForgottenPasswordSuccessIndexRoute
+  '/_auth/forgotten-password/': typeof AuthForgottenPasswordIndexRoute
   '/_auth/login/': typeof AuthLoginIndexRoute
   '/_auth/register/': typeof AuthRegisterIndexRoute
   '/_auth/verify-email/': typeof AuthVerifyEmailIndexRoute
@@ -93,6 +113,8 @@ export interface FileRouteTypes {
     | '/'
     | '/features/'
     | '/pricing/'
+    | '/forgotten-password-success/'
+    | '/forgotten-password/'
     | '/login/'
     | '/register/'
     | '/verify-email/'
@@ -102,6 +124,8 @@ export interface FileRouteTypes {
     | '/'
     | '/features'
     | '/pricing'
+    | '/forgotten-password-success'
+    | '/forgotten-password'
     | '/login'
     | '/register'
     | '/verify-email'
@@ -112,6 +136,8 @@ export interface FileRouteTypes {
     | '/_private'
     | '/features/'
     | '/pricing/'
+    | '/_auth/forgotten-password-success/'
+    | '/_auth/forgotten-password/'
     | '/_auth/login/'
     | '/_auth/register/'
     | '/_auth/verify-email/'
@@ -123,6 +149,8 @@ export interface RootRouteChildren {
   PrivateRoute: typeof PrivateRouteWithChildren
   FeaturesIndexRoute: typeof FeaturesIndexRoute
   PricingIndexRoute: typeof PricingIndexRoute
+  AuthForgottenPasswordSuccessIndexRoute: typeof AuthForgottenPasswordSuccessIndexRoute
+  AuthForgottenPasswordIndexRoute: typeof AuthForgottenPasswordIndexRoute
   AuthLoginIndexRoute: typeof AuthLoginIndexRoute
   AuthRegisterIndexRoute: typeof AuthRegisterIndexRoute
   AuthVerifyEmailIndexRoute: typeof AuthVerifyEmailIndexRoute
@@ -186,6 +214,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthLoginIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_auth/forgotten-password/': {
+      id: '/_auth/forgotten-password/'
+      path: '/forgotten-password'
+      fullPath: '/forgotten-password/'
+      preLoaderRoute: typeof AuthForgottenPasswordIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_auth/forgotten-password-success/': {
+      id: '/_auth/forgotten-password-success/'
+      path: '/forgotten-password-success'
+      fullPath: '/forgotten-password-success/'
+      preLoaderRoute: typeof AuthForgottenPasswordSuccessIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -205,6 +247,9 @@ const rootRouteChildren: RootRouteChildren = {
   PrivateRoute: PrivateRouteWithChildren,
   FeaturesIndexRoute: FeaturesIndexRoute,
   PricingIndexRoute: PricingIndexRoute,
+  AuthForgottenPasswordSuccessIndexRoute:
+    AuthForgottenPasswordSuccessIndexRoute,
+  AuthForgottenPasswordIndexRoute: AuthForgottenPasswordIndexRoute,
   AuthLoginIndexRoute: AuthLoginIndexRoute,
   AuthRegisterIndexRoute: AuthRegisterIndexRoute,
   AuthVerifyEmailIndexRoute: AuthVerifyEmailIndexRoute,

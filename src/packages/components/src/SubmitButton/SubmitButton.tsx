@@ -7,7 +7,11 @@ type SubmitButtonProps = {
   className?: string;
 };
 
-export const SubmitButton = ({ children, isLoading, className }: SubmitButtonProps) => {
+export const SubmitButton = ({
+  children,
+  isLoading,
+  className,
+}: SubmitButtonProps) => {
   return (
     <ButtonRoot
       type="submit"
