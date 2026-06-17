@@ -36,6 +36,11 @@
       "loginRestricted": "Bylo zaznamenáno příliš mnoho pokusů o přihlášení. Přihlášení je dočasně zablokováno z bezpečnostních důvodů. Zkuste to prosím za pár minut.",
       "accessDenied": "Byl vám odepřen přístup.",
       "tooManyRequests": "Bylo zaznamenáno příliš mnoho pokusů o přihlášení. Přihlášení je dočasně zablokováno z bezpečnostních důvodů. Zkuste to prosím za pár minut."
+    },
+    "forgottenPassword": {
+      "general": "Obnovení hesla skončilo chybou, zkuste to prosím znovu.",
+      "invalidEmail": "Neplatný e-mail.",
+      "tooManyRequests": "Bylo zaznamenáno příliš mnoho pokusů o obnovení hesla. Obnovení hesla je dočasně zablokováno z bezpečnostních důvodů. Zkuste to prosím za pár minut."
     }
   },
   "passwordInput": {

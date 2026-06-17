@@ -36,6 +36,11 @@
       "loginRestricted": "Too many login attempts have been detected. Login is temporarily blocked for security reasons. Please try again in a few minutes.",
       "accessDenied": "Access has been denied to you.",
       "tooManyRequests": "Too many login attempts have been detected. Login is temporarily blocked for security reasons. Please try again in a few minutes."
+    },
+    "forgottenPassword": {
+      "general": "Password reset failed with an error, please try again.",
+      "invalidEmail": "Invalid email.",
+      "tooManyRequests": "Too many password reset attempts have been detected. Password reset is temporarily blocked for security reasons. Please try again in a few minutes."
     }
   },
   "passwordInput": {

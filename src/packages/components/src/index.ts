@@ -1,4 +1,6 @@
 export { ButtonLink } from "./ButtonLink";
+export { ForgottenPasswordForm } from "./ForgottenPasswordForm";
+export { ForgottenPasswordSuccessful } from "./ForgottenPasswordSuccessful";
 export { Checkbox } from "./Checkbox";
 export { FormAlert } from "./FormAlert";
 export { FormHeading } from "./FormHeading";

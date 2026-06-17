@@ -9,8 +9,8 @@ import {
   PasswordInput,
   SubmitButton,
 } from "@repo/components";
-import { registerSchema } from "@repo/schemas";
 import { Link } from "@tanstack/react-router";
+import { registerSchema } from "@web/features/auth";
 
 import { useRegisterForm } from "../../../model/hooks/useRegisterForm";
 
@@ -41,7 +41,7 @@ const registerApiErrorKey = (error: unknown): CommonKey | undefined => {
 export const RegisterForm = () => {
   const { form, isPending, isError, error, fieldErrors, clearFieldError } =
     useRegisterForm();
-  const { t } = useTranslation("validation");
+  const { t: tValidation } = useTranslation("validation");
   const { t: tAuth } = useTranslation("auth");
   const { t: tCommon } = useTranslation("common");
   const apiErrorKey = isError ? registerApiErrorKey(error) : undefined;
@@ -98,10 +98,12 @@ export const RegisterForm = () => {
               {field.state.meta.isTouched &&
               field.state.meta.errors.length > 0 ? (
                 <FieldError>
-                  {t(errorKey(field.state.meta.errors[0]))}
+                  {tValidation(errorKey(field.state.meta.errors[0]))}
                 </FieldError>
               ) : fieldErrors.email ? (
-                <FieldError>{t(fieldErrors.email as ValidationKey)}</FieldError>
+                <FieldError>
+                  {tValidation(fieldErrors.email as ValidationKey)}
+                </FieldError>
               ) : null}
             </TextField>
           )}
@@ -137,11 +139,11 @@ export const RegisterForm = () => {
               {field.state.meta.isTouched &&
               field.state.meta.errors.length > 0 ? (
                 <FieldError>
-                  {t(errorKey(field.state.meta.errors[0]))}
+                  {tValidation(errorKey(field.state.meta.errors[0]))}
                 </FieldError>
               ) : fieldErrors.password ? (
                 <FieldError>
-                  {t(fieldErrors.password as ValidationKey)}
+                  {tValidation(fieldErrors.password as ValidationKey)}
                 </FieldError>
               ) : null}
             </TextField>
@@ -192,11 +194,11 @@ export const RegisterForm = () => {
               {field.state.meta.isTouched &&
               field.state.meta.errors.length > 0 ? (
                 <FieldError>
-                  {t(errorKey(field.state.meta.errors[0]))}
+                  {tValidation(errorKey(field.state.meta.errors[0]))}
                 </FieldError>
               ) : fieldErrors.confirmPassword ? (
                 <FieldError>
-                  {t(fieldErrors.confirmPassword as ValidationKey)}
+                  {tValidation(fieldErrors.confirmPassword as ValidationKey)}
                 </FieldError>
               ) : null}
             </TextField>
@@ -226,11 +228,11 @@ export const RegisterForm = () => {
               {field.state.meta.isTouched &&
               field.state.meta.errors.length > 0 ? (
                 <p className="px-1 text-xs text-danger">
-                  {t(errorKey(field.state.meta.errors[0]))}
+                  {tValidation(errorKey(field.state.meta.errors[0]))}
                 </p>
               ) : fieldErrors.termsAgreement ? (
                 <p className="px-1 text-xs text-danger">
-                  {t(fieldErrors.termsAgreement as ValidationKey)}
+                  {tValidation(fieldErrors.termsAgreement as ValidationKey)}
                 </p>
               ) : null}
             </div>

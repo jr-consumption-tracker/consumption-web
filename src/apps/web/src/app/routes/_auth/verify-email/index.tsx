@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import AuthLayout from "@web/app/layouts/authLayout";
-import VerifyEmail from "@web/pages/VerifyEmail";
+import VerifyEmail from "@web/pages/auth/VerifyEmail";
 
 function VerifyEmailRoute() {
   return (

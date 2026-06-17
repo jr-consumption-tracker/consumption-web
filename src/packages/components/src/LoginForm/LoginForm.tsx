@@ -1,7 +1,6 @@
 import { FieldError, Input, Label, TextField, Tooltip } from "@heroui/react";
 import { loginSchema } from "@repo/schemas";
 import { useForm } from "@tanstack/react-form";
-import { Link } from "@tanstack/react-router";
 
 import { Checkbox } from "../Checkbox";
 import { FormAlert } from "../FormAlert";
@@ -32,6 +31,7 @@ type LoginFormProps = {
   errorMessage?: string;
   defaultPersistLogin?: boolean;
   onPersistLoginChange?: (value: boolean) => void;
+  forgottenPasswordLink: React.ReactNode;
 };
 
 const LoginForm = ({
@@ -46,6 +46,7 @@ const LoginForm = ({
   errorMessage,
   defaultPersistLogin = false,
   onPersistLoginChange,
+  forgottenPasswordLink,
 }: LoginFormProps) => {
   const form = useForm({
     defaultValues: {
@@ -175,9 +176,7 @@ const LoginForm = ({
                   />
                 </Tooltip.Trigger>
                 <p className="ml-4 whitespace-nowrap">
-                  <Link to="/" className="text-primary">
-                    {tAuth("login.forgotPassword")}
-                  </Link>
+                  {forgottenPasswordLink}
                 </p>
                 <Tooltip.Content>
                   {tAuth("login.publicComputerWarning")}
@@ -193,7 +192,7 @@ const LoginForm = ({
 
         {registerLink && (
           <p className="text-center text-sm text-default-500">
-            {tAuth("login.coAccount")} {registerLink}
+            {tAuth("login.noAccount")} {registerLink}
           </p>
         )}
       </form>
