@@ -5,9 +5,10 @@ import { useAuthStore } from "@web/features/auth/model/store/authStore";
 
 import type { AuthSession } from "@web/features/auth/model/types/credentials";
 
-const MAIN_API_BASE_URL = import.meta.env.DEV
-  ? "/api"
-  : `${import.meta.env.VITE_API_BASE_URL.replace(/\/$/, "")}/api`;
+const MAIN_API_BASE_URL =
+  import.meta.env.MODE !== "production" && import.meta.env.MODE !== "test"
+    ? "/api"
+    : `${import.meta.env.VITE_API_BASE_URL.replace(/\/$/, "")}/api`;
 
 export const axiosMainApi = axios.create({
   baseURL: MAIN_API_BASE_URL,

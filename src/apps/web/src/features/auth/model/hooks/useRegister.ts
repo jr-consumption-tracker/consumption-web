@@ -7,7 +7,8 @@ import type { RegisterData } from "../types/credentials";
 export function useRegister() {
   const navigate = useNavigate();
 
-  const { mutateAsync, isPending, isError, error, reset } = useRegisterMutation();
+  const { mutateAsync, isPending, isError, error, reset } =
+    useRegisterMutation();
 
   const register = async (data: RegisterData): Promise<void> => {
     const payload: RegisterData = {
@@ -16,7 +17,11 @@ export function useRegister() {
     };
 
     await mutateAsync(payload);
-    await navigate({ to: "/" });
+    await navigate({
+      to: "/registrace-uspech",
+      replace: true,
+      search: { email: payload.email },
+    });
   };
 
   return {

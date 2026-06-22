@@ -1,13 +1,12 @@
 import { MoveRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import { ButtonLink } from "@repo/components";
+import { ButtonLink } from "@web/shared/ui/ButtonLink";
 import { PricingCard } from "@web/shared/ui/PricingCard";
 import { Section } from "@web/shared/ui/Section";
 
 import type { TFunction } from "i18next";
 import type { PricingPlan } from "@web/shared/model/types";
-
 const getPricingPlans = (t: TFunction<"home">): PricingPlan[] => [
   {
     name: t("pricing.plans.free.name"),
@@ -51,7 +50,7 @@ export const HomePricing = () => {
 
       <div className="mt-16 text-center">
         <ButtonLink
-          to="/pricing"
+          to="/cenik"
           variant="ghost"
           size="lg"
           className="text-xl font-bold leading-6 transition-all hover:text-primary hover:bg-transparent group"

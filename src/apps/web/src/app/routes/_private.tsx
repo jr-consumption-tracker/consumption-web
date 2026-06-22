@@ -5,7 +5,7 @@ export const Route = createFileRoute("/_private")({
     const { session } = context.authentication;
 
     if (!session) {
-      throw redirect({ to: "/login" });
+      throw redirect({ to: "/prihlaseni" });
     }
   },
 });

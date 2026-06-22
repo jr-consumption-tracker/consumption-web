@@ -1,0 +1,1 @@
+export { VerifyEmailSuccess } from "./VerifyEmailSuccess";

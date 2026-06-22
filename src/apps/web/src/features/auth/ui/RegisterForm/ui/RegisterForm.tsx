@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 
 import { FieldError, Input, Label, TextField } from "@heroui/react";
 import {
+  Alert,
   Checkbox,
-  FormAlert,
   FormHeading,
   PasswordInput,
   SubmitButton,
@@ -50,7 +50,7 @@ export const RegisterForm = () => {
     <div className="flex flex-col items-center w-full">
       <FormHeading>{tAuth("register.heading")}</FormHeading>
 
-      <FormAlert
+      <Alert
         title={apiErrorKey ? tCommon(apiErrorKey) : undefined}
         className="mb-4"
       />
@@ -246,7 +246,7 @@ export const RegisterForm = () => {
         <p className="text-center text-sm text-default-500">
           {tAuth("register.hasAccount")}{" "}
           <Link
-            to="/login"
+            to="/prihlaseni"
             className="text-primary font-medium hover:underline"
           >
             {tAuth("register.loginLink")}

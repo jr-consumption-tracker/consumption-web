@@ -2,8 +2,8 @@ import { FieldError, Input, Label, TextField, Tooltip } from "@heroui/react";
 import { loginSchema } from "@repo/schemas";
 import { useForm } from "@tanstack/react-form";
 
+import { Alert } from "../Alert";
 import { Checkbox } from "../Checkbox";
-import { FormAlert } from "../FormAlert";
 import { FormHeading } from "../FormHeading";
 import { PasswordInput } from "../PasswordInput";
 import { SubmitButton } from "../SubmitButton";
@@ -31,7 +31,7 @@ type LoginFormProps = {
   errorMessage?: string;
   defaultPersistLogin?: boolean;
   onPersistLoginChange?: (value: boolean) => void;
-  forgottenPasswordLink: React.ReactNode;
+  passwordResetLink: React.ReactNode;
 };
 
 const LoginForm = ({
@@ -46,7 +46,7 @@ const LoginForm = ({
   errorMessage,
   defaultPersistLogin = false,
   onPersistLoginChange,
-  forgottenPasswordLink,
+  passwordResetLink,
 }: LoginFormProps) => {
   const form = useForm({
     defaultValues: {
@@ -62,7 +62,7 @@ const LoginForm = ({
     <div className="flex flex-col items-center w-full">
       <FormHeading>{tAuth("login.heading")}</FormHeading>
 
-      <FormAlert className="mb-4" title={errorMessage} />
+      <Alert className="mb-4" title={errorMessage} />
 
       <form
         noValidate
@@ -175,9 +175,7 @@ const LoginForm = ({
                     label="Zůstat přihlášený"
                   />
                 </Tooltip.Trigger>
-                <p className="ml-4 whitespace-nowrap">
-                  {forgottenPasswordLink}
-                </p>
+                <p className="ml-4 whitespace-nowrap">{passwordResetLink}</p>
                 <Tooltip.Content>
                   {tAuth("login.publicComputerWarning")}
                 </Tooltip.Content>

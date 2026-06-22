@@ -35,7 +35,7 @@ export function useLoginForm() {
         const actionError = err.response?.data.action?.[0];
 
         if (actionError === "emailNotVerified")
-          navigate({ to: "/verify-email", replace: true });
+          navigate({ to: "/overeni-emailu-zadost", replace: true });
 
         const errors = err.response?.data.validationError?.[0];
         if (errors) {

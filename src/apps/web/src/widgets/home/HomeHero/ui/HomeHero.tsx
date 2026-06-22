@@ -1,8 +1,8 @@
 import { MoveRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import { ButtonLink } from "@repo/components";
 import { useIsAuthenticated } from "@web/features/auth/model/store/authStore";
+import { ButtonLink } from "@web/shared/ui/ButtonLink";
 import { Section } from "@web/shared/ui/Section";
 
 /**
@@ -62,7 +62,7 @@ export const HomeHero = () => {
           </ButtonLink>
 
           <ButtonLink
-            to={"/features"}
+            to={"/vlastnosti"}
             variant="ghost"
             size="lg"
             className="text-xl font-bold leading-6 transition-all hover:text-primary hover:bg-transparent group"
