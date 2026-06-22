@@ -10,33 +10,38 @@
 
 import { Route as rootRouteImport } from './app/routes/__root'
 import { Route as PrivateRouteImport } from './app/routes/_private'
-import { Route as IndexRouteImport } from './app/routes/index'
-import { Route as PricingIndexRouteImport } from './app/routes/pricing/index'
-import { Route as FeaturesIndexRouteImport } from './app/routes/features/index'
+import { Route as PublicIndexRouteImport } from './app/routes/_public/index'
+import { Route as PublicVlastnostiIndexRouteImport } from './app/routes/_public/vlastnosti/index'
+import { Route as PublicCenikIndexRouteImport } from './app/routes/_public/cenik/index'
 import { Route as PrivateTestIndexRouteImport } from './app/routes/_private/test/index'
-import { Route as AuthVerifyEmailIndexRouteImport } from './app/routes/_auth/verify-email/index'
-import { Route as AuthRegisterIndexRouteImport } from './app/routes/_auth/register/index'
-import { Route as AuthLoginIndexRouteImport } from './app/routes/_auth/login/index'
-import { Route as AuthForgottenPasswordIndexRouteImport } from './app/routes/_auth/forgotten-password/index'
-import { Route as AuthForgottenPasswordSuccessIndexRouteImport } from './app/routes/_auth/forgotten-password-success/index'
+import { Route as AuthZapomenuteHesloIndexRouteImport } from './app/routes/_auth/zapomenute-heslo/index'
+import { Route as AuthZapomenuteHesloUspechIndexRouteImport } from './app/routes/_auth/zapomenute-heslo-uspech/index'
+import { Route as AuthRegistraceIndexRouteImport } from './app/routes/_auth/registrace/index'
+import { Route as AuthRegistraceUspechIndexRouteImport } from './app/routes/_auth/registrace-uspech/index'
+import { Route as AuthPrihlaseniIndexRouteImport } from './app/routes/_auth/prihlaseni/index'
+import { Route as AuthOvereniEmailuIndexRouteImport } from './app/routes/_auth/overeni-emailu/index'
+import { Route as AuthOvereniEmailuZadostIndexRouteImport } from './app/routes/_auth/overeni-emailu-zadost/index'
+import { Route as AuthOvereniEmailuZadostUspechIndexRouteImport } from './app/routes/_auth/overeni-emailu-zadost-uspech/index'
+import { Route as AuthOvereniEmailuUspechIndexRouteImport } from './app/routes/_auth/overeni-emailu-uspech/index'
+import { Route as AuthOvereniEmailuTokenRouteImport } from './app/routes/_auth/overeni-emailu/$token'
 
 const PrivateRoute = PrivateRouteImport.update({
   id: '/_private',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
+const PublicIndexRoute = PublicIndexRouteImport.update({
+  id: '/_public/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PricingIndexRoute = PricingIndexRouteImport.update({
-  id: '/pricing/',
-  path: '/pricing/',
+const PublicVlastnostiIndexRoute = PublicVlastnostiIndexRouteImport.update({
+  id: '/_public/vlastnosti/',
+  path: '/vlastnosti/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FeaturesIndexRoute = FeaturesIndexRouteImport.update({
-  id: '/features/',
-  path: '/features/',
+const PublicCenikIndexRoute = PublicCenikIndexRouteImport.update({
+  id: '/_public/cenik/',
+  path: '/cenik/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivateTestIndexRoute = PrivateTestIndexRouteImport.update({
@@ -44,116 +49,180 @@ const PrivateTestIndexRoute = PrivateTestIndexRouteImport.update({
   path: '/test/',
   getParentRoute: () => PrivateRoute,
 } as any)
-const AuthVerifyEmailIndexRoute = AuthVerifyEmailIndexRouteImport.update({
-  id: '/_auth/verify-email/',
-  path: '/verify-email/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRegisterIndexRoute = AuthRegisterIndexRouteImport.update({
-  id: '/_auth/register/',
-  path: '/register/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthLoginIndexRoute = AuthLoginIndexRouteImport.update({
-  id: '/_auth/login/',
-  path: '/login/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthForgottenPasswordIndexRoute =
-  AuthForgottenPasswordIndexRouteImport.update({
-    id: '/_auth/forgotten-password/',
-    path: '/forgotten-password/',
+const AuthZapomenuteHesloIndexRoute =
+  AuthZapomenuteHesloIndexRouteImport.update({
+    id: '/_auth/zapomenute-heslo/',
+    path: '/zapomenute-heslo/',
     getParentRoute: () => rootRouteImport,
   } as any)
-const AuthForgottenPasswordSuccessIndexRoute =
-  AuthForgottenPasswordSuccessIndexRouteImport.update({
-    id: '/_auth/forgotten-password-success/',
-    path: '/forgotten-password-success/',
+const AuthZapomenuteHesloUspechIndexRoute =
+  AuthZapomenuteHesloUspechIndexRouteImport.update({
+    id: '/_auth/zapomenute-heslo-uspech/',
+    path: '/zapomenute-heslo-uspech/',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AuthRegistraceIndexRoute = AuthRegistraceIndexRouteImport.update({
+  id: '/_auth/registrace/',
+  path: '/registrace/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRegistraceUspechIndexRoute =
+  AuthRegistraceUspechIndexRouteImport.update({
+    id: '/_auth/registrace-uspech/',
+    path: '/registrace-uspech/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AuthPrihlaseniIndexRoute = AuthPrihlaseniIndexRouteImport.update({
+  id: '/_auth/prihlaseni/',
+  path: '/prihlaseni/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthOvereniEmailuIndexRoute = AuthOvereniEmailuIndexRouteImport.update({
+  id: '/_auth/overeni-emailu/',
+  path: '/overeni-emailu/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthOvereniEmailuZadostIndexRoute =
+  AuthOvereniEmailuZadostIndexRouteImport.update({
+    id: '/_auth/overeni-emailu-zadost/',
+    path: '/overeni-emailu-zadost/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AuthOvereniEmailuZadostUspechIndexRoute =
+  AuthOvereniEmailuZadostUspechIndexRouteImport.update({
+    id: '/_auth/overeni-emailu-zadost-uspech/',
+    path: '/overeni-emailu-zadost-uspech/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AuthOvereniEmailuUspechIndexRoute =
+  AuthOvereniEmailuUspechIndexRouteImport.update({
+    id: '/_auth/overeni-emailu-uspech/',
+    path: '/overeni-emailu-uspech/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AuthOvereniEmailuTokenRoute = AuthOvereniEmailuTokenRouteImport.update({
+  id: '/_auth/overeni-emailu/$token',
+  path: '/overeni-emailu/$token',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/features/': typeof FeaturesIndexRoute
-  '/pricing/': typeof PricingIndexRoute
-  '/forgotten-password-success/': typeof AuthForgottenPasswordSuccessIndexRoute
-  '/forgotten-password/': typeof AuthForgottenPasswordIndexRoute
-  '/login/': typeof AuthLoginIndexRoute
-  '/register/': typeof AuthRegisterIndexRoute
-  '/verify-email/': typeof AuthVerifyEmailIndexRoute
+  '/': typeof PublicIndexRoute
+  '/overeni-emailu/$token': typeof AuthOvereniEmailuTokenRoute
+  '/overeni-emailu-uspech/': typeof AuthOvereniEmailuUspechIndexRoute
+  '/overeni-emailu-zadost-uspech/': typeof AuthOvereniEmailuZadostUspechIndexRoute
+  '/overeni-emailu-zadost/': typeof AuthOvereniEmailuZadostIndexRoute
+  '/overeni-emailu/': typeof AuthOvereniEmailuIndexRoute
+  '/prihlaseni/': typeof AuthPrihlaseniIndexRoute
+  '/registrace-uspech/': typeof AuthRegistraceUspechIndexRoute
+  '/registrace/': typeof AuthRegistraceIndexRoute
+  '/zapomenute-heslo-uspech/': typeof AuthZapomenuteHesloUspechIndexRoute
+  '/zapomenute-heslo/': typeof AuthZapomenuteHesloIndexRoute
   '/test/': typeof PrivateTestIndexRoute
+  '/cenik/': typeof PublicCenikIndexRoute
+  '/vlastnosti/': typeof PublicVlastnostiIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/features': typeof FeaturesIndexRoute
-  '/pricing': typeof PricingIndexRoute
-  '/forgotten-password-success': typeof AuthForgottenPasswordSuccessIndexRoute
-  '/forgotten-password': typeof AuthForgottenPasswordIndexRoute
-  '/login': typeof AuthLoginIndexRoute
-  '/register': typeof AuthRegisterIndexRoute
-  '/verify-email': typeof AuthVerifyEmailIndexRoute
+  '/': typeof PublicIndexRoute
+  '/overeni-emailu/$token': typeof AuthOvereniEmailuTokenRoute
+  '/overeni-emailu-uspech': typeof AuthOvereniEmailuUspechIndexRoute
+  '/overeni-emailu-zadost-uspech': typeof AuthOvereniEmailuZadostUspechIndexRoute
+  '/overeni-emailu-zadost': typeof AuthOvereniEmailuZadostIndexRoute
+  '/overeni-emailu': typeof AuthOvereniEmailuIndexRoute
+  '/prihlaseni': typeof AuthPrihlaseniIndexRoute
+  '/registrace-uspech': typeof AuthRegistraceUspechIndexRoute
+  '/registrace': typeof AuthRegistraceIndexRoute
+  '/zapomenute-heslo-uspech': typeof AuthZapomenuteHesloUspechIndexRoute
+  '/zapomenute-heslo': typeof AuthZapomenuteHesloIndexRoute
   '/test': typeof PrivateTestIndexRoute
+  '/cenik': typeof PublicCenikIndexRoute
+  '/vlastnosti': typeof PublicVlastnostiIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/_private': typeof PrivateRouteWithChildren
-  '/features/': typeof FeaturesIndexRoute
-  '/pricing/': typeof PricingIndexRoute
-  '/_auth/forgotten-password-success/': typeof AuthForgottenPasswordSuccessIndexRoute
-  '/_auth/forgotten-password/': typeof AuthForgottenPasswordIndexRoute
-  '/_auth/login/': typeof AuthLoginIndexRoute
-  '/_auth/register/': typeof AuthRegisterIndexRoute
-  '/_auth/verify-email/': typeof AuthVerifyEmailIndexRoute
+  '/_public/': typeof PublicIndexRoute
+  '/_auth/overeni-emailu/$token': typeof AuthOvereniEmailuTokenRoute
+  '/_auth/overeni-emailu-uspech/': typeof AuthOvereniEmailuUspechIndexRoute
+  '/_auth/overeni-emailu-zadost-uspech/': typeof AuthOvereniEmailuZadostUspechIndexRoute
+  '/_auth/overeni-emailu-zadost/': typeof AuthOvereniEmailuZadostIndexRoute
+  '/_auth/overeni-emailu/': typeof AuthOvereniEmailuIndexRoute
+  '/_auth/prihlaseni/': typeof AuthPrihlaseniIndexRoute
+  '/_auth/registrace-uspech/': typeof AuthRegistraceUspechIndexRoute
+  '/_auth/registrace/': typeof AuthRegistraceIndexRoute
+  '/_auth/zapomenute-heslo-uspech/': typeof AuthZapomenuteHesloUspechIndexRoute
+  '/_auth/zapomenute-heslo/': typeof AuthZapomenuteHesloIndexRoute
   '/_private/test/': typeof PrivateTestIndexRoute
+  '/_public/cenik/': typeof PublicCenikIndexRoute
+  '/_public/vlastnosti/': typeof PublicVlastnostiIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/features/'
-    | '/pricing/'
-    | '/forgotten-password-success/'
-    | '/forgotten-password/'
-    | '/login/'
-    | '/register/'
-    | '/verify-email/'
+    | '/overeni-emailu/$token'
+    | '/overeni-emailu-uspech/'
+    | '/overeni-emailu-zadost-uspech/'
+    | '/overeni-emailu-zadost/'
+    | '/overeni-emailu/'
+    | '/prihlaseni/'
+    | '/registrace-uspech/'
+    | '/registrace/'
+    | '/zapomenute-heslo-uspech/'
+    | '/zapomenute-heslo/'
     | '/test/'
+    | '/cenik/'
+    | '/vlastnosti/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/features'
-    | '/pricing'
-    | '/forgotten-password-success'
-    | '/forgotten-password'
-    | '/login'
-    | '/register'
-    | '/verify-email'
+    | '/overeni-emailu/$token'
+    | '/overeni-emailu-uspech'
+    | '/overeni-emailu-zadost-uspech'
+    | '/overeni-emailu-zadost'
+    | '/overeni-emailu'
+    | '/prihlaseni'
+    | '/registrace-uspech'
+    | '/registrace'
+    | '/zapomenute-heslo-uspech'
+    | '/zapomenute-heslo'
     | '/test'
+    | '/cenik'
+    | '/vlastnosti'
   id:
     | '__root__'
-    | '/'
     | '/_private'
-    | '/features/'
-    | '/pricing/'
-    | '/_auth/forgotten-password-success/'
-    | '/_auth/forgotten-password/'
-    | '/_auth/login/'
-    | '/_auth/register/'
-    | '/_auth/verify-email/'
+    | '/_public/'
+    | '/_auth/overeni-emailu/$token'
+    | '/_auth/overeni-emailu-uspech/'
+    | '/_auth/overeni-emailu-zadost-uspech/'
+    | '/_auth/overeni-emailu-zadost/'
+    | '/_auth/overeni-emailu/'
+    | '/_auth/prihlaseni/'
+    | '/_auth/registrace-uspech/'
+    | '/_auth/registrace/'
+    | '/_auth/zapomenute-heslo-uspech/'
+    | '/_auth/zapomenute-heslo/'
     | '/_private/test/'
+    | '/_public/cenik/'
+    | '/_public/vlastnosti/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   PrivateRoute: typeof PrivateRouteWithChildren
-  FeaturesIndexRoute: typeof FeaturesIndexRoute
-  PricingIndexRoute: typeof PricingIndexRoute
-  AuthForgottenPasswordSuccessIndexRoute: typeof AuthForgottenPasswordSuccessIndexRoute
-  AuthForgottenPasswordIndexRoute: typeof AuthForgottenPasswordIndexRoute
-  AuthLoginIndexRoute: typeof AuthLoginIndexRoute
-  AuthRegisterIndexRoute: typeof AuthRegisterIndexRoute
-  AuthVerifyEmailIndexRoute: typeof AuthVerifyEmailIndexRoute
+  PublicIndexRoute: typeof PublicIndexRoute
+  AuthOvereniEmailuTokenRoute: typeof AuthOvereniEmailuTokenRoute
+  AuthOvereniEmailuUspechIndexRoute: typeof AuthOvereniEmailuUspechIndexRoute
+  AuthOvereniEmailuZadostUspechIndexRoute: typeof AuthOvereniEmailuZadostUspechIndexRoute
+  AuthOvereniEmailuZadostIndexRoute: typeof AuthOvereniEmailuZadostIndexRoute
+  AuthOvereniEmailuIndexRoute: typeof AuthOvereniEmailuIndexRoute
+  AuthPrihlaseniIndexRoute: typeof AuthPrihlaseniIndexRoute
+  AuthRegistraceUspechIndexRoute: typeof AuthRegistraceUspechIndexRoute
+  AuthRegistraceIndexRoute: typeof AuthRegistraceIndexRoute
+  AuthZapomenuteHesloUspechIndexRoute: typeof AuthZapomenuteHesloUspechIndexRoute
+  AuthZapomenuteHesloIndexRoute: typeof AuthZapomenuteHesloIndexRoute
+  PublicCenikIndexRoute: typeof PublicCenikIndexRoute
+  PublicVlastnostiIndexRoute: typeof PublicVlastnostiIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -165,25 +234,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivateRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
+    '/_public/': {
+      id: '/_public/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+      preLoaderRoute: typeof PublicIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/pricing/': {
-      id: '/pricing/'
-      path: '/pricing'
-      fullPath: '/pricing/'
-      preLoaderRoute: typeof PricingIndexRouteImport
+    '/_public/vlastnosti/': {
+      id: '/_public/vlastnosti/'
+      path: '/vlastnosti'
+      fullPath: '/vlastnosti/'
+      preLoaderRoute: typeof PublicVlastnostiIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/features/': {
-      id: '/features/'
-      path: '/features'
-      fullPath: '/features/'
-      preLoaderRoute: typeof FeaturesIndexRouteImport
+    '/_public/cenik/': {
+      id: '/_public/cenik/'
+      path: '/cenik'
+      fullPath: '/cenik/'
+      preLoaderRoute: typeof PublicCenikIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_private/test/': {
@@ -193,39 +262,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivateTestIndexRouteImport
       parentRoute: typeof PrivateRoute
     }
-    '/_auth/verify-email/': {
-      id: '/_auth/verify-email/'
-      path: '/verify-email'
-      fullPath: '/verify-email/'
-      preLoaderRoute: typeof AuthVerifyEmailIndexRouteImport
+    '/_auth/zapomenute-heslo/': {
+      id: '/_auth/zapomenute-heslo/'
+      path: '/zapomenute-heslo'
+      fullPath: '/zapomenute-heslo/'
+      preLoaderRoute: typeof AuthZapomenuteHesloIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_auth/register/': {
-      id: '/_auth/register/'
-      path: '/register'
-      fullPath: '/register/'
-      preLoaderRoute: typeof AuthRegisterIndexRouteImport
+    '/_auth/zapomenute-heslo-uspech/': {
+      id: '/_auth/zapomenute-heslo-uspech/'
+      path: '/zapomenute-heslo-uspech'
+      fullPath: '/zapomenute-heslo-uspech/'
+      preLoaderRoute: typeof AuthZapomenuteHesloUspechIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_auth/login/': {
-      id: '/_auth/login/'
-      path: '/login'
-      fullPath: '/login/'
-      preLoaderRoute: typeof AuthLoginIndexRouteImport
+    '/_auth/registrace/': {
+      id: '/_auth/registrace/'
+      path: '/registrace'
+      fullPath: '/registrace/'
+      preLoaderRoute: typeof AuthRegistraceIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_auth/forgotten-password/': {
-      id: '/_auth/forgotten-password/'
-      path: '/forgotten-password'
-      fullPath: '/forgotten-password/'
-      preLoaderRoute: typeof AuthForgottenPasswordIndexRouteImport
+    '/_auth/registrace-uspech/': {
+      id: '/_auth/registrace-uspech/'
+      path: '/registrace-uspech'
+      fullPath: '/registrace-uspech/'
+      preLoaderRoute: typeof AuthRegistraceUspechIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_auth/forgotten-password-success/': {
-      id: '/_auth/forgotten-password-success/'
-      path: '/forgotten-password-success'
-      fullPath: '/forgotten-password-success/'
-      preLoaderRoute: typeof AuthForgottenPasswordSuccessIndexRouteImport
+    '/_auth/prihlaseni/': {
+      id: '/_auth/prihlaseni/'
+      path: '/prihlaseni'
+      fullPath: '/prihlaseni/'
+      preLoaderRoute: typeof AuthPrihlaseniIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_auth/overeni-emailu/': {
+      id: '/_auth/overeni-emailu/'
+      path: '/overeni-emailu'
+      fullPath: '/overeni-emailu/'
+      preLoaderRoute: typeof AuthOvereniEmailuIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_auth/overeni-emailu-zadost/': {
+      id: '/_auth/overeni-emailu-zadost/'
+      path: '/overeni-emailu-zadost'
+      fullPath: '/overeni-emailu-zadost/'
+      preLoaderRoute: typeof AuthOvereniEmailuZadostIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_auth/overeni-emailu-zadost-uspech/': {
+      id: '/_auth/overeni-emailu-zadost-uspech/'
+      path: '/overeni-emailu-zadost-uspech'
+      fullPath: '/overeni-emailu-zadost-uspech/'
+      preLoaderRoute: typeof AuthOvereniEmailuZadostUspechIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_auth/overeni-emailu-uspech/': {
+      id: '/_auth/overeni-emailu-uspech/'
+      path: '/overeni-emailu-uspech'
+      fullPath: '/overeni-emailu-uspech/'
+      preLoaderRoute: typeof AuthOvereniEmailuUspechIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_auth/overeni-emailu/$token': {
+      id: '/_auth/overeni-emailu/$token'
+      path: '/overeni-emailu/$token'
+      fullPath: '/overeni-emailu/$token'
+      preLoaderRoute: typeof AuthOvereniEmailuTokenRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -243,16 +347,21 @@ const PrivateRouteWithChildren =
   PrivateRoute._addFileChildren(PrivateRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   PrivateRoute: PrivateRouteWithChildren,
-  FeaturesIndexRoute: FeaturesIndexRoute,
-  PricingIndexRoute: PricingIndexRoute,
-  AuthForgottenPasswordSuccessIndexRoute:
-    AuthForgottenPasswordSuccessIndexRoute,
-  AuthForgottenPasswordIndexRoute: AuthForgottenPasswordIndexRoute,
-  AuthLoginIndexRoute: AuthLoginIndexRoute,
-  AuthRegisterIndexRoute: AuthRegisterIndexRoute,
-  AuthVerifyEmailIndexRoute: AuthVerifyEmailIndexRoute,
+  PublicIndexRoute: PublicIndexRoute,
+  AuthOvereniEmailuTokenRoute: AuthOvereniEmailuTokenRoute,
+  AuthOvereniEmailuUspechIndexRoute: AuthOvereniEmailuUspechIndexRoute,
+  AuthOvereniEmailuZadostUspechIndexRoute:
+    AuthOvereniEmailuZadostUspechIndexRoute,
+  AuthOvereniEmailuZadostIndexRoute: AuthOvereniEmailuZadostIndexRoute,
+  AuthOvereniEmailuIndexRoute: AuthOvereniEmailuIndexRoute,
+  AuthPrihlaseniIndexRoute: AuthPrihlaseniIndexRoute,
+  AuthRegistraceUspechIndexRoute: AuthRegistraceUspechIndexRoute,
+  AuthRegistraceIndexRoute: AuthRegistraceIndexRoute,
+  AuthZapomenuteHesloUspechIndexRoute: AuthZapomenuteHesloUspechIndexRoute,
+  AuthZapomenuteHesloIndexRoute: AuthZapomenuteHesloIndexRoute,
+  PublicCenikIndexRoute: PublicCenikIndexRoute,
+  PublicVlastnostiIndexRoute: PublicVlastnostiIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

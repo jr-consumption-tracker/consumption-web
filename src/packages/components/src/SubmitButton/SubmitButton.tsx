@@ -1,25 +1,33 @@
-import { ButtonRoot } from "@heroui/react";
+import { Button, Spinner } from "@heroui/react";
 import { cn } from "@repo/utils";
 
 type SubmitButtonProps = {
   children: React.ReactNode;
   isLoading?: boolean;
+  isDisabled?: boolean;
   className?: string;
 };
 
 export const SubmitButton = ({
   children,
   isLoading,
+  isDisabled,
   className,
 }: SubmitButtonProps) => {
   return (
-    <ButtonRoot
+    <Button
       type="submit"
       variant="primary"
-      isDisabled={isLoading}
+      isPending={isLoading}
+      isDisabled={isDisabled || isLoading}
       className={cn("w-full", className)}
     >
-      {children}
-    </ButtonRoot>
+      {({ isPending }) => (
+        <>
+          {isPending ? <Spinner color="current" size="sm" /> : null}
+          {children}
+        </>
+      )}
+    </Button>
   );
 };

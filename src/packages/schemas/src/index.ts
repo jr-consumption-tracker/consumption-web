@@ -1,2 +1,2 @@
-export { loginSchema, forgottenPasswordSchema } from "./auth";
-export type { LoginSchemaValues, ForgottenPasswordSchemaValues } from "./auth";
+export { loginSchema, passwordResetSchema, verifyEmailRequestSchema } from "./auth";
+export type { LoginSchemaValues, PasswordResetSchemaValues, VerifyEmailRequestSchemaValues } from "./auth";

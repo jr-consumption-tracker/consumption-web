@@ -1,9 +1,12 @@
-export { ButtonLink } from "./ButtonLink";
-export { ForgottenPasswordForm } from "./ForgottenPasswordForm";
-export { ForgottenPasswordSuccessful } from "./ForgottenPasswordSuccessful";
+export { PasswordResetForm } from "./PasswordResetForm";
+export { PasswordResetSuccess } from "./PasswordResetSuccess";
 export { Checkbox } from "./Checkbox";
-export { FormAlert } from "./FormAlert";
+export { Alert } from "./Alert";
 export { FormHeading } from "./FormHeading";
 export { LoginForm } from "./LoginForm";
 export { PasswordInput } from "./PasswordInput";
 export { SubmitButton } from "./SubmitButton";
+export { VerifyEmailRequestSuccess } from "./VerifyEmailRequestSuccess";
+export { VerifyEmailRequestForm } from "./VerifyEmailRequestForm";
+export { LoadingSpinner } from "./LoadingSpinner";
+export { VerifyEmailSuccess } from "./VerifyEmailSuccess";

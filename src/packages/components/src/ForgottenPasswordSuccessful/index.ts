@@ -1,1 +1,0 @@
-export { ForgottenPasswordSuccessful } from "./ForgottenPasswordSuccessful";

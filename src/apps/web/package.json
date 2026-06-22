@@ -11,7 +11,7 @@
     "build:ci": "tsc -b && vite build",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
-    "preview": "vite preview"
+    "preview:development": "vite preview --mode development"
   },
   "dependencies": {
     "@heroui/react": "catalog:",

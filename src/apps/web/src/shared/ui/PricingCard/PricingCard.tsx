@@ -1,11 +1,11 @@
 import { CheckIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import { ButtonLink } from "@repo/components";
 import { cn } from "@repo/utils";
 
-import type { PricingPlan } from "@web/shared/model/types";
+import { ButtonLink } from "../ButtonLink";
 
+import type { PricingPlan } from "@web/shared/model/types";
 interface PricingCardProps {
   plan: PricingPlan;
 }

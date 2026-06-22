@@ -51,9 +51,9 @@ const Login = () => {
       tAuth={tAuth}
       tValidation={tValidation}
       tCommon={tCommon}
-      forgottenPasswordLink={
+      passwordResetLink={
         <Link
-          to="/forgotten-password"
+          to="/zapomenute-heslo"
           replace
           className="text-primary text-sm hover:underline"
         >
@@ -61,7 +61,7 @@ const Login = () => {
         </Link>
       }
       registerLink={
-        <Link to="/register" replace className="text-primary hover:underline">
+        <Link to="/registrace" replace className="text-primary hover:underline">
           {tAuth("login.registerLink")}
         </Link>
       }

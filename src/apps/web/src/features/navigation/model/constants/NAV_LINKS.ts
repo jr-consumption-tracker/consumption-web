@@ -1,8 +1,7 @@
 export const NAV_LINKS = [
   { href: "/", labelKey: "navigation.home" },
-  { href: "/features", labelKey: "navigation.features" },
-  { href: "/", labelKey: "navigation.howItWorks" },
-  { href: "/pricing", labelKey: "navigation.pricing" },
+  { href: "/vlastnosti", labelKey: "navigation.features" },
+  { href: "/cenik", labelKey: "navigation.pricing" },
 ] as const;
 
 export type NavLink = (typeof NAV_LINKS)[number];
