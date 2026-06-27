@@ -36,9 +36,15 @@
       "accessDenied": "Byl vám odepřen přístup.",
       "tooManyRequests": "Bylo zaznamenáno příliš mnoho pokusů o přihlášení. Přihlášení je dočasně zablokováno z bezpečnostních důvodů. Zkuste to prosím za pár minut."
     },
-    "passwordReset": {
+    "forgottenPassword": {
       "general": "Obnovení hesla skončilo chybou, zkuste to prosím znovu.",
       "invalidEmail": "Neplatný e-mail.",
+      "tooManyRequests": "Bylo zaznamenáno příliš mnoho pokusů o obnovení hesla. Obnovení hesla je dočasně zablokováno z bezpečnostních důvodů. Zkuste to prosím za pár minut."
+    },
+    "passwordReset": {
+      "general": "Obnovení hesla skončilo chybou, zkuste to prosím znovu.",
+      "invalidToken": "Odkaz pro obnovení hesla je neplatný nebo již vypršel. Pro obnovení hesla klikněte na tlačítko níže a vyplňte formulář.",
+      "expiredToken": "Platnost odkazu pro obnovení hesla vypršela. Pro obnovení hesla klikněte na tlačítko níže a vyplňte formulář.",
       "tooManyRequests": "Bylo zaznamenáno příliš mnoho pokusů o obnovení hesla. Obnovení hesla je dočasně zablokováno z bezpečnostních důvodů. Zkuste to prosím za pár minut."
     },
     "verifyEmailRequest": {
@@ -49,7 +55,7 @@
       "general": "Ověření e-mailu skončilo chybou, zkuste to prosím znovu.",
       "invalidToken": "Odkaz pro ověření je neplatný nebo vypršel. Požádejte o zaslání nového.",
       "tokenNotFound": "Odkaz pro ověření nebyl nalezen. Požádejte o zaslání nového.",
-      "tokenExpired": "Odkaz pro ověření vypršel. Požádejte o zaslání nového.",
+      "expiredToken": "Odkaz pro ověření vypršel. Požádejte o zaslání nového.",
       "tooManyRequests": "Bylo zaznamenáno příliš mnoho pokusů o ověření e-mailu. Zkuste to prosím za pár minut."
     }
   },

@@ -1,9 +1,26 @@
 import { axiosMainApi } from "@web/shared/api/axiosMainApi";
 
-const PASSWORD_REST_API_BASE_PATH = "web/passwordReset";
+import type { PasswordResetData } from "../model/types/passwordResetData";
 
-export const passwordResetRequest = async (email: string): Promise<void> => {
-  await axiosMainApi.post<void>(`${PASSWORD_REST_API_BASE_PATH}/request`, {
-    email,
-  });
+const PASSWORD_RESET_API_BASE_PATH = "web/passwordReset";
+
+export const passwordReset = async (
+  payload: PasswordResetData,
+): Promise<void> => {
+  await axiosMainApi.post<void>(
+    `${PASSWORD_RESET_API_BASE_PATH}/reset`,
+    payload,
+  );
+};
+
+export const verifyToken = async (token: string): Promise<void> => {
+  await axiosMainApi.post<void>(
+    `${PASSWORD_RESET_API_BASE_PATH}/verifyToken`,
+    null,
+    {
+      params: {
+        token,
+      },
+    },
+  );
 };

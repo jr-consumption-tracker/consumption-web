@@ -3,30 +3,25 @@ import { FormHeading } from "../FormHeading";
 import type { TFunction } from "i18next";
 
 type PasswordResetSuccessProps = {
-  tAuth: TFunction<"auth">;
+  tPasswordReset: TFunction<"passwordReset">;
   backToLoginLink: React.ReactNode;
-  backToEmailLink: React.ReactNode;
 };
 
 export const PasswordResetSuccess = ({
-  tAuth,
+  tPasswordReset,
   backToLoginLink,
-  backToEmailLink,
 }: PasswordResetSuccessProps) => {
   return (
     <div className="flex flex-col items-center w-full">
-      <FormHeading>{tAuth("passwordResetSuccessful.heading")}</FormHeading>
-
-      <p className="mb-2 text-sm text-center">
-        {tAuth("passwordResetSuccessful.info1")}
-      </p>
+      <FormHeading>
+        {tPasswordReset("passwordResetSuccess.heading")}
+      </FormHeading>
 
       <p className="mb-8 text-sm text-center">
-        {tAuth("passwordResetSuccessful.info2")}
+        {tPasswordReset("passwordResetSuccess.info")}
       </p>
 
       <div className="w-full flex justify-center">{backToLoginLink}</div>
-      <div className="w-full flex justify-center mt-2">{backToEmailLink}</div>
     </div>
   );
 };

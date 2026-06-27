@@ -3,13 +3,15 @@ import { useState } from "react";
 
 import { usePasswordReset } from "./usePasswordReset";
 
-import type { ValidationErrorResponse } from "@web/shared/api/model/types/ValidationErrorResponse";
 import type { PasswordResetSchemaValues } from "@repo/schemas";
+import type { ValidationErrorResponse } from "@web/shared/api/model/types/ValidationErrorResponse";
 
-export type PasswordResetFieldErrors = Partial<Record<"email", string>>;
+export type PasswordResetFieldErrors = Partial<
+  Record<"password" | "confirmPassword", string>
+>;
 
 export function usePasswordResetForm() {
-  const { requestPasswordReset, reset, isPending, isError, error } =
+  const { passwordReset, reset, isPending, isError, error } =
     usePasswordReset();
   const [fieldErrors, setFieldErrors] = useState<PasswordResetFieldErrors>({});
 
@@ -24,13 +26,14 @@ export function usePasswordResetForm() {
   };
 
   const handleSubmit = async (
-    values: PasswordResetSchemaValues,
+    formValues: PasswordResetSchemaValues,
+    token: string,
   ): Promise<void> => {
     try {
-      await requestPasswordReset(values.email);
-    } catch (err) {
-      if (isAxiosError<ValidationErrorResponse>(err)) {
-        const errors = err.response?.data.validationError?.[0];
+      await passwordReset({ ...formValues, token });
+    } catch (error) {
+      if (isAxiosError<ValidationErrorResponse>(error)) {
+        const errors = error.response?.data.validationError?.[0];
         if (errors) {
           const parsed: PasswordResetFieldErrors = {};
           (

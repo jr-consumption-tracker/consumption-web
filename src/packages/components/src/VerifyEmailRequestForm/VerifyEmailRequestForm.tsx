@@ -18,7 +18,7 @@ const errorKey = (error: unknown): ValidationKey =>
     : (error as { message: string }).message) as ValidationKey;
 
 interface VerifyEmailRequestFormProps {
-  tAuth: TFunction<"auth">;
+  tVerifyEmail: TFunction<"verifyEmail">;
   tValidation: TFunction<"validation">;
   errorMessage?: string;
   backToLoginLink?: ReactNode;
@@ -29,7 +29,7 @@ interface VerifyEmailRequestFormProps {
 }
 
 export const VerifyEmailRequestForm = ({
-  tAuth,
+  tVerifyEmail,
   tValidation,
   errorMessage,
   backToLoginLink,
@@ -48,13 +48,13 @@ export const VerifyEmailRequestForm = ({
 
   return (
     <div className="flex flex-col items-center w-full">
-      <FormHeading>{tAuth("verifyEmailRequest.heading")}</FormHeading>
+      <FormHeading>{tVerifyEmail("verifyEmailRequest.heading")}</FormHeading>
 
       <p className="mb-1 text-sm text-center">
-        {tAuth("verifyEmailRequest.info1")}
+        {tVerifyEmail("verifyEmailRequest.info1")}
       </p>
       <p className="mb-4 text-sm text-center">
-        {tAuth("verifyEmailRequest.info2")}
+        {tVerifyEmail("verifyEmailRequest.info2")}
       </p>
 
       <Alert className="mb-4" title={errorMessage} />
@@ -85,7 +85,7 @@ export const VerifyEmailRequestForm = ({
               validationBehavior="aria"
               onBlur={field.handleBlur}
             >
-              <Label>{tAuth("verifyEmailRequest.email")}</Label>
+              <Label>{tVerifyEmail("verifyEmailRequest.email")}</Label>
               <Input
                 id="email"
                 name="email"
@@ -114,7 +114,7 @@ export const VerifyEmailRequestForm = ({
         </form.Field>
 
         <SubmitButton isLoading={isPending} className="mt-2">
-          {tAuth("verifyEmailRequest.submit")}
+          {tVerifyEmail("verifyEmailRequest.submit")}
         </SubmitButton>
 
         {backToLoginLink && (

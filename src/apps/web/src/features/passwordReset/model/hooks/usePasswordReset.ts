@@ -1,19 +1,24 @@
 import { useNavigate } from "@tanstack/react-router";
-import { usePasswordResetRequestMutation } from "@web/features/passwordReset";
+
+import { usePasswordResetMutation } from "../../api/usePasswordResetApi";
+
+import type { PasswordResetData } from "../types/passwordResetData";
 
 export function usePasswordReset() {
   const navigate = useNavigate();
-
   const { mutateAsync, isPending, isError, error, reset } =
-    usePasswordResetRequestMutation();
+    usePasswordResetMutation();
 
-  const requestPasswordReset = async (email: string): Promise<void> => {
-    await mutateAsync(email);
-    await navigate({ to: "/zapomenute-heslo-uspech", replace: true });
+  const passwordReset = async (payload: PasswordResetData): Promise<void> => {
+    await mutateAsync(payload);
+    await navigate({
+      to: "/obnova-hesla-uspech",
+      replace: true,
+    });
   };
 
   return {
-    requestPasswordReset,
+    passwordReset,
     reset,
     isPending,
     isError,

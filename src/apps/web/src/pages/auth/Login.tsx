@@ -71,6 +71,4 @@ const Login = () => {
   );
 };
 
-Login.displayName = "Login";
-
 export default Login;
