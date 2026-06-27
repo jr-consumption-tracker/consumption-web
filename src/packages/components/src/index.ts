@@ -1,5 +1,5 @@
-export { PasswordResetForm } from "./PasswordResetForm";
-export { PasswordResetSuccess } from "./PasswordResetSuccess";
+export { ForgottenPasswordForm } from "./ForgottenPasswordForm";
+export { ForgottenPasswordSuccess } from "./ForgottenPasswordSuccess";
 export { Checkbox } from "./Checkbox";
 export { Alert } from "./Alert";
 export { FormHeading } from "./FormHeading";
@@ -10,3 +10,5 @@ export { VerifyEmailRequestSuccess } from "./VerifyEmailRequestSuccess";
 export { VerifyEmailRequestForm } from "./VerifyEmailRequestForm";
 export { LoadingSpinner } from "./LoadingSpinner";
 export { VerifyEmailSuccess } from "./VerifyEmailSuccess";
+export { PasswordResetSuccess } from "./PasswordResetSuccess";
+export { PasswordResetForm } from "./PasswordResetForm";

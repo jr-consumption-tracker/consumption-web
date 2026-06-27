@@ -1,0 +1,55 @@
+{
+  "verifyEmailSuccessRoute": {
+    "header": "Email Verification",
+    "description": "To complete your registration, you need to verify your email address."
+  },
+  "passwordResetSuccess": {
+    "heading": "Your Password Has Been Reset",
+    "info": "Your password has been successfully changed. You can now sign in using your new password.",
+    "backToLogin": "Back to Sign In"
+  },
+  "verifyEmailSuccess": {
+    "heading": "Registration complete",
+    "description": "Your email address has been successfully verified. You can now log in.",
+    "backToLogin": "Go to login"
+  },
+  "verifyEmailRoute": {
+    "header": "Ověření emailu",
+    "description": "Pro dokončení registrace je potřeba ověřit váši emailovou adresu."
+  },
+  "verifyEmail": {
+    "alertTitle": "Verification failed",
+    "errorTokenNotFound": "The verification link was not found. Please request a new one.",
+    "errorTokenExpired": "The verification link has expired. Please request a new one.",
+    "errorValidation": "The verification link is invalid. Please request a new one.",
+    "backToLogin": "Go to login",
+    "resendLink": "Resend verification link"
+  },
+  "verifyEmailRequestRoute": {
+    "header": "Email Verification",
+    "description": "You need to verify your email address before logging in."
+  },
+  "verifyEmailRequest": {
+    "heading": "Email Verification",
+    "email": "Email",
+    "submit": "Resend verification link",
+    "info1": "You need to verify your email address before logging in.",
+    "info2": "Would you like to receive a new verification link?",
+    "backToLogin": "Back to login"
+  },
+  "verifyEmailRequestSuccessRoute": {
+    "header": "Email Verification",
+    "description": "You need to verify your email address before logging in."
+  },
+  "verifyEmailRequestSuccess": {
+    "heading": "Link sent successfully",
+    "info1": "We have just sent you an email with a confirmation link. If it doesn't arrive, check your spam or resend it.",
+    "info2": "To complete your registration, please open this email and click the verification link.",
+    "backToLogin": "Back to login"
+  },
+  "verifyEmailMissingToken": {
+    "alertTitle": "Unable to Verify Email – Missing Security Token",
+    "alertDescription": "The security token required for email verification is invalid or has expired. Please sign in again and request a new verification email.",
+    "backToLogin": "Back to Sign In"
+  }
+}

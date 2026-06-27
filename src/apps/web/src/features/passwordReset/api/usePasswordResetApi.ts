@@ -1,9 +1,15 @@
 import { useMutation } from "@tanstack/react-query";
 
-import { passwordResetRequest } from "./passwordResetApi";
+import { passwordReset, verifyToken } from "./passwordResetApi";
 
-export function usePasswordResetRequestMutation() {
+export function usePasswordResetMutation() {
   return useMutation({
-    mutationFn: passwordResetRequest,
+    mutationFn: passwordReset,
+  });
+}
+
+export function useVerifyTokenMutation() {
+  return useMutation({
+    mutationFn: verifyToken,
   });
 }

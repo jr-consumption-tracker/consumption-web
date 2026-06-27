@@ -36,10 +36,16 @@
       "accessDenied": "Access has been denied to you.",
       "tooManyRequests": "Too many login attempts have been detected. Login is temporarily blocked for security reasons. Please try again in a few minutes."
     },
-    "passwordReset": {
+    "forgottenPassword": {
       "general": "Password reset failed with an error, please try again.",
       "invalidEmail": "Invalid email.",
       "tooManyRequests": "Too many password reset attempts have been detected. Password reset is temporarily blocked for security reasons. Please try again in a few minutes."
+    },
+    "passwordReset": {
+      "general": "Password reset failed, please try again.",
+      "invalidToken": "The password reset link is invalid or has expired. To reset your password, click the button below and complete the form.",
+      "expiredToken": "The password reset link has expired. To reset your password, click the button below and complete the form.",
+      "tooManyRequests": "Too many password reset attempts have been detected. For security reasons, password reset is temporarily blocked. Please try again in a few minutes."
     },
     "verifyEmailRequest": {
       "general": "Sending the verification link failed with an error, please try again.",
@@ -49,7 +55,7 @@
       "general": "Email verification failed with an error, please try again.",
       "invalidToken": "The verification link is invalid or has expired. Please request a new one.",
       "tokenNotFound": "The verification link was not found. Please request a new one.",
-      "tokenExpired": "The verification link has expired. Please request a new one.",
+      "expiredToken": "The verification link has expired. Please request a new one.",
       "tooManyRequests": "Too many verification attempts have been detected. Please try again in a few minutes."
     }
   },

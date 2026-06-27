@@ -1,13 +1,14 @@
-import { FieldError, Input, Label, TextField } from "@heroui/react";
+import { FieldError, Label, TextField } from "@heroui/react";
 import { passwordResetSchema } from "@repo/schemas";
 import { useForm } from "@tanstack/react-form";
 
 import { Alert } from "../Alert";
 import { FormHeading } from "../FormHeading";
+import { PasswordInput } from "../PasswordInput";
 import { SubmitButton } from "../SubmitButton";
 
 import type { PasswordResetSchemaValues } from "@repo/schemas";
-import type { ReactNode } from "react";
+
 import type { ParseKeys, TFunction } from "i18next";
 
 type ValidationKey = ParseKeys<"validation">;
@@ -18,21 +19,21 @@ const errorKey = (error: unknown): ValidationKey =>
     : (error as { message: string }).message) as ValidationKey;
 
 interface PasswordResetFormProps {
-  tAuth: TFunction<"auth">;
+  tPasswordReset: TFunction<"passwordReset">;
+  tCommon: TFunction<"common">;
   tValidation: TFunction<"validation">;
   errorMessage?: string;
-  backToLoginLink?: ReactNode;
   isPending: boolean;
-  fieldErrors?: Partial<Record<"email", string>>;
-  clearFieldError: (field: "email") => void;
+  fieldErrors?: Partial<Record<"password" | "confirmPassword", string>>;
+  clearFieldError: (field: "password" | "confirmPassword") => void;
   onSubmit: (values: PasswordResetSchemaValues) => void;
 }
 
 export const PasswordResetForm = ({
-  tAuth,
+  tPasswordReset,
+  tCommon,
   tValidation,
   errorMessage,
-  backToLoginLink,
   isPending,
   fieldErrors,
   clearFieldError,
@@ -40,7 +41,8 @@ export const PasswordResetForm = ({
 }: PasswordResetFormProps) => {
   const form = useForm({
     defaultValues: {
-      email: "",
+      password: "",
+      confirmPassword: "",
     },
     validators: { onSubmit: passwordResetSchema },
     onSubmit: ({ value }) => onSubmit(value),
@@ -48,7 +50,7 @@ export const PasswordResetForm = ({
 
   return (
     <div className="flex flex-col items-center w-full">
-      <FormHeading>{tAuth("passwordReset.heading")}</FormHeading>
+      <FormHeading>{tPasswordReset("passwordReset.heading")}</FormHeading>
 
       <Alert className="mb-4" title={errorMessage} />
 
@@ -64,8 +66,8 @@ export const PasswordResetForm = ({
         }}
       >
         <form.Field
-          name="email"
-          validators={{ onChange: passwordResetSchema.shape.email }}
+          name="password"
+          validators={{ onChange: passwordResetSchema.shape.password }}
         >
           {(field) => (
             <TextField
@@ -73,22 +75,20 @@ export const PasswordResetForm = ({
               isInvalid={
                 (field.state.meta.isTouched &&
                   field.state.meta.errors.length > 0) ||
-                !!fieldErrors?.email
+                !!fieldErrors?.password
               }
               validationBehavior="aria"
               onBlur={field.handleBlur}
             >
-              <Label>{tAuth("passwordReset.email")}</Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="username"
-                inputMode="email"
-                autoFocus
+              <Label>{tPasswordReset("passwordReset.password")}</Label>
+              <PasswordInput
+                t={tCommon}
+                id="password"
+                name="password"
+                autoComplete="new-password"
                 value={field.state.value}
                 onChange={(e) => {
-                  clearFieldError("email");
+                  clearFieldError("password");
                   field.handleChange(e.target.value);
                 }}
               />
@@ -97,9 +97,64 @@ export const PasswordResetForm = ({
                 <FieldError>
                   {tValidation(errorKey(field.state.meta.errors[0]))}
                 </FieldError>
-              ) : fieldErrors?.email ? (
+              ) : fieldErrors?.password ? (
                 <FieldError>
-                  {tValidation(fieldErrors.email as ValidationKey)}
+                  {tValidation(fieldErrors.password as ValidationKey)}
+                </FieldError>
+              ) : null}
+            </TextField>
+          )}
+        </form.Field>
+
+        <form.Field
+          name="confirmPassword"
+          validators={{
+            onChangeListenTo: ["password"],
+            onChange: ({ fieldApi }): ValidationKey | undefined => {
+              const result = passwordResetSchema.safeParse(
+                fieldApi.form.state.values,
+              );
+              if (!result.success) {
+                const issue = result.error.issues.find(
+                  (i) => i.path[0] === "confirmPassword",
+                );
+                return issue?.message as ValidationKey | undefined;
+              }
+              return undefined;
+            },
+          }}
+        >
+          {(field) => (
+            <TextField
+              isRequired
+              isInvalid={
+                (field.state.meta.isTouched &&
+                  field.state.meta.errors.length > 0) ||
+                !!fieldErrors?.confirmPassword
+              }
+              validationBehavior="aria"
+              onBlur={field.handleBlur}
+            >
+              <Label>{tPasswordReset("passwordReset.confirmPassword")}</Label>
+              <PasswordInput
+                t={tCommon}
+                id="confirmPassword"
+                name="confirmPassword"
+                autoComplete="new-password"
+                value={field.state.value}
+                onChange={(e) => {
+                  clearFieldError("confirmPassword");
+                  field.handleChange(e.target.value);
+                }}
+              />
+              {field.state.meta.isTouched &&
+              field.state.meta.errors.length > 0 ? (
+                <FieldError>
+                  {tValidation(errorKey(field.state.meta.errors[0]))}
+                </FieldError>
+              ) : fieldErrors?.confirmPassword ? (
+                <FieldError>
+                  {tValidation(fieldErrors.confirmPassword as ValidationKey)}
                 </FieldError>
               ) : null}
             </TextField>
@@ -107,12 +162,8 @@ export const PasswordResetForm = ({
         </form.Field>
 
         <SubmitButton isLoading={isPending} className="mt-2">
-          {tAuth("passwordReset.submit")}
+          {tPasswordReset("passwordReset.submit")}
         </SubmitButton>
-
-        {backToLoginLink && (
-          <div className="w-full flex justify-center">{backToLoginLink}</div>
-        )}
       </form>
     </div>
   );
