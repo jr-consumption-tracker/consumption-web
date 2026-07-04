@@ -9,7 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './app/routes/__root'
+import { Route as VerifyEmailRouteImport } from './app/routes/_verifyEmail'
+import { Route as PublicRouteImport } from './app/routes/_public'
 import { Route as PrivateRouteImport } from './app/routes/_private'
+import { Route as PasswordResetRouteImport } from './app/routes/_passwordReset'
+import { Route as AuthRouteImport } from './app/routes/_auth'
 import { Route as PublicIndexRouteImport } from './app/routes/_public/index'
 import { Route as VerifyEmailOvereniEmailuIndexRouteImport } from './app/routes/_verifyEmail/overeni-emailu/index'
 import { Route as VerifyEmailOvereniEmailuZadostIndexRouteImport } from './app/routes/_verifyEmail/overeni-emailu-zadost/index'
@@ -28,48 +32,64 @@ import { Route as AuthPrihlaseniIndexRouteImport } from './app/routes/_auth/prih
 import { Route as VerifyEmailOvereniEmailuTokenRouteImport } from './app/routes/_verifyEmail/overeni-emailu/$token'
 import { Route as PasswordResetObnovaHeslaTokenRouteImport } from './app/routes/_passwordReset/obnova-hesla/$token'
 
+const VerifyEmailRoute = VerifyEmailRouteImport.update({
+  id: '/_verifyEmail',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicRoute = PublicRouteImport.update({
+  id: '/_public',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivateRoute = PrivateRouteImport.update({
   id: '/_private',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PublicIndexRoute = PublicIndexRouteImport.update({
-  id: '/_public/',
-  path: '/',
+const PasswordResetRoute = PasswordResetRouteImport.update({
+  id: '/_passwordReset',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/_auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PublicIndexRoute = PublicIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PublicRoute,
 } as any)
 const VerifyEmailOvereniEmailuIndexRoute =
   VerifyEmailOvereniEmailuIndexRouteImport.update({
-    id: '/_verifyEmail/overeni-emailu/',
+    id: '/overeni-emailu/',
     path: '/overeni-emailu/',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => VerifyEmailRoute,
   } as any)
 const VerifyEmailOvereniEmailuZadostIndexRoute =
   VerifyEmailOvereniEmailuZadostIndexRouteImport.update({
-    id: '/_verifyEmail/overeni-emailu-zadost/',
+    id: '/overeni-emailu-zadost/',
     path: '/overeni-emailu-zadost/',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => VerifyEmailRoute,
   } as any)
 const VerifyEmailOvereniEmailuZadostUspechIndexRoute =
   VerifyEmailOvereniEmailuZadostUspechIndexRouteImport.update({
-    id: '/_verifyEmail/overeni-emailu-zadost-uspech/',
+    id: '/overeni-emailu-zadost-uspech/',
     path: '/overeni-emailu-zadost-uspech/',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => VerifyEmailRoute,
   } as any)
 const VerifyEmailOvereniEmailuUspechIndexRoute =
   VerifyEmailOvereniEmailuUspechIndexRouteImport.update({
-    id: '/_verifyEmail/overeni-emailu-uspech/',
+    id: '/overeni-emailu-uspech/',
     path: '/overeni-emailu-uspech/',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => VerifyEmailRoute,
   } as any)
 const PublicVlastnostiIndexRoute = PublicVlastnostiIndexRouteImport.update({
-  id: '/_public/vlastnosti/',
+  id: '/vlastnosti/',
   path: '/vlastnosti/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => PublicRoute,
 } as any)
 const PublicCenikIndexRoute = PublicCenikIndexRouteImport.update({
-  id: '/_public/cenik/',
+  id: '/cenik/',
   path: '/cenik/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => PublicRoute,
 } as any)
 const PrivateTestIndexRoute = PrivateTestIndexRouteImport.update({
   id: '/test/',
@@ -78,55 +98,55 @@ const PrivateTestIndexRoute = PrivateTestIndexRouteImport.update({
 } as any)
 const PasswordResetZapomenuteHesloIndexRoute =
   PasswordResetZapomenuteHesloIndexRouteImport.update({
-    id: '/_passwordReset/zapomenute-heslo/',
+    id: '/zapomenute-heslo/',
     path: '/zapomenute-heslo/',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => PasswordResetRoute,
   } as any)
 const PasswordResetZapomenuteHesloUspechIndexRoute =
   PasswordResetZapomenuteHesloUspechIndexRouteImport.update({
-    id: '/_passwordReset/zapomenute-heslo-uspech/',
+    id: '/zapomenute-heslo-uspech/',
     path: '/zapomenute-heslo-uspech/',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => PasswordResetRoute,
   } as any)
 const PasswordResetObnovaHeslaIndexRoute =
   PasswordResetObnovaHeslaIndexRouteImport.update({
-    id: '/_passwordReset/obnova-hesla/',
+    id: '/obnova-hesla/',
     path: '/obnova-hesla/',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => PasswordResetRoute,
   } as any)
 const PasswordResetObnovaHeslaUspechIndexRoute =
   PasswordResetObnovaHeslaUspechIndexRouteImport.update({
-    id: '/_passwordReset/obnova-hesla-uspech/',
+    id: '/obnova-hesla-uspech/',
     path: '/obnova-hesla-uspech/',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => PasswordResetRoute,
   } as any)
 const AuthRegistraceIndexRoute = AuthRegistraceIndexRouteImport.update({
-  id: '/_auth/registrace/',
+  id: '/registrace/',
   path: '/registrace/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthRoute,
 } as any)
 const AuthRegistraceUspechIndexRoute =
   AuthRegistraceUspechIndexRouteImport.update({
-    id: '/_auth/registrace-uspech/',
+    id: '/registrace-uspech/',
     path: '/registrace-uspech/',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => AuthRoute,
   } as any)
 const AuthPrihlaseniIndexRoute = AuthPrihlaseniIndexRouteImport.update({
-  id: '/_auth/prihlaseni/',
+  id: '/prihlaseni/',
   path: '/prihlaseni/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthRoute,
 } as any)
 const VerifyEmailOvereniEmailuTokenRoute =
   VerifyEmailOvereniEmailuTokenRouteImport.update({
-    id: '/_verifyEmail/overeni-emailu/$token',
+    id: '/overeni-emailu/$token',
     path: '/overeni-emailu/$token',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => VerifyEmailRoute,
   } as any)
 const PasswordResetObnovaHeslaTokenRoute =
   PasswordResetObnovaHeslaTokenRouteImport.update({
-    id: '/_passwordReset/obnova-hesla/$token',
+    id: '/obnova-hesla/$token',
     path: '/obnova-hesla/$token',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => PasswordResetRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -169,7 +189,11 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/_auth': typeof AuthRouteWithChildren
+  '/_passwordReset': typeof PasswordResetRouteWithChildren
   '/_private': typeof PrivateRouteWithChildren
+  '/_public': typeof PublicRouteWithChildren
+  '/_verifyEmail': typeof VerifyEmailRouteWithChildren
   '/_public/': typeof PublicIndexRoute
   '/_passwordReset/obnova-hesla/$token': typeof PasswordResetObnovaHeslaTokenRoute
   '/_verifyEmail/overeni-emailu/$token': typeof VerifyEmailOvereniEmailuTokenRoute
@@ -229,7 +253,11 @@ export interface FileRouteTypes {
     | '/overeni-emailu'
   id:
     | '__root__'
+    | '/_auth'
+    | '/_passwordReset'
     | '/_private'
+    | '/_public'
+    | '/_verifyEmail'
     | '/_public/'
     | '/_passwordReset/obnova-hesla/$token'
     | '/_verifyEmail/overeni-emailu/$token'
@@ -250,27 +278,29 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  AuthRoute: typeof AuthRouteWithChildren
+  PasswordResetRoute: typeof PasswordResetRouteWithChildren
   PrivateRoute: typeof PrivateRouteWithChildren
-  PublicIndexRoute: typeof PublicIndexRoute
-  PasswordResetObnovaHeslaTokenRoute: typeof PasswordResetObnovaHeslaTokenRoute
-  VerifyEmailOvereniEmailuTokenRoute: typeof VerifyEmailOvereniEmailuTokenRoute
-  AuthPrihlaseniIndexRoute: typeof AuthPrihlaseniIndexRoute
-  AuthRegistraceUspechIndexRoute: typeof AuthRegistraceUspechIndexRoute
-  AuthRegistraceIndexRoute: typeof AuthRegistraceIndexRoute
-  PasswordResetObnovaHeslaUspechIndexRoute: typeof PasswordResetObnovaHeslaUspechIndexRoute
-  PasswordResetObnovaHeslaIndexRoute: typeof PasswordResetObnovaHeslaIndexRoute
-  PasswordResetZapomenuteHesloUspechIndexRoute: typeof PasswordResetZapomenuteHesloUspechIndexRoute
-  PasswordResetZapomenuteHesloIndexRoute: typeof PasswordResetZapomenuteHesloIndexRoute
-  PublicCenikIndexRoute: typeof PublicCenikIndexRoute
-  PublicVlastnostiIndexRoute: typeof PublicVlastnostiIndexRoute
-  VerifyEmailOvereniEmailuUspechIndexRoute: typeof VerifyEmailOvereniEmailuUspechIndexRoute
-  VerifyEmailOvereniEmailuZadostUspechIndexRoute: typeof VerifyEmailOvereniEmailuZadostUspechIndexRoute
-  VerifyEmailOvereniEmailuZadostIndexRoute: typeof VerifyEmailOvereniEmailuZadostIndexRoute
-  VerifyEmailOvereniEmailuIndexRoute: typeof VerifyEmailOvereniEmailuIndexRoute
+  PublicRoute: typeof PublicRouteWithChildren
+  VerifyEmailRoute: typeof VerifyEmailRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_verifyEmail': {
+      id: '/_verifyEmail'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof VerifyEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_public': {
+      id: '/_public'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof PublicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_private': {
       id: '/_private'
       path: ''
@@ -278,54 +308,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivateRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_passwordReset': {
+      id: '/_passwordReset'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof PasswordResetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_auth': {
+      id: '/_auth'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_public/': {
       id: '/_public/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof PublicIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PublicRoute
     }
     '/_verifyEmail/overeni-emailu/': {
       id: '/_verifyEmail/overeni-emailu/'
       path: '/overeni-emailu'
       fullPath: '/overeni-emailu/'
       preLoaderRoute: typeof VerifyEmailOvereniEmailuIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof VerifyEmailRoute
     }
     '/_verifyEmail/overeni-emailu-zadost/': {
       id: '/_verifyEmail/overeni-emailu-zadost/'
       path: '/overeni-emailu-zadost'
       fullPath: '/overeni-emailu-zadost/'
       preLoaderRoute: typeof VerifyEmailOvereniEmailuZadostIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof VerifyEmailRoute
     }
     '/_verifyEmail/overeni-emailu-zadost-uspech/': {
       id: '/_verifyEmail/overeni-emailu-zadost-uspech/'
       path: '/overeni-emailu-zadost-uspech'
       fullPath: '/overeni-emailu-zadost-uspech/'
       preLoaderRoute: typeof VerifyEmailOvereniEmailuZadostUspechIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof VerifyEmailRoute
     }
     '/_verifyEmail/overeni-emailu-uspech/': {
       id: '/_verifyEmail/overeni-emailu-uspech/'
       path: '/overeni-emailu-uspech'
       fullPath: '/overeni-emailu-uspech/'
       preLoaderRoute: typeof VerifyEmailOvereniEmailuUspechIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof VerifyEmailRoute
     }
     '/_public/vlastnosti/': {
       id: '/_public/vlastnosti/'
       path: '/vlastnosti'
       fullPath: '/vlastnosti/'
       preLoaderRoute: typeof PublicVlastnostiIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PublicRoute
     }
     '/_public/cenik/': {
       id: '/_public/cenik/'
       path: '/cenik'
       fullPath: '/cenik/'
       preLoaderRoute: typeof PublicCenikIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PublicRoute
     }
     '/_private/test/': {
       id: '/_private/test/'
@@ -339,66 +383,103 @@ declare module '@tanstack/react-router' {
       path: '/zapomenute-heslo'
       fullPath: '/zapomenute-heslo/'
       preLoaderRoute: typeof PasswordResetZapomenuteHesloIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PasswordResetRoute
     }
     '/_passwordReset/zapomenute-heslo-uspech/': {
       id: '/_passwordReset/zapomenute-heslo-uspech/'
       path: '/zapomenute-heslo-uspech'
       fullPath: '/zapomenute-heslo-uspech/'
       preLoaderRoute: typeof PasswordResetZapomenuteHesloUspechIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PasswordResetRoute
     }
     '/_passwordReset/obnova-hesla/': {
       id: '/_passwordReset/obnova-hesla/'
       path: '/obnova-hesla'
       fullPath: '/obnova-hesla/'
       preLoaderRoute: typeof PasswordResetObnovaHeslaIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PasswordResetRoute
     }
     '/_passwordReset/obnova-hesla-uspech/': {
       id: '/_passwordReset/obnova-hesla-uspech/'
       path: '/obnova-hesla-uspech'
       fullPath: '/obnova-hesla-uspech/'
       preLoaderRoute: typeof PasswordResetObnovaHeslaUspechIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PasswordResetRoute
     }
     '/_auth/registrace/': {
       id: '/_auth/registrace/'
       path: '/registrace'
       fullPath: '/registrace/'
       preLoaderRoute: typeof AuthRegistraceIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthRoute
     }
     '/_auth/registrace-uspech/': {
       id: '/_auth/registrace-uspech/'
       path: '/registrace-uspech'
       fullPath: '/registrace-uspech/'
       preLoaderRoute: typeof AuthRegistraceUspechIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthRoute
     }
     '/_auth/prihlaseni/': {
       id: '/_auth/prihlaseni/'
       path: '/prihlaseni'
       fullPath: '/prihlaseni/'
       preLoaderRoute: typeof AuthPrihlaseniIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthRoute
     }
     '/_verifyEmail/overeni-emailu/$token': {
       id: '/_verifyEmail/overeni-emailu/$token'
       path: '/overeni-emailu/$token'
       fullPath: '/overeni-emailu/$token'
       preLoaderRoute: typeof VerifyEmailOvereniEmailuTokenRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof VerifyEmailRoute
     }
     '/_passwordReset/obnova-hesla/$token': {
       id: '/_passwordReset/obnova-hesla/$token'
       path: '/obnova-hesla/$token'
       fullPath: '/obnova-hesla/$token'
       preLoaderRoute: typeof PasswordResetObnovaHeslaTokenRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PasswordResetRoute
     }
   }
 }
+
+interface AuthRouteChildren {
+  AuthPrihlaseniIndexRoute: typeof AuthPrihlaseniIndexRoute
+  AuthRegistraceUspechIndexRoute: typeof AuthRegistraceUspechIndexRoute
+  AuthRegistraceIndexRoute: typeof AuthRegistraceIndexRoute
+}
+
+const AuthRouteChildren: AuthRouteChildren = {
+  AuthPrihlaseniIndexRoute: AuthPrihlaseniIndexRoute,
+  AuthRegistraceUspechIndexRoute: AuthRegistraceUspechIndexRoute,
+  AuthRegistraceIndexRoute: AuthRegistraceIndexRoute,
+}
+
+const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
+
+interface PasswordResetRouteChildren {
+  PasswordResetObnovaHeslaTokenRoute: typeof PasswordResetObnovaHeslaTokenRoute
+  PasswordResetObnovaHeslaUspechIndexRoute: typeof PasswordResetObnovaHeslaUspechIndexRoute
+  PasswordResetObnovaHeslaIndexRoute: typeof PasswordResetObnovaHeslaIndexRoute
+  PasswordResetZapomenuteHesloUspechIndexRoute: typeof PasswordResetZapomenuteHesloUspechIndexRoute
+  PasswordResetZapomenuteHesloIndexRoute: typeof PasswordResetZapomenuteHesloIndexRoute
+}
+
+const PasswordResetRouteChildren: PasswordResetRouteChildren = {
+  PasswordResetObnovaHeslaTokenRoute: PasswordResetObnovaHeslaTokenRoute,
+  PasswordResetObnovaHeslaUspechIndexRoute:
+    PasswordResetObnovaHeslaUspechIndexRoute,
+  PasswordResetObnovaHeslaIndexRoute: PasswordResetObnovaHeslaIndexRoute,
+  PasswordResetZapomenuteHesloUspechIndexRoute:
+    PasswordResetZapomenuteHesloUspechIndexRoute,
+  PasswordResetZapomenuteHesloIndexRoute:
+    PasswordResetZapomenuteHesloIndexRoute,
+}
+
+const PasswordResetRouteWithChildren = PasswordResetRoute._addFileChildren(
+  PasswordResetRouteChildren,
+)
 
 interface PrivateRouteChildren {
   PrivateTestIndexRoute: typeof PrivateTestIndexRoute
@@ -411,23 +492,31 @@ const PrivateRouteChildren: PrivateRouteChildren = {
 const PrivateRouteWithChildren =
   PrivateRoute._addFileChildren(PrivateRouteChildren)
 
-const rootRouteChildren: RootRouteChildren = {
-  PrivateRoute: PrivateRouteWithChildren,
+interface PublicRouteChildren {
+  PublicIndexRoute: typeof PublicIndexRoute
+  PublicCenikIndexRoute: typeof PublicCenikIndexRoute
+  PublicVlastnostiIndexRoute: typeof PublicVlastnostiIndexRoute
+}
+
+const PublicRouteChildren: PublicRouteChildren = {
   PublicIndexRoute: PublicIndexRoute,
-  PasswordResetObnovaHeslaTokenRoute: PasswordResetObnovaHeslaTokenRoute,
-  VerifyEmailOvereniEmailuTokenRoute: VerifyEmailOvereniEmailuTokenRoute,
-  AuthPrihlaseniIndexRoute: AuthPrihlaseniIndexRoute,
-  AuthRegistraceUspechIndexRoute: AuthRegistraceUspechIndexRoute,
-  AuthRegistraceIndexRoute: AuthRegistraceIndexRoute,
-  PasswordResetObnovaHeslaUspechIndexRoute:
-    PasswordResetObnovaHeslaUspechIndexRoute,
-  PasswordResetObnovaHeslaIndexRoute: PasswordResetObnovaHeslaIndexRoute,
-  PasswordResetZapomenuteHesloUspechIndexRoute:
-    PasswordResetZapomenuteHesloUspechIndexRoute,
-  PasswordResetZapomenuteHesloIndexRoute:
-    PasswordResetZapomenuteHesloIndexRoute,
   PublicCenikIndexRoute: PublicCenikIndexRoute,
   PublicVlastnostiIndexRoute: PublicVlastnostiIndexRoute,
+}
+
+const PublicRouteWithChildren =
+  PublicRoute._addFileChildren(PublicRouteChildren)
+
+interface VerifyEmailRouteChildren {
+  VerifyEmailOvereniEmailuTokenRoute: typeof VerifyEmailOvereniEmailuTokenRoute
+  VerifyEmailOvereniEmailuUspechIndexRoute: typeof VerifyEmailOvereniEmailuUspechIndexRoute
+  VerifyEmailOvereniEmailuZadostUspechIndexRoute: typeof VerifyEmailOvereniEmailuZadostUspechIndexRoute
+  VerifyEmailOvereniEmailuZadostIndexRoute: typeof VerifyEmailOvereniEmailuZadostIndexRoute
+  VerifyEmailOvereniEmailuIndexRoute: typeof VerifyEmailOvereniEmailuIndexRoute
+}
+
+const VerifyEmailRouteChildren: VerifyEmailRouteChildren = {
+  VerifyEmailOvereniEmailuTokenRoute: VerifyEmailOvereniEmailuTokenRoute,
   VerifyEmailOvereniEmailuUspechIndexRoute:
     VerifyEmailOvereniEmailuUspechIndexRoute,
   VerifyEmailOvereniEmailuZadostUspechIndexRoute:
@@ -435,6 +524,18 @@ const rootRouteChildren: RootRouteChildren = {
   VerifyEmailOvereniEmailuZadostIndexRoute:
     VerifyEmailOvereniEmailuZadostIndexRoute,
   VerifyEmailOvereniEmailuIndexRoute: VerifyEmailOvereniEmailuIndexRoute,
+}
+
+const VerifyEmailRouteWithChildren = VerifyEmailRoute._addFileChildren(
+  VerifyEmailRouteChildren,
+)
+
+const rootRouteChildren: RootRouteChildren = {
+  AuthRoute: AuthRouteWithChildren,
+  PasswordResetRoute: PasswordResetRouteWithChildren,
+  PrivateRoute: PrivateRouteWithChildren,
+  PublicRoute: PublicRouteWithChildren,
+  VerifyEmailRoute: VerifyEmailRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
