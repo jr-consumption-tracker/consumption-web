@@ -20,7 +20,10 @@ export const SubmitButton = ({
       variant="primary"
       isPending={isLoading}
       isDisabled={isDisabled || isLoading}
-      className={cn("w-full", className)}
+      className={cn(
+        "w-full [--button-bg:var(--primary)] [--button-bg-hover:var(--primary-dark)] [--button-bg-pressed:var(--primary-dark)] [--button-fg:var(--color-white)]",
+        className,
+      )}
     >
       {({ isPending }) => (
         <>

@@ -9,8 +9,8 @@ import {
   PasswordInput,
   SubmitButton,
 } from "@repo/components";
-import { Link } from "@tanstack/react-router";
 import { registerSchema } from "@web/features/auth";
+import { TextLink } from "@web/shared/ui/TextLink";
 
 import { useRegisterForm } from "../../../model/hooks/useRegisterForm";
 
@@ -245,12 +245,7 @@ export const RegisterForm = () => {
 
         <p className="text-center text-sm text-default-500">
           {tAuth("register.hasAccount")}{" "}
-          <Link
-            to="/prihlaseni"
-            className="text-primary font-medium hover:underline"
-          >
-            {tAuth("register.loginLink")}
-          </Link>
+          <TextLink to="/prihlaseni">{tAuth("register.loginLink")}</TextLink>
         </p>
       </form>
     </div>

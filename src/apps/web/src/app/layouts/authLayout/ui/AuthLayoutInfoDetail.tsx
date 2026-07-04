@@ -18,8 +18,12 @@ const LayoutLoginInfoDetail = ({ header, description }: Props) => {
       <div className="z-0 flex items-center h-full">
         <div className="mx-5 md:mx-12">
           <div className="mb-12">
-            <h1 className="mb-6 text-white">{header}</h1>
-            <p className="text-white">{description}</p>
+            <h1 className="mb-6 text-2xl font-semibold text-white md:text-3xl">
+              {header}
+            </h1>
+            <p className="hidden text-sm text-white/80 md:block md:text-base">
+              {description}
+            </p>
           </div>
         </div>
       </div>

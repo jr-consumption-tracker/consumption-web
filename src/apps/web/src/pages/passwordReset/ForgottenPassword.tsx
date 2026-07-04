@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { ForgottenPasswordForm } from "@repo/components";
 import { useForgottenPasswordForm } from "@web/features/forgottenPassword";
-import { ButtonLink } from "@web/shared/ui/ButtonLink";
+import { TextLink } from "@web/shared/ui/TextLink";
 
 import type { ParseKeys } from "i18next";
 import type { ValidationErrorResponse } from "@web/shared/api/model/types/ValidationErrorResponse";
@@ -50,14 +50,9 @@ const ForgottenPassword = () => {
       isPending={isPending}
       fieldErrors={fieldErrors}
       backToLoginLink={
-        <ButtonLink
-          to="/prihlaseni"
-          replace
-          variant="ghost"
-          className="text-primary bg-transparent text-sm hover:underline"
-        >
+        <TextLink to="/prihlaseni" replace>
           {tPasswordReset("forgottenPassword.backToLogin")}
-        </ButtonLink>
+        </TextLink>
       }
       clearFieldError={clearFieldError}
       onSubmit={handleSubmit}

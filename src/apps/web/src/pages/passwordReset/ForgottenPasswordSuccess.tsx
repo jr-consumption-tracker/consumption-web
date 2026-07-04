@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import { ForgottenPasswordSuccess as RowForgottenPasswordSuccess } from "@repo/components";
 import { ButtonLink } from "@web/shared/ui/ButtonLink";
+import { TextLink } from "@web/shared/ui/TextLink";
 
 const ForgottenPasswordSuccess = () => {
   const { t: tPasswordReset } = useTranslation("passwordReset");
@@ -20,14 +21,9 @@ const ForgottenPasswordSuccess = () => {
         </ButtonLink>
       }
       backToEmailLink={
-        <ButtonLink
-          to="/zapomenute-heslo"
-          replace
-          variant="ghost"
-          className="w-full text-primary bg-transparent hover:underline"
-        >
+        <TextLink to="/zapomenute-heslo" replace fullWidth>
           {tPasswordReset("forgottenPasswordSuccess.backToEmail")}
-        </ButtonLink>
+        </TextLink>
       }
     />
   );

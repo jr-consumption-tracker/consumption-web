@@ -1,6 +1,7 @@
 import { useId } from "react";
 
 import { Checkbox as RawCheckbox, Label } from "@heroui/react";
+import { cn } from "@repo/utils";
 
 import type { CheckboxProps as RawCheckboxProps } from "@heroui/react";
 
@@ -8,11 +9,18 @@ export interface CheckboxProps extends Exclude<RawCheckboxProps, "id"> {
   label?: string;
 }
 
-export const Checkbox = ({ label, ...restProps }: CheckboxProps) => {
+export const Checkbox = ({ label, className, ...restProps }: CheckboxProps) => {
   const id = `checkbox${useId()}`;
 
   return (
-    <RawCheckbox id={id} {...restProps}>
+    <RawCheckbox
+      id={id}
+      className={cn(
+        "[--accent:var(--primary)] [--accent-hover:var(--primary-dark)] [--accent-foreground:var(--color-white)]",
+        className,
+      )}
+      {...restProps}
+    >
       <RawCheckbox.Control>
         <RawCheckbox.Indicator />
       </RawCheckbox.Control>

@@ -67,6 +67,8 @@ const LoginForm = ({
       <form
         noValidate
         className="flex flex-col gap-4 w-full"
+        method="post"
+        autoComplete="on"
         onSubmit={(e) => {
           e.preventDefault();
           e.stopPropagation();

@@ -6,20 +6,13 @@ interface AuthLayoutContentProps {
 
 export const AuthLayoutContent = ({ children }: AuthLayoutContentProps) => {
   return (
-    <section className="relative w-full lg:w-2/5 lg:min-h-auth flex items-center justify-center p-6 lg:p-8">
+    <section className="relative w-full md:w-2/5 md:min-h-auth flex items-center justify-center p-6 md:p-6 lg:p-8">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent" />
 
-      {/* Floating accent elements */}
-      <div className="absolute top-8 right-8 w-6 h-6 bg-orange-400/20 rounded-full animate-pulse" />
-      <div className="absolute bottom-12 left-8 w-4 h-4 bg-pink-400/20 rounded-full animate-pulse delay-500" />
-
-      {/* Glass morphism container */}
+      {/* Content container */}
       <div className="relative w-full h-full max-w-md">
-        <div className="backdrop-blur-xl h-full bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10 rounded-2xl shadow-2xl p-8">
-          {/* Inner glow effect */}
-          <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-white/5 to-transparent pointer-events-none" />
-
+        <div className="relative h-full p-8">
           {/* Content */}
           <div className="relative z-10 h-full flex flex-col items-center justify-center">
             {children}
