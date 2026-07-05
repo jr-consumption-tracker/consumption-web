@@ -1,5 +1,5 @@
-import { createLink } from "@tanstack/react-router";
 import { cn } from "@repo/utils";
+import { createLink } from "@tanstack/react-router";
 
 import type { AnchorHTMLAttributes, ComponentProps } from "react";
 import type { CreateLinkProps } from "@tanstack/react-router";

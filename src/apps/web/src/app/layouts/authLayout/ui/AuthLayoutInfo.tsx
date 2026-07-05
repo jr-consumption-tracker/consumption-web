@@ -1,4 +1,5 @@
 import authHeroImage from "@web/assets/images/auth-hero.jpg";
+
 import AuthLayoutInfoDetail from "./AuthLayoutInfoDetail";
 
 interface AuthLayoutInfoProps {
