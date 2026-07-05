@@ -2,8 +2,8 @@ import { isAxiosError } from "axios";
 import { useTranslation } from "react-i18next";
 
 import { LoginForm } from "@repo/components";
-import { Link } from "@tanstack/react-router";
 import { useLoginForm } from "@web/features/auth/model/hooks/useLoginForm";
+import { TextLink } from "@web/shared/ui/TextLink";
 
 import type { ParseKeys } from "i18next";
 import type { ValidationErrorResponse } from "@web/shared/api/model/types/ValidationErrorResponse";
@@ -52,18 +52,14 @@ const Login = () => {
       tValidation={tValidation}
       tCommon={tCommon}
       passwordResetLink={
-        <Link
-          to="/zapomenute-heslo"
-          replace
-          className="text-primary text-sm hover:underline"
-        >
+        <TextLink to="/zapomenute-heslo" replace>
           {tAuth("login.forgotPassword")}
-        </Link>
+        </TextLink>
       }
       registerLink={
-        <Link to="/registrace" replace className="text-primary hover:underline">
+        <TextLink to="/registrace" replace>
           {tAuth("login.registerLink")}
-        </Link>
+        </TextLink>
       }
       defaultPersistLogin={persistLogin}
       onPersistLoginChange={setPersistLogin}
