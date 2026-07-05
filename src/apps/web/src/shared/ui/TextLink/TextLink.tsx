@@ -23,7 +23,7 @@ const Anchor = ({
 }: AnchorProps) => (
   <a
     className={cn(
-      "inline-block py-1 text-primary hover:underline",
+      "inline-block py-1 text-primary hover:underline rounded-sm outline-none focus-visible:focus-ring",
       sizeClassName[size],
       fullWidth && "w-full text-center",
       className,

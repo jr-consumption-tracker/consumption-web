@@ -41,6 +41,7 @@
   --electricity-rgb: 245, 158, 11;
   --secondary: var(--color-brand-200);
   --accent: var(--color-electricity-500);
+  --focus: var(--primary);
   --surface: #f8fafc;
   --surface-alt: #ffffff;
   --text-main: #0f172a;
@@ -67,6 +68,7 @@
   --primary-light: var(--color-brand-400);
   --primary-rgb: 59, 130, 246;
   --secondary: var(--color-brand-800);
+  --focus: var(--primary);
   --surface: #020617;
   --surface-alt: #0f172a;
   --text-main: #f1f5f9;

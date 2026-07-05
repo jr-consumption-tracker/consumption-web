@@ -26,6 +26,7 @@ export const PasswordInput = ({ t, ...props }: PasswordInputProps) => {
             )}
             size="sm"
             variant="ghost"
+            className="size-10"
             onPress={() => setIsVisible((prev) => !prev)}
           >
             {isVisible ? (
