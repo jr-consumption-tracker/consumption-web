@@ -9,5 +9,7 @@ const links = [
  * Company — company links section in footer
  */
 export const Company = () => {
-  return <FooterLinkSection titleKey="footer.company.title" links={links} />;
+  return (
+    <FooterLinkSection titleKey="footer.company.title" links={links} animated />
+  );
 };

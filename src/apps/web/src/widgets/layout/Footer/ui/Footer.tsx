@@ -13,34 +13,29 @@ export const Footer = () => {
   const copyrightText = currentYear === 2025 ? "2025" : `2025 - ${currentYear}`;
 
   return (
-    <footer className="relative overflow-hidden">
-      {/* Background with gradient */}
-      <div className="absolute inset-0 bg-linear-to-br from-background via-secondary/30 to-primary/5" />
-
-      {/* Floating shapes */}
-      <div className="absolute -top-16 -right-16 w-32 h-32 bg-linear-to-br from-primary/20 to-secondary/20 rounded-full blur-2xl" />
-      <div className="absolute -bottom-16 -left-16 w-40 h-40 bg-linear-to-tr from-secondary/20 to-primary/10 rounded-full blur-2xl" />
-
+    <footer className="relative bg-surface-alt border-t border-border">
       <div className="relative z-10">
         {/* Main Footer Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
-            <div className="lg:col-span-5">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-11 md:gap-8">
+            <div className="md:col-span-5">
               <BrandSection />
             </div>
-            <div className="lg:col-span-2">
-              <Product />
-            </div>
-            <div className="lg:col-span-2">
-              <Company />
-            </div>
-            <div className="lg:col-span-2">
-              <Legal />
+            <div className="grid grid-cols-2 gap-x-6 gap-y-9 md:contents">
+              <div className="md:col-span-2">
+                <Product />
+              </div>
+              <div className="md:col-span-2">
+                <Company />
+              </div>
+              <div className="col-span-2 md:col-span-2">
+                <Legal />
+              </div>
             </div>
           </div>
         </div>
 
-        <Separator className="bg-linear-to-r from-transparent via-primary/20 to-transparent" />
+        <Separator className="bg-border" />
 
         {/* Bottom Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

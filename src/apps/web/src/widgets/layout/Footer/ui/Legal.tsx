@@ -12,5 +12,7 @@ const links = [
  * Legal — legal links section in footer
  */
 export const Legal = () => {
-  return <FooterLinkSection titleKey="footer.legal.title" links={links} />;
+  return (
+    <FooterLinkSection titleKey="footer.legal.title" links={links} animated />
+  );
 };

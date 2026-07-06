@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { Link } from "@tanstack/react-router";
+import { TextLink } from "@web/shared/ui/TextLink";
 
 import type { FooterLink, FooterTranslationKey } from "../model/footer";
 
@@ -12,7 +12,7 @@ interface FooterLinkSectionProps {
 }
 
 const linkBase =
-  "text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary-light transition-colors duration-200 whitespace-nowrap";
+  "text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary-light hover:no-underline transition-colors duration-200 whitespace-nowrap";
 
 /**
  * FooterLinkSection — reusable section for link lists in footer.
@@ -31,15 +31,15 @@ export const FooterLinkSection = ({
 
   return (
     <div className="text-left">
-      <h3 className="font-bold text-slate-900 dark:text-slate-100 text-lg mb-6 whitespace-nowrap">
+      <h3 className="text-xs font-semibold uppercase tracking-wide text-text-muted mb-6 whitespace-nowrap">
         {t(titleKey)}
       </h3>
       <ul className="space-y-4">
         {links.map((link) => (
           <li key={link.labelKey}>
-            <Link to={link.to} className={linkClass}>
+            <TextLink to={link.to} className={linkClass}>
               {t(link.labelKey)}
-            </Link>
+            </TextLink>
           </li>
         ))}
       </ul>
