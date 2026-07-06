@@ -1,4 +1,5 @@
 import authHeroImage from "@web/assets/images/auth-hero.jpg";
+
 import AuthLayoutInfoDetail from "./AuthLayoutInfoDetail";
 
 interface AuthLayoutInfoProps {
@@ -22,7 +23,7 @@ export const AuthLayoutInfo = ({
       />
 
       {/* Brand overlay */}
-      <div className="absolute inset-0 bg-linear-to-br from-brand-700 via-brand-600 to-brand-500 opacity-85" />
+      <div className="absolute inset-0 bg-linear-to-br from-brand-700 to-brand-600 opacity-85" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col h-full">

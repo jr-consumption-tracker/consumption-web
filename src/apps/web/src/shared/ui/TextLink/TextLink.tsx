@@ -1,5 +1,5 @@
-import { createLink } from "@tanstack/react-router";
 import { cn } from "@repo/utils";
+import { createLink } from "@tanstack/react-router";
 
 import type { AnchorHTMLAttributes, ComponentProps } from "react";
 import type { CreateLinkProps } from "@tanstack/react-router";
@@ -23,7 +23,7 @@ const Anchor = ({
 }: AnchorProps) => (
   <a
     className={cn(
-      "inline-block py-1 text-primary hover:underline",
+      "inline-block py-1 text-primary hover:underline rounded-sm outline-none focus-visible:focus-ring",
       sizeClassName[size],
       fullWidth && "w-full text-center",
       className,
