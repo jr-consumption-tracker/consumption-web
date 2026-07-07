@@ -22,7 +22,7 @@ export const HomeFeatures = () => {
   return (
     <Section
       id="features"
-      className="isolate overflow-hidden bg-primary dark:bg-primary transition-colors duration-700"
+      className="isolate overflow-hidden bg-primary transition-colors duration-700"
       background={
         <div className="absolute inset-0 pointer-events-none">
           <div
@@ -52,11 +52,11 @@ export const HomeFeatures = () => {
       }
     >
       <div className="relative z-10 mx-auto max-w-2xl text-center mb-16 lg:mb-24">
-        <span className="text-sm font-black uppercase tracking-[0.3em] text-white/60 dark:text-black/60 block mb-4">
+        <span className="text-sm font-black uppercase tracking-[0.3em] text-white/60 block mb-4">
           {t("features.subtitle")}
         </span>
 
-        <h2 className="text-4xl font-extrabold tracking-tight text-white dark:text-black sm:text-5xl lg:text-7xl transition-colors duration-700">
+        <h2 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-7xl transition-colors duration-700">
           {t("features.title")}
         </h2>
       </div>
@@ -109,4 +109,4 @@ export const HomeFeatures = () => {
   );
 };
 
-HomeFeatures.displayName = "HmeFeatures";
+HomeFeatures.displayName = "HomeFeatures";

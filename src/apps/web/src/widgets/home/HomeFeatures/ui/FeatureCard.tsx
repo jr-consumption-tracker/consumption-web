@@ -28,7 +28,7 @@ export const FeatureCard = ({
   return (
     <div
       className={cn(
-        "group relative flex flex-col rounded-3xl border border-white/10 dark:border-primary/20 bg-primary-dark/80 dark:bg-primary-dark p-8 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-black/50 backdrop-blur-xl group-hover:backdrop-blur-2xl overflow-hidden text-left",
+        "group relative flex flex-col rounded-3xl border border-white/10 bg-primary-dark/80 dark:bg-brand-900 p-8 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-black/50 backdrop-blur-xl group-hover:backdrop-blur-2xl overflow-hidden text-left",
       )}
     >
       {/* Glow effect */}
@@ -51,7 +51,7 @@ export const FeatureCard = ({
 
       {isPremium && (
         <div className="absolute top-4 right-4 z-20">
-          <span className="inline-flex items-center rounded-full bg-white/10 dark:bg-primary-950/30 px-2.5 py-1 text-[9px] font-black uppercase tracking-widest text-white dark:text-black ring-1 ring-inset ring-white/10 dark:ring-black/20 backdrop-blur-md shadow-sm">
+          <span className="inline-flex items-center rounded-full bg-white/10 dark:bg-primary-950/30 px-2.5 py-1 text-[9px] font-black uppercase tracking-widest text-white ring-1 ring-inset ring-white/10 dark:ring-black/20 backdrop-blur-md shadow-sm">
             {t("features.premium")}
           </span>
         </div>
@@ -62,7 +62,7 @@ export const FeatureCard = ({
         className={cn(
           "relative mb-8 flex h-14 w-14 items-center justify-center rounded-2xl transition-all duration-500 group-hover:scale-110",
           accentColor === "blue"
-            ? "bg-primary/20 dark:bg-primary/10 text-white dark:text-black group-hover:bg-primary dark:group-hover:bg-primary-light group-hover:text-white dark:group-hover:text-black group-hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)]"
+            ? "bg-primary/20 dark:bg-primary/10 text-white group-hover:bg-primary dark:group-hover:bg-primary-light group-hover:text-white group-hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.3)]"
             : "bg-electricity-500/10 text-electricity-500 group-hover:bg-electricity-500 group-hover:text-white group-hover:shadow-[0_0_30px_rgba(var(--electricity-rgb),0.4)]",
         )}
       >
@@ -71,10 +71,10 @@ export const FeatureCard = ({
 
       {/* Content */}
       <div className="relative flex flex-auto flex-col z-10 text-left">
-        <h3 className="text-xl font-black tracking-tight text-white dark:text-black group-hover:text-white dark:group-hover:text-black transition-colors duration-300">
+        <h3 className="text-xl font-black tracking-tight text-white group-hover:text-white transition-colors duration-300">
           {title}
         </h3>
-        <p className="mt-4 text-base leading-7 text-white/70 dark:text-black/80 transition-colors duration-300 group-hover:text-white dark:group-hover:text-black">
+        <p className="mt-4 text-base leading-7 text-white/70 transition-colors duration-300 group-hover:text-white">
           {description}
         </p>
       </div>
