@@ -41,6 +41,7 @@
   --electricity-rgb: 245, 158, 11;
   --secondary: var(--color-brand-200);
   --accent: var(--color-electricity-500);
+  --accent-soft: color-mix(in srgb, var(--accent) 15%, transparent);
   --focus: var(--primary);
   --surface: #f8fafc;
   --surface-alt: #ffffff;
@@ -68,6 +69,7 @@
   --primary-light: var(--color-brand-400);
   --primary-rgb: 59, 130, 246;
   --secondary: var(--color-brand-800);
+  --accent-soft: color-mix(in srgb, var(--accent) 20%, transparent);
   --focus: var(--primary);
   --surface: #020617;
   --surface-alt: #0f172a;
@@ -99,6 +101,7 @@
   --color-primary-light: var(--primary-light);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --color-surface: var(--surface);
   --color-surface-alt: var(--surface-alt);
   --color-text-main: var(--text-main);
