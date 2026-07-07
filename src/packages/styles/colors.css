@@ -68,6 +68,7 @@
   --primary-dark: var(--color-brand-600);
   --primary-light: var(--color-brand-400);
   --primary-rgb: 59, 130, 246;
+  --electricity-rgb: 251, 191, 36;
   --secondary: var(--color-brand-800);
   --accent-soft: color-mix(in srgb, var(--accent) 20%, transparent);
   --focus: var(--primary);

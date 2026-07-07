@@ -24,7 +24,7 @@ export const StepCard = ({
   return (
     <div
       className={cn(
-        "group relative flex flex-col rounded-3xl border border-border bg-surface p-10 transition-all duration-500 cubic-bezier(.16,1,.3,1) hover:-translate-y-3 hover:scale-[1.02] overflow-hidden",
+        "group relative flex flex-col rounded-3xl border border-border bg-surface p-10 transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)] hover:-translate-y-3 hover:scale-[1.02] overflow-hidden",
         isPrimary &&
           "hover:border-primary/50 hover:shadow-[0_20px_50px_rgba(var(--primary-rgb),0.2)]",
         isElectricity &&
