@@ -29,4 +29,12 @@
   .hover\:bg-primary\/8:hover {
     background-color: color-mix(in srgb, var(--primary) 8%, transparent);
   }
+
+  /* Visible keyboard-focus ring, used via focus-visible:focus-ring */
+  .focus-ring {
+    --tw-ring-color: var(--primary);
+    box-shadow:
+      0 0 0 2px var(--surface),
+      0 0 0 4px var(--primary);
+  }
 }

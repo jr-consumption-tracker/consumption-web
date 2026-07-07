@@ -25,7 +25,7 @@ const ContactLink = ({ href, icon: Icon, children }: ContactLinkProps) => (
       : {})}
     className={contactClass}
   >
-    <Icon className={iconClass} />
+    <Icon className={iconClass} aria-hidden="true" />
     <span>{children}</span>
   </a>
 );
