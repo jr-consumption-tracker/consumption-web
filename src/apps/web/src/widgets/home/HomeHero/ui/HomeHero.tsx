@@ -37,7 +37,7 @@ export const HomeHero = () => {
 
         <div className="relative z-10 max-w-4xl">
           <span className="inline-flex items-center rounded-full bg-text-main px-4 py-1.5 text-xs md:text-sm font-bold uppercase tracking-widest text-surface-alt">
-            {t("hero.header.title_highlight")}
+            {t("hero.header.subtitle")}
           </span>
 
           <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-text-main md:text-7xl">
