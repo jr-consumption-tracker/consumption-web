@@ -24,7 +24,7 @@ export const PricingCta = () => {
             to="/"
             variant="primary"
             size="lg"
-            className="bg-primary p-6 text-xl font-bold rounded-full shadow-2xl shadow-primary/40 transition-all hover:scale-110 hover:-translate-y-1 hover:shadow-primary/60 active:scale-95"
+            className="bg-primary px-6 py-3 text-base md:px-8 md:py-4 md:text-lg font-bold rounded-full shadow-2xl shadow-primary/40 transition-all hover:scale-110 hover:-translate-y-1 hover:shadow-primary/60 active:scale-95"
           >
             {isAuthenticated
               ? t("cta.actions.goToApp")

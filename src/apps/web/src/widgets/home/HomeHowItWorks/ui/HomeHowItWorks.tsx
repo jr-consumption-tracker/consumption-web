@@ -26,21 +26,21 @@ export const HomeHowItWorks = () => {
         <dl className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <StepCard
             number={1}
-            variant="primary"
+            variant="amber"
             icon={UserPlus}
             title={t("howItWorks.steps.step1.title")}
             description={t("howItWorks.steps.step1.description")}
           />
           <StepCard
             number={2}
-            variant="mixed"
+            variant="sage"
             icon={Home}
             title={t("howItWorks.steps.step2.title")}
             description={t("howItWorks.steps.step2.description")}
           />
           <StepCard
             number={3}
-            variant="electricity"
+            variant="coral"
             icon={BarChart3}
             title={t("howItWorks.steps.step3.title")}
             description={t("howItWorks.steps.step3.description")}

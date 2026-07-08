@@ -21,7 +21,7 @@ export const InsightItem = ({
   const variantStyles = {
     warning: "bg-red-500/5 text-red-500 border-red-500/20",
     success: "bg-emerald-500/5 text-emerald-500 border-emerald-500/20",
-    info: "bg-brand-500/5 text-brand-500 border-brand-500/20",
+    info: "bg-sage-mid/5 text-sage-mid border-sage-mid/20",
   };
 
   return (

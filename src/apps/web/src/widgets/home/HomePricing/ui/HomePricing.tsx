@@ -7,6 +7,7 @@ import { Section } from "@web/shared/ui/Section";
 
 import type { TFunction } from "i18next";
 import type { PricingPlan } from "@web/shared/model/types";
+
 const getPricingPlans = (t: TFunction<"home">): PricingPlan[] => [
   {
     name: t("pricing.plans.free.name"),
@@ -34,12 +35,12 @@ export const HomePricing = () => {
   return (
     <Section id="pricing">
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-extrabold tracking-tight text-text-main sm:text-4xl">
+        <span className="text-base font-bold uppercase tracking-widest text-primary block mb-2">
+          {t("pricing.subtitle")}
+        </span>
+        <h2 className="text-4xl font-extrabold tracking-tight text-text-main sm:text-5xl">
           {t("pricing.title")}
         </h2>
-        <p className="mt-6 text-lg leading-8 text-text-muted">
-          {t("pricing.description")}
-        </p>
       </div>
 
       <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-y-6 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:gap-x-8">

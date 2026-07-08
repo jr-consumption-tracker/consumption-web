@@ -16,7 +16,7 @@ export const Checkbox = ({ label, className, ...restProps }: CheckboxProps) => {
     <RawCheckbox
       id={id}
       className={cn(
-        "[--accent:var(--primary)] [--accent-hover:var(--primary-dark)] [--accent-foreground:var(--color-white)]",
+        "[--accent:var(--primary)] [--accent-hover:var(--primary-dark)]",
         className,
       )}
       {...restProps}
