@@ -10,7 +10,7 @@ import { Product } from "./Product";
 export const Footer = () => {
   const { t } = useTranslation("common");
   const currentYear = new Date().getFullYear();
-  const copyrightText = currentYear === 2025 ? "2025" : `2025 - ${currentYear}`;
+  const copyrightText = currentYear === 2026 ? "2026" : `2026 - ${currentYear}`;
 
   return (
     <footer className="relative bg-surface-alt border-t border-border">

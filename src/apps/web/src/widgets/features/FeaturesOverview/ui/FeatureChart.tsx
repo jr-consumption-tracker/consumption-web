@@ -39,7 +39,7 @@ export const FeatureChart = ({
   data,
   type = "bar",
   color = "var(--color-primary)",
-  secondaryColor = "var(--color-surface-muted)",
+  secondaryColor = "var(--color-text-muted)",
   dataKey = "value",
   secondaryDataKey,
   unit = "",
@@ -180,7 +180,16 @@ export const FeatureChart = ({
           </LineChart>
         );
       default: {
-        const maxValue = Math.max(...data.map((d) => Number(d[dataKey] || 0)));
+        const barColors = [
+          "var(--color-sage-deep)",
+          "var(--color-sage-mid)",
+          "var(--color-sage-light)",
+          "var(--color-sage-content)",
+        ];
+
+        const sortedValues = [...data]
+          .map((d) => Number(d[dataKey] || 0))
+          .sort((a, b) => b - a);
 
         const renderBarShape = ({
           x,
@@ -190,16 +199,14 @@ export const FeatureChart = ({
           payload,
         }: BarShapeProps) => {
           const value = Number(payload?.[dataKey] || 0);
-          const isMax = value === maxValue;
-          const ratio = value / maxValue;
-          const fillOpacity = isMax ? 1 : 0.4 + ratio * 0.5;
+          const rank = sortedValues.indexOf(value);
+          const barColor = barColors[Math.min(rank, barColors.length - 1)];
           const radius = 6;
 
           return (
             <path
               d={`M${x},${y + height} L${x},${y + radius} Q${x},${y} ${x + radius},${y} H${x + width - radius} Q${x + width},${y} ${x + width},${y + radius} L${x + width},${y + height} Z`}
-              fill={color}
-              fillOpacity={fillOpacity}
+              fill={barColor}
             />
           );
         };
