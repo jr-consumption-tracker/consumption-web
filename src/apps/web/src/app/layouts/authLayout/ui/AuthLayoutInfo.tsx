@@ -23,7 +23,7 @@ export const AuthLayoutInfo = ({
       />
 
       {/* Brand overlay */}
-      <div className="absolute inset-0 bg-linear-to-br from-brand-700 to-brand-600 opacity-85" />
+      <div className="absolute inset-0 bg-linear-to-br from-primary to-accent opacity-85" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col h-full">

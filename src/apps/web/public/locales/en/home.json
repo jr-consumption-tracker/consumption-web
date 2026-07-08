@@ -11,6 +11,9 @@
       "startFree": "Start for free",
       "moreInfo": "More information",
       "goToApp": "Go to App"
+    },
+    "trust": {
+      "label": "households already\ntrust us today"
     }
   },
   "howItWorks": {
@@ -64,8 +67,8 @@
     }
   },
   "pricing": {
+    "subtitle": "Pricing",
     "title": "Plans for every household",
-    "description": "Choose the level of control you need for your energy.",
     "comparePlans": "Compare all plans",
     "card": {
       "highlightedDescription": "Energy intelligence for maximum savings.",

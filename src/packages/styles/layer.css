@@ -32,9 +32,9 @@
 
   /* Visible keyboard-focus ring, used via focus-visible:focus-ring */
   .focus-ring {
-    --tw-ring-color: var(--primary);
+    --tw-ring-color: var(--focus-ring-color);
     box-shadow:
       0 0 0 2px var(--surface),
-      0 0 0 4px var(--primary);
+      0 0 0 4px var(--focus-ring-color);
   }
 }
