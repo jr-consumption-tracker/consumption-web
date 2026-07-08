@@ -14,7 +14,7 @@ export const PremiumInsights = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "flex flex-col gap-4 w-full h-full justify-center max-w-lg mx-auto",
+        "flex flex-col w-full h-full justify-center max-w-lg mx-auto",
         className,
       )}
     >

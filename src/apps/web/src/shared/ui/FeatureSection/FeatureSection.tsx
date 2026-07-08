@@ -9,6 +9,7 @@ interface FeatureSectionProps {
   visual: ReactNode;
   reverse?: boolean;
   className?: string;
+  background?: ReactNode;
 }
 
 /**
@@ -22,9 +23,10 @@ export const FeatureSection = ({
   visual,
   reverse = false,
   className,
+  background,
 }: FeatureSectionProps) => {
   return (
-    <Section className={cn("overflow-hidden", className)}>
+    <Section className={cn("overflow-hidden", className)} background={background}>
       <div
         className={cn(
           "grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-24 items-center",

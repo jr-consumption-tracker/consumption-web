@@ -7,6 +7,9 @@
   --color-gas-500: #14b8a6;
   --color-gas-600: #0d9488;
 
+  /* Water Accent (Sage) */
+  --color-water-500: #4a7a68;
+
   /* Premium Gradients */
   --grad-primary: linear-gradient(
     135deg,
@@ -80,6 +83,7 @@
   --color-electricity-600: var(--color-electricity-600);
   --color-gas-500: var(--color-gas-500);
   --color-gas-600: var(--color-gas-600);
+  --color-water-500: var(--color-water-500);
 
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
