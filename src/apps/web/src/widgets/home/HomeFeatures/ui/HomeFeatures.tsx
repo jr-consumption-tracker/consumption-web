@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+import { OrganicBlob } from "@web/shared/ui/OrganicBlob";
 import { Section } from "@web/shared/ui/Section";
 
 import { FeatureCard } from "./FeatureCard";
@@ -21,19 +22,16 @@ export const HomeFeatures = () => {
 
   return (
     <Section id="features">
-      <div className="relative isolate overflow-hidden rounded-[2.5rem] bg-sage-deep px-6 py-16 mx-2 sm:mx-6 lg:mx-8 lg:py-24">
-        <div
-          className="pointer-events-none absolute -top-16 -left-16 h-72 w-72 md:h-112 md:w-md bg-sage-mid/25 blur-3xl -z-10"
-          style={{ borderRadius: "48% 52% 40% 60% / 55% 45% 60% 40%" }}
-          aria-hidden="true"
-        />
+      <div className="relative isolate overflow-hidden rounded-[2.5rem] bg-dark-block-surface px-6 py-16 mx-2 sm:mx-6 lg:mx-8 lg:py-24">
+        <OrganicBlob className="pointer-events-none -top-12 -left-16 z-0 h-56 w-56 opacity-12 md:-top-20 md:-left-20 md:h-96 md:w-96" />
+        <OrganicBlob className="pointer-events-none -bottom-16 -right-14 z-0 h-48 w-48 opacity-10 md:-bottom-24 md:-right-20 md:h-80 md:w-80" />
 
         <div className="relative z-10 mx-auto max-w-2xl text-center mb-16 lg:mb-24">
-          <span className="text-sm font-black uppercase tracking-[0.3em] text-sage-content/60 block mb-4">
+          <span className="text-sm font-black uppercase tracking-[0.3em] text-dark-block-text-muted/80 block mb-4">
             {t("features.subtitle")}
           </span>
 
-          <h2 className="text-4xl font-extrabold tracking-tight text-sage-content sm:text-5xl lg:text-7xl">
+          <h2 className="text-4xl font-extrabold tracking-tight text-dark-block-text sm:text-5xl lg:text-7xl">
             {t("features.title")}
           </h2>
         </div>

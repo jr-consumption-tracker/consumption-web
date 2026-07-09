@@ -53,14 +53,14 @@ export const PricingTable = () => {
       <div className="mx-auto max-w-4xl overflow-x-auto rounded-2xl ring-1 ring-border">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-border">
+            <tr className="border-b border-border bg-sage-light/40 dark:bg-surface-alt">
               <th className="py-5 pl-6 pr-4 text-left font-semibold text-text-main">
                 {t("table.planColumn")}
               </th>
               <th className="py-5 px-6 text-center font-semibold text-text-muted">
                 {t("plans.free.name")}
               </th>
-              <th className="py-5 px-6 text-center font-bold text-primary">
+              <th className="py-5 px-6 text-center font-bold text-primary bg-primary/7">
                 {t("plans.premium.name")}
               </th>
             </tr>
@@ -71,7 +71,7 @@ export const PricingTable = () => {
                 key={idx}
                 className={cn(
                   "border-b border-border last:border-0",
-                  idx % 2 === 0 ? "bg-background" : "bg-surface",
+                  idx % 2 === 0 ? "bg-background" : "bg-row-alt dark:bg-row-alt-2",
                 )}
               >
                 <td className="py-4 pl-6 pr-4 font-medium text-text-main">
@@ -80,7 +80,7 @@ export const PricingTable = () => {
                 <td className="py-4 px-6 text-center">
                   <CellValue value={row.free} />
                 </td>
-                <td className="py-4 px-6 text-center">
+                <td className="py-4 px-6 text-center bg-primary/6">
                   <CellValue value={row.premium} />
                 </td>
               </tr>

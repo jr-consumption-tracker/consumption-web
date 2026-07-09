@@ -21,7 +21,7 @@ export const FeatureCard = ({
   const { t } = useTranslation("home");
 
   return (
-    <div className="group relative flex flex-col rounded-3xl border border-sage-content/10 bg-sage-content/10 p-8 transition-all duration-500 hover:-translate-y-3 hover:bg-sage-content/15 backdrop-blur-xl overflow-hidden text-left">
+    <div className="group relative flex flex-col rounded-3xl border border-dark-block-text/10 bg-dark-block-text/10 p-8 transition-all duration-500 hover:-translate-y-3 hover:bg-dark-block-text/15 backdrop-blur-xl overflow-hidden text-left">
       {isPremium && (
         <div className="absolute top-4 right-4 z-20">
           <span className="inline-flex items-center rounded-full bg-primary px-2.5 py-1 text-[9px] font-black uppercase tracking-widest text-text-main shadow-sm">
@@ -37,10 +37,10 @@ export const FeatureCard = ({
 
       {/* Content */}
       <div className="relative flex flex-auto flex-col z-10 text-left">
-        <h3 className="text-xl font-black tracking-tight text-sage-content transition-colors duration-300">
+        <h3 className="text-xl font-black tracking-tight text-dark-block-text transition-colors duration-300">
           {title}
         </h3>
-        <p className="mt-4 text-base leading-7 text-sage-content/70 transition-colors duration-300">
+        <p className="mt-4 text-base leading-7 text-dark-block-text-muted transition-colors duration-300">
           {description}
         </p>
       </div>

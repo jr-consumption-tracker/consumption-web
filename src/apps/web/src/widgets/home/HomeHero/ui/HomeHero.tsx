@@ -30,7 +30,7 @@ export const HomeHero = () => {
             style={{ borderRadius: "62% 38% 55% 45% / 48% 42% 58% 52%" }}
           />
           <div
-            className="absolute top-72 right-100 hidden h-65 w-65 bg-sage-light md:block"
+            className="absolute top-72 right-100 hidden h-65 w-65 bg-sage-blob-decorative md:block"
             style={{ borderRadius: "42% 58% 40% 60% / 55% 45% 55% 45%" }}
           />
         </div>

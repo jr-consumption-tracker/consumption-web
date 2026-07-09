@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { cn } from "@repo/utils";
 
 import { ButtonLink } from "../ButtonLink";
+import { OrganicBlob } from "../OrganicBlob";
 
 import type { PricingPlan } from "@web/shared/model/types";
 interface PricingCardProps {
@@ -27,93 +28,99 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
   return (
     <div
       className={cn(
-        "relative flex flex-col rounded-3xl p-8 lg:p-10 transition-all duration-500 group",
+        "relative flex flex-col rounded-3xl p-8 lg:p-10 transition-all duration-500 group overflow-hidden",
         highlighted
-          ? "bg-[#2b2620] shadow-2xl overflow-hidden scale-[1.02] hover:scale-[1.04] hover:-translate-y-2"
-          : "bg-surface-alt ring-1 ring-border shadow-sm hover:shadow-xl hover:-translate-y-1 hover:ring-primary/30",
+          ? "bg-dark-block-surface shadow-2xl scale-[1.02] hover:scale-[1.04] hover:-translate-y-2"
+          : "bg-surface-free dark:bg-surface-free-dark ring-1 ring-border shadow-sm hover:shadow-xl hover:-translate-y-1 hover:ring-primary/30",
       )}
     >
+      {highlighted && (
+        <OrganicBlob className="pointer-events-none -top-10 -right-14 z-0 h-40 w-40 opacity-12 md:-top-14 md:-right-16 md:h-56 md:w-56" />
+      )}
+
       {badge && (
-        <div className="absolute top-0 right-0 bg-primary px-4 py-1 text-[10px] font-black uppercase tracking-widest text-text-main rounded-bl-xl">
+        <div className="absolute top-0 right-0 z-20 bg-primary px-4 py-1 text-[10px] font-black uppercase tracking-widest text-text-main rounded-bl-xl">
           {badge}
         </div>
       )}
 
-      <h3
-        className={cn(
-          "text-lg font-bold leading-8 uppercase tracking-widest",
-          highlighted ? "text-primary" : "text-text-main",
-        )}
-      >
-        {name}
-      </h3>
-
-      <p
-        className={cn(
-          "mt-4 text-sm leading-6",
-          highlighted ? "text-[#f5f0e6]/70" : "text-text-muted",
-        )}
-      >
-        {highlighted
-          ? t("pricing.card.highlightedDescription")
-          : t("pricing.card.defaultDescription")}
-      </p>
-
-      <p className="mt-6 flex items-baseline gap-x-1">
-        <span
+      <div className="relative z-10 flex flex-col grow">
+        <h3
           className={cn(
-            "text-5xl font-black tracking-tight",
+            "text-lg font-bold leading-8 uppercase tracking-widest",
             highlighted ? "text-primary" : "text-text-main",
           )}
         >
-          {price === 0
-            ? t("pricing.card.currencyFree")
-            : t("pricing.card.currency", { price })}
-        </span>
-        <span
+          {name}
+        </h3>
+
+        <p
           className={cn(
-            "text-sm font-semibold leading-6",
-            highlighted ? "text-[#f5f0e6]/70" : "text-text-muted",
+            "mt-4 text-sm leading-6",
+            highlighted ? "text-dark-block-text-muted" : "text-text-muted",
           )}
         >
-          /{interval || t("pricing.card.forever")}
-        </span>
-      </p>
+          {highlighted
+            ? t("pricing.card.highlightedDescription")
+            : t("pricing.card.defaultDescription")}
+        </p>
 
-      <ul
-        className={cn(
-          "mt-8 space-y-4 text-sm leading-6 grow",
-          highlighted ? "text-[#f5f0e6]" : "text-text-muted",
-        )}
-      >
-        {features?.map((feature, idx) => (
-          <li
-            key={idx}
+        <p className="mt-6 flex items-baseline gap-x-1">
+          <span
             className={cn(
-              "flex gap-x-3 font-medium",
-              highlighted ? "text-primary font-bold" : "text-text-muted",
+              "text-5xl font-black tracking-tight",
+              highlighted ? "text-primary" : "text-text-main",
             )}
           >
-            <CheckIcon className="h-6 w-5 flex-none" aria-hidden="true" />
-            {feature}
-          </li>
-        ))}
+            {price === 0
+              ? t("pricing.card.currencyFree")
+              : t("pricing.card.currency", { price })}
+          </span>
+          <span
+            className={cn(
+              "text-sm font-semibold leading-6",
+              highlighted ? "text-dark-block-text-muted" : "text-text-muted",
+            )}
+          >
+            /{interval || t("pricing.card.forever")}
+          </span>
+        </p>
 
-        <span>{summary}</span>
-      </ul>
+        <ul
+          className={cn(
+            "mt-8 space-y-4 text-sm leading-6 grow",
+            highlighted ? "text-dark-block-text" : "text-text-muted",
+          )}
+        >
+          {features?.map((feature, idx) => (
+            <li
+              key={idx}
+              className={cn(
+                "flex gap-x-3 font-medium",
+                highlighted ? "text-primary font-bold" : "text-text-muted",
+              )}
+            >
+              <CheckIcon className="h-6 w-5 flex-none" aria-hidden="true" />
+              {feature}
+            </li>
+          ))}
 
-      <ButtonLink
-        to={ctaLink}
-        variant={highlighted ? "primary" : "outline"}
-        className={cn(
-          "mt-10 flex w-full items-center justify-center rounded-2xl px-6 py-4 text-center text-sm uppercase tracking-widest transition-all duration-300 outline-none focus-visible:focus-ring",
-          highlighted
-            ? "bg-primary font-black text-text-main shadow-xl shadow-primary/40 hover:bg-primary/90 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/60 group-hover:bg-primary/90"
-            : "font-bold text-text-main ring-1 ring-inset ring-border hover:ring-primary hover:text-primary hover:bg-primary/5 hover:-translate-y-0.5 hover:shadow-md",
-        )}
-      >
-        {cta}
-      </ButtonLink>
+          <span>{summary}</span>
+        </ul>
+
+        <ButtonLink
+          to={ctaLink}
+          variant={highlighted ? "primary" : "outline"}
+          className={cn(
+            "mt-10 flex w-full items-center justify-center rounded-2xl px-6 py-4 text-center text-sm uppercase tracking-widest transition-all duration-300 outline-none focus-visible:focus-ring",
+            highlighted
+              ? "bg-primary font-black text-text-main shadow-xl shadow-primary/40 hover:bg-primary/90 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/60 group-hover:bg-primary/90"
+              : "font-bold text-text-main ring-1 ring-inset ring-border hover:ring-primary hover:text-primary hover:bg-primary/5 hover:-translate-y-0.5 hover:shadow-md",
+          )}
+        >
+          {cta}
+        </ButtonLink>
+      </div>
     </div>
   );
 };
