@@ -131,7 +131,7 @@ export const LogoIcon = ({
       {/* Rotating glow ring on hover */}
       {!disableHover && (
         <div className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <div className="absolute inset-0 rounded-full bg-linear-to-r from-primary via-secondary to-primary blur-xl animate-spin-slow" />
+          <div className="absolute inset-0 rounded-full bg-linear-to-r from-primary via-sage-light dark:via-sage-mid to-primary blur-xl animate-spin-slow" />
         </div>
       )}
     </div>
