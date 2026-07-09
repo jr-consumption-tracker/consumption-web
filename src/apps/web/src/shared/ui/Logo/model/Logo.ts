@@ -16,6 +16,4 @@ export interface LogoProps {
   disableHover?: boolean;
   /** Color variant for different themes. */
   variant?: LogoVariant;
-  /** Whether to disable hiding the text on scroll. */
-  disableHideText?: boolean;
 }

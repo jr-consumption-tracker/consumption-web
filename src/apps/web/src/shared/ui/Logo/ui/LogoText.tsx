@@ -6,7 +6,7 @@ import { LogoTextDecoration } from "./LogoTextDecoration";
 
 import type { LogoProps } from "../model/Logo";
 
-type LogoTextProps = Pick<LogoProps, "scrolled" | "size" | "variant" | "disableHideText">;
+type LogoTextProps = Pick<LogoProps, "scrolled" | "size" | "variant">;
 
 // ─── Font size maps ─────────────────────────────────────────────────────────
 
@@ -23,10 +23,10 @@ const bottomFont: Record<string, Record<string, string>> = {
     xl: "text-4xl lg:text-5xl",
   },
   scrolled: {
-    sm: "text-lg lg:text-xl",
-    md: "text-xl lg:text-2xl",
-    lg: "text-2xl lg:text-3xl",
-    xl: "text-3xl lg:text-4xl",
+    sm: "text-base lg:text-lg",
+    md: "text-lg lg:text-xl",
+    lg: "text-xl lg:text-2xl",
+    xl: "text-2xl lg:text-3xl",
   },
 };
 
@@ -34,20 +34,23 @@ const scrollKey = (v: boolean) => (v ? "scrolled" : "default");
 
 // ─── Component ──────────────────────────────────────────────────────────────
 
-export const LogoText = ({ scrolled = false, size = "md", disableHideText = false }: LogoTextProps) => {
+export const LogoText = ({
+  scrolled = false,
+  size = "md",
+  variant = "default",
+}: LogoTextProps) => {
   const { t } = useTranslation("common");
 
   const key = scrollKey(scrolled);
+  const reversed = variant === "dark";
 
   return (
-    <div className={cn(disableHideText ? "" : "hidden", "xl:flex flex-col leading-none")}>
-      {/* Top line — "Energy" */}
+    <div className="flex flex-col leading-none">
+      {/* Top line — "Spotřeba" */}
       <span
         className={cn(
-          "tracking-tight uppercase font-semibold opacity-95 text-left",
-          "bg-linear-to-r from-foreground to-primary bg-clip-text text-transparent",
-          "drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)] dark:drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]",
-          "group-hover:from-primary group-hover:to-foreground transition-all duration-700",
+          "tracking-tight uppercase font-semibold text-left",
+          reversed ? "text-text-main/70" : "text-text-muted",
           topFont[key][size],
         )}
         style={{ fontFamily: "var(--font-orn)" }}
@@ -55,23 +58,22 @@ export const LogoText = ({ scrolled = false, size = "md", disableHideText = fals
         {t("logo.line1")}
       </span>
 
-      {/* Bottom line — "Consumption" */}
+      {/* Bottom line — "Energie" */}
       <span
         className={cn(
-          "font-extrabold tracking-tight -mt-1 flex items-center gap-2 text-left relative",
-          "bg-linear-to-r from-primary via-foreground to-primary bg-clip-text text-transparent",
-          "drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)] dark:drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]",
-          "group-hover:from-foreground group-hover:via-primary group-hover:to-foreground transition-all duration-700",
+          "relative inline-block font-extrabold tracking-tight -mt-1 text-left w-fit text-text-main",
           bottomFont[key][size],
         )}
         style={{ fontFamily: "var(--font-orn)" }}
       >
         {t("logo.line2")}
-        <LogoTextDecoration />
-
-        {/* Underline hover effect */}
-        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-primary to-primary group-hover:w-full transition-all duration-500" />
+        <LogoTextDecoration reversed={reversed} scrolled={scrolled} />
       </span>
+
+      {/* Spacer — reserves in-flow height for the absolutely positioned
+          ribbon below, so the flex column's box (and thus the header's
+          items-center) accounts for the ribbon's visual space too. */}
+      <div aria-hidden="true" className={scrolled ? "h-2.25" : "h-4"} />
     </div>
   );
 };

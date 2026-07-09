@@ -41,9 +41,8 @@ export const BrandSection = () => {
     <div className="flex flex-col items-start gap-6 ">
       <Logo
         size="lg"
-        showText={true}        
+        showText={true}
         disableHover={true}
-        disableHideText
         className="justify-center md:justify-start"
       />
 
