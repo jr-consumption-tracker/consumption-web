@@ -1,6 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-
-import { cn } from "@repo/utils";
+import { useRef, useState } from "react";
 
 import { LoginPopoverWrapper } from "./LoginPopoverWrapper";
 
@@ -33,21 +31,7 @@ export const LoginButton = ({
   hoverCloseTimerRef,
 }: LoginButtonProps) => {
   const containerRef = useRef<HTMLDivElement>(null!);
-  const [isMouseOver, setIsMouseOver] = useState(false);
   const [hasFocus, setHasFocus] = useState(false);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const handleEnter = () => setIsMouseOver(true);
-    const handleLeave = () => setIsMouseOver(false);
-    el.addEventListener("mouseenter", handleEnter);
-    el.addEventListener("mouseleave", handleLeave);
-    return () => {
-      el.removeEventListener("mouseenter", handleEnter);
-      el.removeEventListener("mouseleave", handleLeave);
-    };
-  }, []);
 
   const handleMouseEnter = () => {
     if (hoverCloseTimerRef.current) {
@@ -94,11 +78,7 @@ export const LoginButton = ({
   return (
     <div
       ref={containerRef}
-      className={cn(
-        "relative transition-transform duration-300",
-        loginFlyoutOpen ? "scale-110!" : "",
-        isMouseOver ? "scale-110" : "",
-      )}
+      className="relative"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onFocus={handleFocusIn}
@@ -110,17 +90,10 @@ export const LoginButton = ({
         setLoginFlyoutOpen={setLoginFlyoutOpen}
         setLoginFlyoutOpenedByHover={setLoginFlyoutOpenedByHover}
         loginTriggerRef={loginTriggerRef}
-        isHovered={isMouseOver}
         handleMouseEnter={handleMouseEnter}
         handleMouseLeave={handleMouseLeave}
         handleFocusIn={handleFocusIn}
         handleFocusOut={handleFocusOut}
-      />
-      <div
-        className={cn(
-          "absolute inset-0 rounded-2xl transition-opacity duration-300 blur-xl scale-110 bg-primary/20",
-          isMouseOver ? "opacity-60" : "opacity-0",
-        )}
       />
     </div>
   );

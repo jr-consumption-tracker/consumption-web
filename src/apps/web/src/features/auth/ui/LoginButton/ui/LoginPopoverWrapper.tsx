@@ -10,7 +10,6 @@ interface LoginPopoverWrapperProps {
   setLoginFlyoutOpen: (open: boolean) => void;
   setLoginFlyoutOpenedByHover: (opened: boolean) => void;
   loginTriggerRef: RefObject<HTMLButtonElement | null>;
-  isHovered: boolean;
   handleMouseEnter: () => void;
   handleMouseLeave: () => void;
   handleFocusIn: () => void;
@@ -23,7 +22,6 @@ export const LoginPopoverWrapper = ({
   setLoginFlyoutOpen,
   setLoginFlyoutOpenedByHover,
   loginTriggerRef,
-  isHovered,
   handleMouseEnter,
   handleMouseLeave,
   handleFocusIn,
@@ -43,7 +41,6 @@ export const LoginPopoverWrapper = ({
         loginTriggerRef={loginTriggerRef}
         loginFlyoutOpen={loginFlyoutOpen}
         setLoginFlyoutOpen={setLoginFlyoutOpen}
-        isHovered={isHovered}
       />
 
       <PopoverContent className="z-50 w-80 p-0">
