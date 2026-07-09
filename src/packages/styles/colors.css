@@ -13,6 +13,8 @@
   --primary-dark: #d9821f;
   --primary-light: #ffdba3;
   --primary-rgb: 255, 183, 77;
+  /* Amber text/icon on light tinted backgrounds — --primary alone fails WCAG contrast there */
+  --primary-accessible: color-mix(in srgb, var(--primary-dark) 60%, var(--text-main) 40%);
   --accent: #e8963d;
   --accent-soft: color-mix(in srgb, var(--accent) 15%, transparent);
   --accent-foreground: var(--text-main);
@@ -23,10 +25,7 @@
   --text-main: #2b2620;
   --text-muted: #5c5548;
   --border: rgba(43, 38, 32, 0.12);
-  --sage-deep: #1f3d33;
   --sage-mid: #4a7a68;
-  --sage-light: #c9e4d8;
-  --sage-content: #f5f0e6;
   --coral: #e8836f;
   --row-alt: rgba(43, 38, 32, 0.03);
   --row-alt-2: rgba(43, 38, 32, 0.06);
@@ -37,8 +36,14 @@
   --dark-block-text-muted: #d9c9ba;
   --surface-free-dark: var(--surface-free);
 
-  /* Hero decorative blob (scoped copy of sage-light, do not use sage-light directly) */
-  --sage-blob-decorative: var(--sage-light);
+  /* Hero decorative blob (warm brown family, same base as dark-block-surface/chart-tone) */
+  --hero-blob-decorative: color-mix(in srgb, var(--surface-alt) 80%, var(--coral) 20%);
+
+  /* Chart tonal ramp (warm brown family, same base as dark-block-surface) */
+  --chart-tone-1: color-mix(in srgb, var(--text-main) 88%, var(--coral) 12%);
+  --chart-tone-2: color-mix(in srgb, var(--text-main) 65%, var(--coral) 35%);
+  --chart-tone-3: color-mix(in srgb, var(--text-main) 35%, var(--coral) 65%);
+  --chart-tone-4: color-mix(in srgb, var(--surface-alt) 55%, var(--coral) 45%);
 
   /* Typography */
   --font-sans: "Inter", system-ui, sans-serif;
@@ -52,6 +57,7 @@
   --primary-dark: #b45f04;
   --primary-light: #f2a93e;
   --primary-rgb: 217, 119, 6;
+  --primary-accessible: var(--primary);
   --accent-soft: color-mix(in srgb, var(--accent) 20%, transparent);
   --accent-foreground: #2b2620;
   --focus-ring-color: color-mix(in srgb, var(--accent) 80%, black);
@@ -72,7 +78,13 @@
   --dark-block-text-muted: #cbb9a8;
   --surface-free-dark: #6b5c45;
 
-  --sage-blob-decorative: color-mix(in srgb, var(--sage-light) 6%, var(--sage-deep) 94%);
+  /* Tuned to preserve >=4.5:1 contrast against dark-mode text-muted for the Hero mission paragraph nearby */
+  --hero-blob-decorative: color-mix(in srgb, #2b2620 88%, var(--coral) 12%);
+
+  --chart-tone-1: color-mix(in srgb, var(--surface) 80%, var(--coral) 20%);
+  --chart-tone-2: color-mix(in srgb, var(--surface) 55%, var(--coral) 45%);
+  --chart-tone-3: color-mix(in srgb, var(--surface) 30%, var(--coral) 70%);
+  --chart-tone-4: color-mix(in srgb, var(--coral) 60%, var(--text-main) 40%);
 }
 
 @theme inline {
@@ -83,6 +95,7 @@
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
   --color-primary-light: var(--primary-light);
+  --color-primary-accessible: var(--primary-accessible);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-surface: var(--surface);
@@ -91,10 +104,7 @@
   --color-text-main: var(--text-main);
   --color-text-muted: var(--text-muted);
   --color-border: var(--border);
-  --color-sage-deep: var(--sage-deep);
   --color-sage-mid: var(--sage-mid);
-  --color-sage-light: var(--sage-light);
-  --color-sage-content: var(--sage-content);
   --color-coral: var(--coral);
   --color-row-alt: var(--row-alt);
   --color-row-alt-2: var(--row-alt-2);
@@ -102,7 +112,11 @@
   --color-dark-block-text: var(--dark-block-text);
   --color-dark-block-text-muted: var(--dark-block-text-muted);
   --color-surface-free-dark: var(--surface-free-dark);
-  --color-sage-blob-decorative: var(--sage-blob-decorative);
+  --color-hero-blob-decorative: var(--hero-blob-decorative);
+  --color-chart-tone-1: var(--chart-tone-1);
+  --color-chart-tone-2: var(--chart-tone-2);
+  --color-chart-tone-3: var(--chart-tone-3);
+  --color-chart-tone-4: var(--chart-tone-4);
 
   --font-sans: var(--font-sans);
 

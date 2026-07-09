@@ -56,23 +56,20 @@ export const LanguageSelect = () => {
 
   return (
     <div className="relative group cursor-pointer w-fit">
-      <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-primary/30 to-primary/50 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-xl scale-150 pointer-events-none" />
       <Button
         isIconOnly
         variant="ghost"
         size="lg"
         onPress={handleSelectLanguage}
-        className="relative overflow-hidden rounded-2xl transition-all duration-300 bg-transparent hover:bg-primary/20 group-hover:scale-110 group-hover:shadow-lg"
+        className="bg-transparent"
         aria-label={t("header.aria.language")}
       >
-        <div className="absolute inset-0 bg-linear-to-r from-primary/10 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
         <div className="relative z-10 transition-all duration-500 group-hover:rotate-12">
           <Flag
             country={isCzech ? "en" : "cz"}
             className="w-6 h-6 rounded-full object-cover shadow-sm saturate-[0.6] opacity-70 transition-all duration-300 group-hover:saturate-100 group-hover:opacity-100"
           />
         </div>
-        <div className="absolute inset-0 bg-linear-to-r from-transparent via-background/30 to-transparent opacity-0 group-hover:opacity-100 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 rounded-3xl" />
       </Button>
     </div>
   );

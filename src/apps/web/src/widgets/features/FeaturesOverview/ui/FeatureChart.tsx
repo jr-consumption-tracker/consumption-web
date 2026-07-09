@@ -181,10 +181,10 @@ export const FeatureChart = ({
         );
       default: {
         const barColors = [
-          "var(--color-sage-deep)",
-          "var(--color-sage-mid)",
-          "var(--color-sage-light)",
-          "var(--color-sage-content)",
+          "var(--color-chart-tone-1)",
+          "var(--color-chart-tone-2)",
+          "var(--color-chart-tone-3)",
+          "var(--color-chart-tone-4)",
         ];
 
         const sortedValues = [...data]

@@ -66,7 +66,7 @@ export const FeaturesOverview = () => {
           <FeatureChart
             data={ANALYTICS_DATA}
             type="area"
-            color="var(--color-sage-mid)"
+            color="var(--color-chart-tone-2)"
             dataKey="current"
             secondaryDataKey="previous"
           />
@@ -81,7 +81,7 @@ export const FeaturesOverview = () => {
         visual={
           <FeatureChart
             data={COSTS_DATA}
-            color="var(--color-sage-mid)"
+            color="var(--color-chart-tone-2)"
             unit="Kč"
           />
         }
