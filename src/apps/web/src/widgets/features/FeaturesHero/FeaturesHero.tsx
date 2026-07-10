@@ -14,7 +14,11 @@ export const FeaturesHero = () => {
 
   return (
     <Section className="text-center">
-      <h1 className="text-4xl font-extrabold tracking-tight text-text-main sm:text-5xl md:text-6xl">
+      <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+        {t("hero.eyebrow")}
+      </p>
+
+      <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-text-main sm:text-5xl md:text-6xl">
         {t("hero.title")}
       </h1>
 

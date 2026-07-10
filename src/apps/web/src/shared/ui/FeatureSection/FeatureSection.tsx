@@ -7,6 +7,7 @@ interface FeatureSectionProps {
   title: string;
   description: string;
   visual: ReactNode;
+  eyebrow?: string;
   reverse?: boolean;
   className?: string;
   background?: ReactNode;
@@ -21,6 +22,7 @@ export const FeatureSection = ({
   title,
   description,
   visual,
+  eyebrow,
   reverse = false,
   className,
   background,
@@ -39,6 +41,11 @@ export const FeatureSection = ({
             reverse ? "xl:order-2" : "xl:order-1",
           )}
         >
+          {eyebrow && (
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-4">
+              {eyebrow}
+            </p>
+          )}
           <h3 className="text-3xl font-extrabold tracking-tight text-text-main sm:text-4xl mb-6">
             {title}
           </h3>
