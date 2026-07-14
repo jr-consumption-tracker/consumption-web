@@ -29,6 +29,7 @@ export const ActionButtons = ({ scrolled }: ActionButtonsProps) => {
         loginTriggerRef={loginState.loginTriggerRef}
         hoverOpenTimerRef={loginState.hoverOpenTimerRef}
         hoverCloseTimerRef={loginState.hoverCloseTimerRef}
+        suppressHoverOpenUntilRef={loginState.suppressHoverOpenUntilRef}
       />
     </div>
   );

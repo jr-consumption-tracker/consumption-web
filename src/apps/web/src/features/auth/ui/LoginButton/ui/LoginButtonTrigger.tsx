@@ -4,11 +4,9 @@ import { useTranslation } from "react-i18next";
 import { Avatar, Button, PopoverTrigger } from "@heroui/react";
 import { cn } from "@repo/utils";
 
-import type { RefObject } from "react";
+import { useIsAuthenticated, useSelectSession } from "@web/features/auth";
 
-// TEMPORARY: no real auth/session state yet. Flip to preview the logged-in Avatar placeholder.
-const IS_LOGGED_IN_PLACEHOLDER = false;
-const PLACEHOLDER_USER_NAME = "Uživatel";
+import type { RefObject } from "react";
 
 interface LoginButtonTriggerProps {
   scrolled?: boolean;
@@ -24,13 +22,16 @@ export const LoginButtonTrigger = ({
   setLoginFlyoutOpen,
 }: LoginButtonTriggerProps) => {
   const { t } = useTranslation("auth");
+  const isAuthenticated = useIsAuthenticated();
+  const session = useSelectSession();
 
   const handlePress = () => {
     setLoginFlyoutOpen(!loginFlyoutOpen);
   };
 
-  if (IS_LOGGED_IN_PLACEHOLDER) {
-    const initials = PLACEHOLDER_USER_NAME.slice(0, 2).toUpperCase();
+  if (isAuthenticated) {
+    const userName = session?.email ?? "";
+    const initials = userName.slice(0, 2).toUpperCase();
 
     return (
       <PopoverTrigger>

@@ -13,6 +13,7 @@ export interface LoginButtonProps {
   loginTriggerRef: RefObject<HTMLButtonElement | null>;
   hoverOpenTimerRef: RefObject<number | null>;
   hoverCloseTimerRef: RefObject<number | null>;
+  suppressHoverOpenUntilRef: RefObject<number>;
 }
 
 const HOVER_TIMING = {
@@ -29,6 +30,7 @@ export const LoginButton = ({
   loginTriggerRef,
   hoverOpenTimerRef,
   hoverCloseTimerRef,
+  suppressHoverOpenUntilRef,
 }: LoginButtonProps) => {
   const containerRef = useRef<HTMLDivElement>(null!);
   const [hasFocus, setHasFocus] = useState(false);
@@ -38,7 +40,15 @@ export const LoginButton = ({
       clearTimeout(hoverCloseTimerRef.current);
       hoverCloseTimerRef.current = null;
     }
+    if (hoverOpenTimerRef.current) {
+      clearTimeout(hoverOpenTimerRef.current);
+      hoverOpenTimerRef.current = null;
+    }
+    if (Date.now() < suppressHoverOpenUntilRef.current) {
+      return;
+    }
     hoverOpenTimerRef.current = window.setTimeout(() => {
+      if (Date.now() < suppressHoverOpenUntilRef.current) return;
       setLoginFlyoutOpen(true);
       setLoginFlyoutOpenedByHover(true);
     }, HOVER_TIMING.OPEN_DELAY);
@@ -90,6 +100,8 @@ export const LoginButton = ({
         setLoginFlyoutOpen={setLoginFlyoutOpen}
         setLoginFlyoutOpenedByHover={setLoginFlyoutOpenedByHover}
         loginTriggerRef={loginTriggerRef}
+        hoverOpenTimerRef={hoverOpenTimerRef}
+        suppressHoverOpenUntilRef={suppressHoverOpenUntilRef}
         handleMouseEnter={handleMouseEnter}
         handleMouseLeave={handleMouseLeave}
         handleFocusIn={handleFocusIn}

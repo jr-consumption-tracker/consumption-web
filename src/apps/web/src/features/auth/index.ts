@@ -12,6 +12,10 @@ export { registerSchema } from "./model/schemas/registerSchema";
 export type { RegisterSchemaValues } from "./model/schemas/registerSchema";
 
 export { useLoginFlyout } from "./model/hooks/useLoginFlyout";
+export {
+  useIsAuthenticated,
+  useSelectSession,
+} from "./model/store/authStore";
 export type { AuthState } from "./model/store/authStore";
 export type {
   AuthSession,
