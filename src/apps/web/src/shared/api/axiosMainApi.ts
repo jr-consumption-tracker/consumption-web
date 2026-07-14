@@ -44,7 +44,7 @@ export const refreshSession = async (): Promise<AuthSession | null> => {
   if (refreshInFlightPromise) {
     return refreshInFlightPromise;
   }
-
+  // TODO: Otestovat sliding window. POkud nemám začkrtnutý persist login, platnost topkenu je nastavena fioxně na 8 hodin. Pokud je persistLogin zaškrtnutý, platnost tokenu je nastavena na 30 dní a s každým refresh tokenem se přegeneruje refresh token a automatizky s eprodlužuje jeho platnost
   refreshInFlightPromise = (async () => {
     try {
       const refreshResponse = await axios.get<AuthSession>(

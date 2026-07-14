@@ -16,16 +16,18 @@ export function useLogin() {
   const setSession = useAuthStore((state) => state.setSession);
 
   const login = async (
-    credentials: LoginCredentials & { persistLogin?: boolean },
+    credentials: LoginCredentials,
   ): Promise<AuthSession> => {
-    const { persistLogin, ...loginCredentials } = credentials;
-    const result = await mutateAsync(loginCredentials);
+    const result = await mutateAsync(credentials);
 
     // Written synchronously (ahead of useLocalStorage's own effect-driven
     // write from the checkbox) so the auth store's storage selector reads
     // the persistLogin value from this specific login before setSession
     // triggers the persisted write below.
-    localStorage.setItem(PERSIST_LOGIN_KEY, JSON.stringify(!!persistLogin));
+    localStorage.setItem(
+      PERSIST_LOGIN_KEY,
+      JSON.stringify(!!credentials.persistLogin),
+    );
 
     setSession(result);
     await navigate({ to: "/", replace: true });

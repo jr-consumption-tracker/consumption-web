@@ -1,5 +1,5 @@
 import { isAxiosError } from "axios";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Popover, PopoverContent } from "@heroui/react";
@@ -128,6 +128,43 @@ export const LoginPopoverWrapper = ({
     }
   };
 
+  const handleLogout = async (): Promise<void> => {
+    await logout();
+    if (hoverOpenTimerRef.current) {
+      clearTimeout(hoverOpenTimerRef.current);
+      hoverOpenTimerRef.current = null;
+    }
+    suppressHoverOpenUntilRef.current =
+      Date.now() + LOGIN_SUCCESS_HOVER_SUPPRESS_MS;
+    setLoginFlyoutOpenedByHover(false);
+    setLoginFlyoutOpen(false);
+    (document.activeElement as HTMLElement | null)?.blur();
+  };
+
+  // isNonModal (below) suppresses React Aria's built-in underlay div, which
+  // was intercepting hover/clicks over the trigger, but it also disables
+  // React Aria's own outside-click-to-dismiss (isDismissable is hardcoded to
+  // !isNonModal inside usePopover, with no prop to override it). Reimplement
+  // outside-click-to-dismiss here, exempting the trigger and popover content.
+  const popoverContentRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    if (!loginFlyoutOpen) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target as Node | null;
+      if (!target) return;
+      if (loginTriggerRef.current?.contains(target)) return;
+      if (popoverContentRef.current?.contains(target)) return;
+      setLoginFlyoutOpen(false);
+      setLoginFlyoutOpenedByHover(false);
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown, true);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown, true);
+    };
+  }, [loginFlyoutOpen, loginTriggerRef, setLoginFlyoutOpen, setLoginFlyoutOpenedByHover]);
+
   return (
     <Popover isOpen={loginFlyoutOpen} onOpenChange={handleOpenChange}>
       <LoginButtonTrigger
@@ -138,6 +175,12 @@ export const LoginPopoverWrapper = ({
       />
 
       <PopoverContent
+        ref={popoverContentRef}
+        triggerRef={loginTriggerRef}
+        isNonModal
+        shouldCloseOnInteractOutside={(target) =>
+          !loginTriggerRef.current?.contains(target)
+        }
         className={cn("z-50 p-0", displayedIsAuthenticated ? "w-72" : "w-100")}
       >
         <div
@@ -152,7 +195,7 @@ export const LoginPopoverWrapper = ({
                 {displayedIsAuthenticated ? (
                   <LoginPopoverLoggedIn
                     email={session?.email}
-                    onLogout={logout}
+                    onLogout={handleLogout}
                     isLoggingOut={isLogoutPending}
                   />
                 ) : (

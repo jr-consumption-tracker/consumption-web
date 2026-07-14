@@ -44,14 +44,17 @@ export const LoginButton = ({
       clearTimeout(hoverOpenTimerRef.current);
       hoverOpenTimerRef.current = null;
     }
-    if (Date.now() < suppressHoverOpenUntilRef.current) {
-      return;
-    }
+    const remainingSuppression =
+      suppressHoverOpenUntilRef.current - Date.now();
+    const openDelay =
+      remainingSuppression > 0
+        ? remainingSuppression + HOVER_TIMING.OPEN_DELAY
+        : HOVER_TIMING.OPEN_DELAY;
     hoverOpenTimerRef.current = window.setTimeout(() => {
       if (Date.now() < suppressHoverOpenUntilRef.current) return;
       setLoginFlyoutOpen(true);
       setLoginFlyoutOpenedByHover(true);
-    }, HOVER_TIMING.OPEN_DELAY);
+    }, openDelay);
   };
 
   const handleMouseLeave = () => {
