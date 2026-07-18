@@ -9,6 +9,10 @@ RUN corepack enable && pnpm install --frozen-lockfile
 # za spolecnou domenou s API) - proto se pec do image pri buildu, misto
 # aby se cetly za behu jako u backendu. Vite je stejne peče do JS pri
 # 'vite build', za behu uz je nejde zmenit.
+#
+# JEDEN Dockerfile pro dev i prod - CI pro kazde prostredi jen preda jine
+# --build-arg (viz .github/workflows/ci.yml, VITE_ENABLE_DEVTOOLS=true pro
+# dev, false pro prod). Zadny duvod mit druhy Dockerfile jen kvuli tomuhle.
 ARG VITE_PUBLIC_URL=/
 ARG VITE_API_BASE_URL=/api
 ARG VITE_ENABLE_DEVTOOLS=false

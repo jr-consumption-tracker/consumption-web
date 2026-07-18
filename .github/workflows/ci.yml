@@ -90,9 +90,11 @@ jobs:
           if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
             echo "environment=prod" >> "$GITHUB_OUTPUT"
             echo "image_tag=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+            echo "devtools=false" >> "$GITHUB_OUTPUT"
           else
             echo "environment=dev" >> "$GITHUB_OUTPUT"
             echo "image_tag=dev-${{ github.sha }}" >> "$GITHUB_OUTPUT"
+            echo "devtools=true" >> "$GITHUB_OUTPUT"
           fi
           echo "image=ghcr.io/${{ github.repository }}" >> "$GITHUB_OUTPUT"
 
@@ -114,6 +116,8 @@ jobs:
           push: false
           load: true
           tags: ghcr.io/${{ github.repository }}:${{ steps.meta.outputs.image_tag }}
+          build-args: |
+            VITE_ENABLE_DEVTOOLS=${{ steps.meta.outputs.devtools }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
