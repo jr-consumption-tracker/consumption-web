@@ -1,0 +1,15 @@
+.git
+.github
+README.md
+src/node_modules
+src/**/node_modules
+src/.turbo
+src/coverage
+src/**/coverage
+src/jest-coverage
+src/**/jest-coverage
+src/.env
+src/.env.*
+src/**/.env
+src/**/.env.*
+src/**/certs
