@@ -21,6 +21,12 @@ RUN { \
 RUN pnpm --filter web build:production
 
 FROM nginx:1.27-alpine AS runtime
+
+# Alpine balicky v samotnem base image casem zastaravaji (i kdyz je tag
+# "1.27-alpine" fixni) - apk upgrade stahne aktualni bezpecnostni zalatky
+# bez ohledu na to, jak stary je konkretni base image tag.
+RUN apk update && apk upgrade --no-cache
+
 COPY --from=build /app/apps/web/dist /usr/share/nginx/html
 COPY docker/prod/nginx.conf /etc/nginx/conf.d/default.conf
 
