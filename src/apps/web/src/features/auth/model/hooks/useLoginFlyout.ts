@@ -11,6 +11,7 @@ export const useLoginFlyout = () => {
   const loginTriggerRef = useRef<HTMLButtonElement | null>(null);
   const hoverOpenTimerRef = useRef<number | null>(null);
   const hoverCloseTimerRef = useRef<number | null>(null);
+  const suppressHoverOpenUntilRef = useRef<number>(0);
 
   useEffect(() => {
     if (!loginFlyoutOpen) return;
@@ -32,5 +33,6 @@ export const useLoginFlyout = () => {
     loginTriggerRef,
     hoverOpenTimerRef,
     hoverCloseTimerRef,
+    suppressHoverOpenUntilRef,
   };
 };

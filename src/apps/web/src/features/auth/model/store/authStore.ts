@@ -1,6 +1,7 @@
 import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
 
+import type { StateStorage } from "zustand/middleware";
 import type { AuthSession } from "../types/credentials";
 
 export interface AuthState {
@@ -9,6 +10,36 @@ export interface AuthState {
   setAccessToken: (accessToken: string) => void;
   logout: () => void;
 }
+
+const PERSIST_LOGIN_KEY = "persistLoginWeb";
+const AUTH_STORAGE_KEY = "auth-storage";
+
+const isPersistLoginEnabled = (): boolean => {
+  try {
+    return JSON.parse(localStorage.getItem(PERSIST_LOGIN_KEY) ?? "false");
+  } catch {
+    return false;
+  }
+};
+
+// createJSONStorage's getStorage callback only runs once, when the store is
+// created, so its result (window.localStorage vs window.sessionStorage)
+// would otherwise be locked in for the store's lifetime. This object's own
+// methods re-check the persistLogin flag on every call instead, so each
+// read/write independently targets the correct backend.
+const dynamicAuthStorage: StateStorage = {
+  getItem: (name) =>
+    (isPersistLoginEnabled() ? localStorage : sessionStorage).getItem(name),
+  setItem: (name, value) =>
+    (isPersistLoginEnabled() ? localStorage : sessionStorage).setItem(
+      name,
+      value,
+    ),
+  removeItem: (name) => {
+    localStorage.removeItem(name);
+    sessionStorage.removeItem(name);
+  },
+};
 
 export const useAuthStore = create<AuthState>()(
   devtools(
@@ -25,10 +56,15 @@ export const useAuthStore = create<AuthState>()(
             false,
             "auth/setAccessToken",
           ),
-        logout: () => set({ session: null }, false, "auth/logout"),
+        logout: () => {
+          set({ session: null }, false, "auth/logout");
+          localStorage.removeItem(AUTH_STORAGE_KEY);
+          sessionStorage.removeItem(AUTH_STORAGE_KEY);
+        },
       }),
       {
-        name: "auth-storage",
+        name: AUTH_STORAGE_KEY,
+        storage: createJSONStorage(() => dynamicAuthStorage),
         partialize: (state) => ({ session: state.session }),
       },
     ),

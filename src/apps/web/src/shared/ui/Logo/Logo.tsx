@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { cn } from "@repo/utils";
 import { Link } from "@tanstack/react-router";
 
-import { LogoIcon } from "./ui/LogoIcon";
 import { LogoText } from "./ui/LogoText";
 
 import type { LogoProps } from "./model/Logo";
@@ -18,26 +17,19 @@ export const Logo = ({
   size = "md",
   disableHover = false,
   variant = "default",
-  disableHideText,
 }: LogoProps) => {
   const { t } = useTranslation("common");
 
   const content = (
     <div
       className={cn(
-        "flex items-center gap-3",
+        "flex items-center",
         !disableHover && "group",
         className,
       )}
     >
-      <LogoIcon
-        scrolled={scrolled}
-        size={size}
-        variant={variant}
-        disableHover={disableHover}
-      />
       {showText && (
-        <LogoText scrolled={scrolled} size={size} variant={variant} disableHideText={disableHideText}/>
+        <LogoText scrolled={scrolled} size={size} variant={variant} />
       )}
     </div>
   );

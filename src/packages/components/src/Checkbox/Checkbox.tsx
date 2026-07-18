@@ -21,10 +21,10 @@ export const Checkbox = ({ label, className, ...restProps }: CheckboxProps) => {
       )}
       {...restProps}
     >
-      <RawCheckbox.Control className="size-4 m-1">
-        <RawCheckbox.Indicator />
-      </RawCheckbox.Control>
       <RawCheckbox.Content>
+        <RawCheckbox.Control className="size-4 m-1">
+          <RawCheckbox.Indicator />
+        </RawCheckbox.Control>
         <Label htmlFor={id}>{label}</Label>
       </RawCheckbox.Content>
     </RawCheckbox>

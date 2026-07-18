@@ -42,7 +42,7 @@ export const MobileMenu = ({ isOpen, scrolled, onClose }: MobileMenuProps) => {
         <div className="mt-8 pt-8 border-t border-white/10 mb-6">
           <div className="flex items-center justify-between gap-4">
             {/* LEFT: Dark Mode */}
-            <div className="flex-1 flex items-center justify-center gap-2 h-13 px-4 rounded-2xl bg-white/5 border border-white/5">
+            <div className="flex-1 flex items-center justify-center gap-2 h-13 px-4 rounded-2xl bg-row-alt border border-border">
               <div className="flex items-center justify-center scale-110">
                 <ThemeSelect />
               </div>
@@ -52,7 +52,7 @@ export const MobileMenu = ({ isOpen, scrolled, onClose }: MobileMenuProps) => {
             </div>
 
             {/* RIGHT: Language */}
-            <div className="flex-1 flex items-center justify-center gap-2 h-13 px-4 rounded-2xl bg-white/5 border border-white/5">
+            <div className="flex-1 flex items-center justify-center gap-2 h-13 px-4 rounded-2xl bg-row-alt border border-border">
               <div className="flex items-center justify-center scale-110">
                 <LanguageSelect />
               </div>

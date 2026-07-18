@@ -13,13 +13,12 @@ export const FeaturesHero = () => {
   const { t } = useTranslation("features");
 
   return (
-    <Section className="relative overflow-hidden text-center">
-      <div
-        className="pointer-events-none absolute -top-16 left-1/2 -z-10 h-48 w-48 -translate-x-1/2 bg-sage-light/20 md:-top-20 md:h-72 md:w-72"
-        style={{ borderRadius: "58% 42% 45% 55% / 45% 55% 45% 55%" }}
-      />
+    <Section className="text-center">
+      <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+        {t("hero.eyebrow")}
+      </p>
 
-      <h1 className="text-4xl font-extrabold tracking-tight text-text-main sm:text-5xl md:text-6xl">
+      <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-text-main sm:text-5xl md:text-6xl">
         {t("hero.title")}
       </h1>
 

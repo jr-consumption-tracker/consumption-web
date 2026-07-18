@@ -30,15 +30,15 @@ export const HomeHero = () => {
             style={{ borderRadius: "62% 38% 55% 45% / 48% 42% 58% 52%" }}
           />
           <div
-            className="absolute top-72 right-100 hidden h-65 w-65 bg-sage-blob-decorative md:block"
+            className="absolute top-72 right-100 hidden h-65 w-65 bg-hero-blob-decorative md:block"
             style={{ borderRadius: "42% 58% 40% 60% / 55% 45% 55% 45%" }}
           />
         </div>
 
         <div className="relative z-10 max-w-4xl">
-          <span className="inline-flex items-center rounded-full bg-text-main px-4 py-1.5 text-xs md:text-sm font-bold uppercase tracking-widest text-surface-alt">
+          <p className="max-w-[45%] text-sm font-semibold uppercase tracking-widest text-primary sm:max-w-none">
             {t("hero.header.subtitle")}
-          </span>
+          </p>
 
           <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-text-main md:text-7xl">
             {t("hero.header.title_main")} <br />
@@ -85,8 +85,13 @@ export const HomeHero = () => {
             ref={trustRef}
             className="mt-10 flex flex-col items-start gap-1 sm:flex-row sm:items-center sm:gap-4"
           >
-            <span className="text-4xl font-black tracking-tight text-text-main md:text-5xl">
-              {trustCount.toLocaleString("cs-CZ")}
+            <span className="flex items-center gap-1.5">
+              <span className="text-sm font-medium text-text-muted">
+                {t("hero.trust.prefix")}
+              </span>
+              <span className="text-4xl font-black tracking-tight text-text-main md:text-5xl">
+                {trustCount.toLocaleString("cs-CZ")}
+              </span>
             </span>
             <p className="text-sm font-medium leading-tight whitespace-pre-line text-text-muted">
               {t("hero.trust.label")}

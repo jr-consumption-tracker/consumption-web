@@ -11,7 +11,9 @@
     "build:ci": "tsc -b && vite build",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
-    "preview:development": "vite preview --mode development"
+    "preview:development": "vite preview --mode development",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@heroui/react": "catalog:",
@@ -48,15 +50,20 @@
     "@repo/typescript-config": "workspace:*",
     "@repo/utils": "workspace:*",
     "@tanstack/router-plugin": "catalog:",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "^6.0.1",
     "eslint": "catalog:",
+    "jsdom": "^29.1.1",
     "tailwind-variants": "^3.2.2",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:"
+    "vite": "catalog:",
+    "vitest": "^4.1.10"
   },
   "pnpm": {
     "overrides": {

@@ -2,6 +2,8 @@ import { Droplets, Flame, Zap } from "lucide-react";
 
 import { cn } from "@repo/utils";
 
+import { OrganicBlob } from "@web/shared/ui/OrganicBlob";
+
 export interface ConsumptionItem {
   type: "electricity" | "gas" | "water";
   label: string;
@@ -53,22 +55,26 @@ export const ConsumptionDashboard = ({
           <div
             key={property.name}
             className={cn(
-              "p-5 shadow-sm hover:shadow-md transition-shadow duration-300",
+              "relative p-5 shadow-sm hover:shadow-md transition-shadow duration-300",
               isPrimary
-                ? "bg-sage-deep text-sage-content rounded-tl-md rounded-tr-3xl rounded-br-3xl rounded-bl-3xl"
+                ? "overflow-hidden bg-dark-block-surface text-dark-block-text rounded-tl-md rounded-tr-3xl rounded-br-3xl rounded-bl-3xl"
                 : "md:ml-6 bg-surface-alt rounded-tl-3xl rounded-tr-3xl rounded-br-md rounded-bl-3xl",
             )}
           >
+            {isPrimary && (
+              <OrganicBlob className="pointer-events-none -top-10 -right-10 z-0 h-32 w-32 opacity-12" />
+            )}
+
             <h4
               className={cn(
-                "text-lg font-bold mb-4 flex items-center gap-2",
-                isPrimary ? "text-sage-content" : "text-text-main",
+                "relative z-10 text-lg font-bold mb-4 flex items-center gap-2",
+                isPrimary ? "text-dark-block-text" : "text-text-main",
               )}
             >
               {property.name}
             </h4>
 
-            <div className="space-y-3">
+            <div className="relative z-10 space-y-3">
               {property.items.map((item) => {
                 const Icon = IconMap[item.type];
                 return (
@@ -89,7 +95,7 @@ export const ConsumptionDashboard = ({
                         className={cn(
                           "text-sm font-medium transition-colors",
                           isPrimary
-                            ? "text-sage-content/70 group-hover:text-sage-content"
+                            ? "text-dark-block-text-muted group-hover:text-dark-block-text"
                             : "text-text-muted group-hover:text-text-main",
                         )}
                       >
@@ -97,7 +103,9 @@ export const ConsumptionDashboard = ({
                       </span>
                     </div>
                     <span
-                      className={isPrimary ? "text-sage-content" : "text-text-main"}
+                      className={
+                        isPrimary ? "text-dark-block-text" : "text-text-main"
+                      }
                     >
                       <span className="text-base font-bold">{item.value}</span>
                       &nbsp;{item.unit}

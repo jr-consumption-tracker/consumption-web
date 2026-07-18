@@ -1,6 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-
-import { cn } from "@repo/utils";
+import { useRef, useState } from "react";
 
 import { LoginPopoverWrapper } from "./LoginPopoverWrapper";
 
@@ -15,6 +13,7 @@ export interface LoginButtonProps {
   loginTriggerRef: RefObject<HTMLButtonElement | null>;
   hoverOpenTimerRef: RefObject<number | null>;
   hoverCloseTimerRef: RefObject<number | null>;
+  suppressHoverOpenUntilRef: RefObject<number>;
 }
 
 const HOVER_TIMING = {
@@ -31,33 +30,31 @@ export const LoginButton = ({
   loginTriggerRef,
   hoverOpenTimerRef,
   hoverCloseTimerRef,
+  suppressHoverOpenUntilRef,
 }: LoginButtonProps) => {
   const containerRef = useRef<HTMLDivElement>(null!);
-  const [isMouseOver, setIsMouseOver] = useState(false);
   const [hasFocus, setHasFocus] = useState(false);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const handleEnter = () => setIsMouseOver(true);
-    const handleLeave = () => setIsMouseOver(false);
-    el.addEventListener("mouseenter", handleEnter);
-    el.addEventListener("mouseleave", handleLeave);
-    return () => {
-      el.removeEventListener("mouseenter", handleEnter);
-      el.removeEventListener("mouseleave", handleLeave);
-    };
-  }, []);
 
   const handleMouseEnter = () => {
     if (hoverCloseTimerRef.current) {
       clearTimeout(hoverCloseTimerRef.current);
       hoverCloseTimerRef.current = null;
     }
+    if (hoverOpenTimerRef.current) {
+      clearTimeout(hoverOpenTimerRef.current);
+      hoverOpenTimerRef.current = null;
+    }
+    const remainingSuppression =
+      suppressHoverOpenUntilRef.current - Date.now();
+    const openDelay =
+      remainingSuppression > 0
+        ? remainingSuppression + HOVER_TIMING.OPEN_DELAY
+        : HOVER_TIMING.OPEN_DELAY;
     hoverOpenTimerRef.current = window.setTimeout(() => {
+      if (Date.now() < suppressHoverOpenUntilRef.current) return;
       setLoginFlyoutOpen(true);
       setLoginFlyoutOpenedByHover(true);
-    }, HOVER_TIMING.OPEN_DELAY);
+    }, openDelay);
   };
 
   const handleMouseLeave = () => {
@@ -94,11 +91,7 @@ export const LoginButton = ({
   return (
     <div
       ref={containerRef}
-      className={cn(
-        "relative transition-transform duration-300",
-        loginFlyoutOpen ? "scale-110!" : "",
-        isMouseOver ? "scale-110" : "",
-      )}
+      className="relative"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onFocus={handleFocusIn}
@@ -110,17 +103,12 @@ export const LoginButton = ({
         setLoginFlyoutOpen={setLoginFlyoutOpen}
         setLoginFlyoutOpenedByHover={setLoginFlyoutOpenedByHover}
         loginTriggerRef={loginTriggerRef}
-        isHovered={isMouseOver}
+        hoverOpenTimerRef={hoverOpenTimerRef}
+        suppressHoverOpenUntilRef={suppressHoverOpenUntilRef}
         handleMouseEnter={handleMouseEnter}
         handleMouseLeave={handleMouseLeave}
         handleFocusIn={handleFocusIn}
         handleFocusOut={handleFocusOut}
-      />
-      <div
-        className={cn(
-          "absolute inset-0 rounded-2xl transition-opacity duration-300 blur-xl scale-110 bg-primary/20",
-          isMouseOver ? "opacity-60" : "opacity-0",
-        )}
       />
     </div>
   );

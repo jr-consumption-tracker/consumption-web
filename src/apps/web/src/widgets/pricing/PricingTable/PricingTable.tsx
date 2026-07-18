@@ -36,7 +36,7 @@ const useTableRows = (): TableRow[] => {
 
 const CellValue = ({ value }: { value: RowValue }) => {
   if (value === "true" || value === true) {
-    return <CheckIcon className="mx-auto h-5 w-5 text-primary" aria-hidden="true" />;
+    return <CheckIcon className="mx-auto h-5 w-5 text-primary-accessible" aria-hidden="true" />;
   }
   if (value === "false" || value === false || value === "") {
     return <MinusIcon className="mx-auto h-5 w-5 text-text-muted/40" aria-hidden="true" />;
@@ -53,14 +53,14 @@ export const PricingTable = () => {
       <div className="mx-auto max-w-4xl overflow-x-auto rounded-2xl ring-1 ring-border">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-border bg-sage-light/40 dark:bg-surface-alt">
+            <tr className="border-b border-border bg-surface-alt">
               <th className="py-5 pl-6 pr-4 text-left font-semibold text-text-main">
                 {t("table.planColumn")}
               </th>
               <th className="py-5 px-6 text-center font-semibold text-text-muted">
                 {t("plans.free.name")}
               </th>
-              <th className="py-5 px-6 text-center font-bold text-primary bg-primary/7">
+              <th className="py-5 px-6 text-center font-bold text-primary-accessible bg-primary/7">
                 {t("plans.premium.name")}
               </th>
             </tr>
