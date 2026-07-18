@@ -92,7 +92,7 @@ export const PricingCard = ({ plan }: PricingCardProps) => {
             highlighted ? "text-dark-block-text" : "text-text-muted",
           )}
         >
-          {features?.map((feature, idx) => (
+          {Array.isArray(features) && features.map((feature, idx) => (
             <li
               key={idx}
               className={cn(
