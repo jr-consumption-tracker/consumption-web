@@ -14,6 +14,24 @@ export const axiosMainApi = axios.create({
   baseURL: MAIN_API_BASE_URL,
 });
 
+const CSRF_MUTATING_METHODS = ["post", "put", "patch", "delete"];
+
+// Backend posílá aktuální CSRF token jako hlavičky na KAŽDÉ odpovědi (viz
+// ExposeCsrfTokenMiddleware v api) - appka si je jen průběžně ukládá do
+// paměti (ne do cookie, tu JS záměrně nesmí číst) a posílá zpátky na
+// mutujících requestech. Token je platný po celou session, není potřeba
+// ho zvlášť dopředu načítat.
+let csrfToken: { name: string; value: string } | null = null;
+
+export const captureCsrfToken = (headers: Record<string, unknown>) => {
+  const name = headers["csrf_name"];
+  const value = headers["csrf_value"];
+
+  if (typeof name === "string" && typeof value === "string") {
+    csrfToken = { name, value };
+  }
+};
+
 axiosMainApi.interceptors.request.use((config) => {
   const authorizationHeader = config.headers?.["Authorization"];
   const authState = useAuthStore.getState();
@@ -23,6 +41,13 @@ axiosMainApi.interceptors.request.use((config) => {
 
   if (!authorizationHeader && accessToken) {
     config.headers["Authorization"] = `Bearer ${accessToken}`;
+  }
+
+  const method = config.method?.toLowerCase();
+
+  if (csrfToken && method && CSRF_MUTATING_METHODS.includes(method)) {
+    config.headers["csrf_name"] = csrfToken.name;
+    config.headers["csrf_value"] = csrfToken.value;
   }
 
   return config;
@@ -55,6 +80,8 @@ export const refreshSession = async (): Promise<AuthSession | null> => {
         },
       );
 
+      captureCsrfToken(refreshResponse.headers);
+
       if (refreshResponse.status === HttpStatusCodes.OK) {
         const newSession = refreshResponse.data;
 
@@ -82,8 +109,16 @@ export const refreshSession = async (): Promise<AuthSession | null> => {
 };
 
 axiosMainApi.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    captureCsrfToken(response.headers);
+
+    return response;
+  },
   async (error) => {
+    if (error.response?.headers) {
+      captureCsrfToken(error.response.headers);
+    }
+
     const originalRequest = error.config;
 
     if (
