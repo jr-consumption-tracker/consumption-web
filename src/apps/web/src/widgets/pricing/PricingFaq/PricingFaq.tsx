@@ -7,10 +7,11 @@ import type { AccordionItem } from "@web/shared/ui/Accordion";
 import type { TFunction } from "i18next";
 
 const getFaqItems = (t: TFunction<"pricing">): AccordionItem[] => {
-  const items = t("faq.items", { returnObjects: true }) as {
-    question: string;
-    answer: string;
-  }[];
+  const items = t("faq.items", { returnObjects: true });
+
+  if (!Array.isArray(items)) {
+    return [];
+  }
 
   return items.map((item) => ({
     title: item.question,
